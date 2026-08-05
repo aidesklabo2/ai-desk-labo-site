@@ -130,6 +130,31 @@ function renderEntryCard(entry, href) {
 </div>`;
 }
 
+// Scroll-synced ranking showcase for the homepage. Renders a horizontal
+// track that is a plain CSS scroll-snap carousel by default; site.js
+// progressively enhances it into a GSAP ScrollTrigger pin+scrub effect
+// on wide viewports when the CDN scripts load successfully.
+function renderShowcase(rankedProducts) {
+  const cards = rankedProducts
+    .map((product, i) => {
+      const badgeColor = CATEGORY_COLOR[product.category] || "blue";
+      return `<div class="showcase-card">
+    <span class="rank">No.${i + 1}</span>
+    ${iconBadge(product.category, badgeColor)}
+    <h3>${escapeHtml(product.name)}</h3>
+    <p class="price">¥${product.price.toLocaleString("ja-JP")}</p>
+    <p>${escapeHtml(product.summary || "")}</p>
+    <a class="btn-amazon" href="${amazonLink(product)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}Amazonで見る</a>
+  </div>`;
+    })
+    .join("\n");
+  return section(
+    `<div class="section-head"><p class="eyebrow">Ranking</p><h2>今、注目のアイテム</h2></div>
+    <p class="showcase-hint">スクロールすると連動して切り替わります(スマホ・タブレットは横にスワイプ)</p>
+    <div class="showcase-track-outer"><div class="showcase-track" id="showcaseTrack">${cards}</div></div>`
+  );
+}
+
 function writeFile(relPath, content) {
   const fullPath = path.join(ROOT_DIR, relPath);
   fs.mkdirSync(path.dirname(fullPath), { recursive: true });
@@ -233,12 +258,18 @@ function main() {
     { tint: true }
   );
 
+  // Showcase pulls its ranked order from the first "ranking" entry found;
+  // falls back to product declaration order if no ranking entry exists yet.
+  const rankingEntry = content.find((e) => e.type === "ranking");
+  const rankedAsins = rankingEntry ? rankingEntry.products : products.map((p) => p.asin);
+  const showcaseHtml = renderShowcase(rankedAsins.map((asin) => productsMap[asin]));
+
   writeFile("index.html", renderPage(template, {
     title: "AI・ガジェットの比較とレビュー",
     description: "AIツールとガジェットの実体験レビュー・比較・ランキングを発信するAI Desk Labo公式サイト。",
     canonical: `${SITE_ORIGIN}/`,
     root: "",
-    bodyHtml: heroHtml + latestHtml,
+    bodyHtml: heroHtml + showcaseHtml + latestHtml,
   }));
   sitemapUrls.unshift({ loc: `${SITE_ORIGIN}/` });
 

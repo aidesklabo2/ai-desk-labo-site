@@ -94,4 +94,41 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
+
+  // Ranking showcase: scroll-synced horizontal reveal (GSAP ScrollTrigger).
+  // Progressive enhancement only — the CSS scroll-snap row above already
+  // works as a plain swipeable carousel with zero JS, so if the GSAP CDN
+  // is blocked/slow/unavailable, or the plugin fails to register, or the
+  // viewport is narrow, or the user prefers reduced motion, this section
+  // silently stays as that plain carousel instead of breaking.
+  var showcaseOuter = document.querySelector(".showcase-track-outer");
+  var showcaseTrack = document.getElementById("showcaseTrack");
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var isWideEnough = window.matchMedia("(min-width: 900px)").matches;
+  if (showcaseOuter && showcaseTrack && !prefersReducedMotion && isWideEnough) {
+    window.addEventListener("load", function () {
+      try {
+        if (!window.gsap || !window.ScrollTrigger) return;
+        gsap.registerPlugin(ScrollTrigger);
+        var distance = showcaseTrack.scrollWidth - showcaseOuter.clientWidth;
+        if (distance <= 0) return;
+        showcaseOuter.classList.add("js-driven");
+        gsap.to(showcaseTrack, {
+          x: -distance,
+          ease: "none",
+          scrollTrigger: {
+            trigger: showcaseOuter,
+            start: "top center",
+            end: "+=" + distance,
+            scrub: 0.6,
+            pin: true,
+            invalidateOnRefresh: true,
+          },
+        });
+      } catch (err) {
+        // Leave the plain scroll-snap carousel in place on any failure.
+        if (showcaseOuter) showcaseOuter.classList.remove("js-driven");
+      }
+    });
+  }
 })();
