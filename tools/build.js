@@ -141,7 +141,7 @@ function renderShowcase(rankedProducts) {
     .map((product, i) => {
       const badgeColor = CATEGORY_COLOR[product.category] || "blue";
       return `<div class="showcase-card">
-    <span class="rank">${i + 1}</span>
+    <span class="rank">${i + 1}位</span>
     ${iconBadge(product.category, badgeColor)}
     <h3>${escapeHtml(product.name)}</h3>
     <p class="price">¥${product.price.toLocaleString("ja-JP")}</p>

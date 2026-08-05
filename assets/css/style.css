@@ -325,17 +325,19 @@ article h3 { font-size: 1.08rem; color: var(--ink-secondary); }
   position: absolute;
   top: -14px;
   left: 18px;
-  width: 34px;
-  height: 34px;
+  min-width: 46px;
+  height: 32px;
+  padding: 0 13px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
   color: #fff;
   background: linear-gradient(135deg, var(--accent-orange), var(--accent-blue));
-  border-radius: 50%;
+  border-radius: 10px;
   box-shadow: 0 6px 16px -6px rgba(217, 89, 38, 0.6);
 }
 .showcase-card h3 { font-family: var(--font-display); margin: 14px 0 6px; }
