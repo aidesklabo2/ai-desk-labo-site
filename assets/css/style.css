@@ -325,13 +325,17 @@ article h3 { font-size: 1.08rem; color: var(--ink-secondary); }
   position: absolute;
   top: -14px;
   left: 18px;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: #fff;
   background: linear-gradient(135deg, var(--accent-orange), var(--accent-blue));
-  padding: 5px 14px;
-  border-radius: 999px;
+  border-radius: 50%;
   box-shadow: 0 6px 16px -6px rgba(217, 89, 38, 0.6);
 }
 .showcase-card h3 { font-family: var(--font-display); margin: 14px 0 6px; }
