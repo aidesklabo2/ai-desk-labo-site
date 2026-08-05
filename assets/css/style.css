@@ -308,7 +308,7 @@ article h3 { font-size: 1.08rem; color: var(--ink-secondary); }
   display: flex;
   gap: 18px;
   width: max-content;
-  padding: 4px 4px 18px;
+  padding: 24px 4px 18px;
 }
 .showcase-card {
   position: relative;
