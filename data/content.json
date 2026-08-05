@@ -59,7 +59,7 @@
     "title": "REALFORCE RC1 レビュー — 静電容量無接点方式の実力",
     "description": "REALFORCE RC1を実際に使ってわかった打鍵感・APC設定・向いている人を解説します。",
     "updated": "2026-08-05",
-    "products": ["B0CTPLACEHOLDER1"],
+    "products": ["B0DH8B3MB4"],
     "body": [
       {"p": "長時間のタイピングでも疲れにくいキーボードを探して行き着いたのがREALFORCE RC1でした。静電容量無接点方式ならではの滑らかな打鍵感と、APC(アクチュエーションポイント可変)機能が特徴です。"},
       {"h2": "使ってみて良かった点"},
@@ -67,7 +67,7 @@
       {"h2": "気になった点"},
       {"list": ["価格は一般的なメンブレンキーボードよりかなり高め", "静音とはいえ無音ではないため、深夜のオンライン会議中は多少気を遣う"]},
       {"h2": "商品情報"},
-      {"products": ["B0CTPLACEHOLDER1"]},
+      {"products": ["B0DH8B3MB4"]},
       {"p": "より詳しい使用感は<a href=\"https://note.com/yu_aidesklabo\">Note本編</a>でも紹介しています。"}
     ]
   },
@@ -77,13 +77,13 @@
     "title": "AI作業がはかどるデスク周辺機器ランキング 2026",
     "description": "AIチャット作業・在宅ワークの効率を上げるガジェットを実体験ベースでランキング形式で紹介します。",
     "updated": "2026-08-05",
-    "products": ["B0CTPLACEHOLDER1", "B0CTPLACEHOLDER4", "B0CTPLACEHOLDER2", "B0CTPLACEHOLDER3"],
+    "products": ["B0DH8B3MB4", "B0F23FWBJL", "B0B1Q6VB16", "B0BYYMGW4V"],
     "body": [
       {"p": "毎日AIツールとチャットしながら作業する筆者が、実際に使って「これは効果があった」と感じたデスク周辺機器をランキング形式でまとめました。"},
       {"h2": "ランキング"},
-      {"products": ["B0CTPLACEHOLDER1", "B0CTPLACEHOLDER4", "B0CTPLACEHOLDER2", "B0CTPLACEHOLDER3"]},
+      {"products": ["B0DH8B3MB4", "B0F23FWBJL", "B0B1Q6VB16", "B0BYYMGW4V"]},
       {"h2": "選び方のポイント"},
-      {"list": ["長時間タイピングするなら打鍵感重視でキーボードから investment する", "AIの出力と資料を並べて見るなら4Kモニターが効果大", "外出先で使うなら電源周りのガジェットを優先"]}
+      {"list": ["長時間タイピングするなら打鍵感重視でキーボードに投資する", "AIの出力と資料を並べて見るなら4Kモニターが効果大", "外出先で使うなら電源周りのガジェットを優先"]}
     ]
   },
   {
@@ -114,14 +114,14 @@
     "title": "AI作業用デスク環境の選び方ガイド",
     "description": "AIチャット作業を快適にするデスク環境を、何から揃えるべきか優先順位付きで解説します。",
     "updated": "2026-08-05",
-    "products": ["B0CTPLACEHOLDER4", "B0CTPLACEHOLDER1"],
+    "products": ["B0F23FWBJL", "B0DH8B3MB4"],
     "body": [
       {"h2": "最初に揃えるべきもの"},
       {"p": "AI作業がメインになるなら、まず「AIの出力と資料を同時に見られる画面の広さ」を優先するのがおすすめです。"},
-      {"products": ["B0CTPLACEHOLDER4"]},
+      {"products": ["B0F23FWBJL"]},
       {"h2": "次に投資すべきもの"},
       {"p": "画面が広がると、次にボトルネックになるのは入力速度です。長時間タイピングする人ほどキーボードの打鍵感が効いてきます。"},
-      {"products": ["B0CTPLACEHOLDER1"]}
+      {"products": ["B0DH8B3MB4"]}
     ]
   }
 ]
