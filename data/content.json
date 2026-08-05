@@ -1,0 +1,127 @@
+[
+  {
+    "type": "static",
+    "slug": "about",
+    "title": "運営者情報",
+    "description": "AI Desk Laboの運営者情報です。",
+    "updated": "2026-08-05",
+    "products": [],
+    "body": [
+      {"h2": "運営者について"},
+      {"p": "AI Desk Labo(アイデスクラボ)は、AIツールとガジェットの実体験レビューを発信する個人メディアです。X(@yu_aidesklabo)およびNote(note.com/yu_aidesklabo)でも活動しています。"},
+      {"p": "掲載している商品情報・価格は執筆時点のものです。最新の価格・在庫は各販売ページでご確認ください。"}
+    ]
+  },
+  {
+    "type": "static",
+    "slug": "disclosure",
+    "title": "アフィリエイト表記",
+    "description": "当サイトの広告・アフィリエイトに関する表記です。",
+    "updated": "2026-08-05",
+    "products": [],
+    "body": [
+      {"h2": "本サイトについて"},
+      {"p": "当サイト「AI Desk Labo」は、Amazon.co.jpを宣伝しリンクすることによってサイトが紹介料を獲得できる手段を提供することを目的に設定されたアフィリエイトプログラムである、Amazonアソシエイト・プログラムの参加者です。"},
+      {"p": "記事内のAmazon商品リンクから購入された場合、当サイトが紹介料を得ることがあります。価格は変動するため、購入前に必ず商品ページで最新情報をご確認ください。"},
+      {"p": "また、Google AdSenseによる広告配信を行う場合があります。"}
+    ]
+  },
+  {
+    "type": "static",
+    "slug": "privacy",
+    "title": "プライバシーポリシー",
+    "description": "AI Desk Laboのプライバシーポリシーです。",
+    "updated": "2026-08-05",
+    "products": [],
+    "body": [
+      {"h2": "個人情報の取り扱いについて"},
+      {"p": "当サイトでは、広告配信のためにGoogleを含む第三者配信事業者がCookieを使用することがあります。Cookieを使用することにより、当サイトはユーザーの過去のアクセス情報に基づいて広告を配信できます。"},
+      {"p": "ユーザーはGoogleの広告設定ページで、パーソナライズ広告を無効にすることができます。"},
+      {"h2": "アクセス解析ツールについて"},
+      {"p": "当サイトはアクセス解析のためのツールを利用する場合があります。これらのアクセス解析ツールはトラフィックデータの収集にCookieを使用しますが、匿名で収集されており個人を特定するものではありません。"}
+    ]
+  },
+  {
+    "type": "static",
+    "slug": "contact",
+    "title": "お問い合わせ",
+    "description": "AI Desk Laboへのお問い合わせ窓口です。",
+    "updated": "2026-08-05",
+    "products": [],
+    "body": [
+      {"h2": "お問い合わせ"},
+      {"p": "ご意見・ご指摘・掲載に関するお問い合わせは、X(<a href=\"https://x.com/yu_aidesklabo\">@yu_aidesklabo</a>)のDMまでお願いいたします。"}
+    ]
+  },
+  {
+    "type": "review",
+    "slug": "realforce-rc1",
+    "title": "REALFORCE RC1 レビュー — 静電容量無接点方式の実力",
+    "description": "REALFORCE RC1を実際に使ってわかった打鍵感・APC設定・向いている人を解説します。",
+    "updated": "2026-08-05",
+    "products": ["B0CTPLACEHOLDER1"],
+    "body": [
+      {"p": "長時間のタイピングでも疲れにくいキーボードを探して行き着いたのがREALFORCE RC1でした。静電容量無接点方式ならではの滑らかな打鍵感と、APC(アクチュエーションポイント可変)機能が特徴です。"},
+      {"h2": "使ってみて良かった点"},
+      {"list": ["キーが底まで沈み込む前に反応するよう設定でき、タイピング速度が上がった", "静電容量無接点方式特有の滑らかな押し心地で指への負担が少ない", "テンキーレスでデスクが広く使える"]},
+      {"h2": "気になった点"},
+      {"list": ["価格は一般的なメンブレンキーボードよりかなり高め", "静音とはいえ無音ではないため、深夜のオンライン会議中は多少気を遣う"]},
+      {"h2": "商品情報"},
+      {"products": ["B0CTPLACEHOLDER1"]},
+      {"p": "より詳しい使用感は<a href=\"https://note.com/yu_aidesklabo\">Note本編</a>でも紹介しています。"}
+    ]
+  },
+  {
+    "type": "ranking",
+    "slug": "ai-work-desk-2026",
+    "title": "AI作業がはかどるデスク周辺機器ランキング 2026",
+    "description": "AIチャット作業・在宅ワークの効率を上げるガジェットを実体験ベースでランキング形式で紹介します。",
+    "updated": "2026-08-05",
+    "products": ["B0CTPLACEHOLDER1", "B0CTPLACEHOLDER4", "B0CTPLACEHOLDER2", "B0CTPLACEHOLDER3"],
+    "body": [
+      {"p": "毎日AIツールとチャットしながら作業する筆者が、実際に使って「これは効果があった」と感じたデスク周辺機器をランキング形式でまとめました。"},
+      {"h2": "ランキング"},
+      {"products": ["B0CTPLACEHOLDER1", "B0CTPLACEHOLDER4", "B0CTPLACEHOLDER2", "B0CTPLACEHOLDER3"]},
+      {"h2": "選び方のポイント"},
+      {"list": ["長時間タイピングするなら打鍵感重視でキーボードから investment する", "AIの出力と資料を並べて見るなら4Kモニターが効果大", "外出先で使うなら電源周りのガジェットを優先"]}
+    ]
+  },
+  {
+    "type": "compare",
+    "slug": "chatgpt-vs-claude-vs-gemini",
+    "title": "ChatGPT・Claude・Gemini 使い分け実践比較",
+    "description": "ChatGPT・Claude・Geminiを実際に使い分けている筆者が、用途別のおすすめを比較表で解説します。",
+    "updated": "2026-08-05",
+    "products": [],
+    "body": [
+      {"p": "3つのAIチャットを日常的に使い分けている筆者の実体験をもとに、用途別の向き不向きを比較します。"},
+      {"h2": "比較表"},
+      {"table": {
+        "headers": ["用途", "ChatGPT", "Claude", "Gemini"],
+        "rows": [
+          ["長文の要約・整理", "○", "◎", "○"],
+          ["コード生成・修正", "○", "◎", "○"],
+          ["最新情報の検索連携", "○", "○", "◎"],
+          ["無料枠での使い心地", "△(Plus推奨)", "○", "◎"]
+        ]
+      }},
+      {"p": "より詳しいプロンプトテンプレート集は、Note有料記事「<a href=\"https://note.com/yu_aidesklabo\">ChatGPT/Claude/Gemini使い分け実践編</a>」で公開しています。"}
+    ]
+  },
+  {
+    "type": "guide",
+    "slug": "ai-desk-setup-guide",
+    "title": "AI作業用デスク環境の選び方ガイド",
+    "description": "AIチャット作業を快適にするデスク環境を、何から揃えるべきか優先順位付きで解説します。",
+    "updated": "2026-08-05",
+    "products": ["B0CTPLACEHOLDER4", "B0CTPLACEHOLDER1"],
+    "body": [
+      {"h2": "最初に揃えるべきもの"},
+      {"p": "AI作業がメインになるなら、まず「AIの出力と資料を同時に見られる画面の広さ」を優先するのがおすすめです。"},
+      {"products": ["B0CTPLACEHOLDER4"]},
+      {"h2": "次に投資すべきもの"},
+      {"p": "画面が広がると、次にボトルネックになるのは入力速度です。長時間タイピングする人ほどキーボードの打鍵感が効いてきます。"},
+      {"products": ["B0CTPLACEHOLDER1"]}
+    ]
+  }
+]

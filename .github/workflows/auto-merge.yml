@@ -1,0 +1,27 @@
+name: Auto-merge routine PRs
+
+# The weekly Claude Code Routine pushes to a claude/* branch and opens a PR
+# instead of pushing straight to main (the "unrestricted branch pushes" toggle
+# is unreliable, see project plan). This workflow is what makes publishing
+# hands-off: it squash-merges any PR coming from a claude/* branch.
+# If this workflow ever fails or is disabled, the PR simply stays open and a
+# human merges it manually from GitHub's mobile web UI — a safe fallback.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  automerge:
+    if: startsWith(github.head_ref, 'claude/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Squash-merge and delete branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: gh pr merge --squash --delete-branch "$PR_URL"

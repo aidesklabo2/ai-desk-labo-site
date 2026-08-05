@@ -1,0 +1,50 @@
+[
+  {
+    "asin": "B0CTPLACEHOLDER1",
+    "name": "REALFORCE RC1",
+    "category": "keyboard",
+    "price": 29700,
+    "priceNote": "税込・変動あり(2026-08-05時点)",
+    "url": "https://www.amazon.co.jp/dp/B0CTPLACEHOLDER1",
+    "pros": ["静電容量無接点方式で打鍵感が滑らか", "APC(アクチュエーションポイント変更)対応", "テンキーレスで省スペース"],
+    "cons": ["価格が高め", "キーが重めでタイピング音は静かではない"],
+    "summary": "長時間タイピングする人向けの高級キーボード。Note本編レビュー記事のダイジェスト版。",
+    "lastChecked": "2026-08-05"
+  },
+  {
+    "asin": "B0CTPLACEHOLDER2",
+    "name": "Logicool MX Master 3S",
+    "category": "mouse",
+    "price": 13800,
+    "priceNote": "税込・変動あり(2026-08-05時点)",
+    "url": "https://www.amazon.co.jp/dp/B0CTPLACEHOLDER2",
+    "pros": ["静音クリックで在宅ワーク向き", "8Kスキャンの高精度センサー", "複数PC間をボタン一つで切り替え"],
+    "cons": ["手が小さいと持ちづらい", "初期設定にLogi Options+が必要"],
+    "summary": "AI作業用サブPCとメインPCを行き来する人に相性が良い高機能マウス。",
+    "lastChecked": "2026-08-05"
+  },
+  {
+    "asin": "B0CTPLACEHOLDER3",
+    "name": "Anker Prime Power Bank 20000mAh",
+    "category": "charger",
+    "price": 15990,
+    "priceNote": "税込・変動あり(2026-08-05時点)",
+    "url": "https://www.amazon.co.jp/dp/B0CTPLACEHOLDER3",
+    "pros": ["USB-PD 200W級で複数端末を高速充電", "残量が数値表示で分かりやすい", "外出先での長時間AI作業に便利"],
+    "cons": ["重量があり携帯性はやや低い"],
+    "summary": "ノートPC＋スマホを同時に持ち歩く外出先AI作業のお供。",
+    "lastChecked": "2026-08-05"
+  },
+  {
+    "asin": "B0CTPLACEHOLDER4",
+    "name": "Dell S2725QC 27インチ4Kモニター",
+    "category": "monitor",
+    "price": 42000,
+    "priceNote": "税込・変動あり(2026-08-05時点)",
+    "url": "https://www.amazon.co.jp/dp/B0CTPLACEHOLDER4",
+    "pros": ["USB-C 90W給電で配線がスッキリ", "4K解像度でコード/資料が見やすい", "薄型ベゼルでデュアル構成もしやすい"],
+    "cons": ["リフレッシュレートは60Hzでゲーム向きではない"],
+    "summary": "AIチャット・資料・コードを並べて表示したい人向けの4Kモニター。",
+    "lastChecked": "2026-08-05"
+  }
+]

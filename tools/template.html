@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}} | AI Desk Labo</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<link rel="canonical" href="{{CANONICAL}}">
+<link rel="stylesheet" href="{{ROOT}}assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="{{ROOT}}index.html">
+      <span class="logo-badge">AI</span>
+      <span>AI DESK LABO</span>
+    </a>
+    <nav class="site-nav">
+      <a href="{{ROOT}}rankings/">ランキング</a>
+      <a href="{{ROOT}}reviews/">レビュー</a>
+      <a href="{{ROOT}}compare/">比較</a>
+      <a href="{{ROOT}}guides/">ガイド</a>
+      <a href="{{ROOT}}about.html">About</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+{{BODY}}
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>© <span id="y"></span> AI Desk Labo</div>
+    <div class="links">
+      <a href="{{ROOT}}about.html">運営者情報</a>
+      <a href="{{ROOT}}disclosure.html">アフィリエイト表記</a>
+      <a href="{{ROOT}}privacy.html">プライバシーポリシー</a>
+      <a href="{{ROOT}}contact.html">お問い合わせ</a>
+      <a href="https://x.com/yu_aidesklabo">X (Twitter)</a>
+      <a href="https://note.com/yu_aidesklabo">Note</a>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

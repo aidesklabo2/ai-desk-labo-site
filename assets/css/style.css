@@ -1,0 +1,189 @@
+/* AI Desk Labo — brand tokens, shared across every generated page */
+:root {
+  --bg-1: #23262f;
+  --bg-2: #17181d;
+  --bg-3: #121317;
+  --ink-primary: #ffffff;
+  --ink-secondary: #c3c2b7;
+  --ink-muted: #898781;
+  --accent-orange: #d95926;
+  --accent-blue: #3987e5;
+  --accent-green: #199e70;
+  --border: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --radius: 14px;
+  --max-width: 960px;
+  --font-jp: "Hiragino Sans", "Yu Gothic UI", "Noto Sans JP", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-jp);
+  color: var(--ink-primary);
+  background:
+    radial-gradient(ellipse at top right, rgba(217, 89, 38, 0.12), transparent 55%),
+    radial-gradient(ellipse at bottom left, rgba(57, 135, 229, 0.10), transparent 55%),
+    linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 55%, var(--bg-3) 100%);
+  background-attachment: fixed;
+  line-height: 1.75;
+  min-height: 100vh;
+}
+
+a { color: var(--accent-blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+img { max-width: 100%; height: auto; border-radius: var(--radius); }
+
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Masthead */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0;
+}
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+.brand .logo-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent-orange), var(--accent-blue));
+}
+.site-nav {
+  display: flex;
+  gap: 18px;
+  font-size: 0.92rem;
+  color: var(--ink-secondary);
+}
+.site-nav a { color: var(--ink-secondary); }
+.site-nav a:hover { color: var(--ink-primary); }
+
+/* Hero */
+.hero {
+  padding: 48px 0 12px;
+}
+.hero h1 {
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  margin: 0 0 10px;
+}
+.hero p {
+  color: var(--ink-secondary);
+  max-width: 62ch;
+}
+
+/* Content */
+main { padding: 24px 0 64px; }
+article h2 {
+  font-size: 1.4rem;
+  margin-top: 2.2em;
+  border-left: 4px solid var(--accent-orange);
+  padding-left: 12px;
+}
+article h3 { font-size: 1.1rem; color: var(--ink-secondary); }
+.updated {
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+}
+
+/* Cards / grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.card .badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+.badge.orange { background: var(--accent-orange); }
+.badge.blue { background: var(--accent-blue); }
+.badge.green { background: var(--accent-green); }
+.card h3 { margin: 6px 0; color: var(--ink-primary); }
+.card .price { color: var(--accent-orange); font-weight: 700; }
+
+/* Comparison tables */
+.table-wrap { overflow-x: auto; margin: 20px 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 480px;
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  font-size: 0.92rem;
+}
+th { color: var(--ink-secondary); font-weight: 600; }
+
+/* CTA button */
+.btn-amazon {
+  display: inline-block;
+  background: var(--accent-orange);
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 999px;
+  margin: 10px 0;
+}
+.btn-amazon:hover { opacity: 0.9; text-decoration: none; }
+
+.disclosure-note {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin: 18px 0;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
+  color: var(--ink-muted);
+  font-size: 0.85rem;
+}
+.site-footer a { color: var(--ink-muted); }
+.site-footer .links { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; }
