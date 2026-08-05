@@ -266,12 +266,26 @@ function main() {
   const rankedAsins = rankingEntry ? rankingEntry.products : products.map((p) => p.asin);
   const showcaseHtml = renderShowcase(rankedAsins.map((asin) => productsMap[asin]));
 
+  // Budget picks get their own plain (non-pinned) price-visible section right
+  // under the hero — the scroll-synced showcase above only ever shows the
+  // priciest ranking, so cheaper items were invisible without this.
+  const budgetEntry = content.find((e) => e.type === "ranking" && e.slug === "budget-ai-desk-gear");
+  let budgetHtml = "";
+  if (budgetEntry) {
+    const budgetCards = budgetEntry.products.map((asin) => renderProductCard(productsMap[asin])).join("\n");
+    budgetHtml = section(
+      `<div class="section-head"><p class="eyebrow">お手頃価格</p><h2>予算重視ならこちら</h2></div>
+      <div class="card-grid">${budgetCards}</div>
+      <p class="section-link"><a href="${FOLDER_BY_TYPE[budgetEntry.type]}/${budgetEntry.slug}/">${escapeHtml(budgetEntry.title)}を見る →</a></p>`
+    );
+  }
+
   writeFile("index.html", renderPage(template, {
     title: "AI・ガジェットの比較とレビュー",
     description: "AIツールとガジェットの実体験レビュー・比較・ランキングを発信するAI Desk Labo公式サイト。",
     canonical: `${SITE_ORIGIN}/`,
     root: "",
-    bodyHtml: heroHtml + showcaseHtml + latestHtml,
+    bodyHtml: heroHtml + budgetHtml + showcaseHtml + latestHtml,
   }));
   sitemapUrls.unshift({ loc: `${SITE_ORIGIN}/` });
 
