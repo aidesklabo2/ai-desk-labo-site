@@ -8,7 +8,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT_DIR = path.resolve(__dirname, "..");
-const SITE_ORIGIN = "https://REPLACE-WITH-YOUR-DOMAIN.example"; // update once the domain is registered
+const SITE_ORIGIN = "https://aidesklabo.com"; // update once the domain is registered
 const AMAZON_TAG = "aidesklabo-22";
 const SITE_TITLE = "AI Desk Labo";
 
