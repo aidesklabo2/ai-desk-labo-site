@@ -15,7 +15,7 @@ const SITE_TITLE = "AI Desk Labo";
 const FOLDER_BY_TYPE = { review: "reviews", ranking: "rankings", compare: "compare", guide: "guides" };
 const TYPE_LABEL_JA = { review: "レビュー", ranking: "ランキング", compare: "比較", guide: "ガイド" };
 const TYPE_COLOR = { review: "blue", ranking: "orange", compare: "green", guide: "blue" };
-const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue" };
+const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange" };
 
 // Small hand-authored line-icon set (24x24, stroke-based, no external icon font/CDN).
 const ICONS = {
@@ -30,6 +30,10 @@ const ICONS = {
   cart: `<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>`,
   stand: `<path d="M4 18h16"/><path d="M7.5 18 9.5 8h5l2 10"/><line x1="9" y1="13" x2="15" y2="13"/>`,
   mic: `<rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="8" y1="21" x2="16" y2="21"/>`,
+  light: `<rect x="4" y="4" width="16" height="4" rx="2"/><line x1="8" y1="12" x2="8" y2="15"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="16" y1="12" x2="16" y2="15"/>`,
+  footrest: `<path d="M3 19h18"/><path d="M5 19v-3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><line x1="9" y1="14" x2="15" y2="14"/>`,
+  wristrest: `<rect x="2" y="9" width="20" height="7" rx="3.5"/><line x1="7" y1="12.5" x2="17" y2="12.5"/>`,
+  monitorarm: `<rect x="8" y="3" width="11" height="8" rx="1.5"/><path d="M13 11v3"/><path d="M13 14H6"/><path d="M6 14v-5"/>`,
 };
 
 function icon(name, extraAttrs = "") {
