@@ -1,3 +1,44 @@
+// Amazon outbound intent; keep separate from enhanced measurement's click event.
+(function () {
+  "use strict";
+  function trackAmazonClick(event) {
+    if ((event.type === "click" && event.button !== 0) ||
+        (event.type === "auxclick" && event.button !== 1)) return;
+    var target = event.target;
+    var link = target && target.closest && target.closest("a.btn-amazon");
+    if (!link || typeof window.gtag !== "function") return;
+    try {
+      var url = new URL(link.href);
+      if (url.protocol !== "https:" ||
+          !/^(www\.)?amazon\.co\.jp$/.test(url.hostname)) return;
+      var match = url.pathname.match(/^\/dp\/([A-Z0-9]{10})(?:\/|$)/);
+      if (!match) return;
+      var pagePath = window.location.pathname.replace(/\/index\.html$/, "/");
+      var placement = "other";
+      if (pagePath === "/" && link.closest("#showcaseTrack")) {
+        placement = "home_ranking";
+      } else if (pagePath === "/" && link.closest(".card")) {
+        var section = link.closest("section");
+        if (section && section.querySelector('a[href="rankings/budget-ai-desk-gear/"]')) {
+          placement = "home_budget";
+        }
+      } else if (link.closest("article .card")) {
+        placement = "article_product";
+      }
+      window.gtag("event", "amazon_click", {
+        send_to: "G-M4L5M94YCB",
+        product_asin: match[1],
+        placement: placement,
+        page_path: pagePath
+      });
+    } catch (err) {
+      // Measurement must never interrupt the original link action.
+    }
+  }
+  document.addEventListener("click", trackAmazonClick);
+  document.addEventListener("auxclick", trackAmazonClick);
+})();
+
 // AI Desk Labo — shared site interactions. Vanilla JS, no dependencies.
 (function () {
   "use strict";
