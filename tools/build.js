@@ -240,11 +240,15 @@ function main() {
   const latest = [...nonStatic].sort((a, b) => (a.updated < b.updated ? 1 : -1)).slice(0, 12);
   const categoryCount = new Set(products.map((p) => p.category)).size;
 
-  const heroHtml = `<section class="hero" data-reveal="">
-  <span class="hero-blob b1"></span><span class="hero-blob b2"></span><span class="hero-blob b3"></span>
+  const heroHtml = `<section class="hero">
+  <canvas class="hero-canvas" aria-hidden="true"></canvas>
   <div class="wrap">
     <p class="eyebrow">AI × ガジェット比較メディア</p>
-    <h1>AIと過ごす毎日を、<br>もっと快適にする<span class="grad">モノを選ぶ。</span></h1>
+    <h1>
+      <span class="split-line"><span>AIと過ごす毎日を、</span></span>
+      <span class="split-line"><span>もっと快適にする</span></span>
+      <span class="split-line"><span class="grad">モノを選ぶ。</span></span>
+    </h1>
     <p class="lede">実際に使い倒したAIツールとガジェットだけを、比較・ランキング・レビュー形式でまとめています。</p>
     <div class="stat-row">
       <div class="stat"><span class="num" data-count-to="${nonStatic.length}">0</span><span class="label">掲載記事</span></div>
@@ -255,7 +259,17 @@ function main() {
       ${Object.entries(FOLDER_BY_TYPE).map(([type, folder]) => `<a class="chip" href="${folder}/">${icon(type)}${TYPE_LABEL_JA[type]}</a>`).join("\n")}
     </div>
   </div>
+  <div class="scroll-cue" aria-hidden="true"><span class="cue-line"></span>SCROLL</div>
 </section>`;
+
+  // Full-bleed kinetic-type band — decorative only (aria-hidden), real
+  // navigation to each section already exists in the header and chip row.
+  const marqueeWords = ["ランキング", "レビュー", "比較", "ガイド"];
+  const marqueeHtml = `<div class="marquee-band" aria-hidden="true">
+  <div class="marquee-track">
+    ${Array(3).fill(marqueeWords.map((w, i) => `<span class="${i % 2 ? "outline" : ""}">${w}</span><span class="dot">◆</span>`).join("\n")).join("\n")}
+  </div>
+</div>`;
 
   const latestHtml = section(
     `<div class="section-head"><p class="eyebrow">Latest</p><h2>最新の記事</h2></div><div class="card-grid bento">${latest
@@ -289,7 +303,7 @@ function main() {
     description: "AIツールとガジェットの実体験レビュー・比較・ランキングを発信するAI Desk Labo公式サイト。",
     canonical: `${SITE_ORIGIN}/`,
     root: "",
-    bodyHtml: heroHtml + budgetHtml + showcaseHtml + latestHtml,
+    bodyHtml: heroHtml + marqueeHtml + budgetHtml + showcaseHtml + latestHtml,
   }));
   sitemapUrls.unshift({ loc: `${SITE_ORIGIN}/` });
 
