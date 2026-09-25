@@ -1,15 +1,15 @@
 [
   {
-    "asin": "B0DH8B3MB4",
-    "name": "REALFORCE RC1 (C1HJ11・日本語配列・45g・ブラック)",
+    "asin": "B0DH88QC5B",
+    "name": "REALFORCE RC1 (C1HJ13・日本語配列・30g・ブラック)",
     "category": "keyboard",
-    "price": 33000,
-    "priceNote": "実勢価格帯の目安・変動あり(2026年8月時点、kakaku.com調べ)",
-    "url": "https://www.amazon.co.jp/dp/B0DH8B3MB4",
+    "price": 32538,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、kakaku.com調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0DH88QC5B",
     "pros": ["静電容量無接点方式で打鍵感が滑らか", "APC機能で各キーの反応位置を0.8〜3.0mmの範囲で調整可能(専用アプリREALFORCE CONNECT使用)", "テンキーレスで省スペース"],
-    "cons": ["価格が高め", "キーが重めでタイピング音は静かではない"],
+    "cons": ["価格が高め", "タイピング音は完全な無音ではない"],
     "summary": "長時間タイピングする人向けの高級キーボード。Note本編レビュー記事のダイジェスト版。",
-    "lastChecked": "2026-08-05"
+    "lastChecked": "2026-09-25"
   },
   {
     "asin": "B0B1Q6VB16",
