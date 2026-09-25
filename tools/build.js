@@ -72,7 +72,7 @@ function renderProductCard(product) {
   return `<div class="card">
   <div class="card-top">${iconBadge(product.category, badgeColor)}<span class="badge ${badgeColor}">${escapeHtml(product.category)}</span></div>
   <h3>${escapeHtml(product.name)}</h3>
-  <p class="price">¥${product.price.toLocaleString("ja-JP")}<br><small>${escapeHtml(product.priceNote || "")}</small></p>
+  <p class="price"><span class="num-mono">¥${product.price.toLocaleString("ja-JP")}</span>${escapeHtml(product.priceNote || "")}</p>
   <p>${escapeHtml(product.summary || "")}</p>
   <ul>${(product.pros || []).map((x) => `<li>◎ ${escapeHtml(x)}</li>`).join("")}${(product.cons || []).map((x) => `<li>△ ${escapeHtml(x)}</li>`).join("")}</ul>
   <a class="btn-amazon" href="${amazonLink(product)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}Amazonで見る</a>
@@ -244,7 +244,7 @@ function main() {
   <span class="hero-blob b1"></span><span class="hero-blob b2"></span><span class="hero-blob b3"></span>
   <div class="wrap">
     <p class="eyebrow">AI × ガジェット比較メディア</p>
-    <h1>AIと過ごす毎日を、<br>もっと快適にするモノを選ぶ。</h1>
+    <h1>AIと過ごす毎日を、<br>もっと快適にする<span class="grad">モノを選ぶ。</span></h1>
     <p class="lede">実際に使い倒したAIツールとガジェットだけを、比較・ランキング・レビュー形式でまとめています。</p>
     <div class="stat-row">
       <div class="stat"><span class="num" data-count-to="${nonStatic.length}">0</span><span class="label">掲載記事</span></div>
@@ -258,7 +258,7 @@ function main() {
 </section>`;
 
   const latestHtml = section(
-    `<div class="section-head"><p class="eyebrow">Latest</p><h2>最新の記事</h2></div><div class="card-grid">${latest
+    `<div class="section-head"><p class="eyebrow">Latest</p><h2>最新の記事</h2></div><div class="card-grid bento">${latest
       .map((e) => renderEntryCard(e, `${FOLDER_BY_TYPE[e.type]}/${e.slug}/`))
       .join("\n")}</div>`,
     { tint: true }
@@ -279,7 +279,7 @@ function main() {
     const budgetCards = budgetEntry.products.map((asin) => renderProductCard(productsMap[asin])).join("\n");
     budgetHtml = section(
       `<div class="section-head"><p class="eyebrow">お手頃価格</p><h2>予算重視ならこちら</h2></div>
-      <div class="card-grid">${budgetCards}</div>
+      <div class="card-grid bento">${budgetCards}</div>
       <p class="section-link"><a href="${FOLDER_BY_TYPE[budgetEntry.type]}/${budgetEntry.slug}/">${escapeHtml(budgetEntry.title)}を見る →</a></p>`
     );
   }

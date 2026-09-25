@@ -172,4 +172,21 @@
       }
     });
   }
+
+  // Card spotlight: track the pointer per hovered card so its CSS radial
+  // highlight (--mx/--my, see style.css) follows the cursor. Skipped on
+  // touch-only devices, where hover doesn't apply anyway.
+  if (window.matchMedia("(hover: hover)").matches) {
+    document.addEventListener(
+      "pointermove",
+      function (e) {
+        var el = e.target.closest && e.target.closest(".card, .showcase-card");
+        if (!el) return;
+        var rect = el.getBoundingClientRect();
+        el.style.setProperty("--mx", ((e.clientX - rect.left) / rect.width) * 100 + "%");
+        el.style.setProperty("--my", ((e.clientY - rect.top) / rect.height) * 100 + "%");
+      },
+      { passive: true }
+    );
+  }
 })();
