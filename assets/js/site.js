@@ -39,6 +39,34 @@
   document.addEventListener("auxclick", trackAmazonClick);
 })();
 
+// Rakuten ROOM outbound intent — same shape as the Amazon tracker above but
+// kept as its own listener so the two can never interfere with each other.
+(function () {
+  "use strict";
+  function trackRoomClick(event) {
+    if ((event.type === "click" && event.button !== 0) ||
+        (event.type === "auxclick" && event.button !== 1)) return;
+    var target = event.target;
+    var link = target && target.closest && target.closest("a.btn-room");
+    if (!link || typeof window.gtag !== "function") return;
+    try {
+      var url = new URL(link.href);
+      if (url.protocol !== "https:" || !/(^|\.)rakuten\.co\.jp$/.test(url.hostname)) return;
+      var pagePath = window.location.pathname.replace(/\/index\.html$/, "/");
+      var placement = link.closest("#showcaseTrack") ? "home_ranking" : link.closest("article .card") ? "article_product" : link.closest(".card") ? "home_card" : "other";
+      window.gtag("event", "room_click", {
+        send_to: "G-M4L5M94YCB",
+        placement: placement,
+        page_path: pagePath
+      });
+    } catch (err) {
+      // Measurement must never interrupt the original link action.
+    }
+  }
+  document.addEventListener("click", trackRoomClick);
+  document.addEventListener("auxclick", trackRoomClick);
+})();
+
 // AI Desk Labo — shared site interactions. Vanilla JS + GSAP/Lenis (CDN,
 // both free/open-source). Every enhancement below is progressive: if a
 // CDN script is blocked or slow, the page still renders and reads fine

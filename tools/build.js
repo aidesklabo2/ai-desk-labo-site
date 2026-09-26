@@ -56,6 +56,25 @@ function amazonLink(product) {
   return url.toString();
 }
 
+// A product may carry an Amazon link (`url`), a Rakuten ROOM link
+// (`roomUrl`), or both — whichever the article author found easier to
+// write up / expects to convert better for that item. At least one should
+// be present, but neither is hard-required so a ROOM-only product works.
+function renderCtaButtons(product) {
+  const buttons = [];
+  if (product.url) {
+    buttons.push(
+      `<a class="btn-amazon" href="${amazonLink(product)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}Amazonで見る</a>`
+    );
+  }
+  if (product.roomUrl) {
+    buttons.push(
+      `<a class="btn-room" href="${escapeHtml(product.roomUrl)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}楽天ROOMで見る</a>`
+    );
+  }
+  return `<div class="cta-row">${buttons.join("")}</div>`;
+}
+
 function escapeHtml(str) {
   return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
@@ -75,7 +94,7 @@ function renderProductCard(product) {
   <p class="price"><span class="num-mono">¥${product.price.toLocaleString("ja-JP")}</span>${escapeHtml(product.priceNote || "")}</p>
   <p>${escapeHtml(product.summary || "")}</p>
   <ul>${(product.pros || []).map((x) => `<li>◎ ${escapeHtml(x)}</li>`).join("")}${(product.cons || []).map((x) => `<li>△ ${escapeHtml(x)}</li>`).join("")}</ul>
-  <a class="btn-amazon" href="${amazonLink(product)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}Amazonで見る</a>
+  ${renderCtaButtons(product)}
 </div>`;
 }
 
@@ -167,7 +186,7 @@ function renderShowcase(rankedProducts) {
     <h3>${escapeHtml(product.name)}</h3>
     <p class="price">¥${product.price.toLocaleString("ja-JP")}</p>
     <p>${escapeHtml(product.summary || "")}</p>
-    <a class="btn-amazon" href="${amazonLink(product)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}Amazonで見る</a>
+    ${renderCtaButtons(product)}
   </div>`;
     })
     .join("\n");
