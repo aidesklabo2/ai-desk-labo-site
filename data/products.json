@@ -131,5 +131,65 @@
     "cons": ["対応モニター重量・サイズの上限は事前に確認が必要"],
     "summary": "初めてモニターアームを試す人向けの、価格と実用性のバランスが良いモデル。",
     "lastChecked": "2026-08-06"
+  },
+  {
+    "asin": "B092L9GF5N",
+    "name": "AMD Ryzen 5 5600G (Wraith Stealthクーラー付・内蔵GPU搭載)",
+    "category": "cpu",
+    "price": 19800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)",
+    "url": "https://www.amazon.co.jp/-/en/AMD-Ryzen-5-5600G/dp/B092L9GF5N",
+    "pros": ["Radeon Vega内蔵GPUでグラフィックボード不要、事務・Web・動画視聴は快適", "6コア12スレッドで通常のマルチタスクに余裕", "本体価格が安く2026年のGPU高騰の影響を受けにくい"],
+    "cons": ["AM4・DDR4世代のため最新のAM5マザーボードとは組み合わせられない", "3Dゲームは軽量タイトル・低〜中設定が中心"],
+    "summary": "グラフィックボードなしで完結させたい、一般事務・軽作業PC向けのAPU。",
+    "lastChecked": "2026-09-25"
+  },
+  {
+    "asin": "B0BS8PRCYV",
+    "name": "AMD Ryzen 5 7600 (Wraith Stealthクーラー付・Amazon.co.jp限定)",
+    "category": "cpu",
+    "price": 28800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)",
+    "url": "https://www.amazon.co.jp/%E3%80%90Amazon-co-jp%E9%99%90%E5%AE%9A%E3%80%91-AMD-Stealth-100-100001015BOX-EW-1Y/dp/B0BS8PRCYV",
+    "pros": ["AM5プラットフォームで今後のアップグレードがしやすい", "1080pゲーミングでGPU性能を引き出せる十分な処理性能", "Amazon.co.jp限定モデルで3年+1年の保証"],
+    "cons": ["メモリはDDR5必須(DDR4非対応)でマザーボード選びに注意"],
+    "summary": "1080pゲーミング構成の土台になる、コストパフォーマンスの良いミドルCPU。",
+    "lastChecked": "2026-09-25"
+  },
+  {
+    "asin": "B0C8BPW1SP",
+    "name": "MSI GeForce RTX 4060 VENTUS 2X BLACK 8G OC",
+    "category": "gpu",
+    "price": 52800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ、GPUは価格変動が大きめ)",
+    "url": "https://www.amazon.co.jp/MSI-RTX-4060-VENTUS-BLACK/dp/B0C8BPW1SP",
+    "pros": ["1080p高設定で60fps以上を狙える定番クラス", "8GB VRAMでeスポーツ〜中量級タイトルに対応", "消費電力が控えめで電源ユニットの要求が緩い"],
+    "cons": ["WQHD以上や重量級タイトルの高設定は力不足", "2026年はGPU全般が品薄・価格高騰気味で入手性は要確認"],
+    "summary": "フルHDゲーミング構成の定番グラフィックボード。",
+    "lastChecked": "2026-09-25"
+  },
+  {
+    "asin": "B0D6NN87T8",
+    "name": "AMD Ryzen 9 9900X (12コア24スレッド・クーラーなし)",
+    "category": "cpu",
+    "price": 64980,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)",
+    "url": "https://www.amazon.co.jp/100-100000662WOF-9900X-24T%E3%80%814-4GHz%E3%80%81TDP-120W%E3%80%81AM5%E3%80%81Radeon-Graphics/dp/B0D6NN87T8",
+    "pros": ["12コア24スレッドで動画エンコード・書き出しが速い", "AM5プラットフォームでDDR5・PCIe5.0に対応", "内蔵GPUもあり検証用の映像出力に困らない"],
+    "cons": ["クーラー別売り(サードパーティ製クーラーが必要)", "高負荷時の発熱・消費電力はミドルCPUより大きい"],
+    "summary": "4K動画編集・書き出しを重視する人向けのハイエンドCPU。",
+    "lastChecked": "2026-09-25"
+  },
+  {
+    "asin": "B0CS67885B",
+    "name": "ASUS Dual GeForce RTX 4070 SUPER OC 12GB",
+    "category": "gpu",
+    "price": 89800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ、GPUは価格変動が大きめ)",
+    "url": "https://www.amazon.co.jp/ASUS-GeForce-2%E9%80%A3%E3%83%95%E3%82%A1%E3%83%B3%E6%90%AD%E8%BC%89%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%83%9C%E3%83%BC%E3%83%89-DUAL-RTX4070S-O12G-%E5%9B%BD%E5%86%85%E6%AD%A3%E8%A6%8F%E6%B5%81%E9%80%9A%E5%93%81/dp/B0CS67885B",
+    "pros": ["12GB VRAMでDaVinci Resolve・Premiere Proのカラーグレーディングも余裕", "AV1エンコード対応で書き出しが高速", "WQHDゲーミングとの兼用もしやすい"],
+    "cons": ["2スロット占有・補助電源が必要でケース/電源要件を事前確認", "2026年はGPU全般が品薄・価格高騰気味で入手性は要確認"],
+    "summary": "動画編集のVRAM要件を満たす、4K編集向けグラフィックボード。",
+    "lastChecked": "2026-09-25"
   }
 ]

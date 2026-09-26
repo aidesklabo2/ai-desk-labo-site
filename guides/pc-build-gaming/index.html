@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自作PC構成ガイド ゲーミング編(2026年9月版) | AI Desk Labo</title>
+<meta name="description" content="フルHD高fpsを狙うゲーミングPCを、何から決めるべきかという優先順位で解説。2026年のGPU価格高騰を踏まえた考え方も紹介します。">
+<link rel="canonical" href="https://aidesklabo.com/guides/pc-build-gaming/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M4L5M94YCB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M4L5M94YCB');
+</script>
+</head>
+<body>
+<div class="loader" aria-hidden="true"><span class="loader-mark">AI DESK LABO</span></div>
+<div class="progress-bar" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">
+      <span class="logo-badge">AI</span>
+      <span>AI DESK LABO</span>
+    </a>
+    <nav class="site-nav">
+      <a href="../../rankings/">ランキング</a>
+      <a href="../../reviews/">レビュー</a>
+      <a href="../../compare/">比較</a>
+      <a href="../../guides/">ガイド</a>
+      <a href="../../about.html">About</a>
+    </nav>
+    <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+<main>
+<section class="section" data-reveal=""><div class="wrap"><p class="eyebrow">ガイド</p><h1>自作PC構成ガイド ゲーミング編(2026年9月版)</h1><p class="updated">最終更新日: 2026-09-26</p><nav class="toc"><p class="toc-title">この記事の目次</p><ol><li><a href="#h-1">STEP1: GPUを決める(フレームレートの土台)</a></li><li><a href="#h-2">STEP2: CPUを決める(GPUの足を引っ張らない程度でOK)</a></li><li><a href="#h-3">マザーボード・メモリの考え方</a></li><li><a href="#h-4">予算に余裕があれば(WQHD以上を狙う場合)</a></li></ol></nav><article><p>ゲーミングPCの自作は「まずGPUを決めて、それに見合うCPUを合わせる」のが基本です。2026年はGPU自体の品薄・価格高騰が続いているため、欲しい解像度・fpsから逆算して予算内で買えるGPUを先に確定させることが、以前よりさらに重要になっています。</p>
+<h2 id="h-1">STEP1: GPUを決める(フレームレートの土台)</h2>
+<p>フルHD(1080p)で高設定・60fps以上を安定して狙うなら、RTX 4060クラスが今の定番です。eスポーツタイトル(Valorant、CS2など)なら144fps以上も現実的です。</p>
+<div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="8" cy="12" r="2.1"/><circle cx="14" cy="12" r="2.1"/><line x1="19" y1="7" x2="19" y2="4"/><line x1="4.5" y1="17" x2="4.5" y2="20"/></svg></span><span class="badge orange">gpu</span></div>
+  <h3>MSI GeForce RTX 4060 VENTUS 2X BLACK 8G OC</h3>
+  <p class="price"><span class="num-mono">¥52,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ、GPUは価格変動が大きめ)</p>
+  <p>フルHDゲーミング構成の定番グラフィックボード。</p>
+  <ul><li>◎ 1080p高設定で60fps以上を狙える定番クラス</li><li>◎ 8GB VRAMでeスポーツ〜中量級タイトルに対応</li><li>◎ 消費電力が控えめで電源ユニットの要求が緩い</li><li>△ WQHD以上や重量級タイトルの高設定は力不足</li><li>△ 2026年はGPU全般が品薄・価格高騰気味で入手性は要確認</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/MSI-RTX-4060-VENTUS-BLACK/dp/B0C8BPW1SP?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+<h2 id="h-2">STEP2: CPUを決める(GPUの足を引っ張らない程度でOK)</h2>
+<p>GPUより高いCPUを積んでも1080pゲーミングでは効果が薄いため、「GPUの性能を引き出せる」程度のミドルクラスで十分です。Ryzen 5 7600はAM5プラットフォームなので、今後CPUだけをアップグレードする余地も残せます。</p>
+<div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.5"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></svg></span><span class="badge blue">cpu</span></div>
+  <h3>AMD Ryzen 5 7600 (Wraith Stealthクーラー付・Amazon.co.jp限定)</h3>
+  <p class="price"><span class="num-mono">¥28,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)</p>
+  <p>1080pゲーミング構成の土台になる、コストパフォーマンスの良いミドルCPU。</p>
+  <ul><li>◎ AM5プラットフォームで今後のアップグレードがしやすい</li><li>◎ 1080pゲーミングでGPU性能を引き出せる十分な処理性能</li><li>◎ Amazon.co.jp限定モデルで3年+1年の保証</li><li>△ メモリはDDR5必須(DDR4非対応)でマザーボード選びに注意</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/%E3%80%90Amazon-co-jp%E9%99%90%E5%AE%9A%E3%80%91-AMD-Stealth-100-100001015BOX-EW-1Y/dp/B0BS8PRCYV?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+<h2 id="h-3">マザーボード・メモリの考え方</h2>
+<p>Ryzen 5 7600はAM5ソケット・DDR5メモリ専用です。B650系のマザーボード+DDR5メモリ32GB(16GB×2)を組み合わせるのが定番構成。DDR5メモリは2026年に大きく値上がりしているため、購入直前に価格を必ず確認してください。</p>
+<h2 id="h-4">予算に余裕があれば(WQHD以上を狙う場合)</h2>
+<p>1440p(WQHD)でも快適に遊びたい場合は、Ryzen 7 7800X3D + RTX 4070 SUPERクラスへ上げるのが2026年時点の定番の上位構成です。ただし価格は本構成よりかなり上がるため、まずは1080p構成で予算感を掴んでから検討するのがおすすめです。</p></article><div class="disclosure-note">本ページはAmazonアソシエイト・プログラムの参加者として、適格販売により収入を得ています。<a href="../../disclosure.html">詳細</a></div></div></section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-badge">AI</span>
+        <span>AI DESK LABO</span>
+      </div>
+      <div class="links">
+        <a href="../../about.html">運営者情報</a>
+        <a href="../../disclosure.html">アフィリエイト表記</a>
+        <a href="../../privacy.html">プライバシーポリシー</a>
+        <a href="../../contact.html">お問い合わせ</a>
+      </div>
+      <div class="links">
+        <a href="https://x.com/yu_aidesklabo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4L4 20"/></svg>X (Twitter)</a>
+        <a href="https://note.com/yu_aidesklabo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>Note</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="y"></span> AI Desk Labo</div>
+  </div>
+</footer>
+<button class="back-to-top" aria-label="ページ上部へ戻る">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js" defer></script>
+<script src="../../assets/js/site.js" defer></script>
+</body>
+</html>
