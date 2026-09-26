@@ -97,6 +97,21 @@ img, svg { max-width: 100%; height: auto; }
   background: currentColor;
   border-radius: 2px;
 }
+/* Decorative English kicker beside the Japanese eyebrow label — purely
+   typographic texture (see eyebrowHtml() in build.js), not a translation
+   meant to be read; kept quiet (muted color, thin weight) so it never
+   competes with the Japanese label doing the actual communicating. */
+.eyebrow-en {
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: var(--ink-muted);
+  opacity: 0.8;
+}
+.eyebrow-en::before {
+  content: "/";
+  margin-right: 8px;
+  opacity: 0.6;
+}
 
 /* ---------- Intro loader ----------
    Pure-CSS fade-out (animation-fill-mode: forwards) so it always clears
@@ -350,6 +365,28 @@ img, svg { max-width: 100%; height: auto; }
   -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 20%, black, transparent 75%);
   mask-image: radial-gradient(ellipse 90% 70% at 50% 20%, black, transparent 75%);
   pointer-events: none;
+}
+/* Oversized decorative English word behind the hero copy — purely
+   atmospheric typography (nobody is meant to actually read "SELECT." here),
+   kept at ~3% opacity so it reads as texture, not content, and never
+   competes with the real (Japanese) headline sitting in front of it. */
+.hero-bg-word {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(6rem, 20vw, 17rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink-primary);
+  opacity: 0.035;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
 }
 .hero .wrap { position: relative; width: 100%; }
 
@@ -986,7 +1023,27 @@ tbody tr:last-child td { border-bottom: none; }
 }
 
 /* ---------- Footer ---------- */
-.site-footer { border-top: 1px solid var(--border); padding: 40px 0 32px; color: var(--ink-muted); font-size: 0.85rem; }
+.site-footer { position: relative; overflow: hidden; border-top: 1px solid var(--border); padding: 40px 0 32px; color: var(--ink-muted); font-size: 0.85rem; }
+/* Same decorative-English treatment as .hero-bg-word, cropped along the
+   footer's bottom edge — a giant, barely-there brand wordmark rather than
+   anything meant to be read letter by letter. */
+.footer-bg-word {
+  position: absolute;
+  left: 50%;
+  bottom: -0.22em;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.6rem, 13vw, 8rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--ink-primary);
+  opacity: 0.04;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+.site-footer .wrap { position: relative; z-index: 1; }
 .footer-grid { display: flex; flex-wrap: wrap; gap: 32px; justify-content: space-between; margin-bottom: 24px; }
 .footer-brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; color: var(--ink-secondary); }
 .site-footer .links { display: flex; gap: 16px; flex-wrap: wrap; }

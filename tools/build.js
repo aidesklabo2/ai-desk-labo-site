@@ -14,6 +14,10 @@ const SITE_TITLE = "AI Desk Labo";
 
 const FOLDER_BY_TYPE = { review: "reviews", ranking: "rankings", compare: "compare", guide: "guides" };
 const TYPE_LABEL_JA = { review: "レビュー", ranking: "ランキング", compare: "比較", guide: "ガイド" };
+// Small decorative English kicker printed next to the Japanese eyebrow label
+// (see eyebrowHtml()) — purely typographic texture, not meant to add meaning
+// on top of the Japanese it sits beside.
+const TYPE_LABEL_EN = { review: "Review", ranking: "Ranking", compare: "Compare", guide: "Guide" };
 const TYPE_COLOR = { review: "blue", ranking: "orange", compare: "green", guide: "blue" };
 const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange", cpu: "blue", gpu: "orange", cable: "green", tablet: "blue", reader: "green", case: "blue", macropad: "orange" };
 // Product-card badges show this label, not the raw `category` key — the key
@@ -134,6 +138,13 @@ function escapeHtml(str) {
 function section(innerHtml, { tint = false, invert = false, reveal = true } = {}) {
   const variant = invert ? " invert" : tint ? " tint" : "";
   return `<section class="section${variant}"${reveal ? ' data-reveal=""' : ""}><div class="wrap">${innerHtml}</div></section>`;
+}
+
+// Japanese eyebrow label + a small English kicker beside it — decorative
+// typographic texture (see .eyebrow-en in style.css), not a translation the
+// visitor is expected to read.
+function eyebrowHtml(jaText, enText) {
+  return `<p class="eyebrow">${escapeHtml(jaText)}<span class="eyebrow-en">${escapeHtml(enText)}</span></p>`;
 }
 
 // Block bodies are allowed a small set of inline tags (e.g. <a href>) written
@@ -296,7 +307,7 @@ function main() {
     if (isStatic) {
       bodyHtml = section(`<h1>${escapeHtml(entry.title)}</h1><article>${bodyBlocksHtml}</article>`);
     } else {
-      const eyebrow = `<p class="eyebrow">${TYPE_LABEL_JA[entry.type]}</p>`;
+      const eyebrow = eyebrowHtml(TYPE_LABEL_JA[entry.type], TYPE_LABEL_EN[entry.type]);
       const updatedHtml = `<p class="updated">最終更新日: ${escapeHtml(entry.updated)}</p>`;
       const disclosure = `<div class="disclosure-note">本ページはAmazonアソシエイト・プログラムの参加者として、適格販売により収入を得ています。<a href="${root}disclosure.html">詳細</a></div>`;
       bodyHtml = section(
@@ -332,6 +343,7 @@ function main() {
 
   const heroHtml = `<section class="hero">
   <canvas class="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-bg-word" aria-hidden="true">SELECT.</div>
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-content">
@@ -417,7 +429,7 @@ function main() {
   if (budgetEntry) {
     const budgetCards = budgetEntry.products.map((asin) => renderProductCard(productsMap[asin])).join("\n");
     budgetHtml = section(
-      `<div class="section-head"><p class="eyebrow">お手頃価格</p><h2>予算重視ならこちら</h2></div>
+      `<div class="section-head">${eyebrowHtml("お手頃価格", "Budget Picks")}<h2>予算重視ならこちら</h2></div>
       <div class="card-grid bento">${budgetCards}</div>
       <p class="section-link"><a href="${FOLDER_BY_TYPE[budgetEntry.type]}/${budgetEntry.slug}/">${escapeHtml(budgetEntry.title)}を見る →</a></p>`
     );
