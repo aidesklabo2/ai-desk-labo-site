@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>自作PC構成ガイド 一般事務・軽作業編(2026年9月版) | AI Desk Labo</title>
-<meta name="description" content="書類作成やWeb閲覧、AIチャット中心の軽い作業なら、グラフィックボードなしで十分。2026年のパーツ高騰を踏まえたコスパ重視の考え方を解説します。">
+<meta name="description" content="書類作成やWeb閲覧、AIチャット中心の軽い作業なら、グラフィックボードなしで十分。マザーボードからケース・電源まで、Intel派・Mac派の選択肢もあわせて解説します。">
 <link rel="canonical" href="https://aidesklabo.com/guides/pc-build-office/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,6 +36,7 @@
       <a href="../../reviews/">レビュー</a>
       <a href="../../compare/">比較</a>
       <a href="../../guides/">ガイド</a>
+      <a href="../../diagnosis/">診断</a>
       <a href="../../about.html">About</a>
     </nav>
     <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
@@ -44,7 +45,7 @@
   </div>
 </header>
 <main>
-<section class="section" data-reveal=""><div class="wrap"><p class="eyebrow">ガイド<span class="eyebrow-en">Guide</span></p><h1>自作PC構成ガイド 一般事務・軽作業編(2026年9月版)</h1><p class="updated">最終更新日: 2026-09-26</p><nav class="toc"><p class="toc-title">この記事の目次</p><ol><li><a href="#h-1">結論: グラフィックボードは不要、内蔵GPU(APU)で組む</a></li><li><a href="#h-2">メモリとSSDだけはケチらない</a></li><li><a href="#h-3">マザーボードの選び方</a></li><li><a href="#h-4">この構成が向かない人</a></li></ol></nav><article><p>書類作成・Web閲覧・AIチャットが中心で、3Dゲームや動画編集をしないなら、いま自作PCに一番お金をかけるべきではないのがグラフィックボードです。2026年はGPU・メモリの価格が高騰しているため、「不要なものを削る」判断がそのままコスト削減に直結します。</p>
+<section class="section" data-reveal=""><div class="wrap"><p class="eyebrow">ガイド<span class="eyebrow-en">Guide</span></p><h1>自作PC構成ガイド 一般事務・軽作業編(2026年9月版)</h1><p class="updated">最終更新日: 2026-09-27</p><nav class="toc"><p class="toc-title">この記事の目次</p><ol><li><a href="#h-1">結論: グラフィックボードは不要、内蔵GPU(APU)で組む</a></li><li><a href="#h-2">AMD構成のフルパーツ一覧</a></li><li><a href="#h-3">Intelで組む場合</a></li><li><a href="#h-4">メモリとSSDだけはケチらない</a></li><li><a href="#h-5">自作PCではなく、Macという選択肢</a></li><li><a href="#h-6">この構成が向かない人</a></li></ol></nav><article><p>書類作成・Web閲覧・AIチャットが中心で、3Dゲームや動画編集をしないなら、いま自作PCに一番お金をかけるべきではないのがグラフィックボードです。2026年はGPU・メモリの価格が高騰しているため、「不要なものを削る」判断がそのままコスト削減に直結します。</p>
 <h2 id="h-1">結論: グラフィックボードは不要、内蔵GPU(APU)で組む</h2>
 <p>CPUにグラフィック機能が内蔵された「APU」と呼ばれるモデルを選べば、グラフィックボードを別途買う必要がありません。Webブラウジング・オフィスソフト・動画視聴・軽い画像編集までは内蔵GPUで十分こなせます。</p>
 <div class="card-grid"><div class="card">
@@ -55,11 +56,81 @@
   <ul><li>◎ Radeon Vega内蔵GPUでグラフィックボード不要、事務・Web・動画視聴は快適</li><li>◎ 6コア12スレッドで通常のマルチタスクに余裕</li><li>◎ 本体価格が安く2026年のGPU高騰の影響を受けにくい</li><li>△ AM4・DDR4世代のため最新のAM5マザーボードとは組み合わせられない</li><li>△ 3Dゲームは軽量タイトル・低〜中設定が中心</li></ul>
   <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/-/en/AMD-Ryzen-5-5600G/dp/B092L9GF5N?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
 </div></div>
-<h2 id="h-2">メモリとSSDだけはケチらない</h2>
-<p>CPU・GPUで浮いた予算は、メモリとSSDに回すのがおすすめです。目安は「メモリ16GB以上」「SSDはNVMe(M.2)で500GB以上」。ブラウザのタブを多く開きながらAIチャットを併用する使い方だと、メモリ8GBでは不足を感じやすくなります。</p>
-<h2 id="h-3">マザーボードの選び方</h2>
-<p>Ryzen 5 5600GはAM4ソケット・DDR4メモリ対応です。A520/B450系のマザーボードと組み合わせるのが最もコストを抑えやすい構成になります(最新のAM5マザーボードとは組み合わせられない点に注意)。</p>
-<h2 id="h-4">この構成が向かない人</h2>
+<h2 id="h-2">AMD構成のフルパーツ一覧</h2>
+<p>Ryzen 5 5600GはAM4ソケット・DDR4メモリ対応です。A520/B450系のマザーボードと組み合わせるのが最もコストを抑えやすい構成になります(最新のAM5マザーボードとは組み合わせられない点に注意)。CPUクーラーはRyzen 5 5600Gに付属するWraith Stealthをそのまま使えるため、別途購入は不要です。</p>
+<div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="3" width="18" height="18" rx="1.5"/><rect x="7" y="7" width="6" height="6" rx="0.5"/><line x1="3" y1="9.5" x2="1" y2="9.5"/><line x1="3" y1="13.5" x2="1" y2="13.5"/><line x1="21" y1="9.5" x2="23" y2="9.5"/><line x1="21" y1="13.5" x2="23" y2="13.5"/><line x1="16" y1="16" x2="19" y2="16"/><line x1="16" y1="18.5" x2="19" y2="18.5"/></svg></span><span class="badge green">マザーボード</span></div>
+  <h3>ASRock A520M-HDV (AM4・Micro ATX)</h3>
+  <p class="price"><span class="num-mono">¥6,980</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>Ryzen 5 5600GでAPU構成を組むための、コスト最優先のAM4マザーボード。</p>
+  <ul><li>◎ Ryzen 5 5600G等のAM4・APU構成を最安クラスで組める</li><li>◎ Micro ATXで対応ケースの選択肢が広い</li><li>◎ DDR4メモリ対応でメモリ自体も比較的安い</li><li>△ AM5(Ryzen 7000/9000番台)とは非対応、拡張性は最小限</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B08G1Y95SZ?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="2" width="12" height="20" rx="1"/><line x1="9" y1="5" x2="9" y2="8.5"/><line x1="12" y1="5" x2="12" y2="8.5"/><line x1="15" y1="5" x2="15" y2="8.5"/><line x1="9" y1="12" x2="9" y2="15.5"/><line x1="12" y1="12" x2="12" y2="15.5"/><line x1="15" y1="12" x2="15" y2="15.5"/></svg></span><span class="badge blue">メモリ</span></div>
+  <h3>Crucial デスクトップ用メモリ 16GB(8GB×2枚) DDR4-3200</h3>
+  <p class="price"><span class="num-mono">¥24,500</span>実勢価格帯の目安・変動あり(2026年9月時点、メモリ相場により大きく変動)</p>
+  <p>AM4/Intel DDR4構成のオフィスPC向け、16GB(8GB×2枚)の定番メモリキット。</p>
+  <ul><li>◎ AM4/LGA1700など幅広いDDR4プラットフォームで使える</li><li>◎ 2枚組でデュアルチャネル動作</li><li>◎ オフィス用途なら16GBで十分な容量</li><li>△ 2026年はDDR4メモリ自体の相場も上昇傾向、購入直前の価格確認が必須</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B08C53LL9J?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="12" r="2"/><line x1="14" y1="10" x2="18" y2="10"/><line x1="14" y1="14" x2="18" y2="14"/></svg></span><span class="badge orange">SSD</span></div>
+  <h3>Crucial P310 1TB NVMe PCIe Gen4 M.2 SSD</h3>
+  <p class="price"><span class="num-mono">¥27,800</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>OS・アプリ・動画編集素材を高速に読み書きできる、1TBのNVMe Gen4 SSD。</p>
+  <ul><li>◎ 最大7,100MB/秒のGen4 SSDで動画素材の読み込みも高速</li><li>◎ M.2スロットに挿すだけで配線不要</li><li>◎ 1TBあれば動画編集の作業用ストレージとして扱いやすい</li><li>△ マザーボード側のM.2スロットがGen4対応か事前確認が必要</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0DGKMQPYC?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/></svg></span><span class="badge blue">ケース</span></div>
+  <h3>NZXT H3 Flow Micro-ATX ミドルタワーケース (ブラック)</h3>
+  <p class="price"><span class="num-mono">¥8,918</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>自作PC初心者でも組みやすい、通気性重視のMicro-ATXケース。</p>
+  <ul><li>◎ メッシュフロントで通気性が高く、フルサイズGPUも搭載可能</li><li>◎ Micro ATXながら組みやすい内部レイアウト</li><li>◎ 背面配線対応マザーボードにも対応</li><li>△ ミドルタワーのため設置スペースはそれなりに必要</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0DQPMJ6MJ?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="2" y="6" width="20" height="12" rx="1.5"/><circle cx="9" cy="12" r="3.2"/><line x1="15.5" y1="9" x2="18.5" y2="9"/><line x1="15.5" y1="15" x2="18.5" y2="15"/></svg></span><span class="badge orange">電源ユニット</span></div>
+  <h3>Thermaltake TOUGHPOWER GT 750W (80PLUS GOLD)</h3>
+  <p class="price"><span class="num-mono">¥10,586</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>オフィスからハイエンドGPU構成まで共通で使える、余裕を持った750W電源。</p>
+  <ul><li>◎ 80PLUS GOLD認証で変換効率が高い</li><li>◎ 750WあればRTX 4070 SUPERクラスまで余裕を持って対応</li><li>◎ ATX3.1/PCIe5.1対応で最新GPUの電源コネクタにも対応</li><li>△ オフィス用途のAPU構成には出力が過剰(将来のGPU増設を見込まないなら500W程度でも足りる)</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0DKT9JRF1?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="10" y="2" width="4" height="8" rx="1"/><path d="M9 10h6l-0.8 9.2a2 2 0 0 1-4.4 0z"/></svg></span><span class="badge green">グリス</span></div>
+  <h3>ARCTIC MX-4 (4g・スパチュラ付属) CPU/GPU用サーマルグリス</h3>
+  <p class="price"><span class="num-mono">¥880</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>CPUクーラー交換・自作PC組み立て時に必要な、定番の高性能サーマルグリス。</p>
+  <ul><li>◎ 定番の高性能サーマルグリスで冷却性能・耐久性の実績が豊富</li><li>◎ スパチュラ付属で塗布量の調整がしやすい</li><li>◎ 1本でCPU・GPU数回分に使える</li><li>△ リテールクーラー同梱グリスからの塗り直しは手間がかかる</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0795DP124?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+<h2 id="h-3">Intelで組む場合</h2>
+<p>AMDよりIntelで組みたい場合は、内蔵GPU搭載のCore i5-14400が候補になります。10コア(6P+4E)とRyzen 5 5600Gより余裕のある性能を持ちますが、CPU自体の価格は上がります。組み合わせるマザーボードはDDR4対応のB760チップセットを選ぶと、メモリをAMD構成と共通化でき、総予算を抑えやすくなります。</p>
+<div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.5"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></svg></span><span class="badge blue">CPU</span></div>
+  <h3>インテル Core i5-14400 BOX (LGA1700・内蔵GPU搭載)</h3>
+  <p class="price"><span class="num-mono">¥36,970</span>Amazon.co.jp限定・国内正規代理店保証品、実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>AMDではなくIntelで組みたい人向けの、内蔵GPU搭載オフィス〜ライトゲーミングCPU。</p>
+  <ul><li>◎ 10コア(6P+4E)・最大4.70GHzでオフィス〜軽いゲームまで幅広くこなせる</li><li>◎ 内蔵GPU搭載でグラフィックボードなしでも映像出力できる</li><li>◎ 国内正規代理店保証1年付き</li><li>△ Ryzen 5 5600Gより価格は高め</li><li>△ 本格的な4Kゲーミング・動画編集にはグラフィックボードの追加が必要</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0CQ3WP67C?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="3" width="18" height="18" rx="1.5"/><rect x="7" y="7" width="6" height="6" rx="0.5"/><line x1="3" y1="9.5" x2="1" y2="9.5"/><line x1="3" y1="13.5" x2="1" y2="13.5"/><line x1="21" y1="9.5" x2="23" y2="9.5"/><line x1="21" y1="13.5" x2="23" y2="13.5"/><line x1="16" y1="16" x2="19" y2="16"/><line x1="16" y1="18.5" x2="19" y2="18.5"/></svg></span><span class="badge green">マザーボード</span></div>
+  <h3>MSI PRO B760M-A DDR4 II (LGA1700・Micro ATX)</h3>
+  <p class="price"><span class="num-mono">¥15,480</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>Core i5-14400でIntel構成を組む際の、DDR4対応・コスト重視のマザーボード。</p>
+  <ul><li>◎ Core i5-14400などLGA1700 CPUに対応</li><li>◎ DDR4メモリ対応でDDR5より総予算を抑えやすい</li><li>◎ Micro ATXでケースの選択肢が広い</li><li>△ 第12〜14世代までの対応、将来の最新Intel CPUへの対応は要確認</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0CMPZMGVT?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+<h2 id="h-4">メモリとSSDだけはケチらない</h2>
+<p>CPU・GPUで浮いた予算は、メモリとSSDに回すのがおすすめです。目安は「メモリ16GB以上」「SSDはNVMe(M.2)で500GB以上」。ブラウザのタブを多く開きながらAIチャットを併用する使い方だと、メモリ8GBでは不足を感じやすくなります。ケース・電源・グリスはAMD構成・Intel構成のどちらでも共通で使えます。</p>
+<h2 id="h-5">自作PCではなく、Macという選択肢</h2>
+<p>正直なところ、書類作成・Web閲覧・AIチャットが中心で、Windows専用ソフトも使わないなら、自作PCより新品のMacBook Airを1台買う方が合理的な場合があります。組み立ての手間がなく、静音性・バッテリー持ち・省スペース性はデスクトップ自作PCより明確に上です。「パーツ選びが面倒」「配線を減らしたい」「そもそも自作に興味がない」人は、無理に自作へこだわる必要はありません。</p>
+<ul><li>Windows専用ソフト・自作PC遊び自体を楽しみたい人 → AMDまたはIntelで自作</li><li>とにかく手間なく・静かに・省スペースに使いたい人 → MacBook Air</li><li>将来的にゲームや動画編集もしたくなるかもしれない人 → 自作PCの方が拡張・アップグレードの余地が大きい</li></ul>
+<p>Macを選ぶ場合の周辺機器選びは、<a href="../macbook-protection-guide/">MacBookを持ち歩く人の保護アイテムガイド</a>や<a href="../compact-input-gadgets-guide/">狭いデスクの入力ガジェットガイド</a>もあわせてご覧ください。</p>
+<h2 id="h-6">この構成が向かない人</h2>
 <p>3Dゲームを本格的に遊びたい人、動画編集やAI画像生成をしたい人は、この構成では力不足です。その場合は「ゲーミング編」「動画編集編」のガイドを参考にしてください。</p></article><div class="disclosure-note">本ページはAmazonアソシエイト・プログラムの参加者として、適格販売により収入を得ています。<a href="../../disclosure.html">詳細</a></div></div></section>
 </main>
 <footer class="site-footer">

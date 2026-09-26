@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自作PC診断 — あなたに最適な構成を2問で診断 | AI Desk Labo</title>
+<meta name="description" content="用途と好みを2つ選ぶだけで、AMD・Intel・Macのどれがあなたに向いているかを診断。おすすめパーツまでまとめて提案します。">
+<link rel="canonical" href="https://aidesklabo.com/diagnosis/pc-builder/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;800;900&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M4L5M94YCB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M4L5M94YCB');
+</script>
+</head>
+<body>
+<div class="loader" aria-hidden="true"><span class="loader-mark">AI DESK LABO</span></div>
+<div class="progress-bar" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">
+      <span class="logo-badge">AI</span>
+      <span>AI DESK LABO</span>
+    </a>
+    <nav class="site-nav">
+      <a href="../../rankings/">ランキング</a>
+      <a href="../../reviews/">レビュー</a>
+      <a href="../../compare/">比較</a>
+      <a href="../../guides/">ガイド</a>
+      <a href="../../diagnosis/">診断</a>
+      <a href="../../about.html">About</a>
+    </nav>
+    <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+<main>
+<section class="section" data-reveal=""><div class="wrap"><p class="eyebrow">診断<span class="eyebrow-en">Diagnosis</span></p><h1>自作PC診断 — あなたに最適な構成を2問で診断</h1><p class="updated">最終更新日: 2026-09-27</p><article><p>「自作PCって結局何を選べばいいの？」「そもそも自作すべき？Macでよくない？」——そんな疑問に、2つの質問だけで答える診断ツールです。用途と好みを選ぶと、AMD・Intel・Macのうちあなたに合う選択肢と、具体的なパーツ構成が表示されます。</p>
+<div class="quiz" id="pc-diagnosis" data-quiz>
+  <div class="quiz-progress"><span class="quiz-dot" data-dot-index="0"></span><span class="quiz-dot" data-dot-index="1"></span></div>
+  <div class="quiz-steps"><div class="quiz-step" data-step-index="0">
+      <p class="quiz-step-count">STEP 1 / 2</p>
+      <h3 class="quiz-question">何にPCを使いますか？</h3>
+      <div class="quiz-options"><button type="button" class="quiz-option" data-key="usecase" data-value="office">
+        <span class="quiz-option-label">オフィス・AIチャット中心</span>
+        <span class="quiz-option-desc">文章作成、Web閲覧、AIチャットがメイン</span>
+      </button>
+<button type="button" class="quiz-option" data-key="usecase" data-value="gaming">
+        <span class="quiz-option-label">ゲーミング</span>
+        <span class="quiz-option-desc">フルHDで高fps・快適に遊びたい</span>
+      </button>
+<button type="button" class="quiz-option" data-key="usecase" data-value="video">
+        <span class="quiz-option-label">動画編集・AI画像生成</span>
+        <span class="quiz-option-desc">4K編集やイラスト制作も視野に入れたい</span>
+      </button></div>
+    </div>
+<div class="quiz-step" data-step-index="1" hidden>
+      <p class="quiz-step-count">STEP 2 / 2</p>
+      <h3 class="quiz-question">PCへのこだわりは？</h3>
+      <div class="quiz-options"><button type="button" class="quiz-option" data-key="platform" data-value="amd">
+        <span class="quiz-option-label">自作する(AMD Ryzen)</span>
+        <span class="quiz-option-desc">コスパと将来のアップグレード性重視</span>
+      </button>
+<button type="button" class="quiz-option" data-key="platform" data-value="intel">
+        <span class="quiz-option-label">自作する(Intel Core)</span>
+        <span class="quiz-option-desc">定番・安定志向</span>
+      </button>
+<button type="button" class="quiz-option" data-key="platform" data-value="mac">
+        <span class="quiz-option-label">できればMacがいい</span>
+        <span class="quiz-option-desc">持ち運び・静音性・手間の少なさ重視</span>
+      </button></div>
+    </div></div>
+  <div class="quiz-results"><div class="quiz-result" data-result-key="office_amd" hidden>
+      <p class="quiz-result-kicker">診断結果</p>
+      <h3 class="quiz-result-title">AMD Ryzen 5 5600Gで組む、コスパ最優先のオフィスPC</h3>
+      <p class="quiz-result-body">グラフィックボードなしのAPU構成なら、書類作成・AIチャット・Web閲覧は十分快適。自作PCの中では最も低コストで組める部類です。</p>
+      <div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.5"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></svg></span><span class="badge blue">CPU</span></div>
+  <h3>AMD Ryzen 5 5600G (Wraith Stealthクーラー付・内蔵GPU搭載)</h3>
+  <p class="price"><span class="num-mono">¥19,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)</p>
+  <p>グラフィックボードなしで完結させたい、一般事務・軽作業PC向けのAPU。</p>
+  <ul><li>◎ Radeon Vega内蔵GPUでグラフィックボード不要、事務・Web・動画視聴は快適</li><li>◎ 6コア12スレッドで通常のマルチタスクに余裕</li><li>◎ 本体価格が安く2026年のGPU高騰の影響を受けにくい</li><li>△ AM4・DDR4世代のため最新のAM5マザーボードとは組み合わせられない</li><li>△ 3Dゲームは軽量タイトル・低〜中設定が中心</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/-/en/AMD-Ryzen-5-5600G/dp/B092L9GF5N?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="3" width="18" height="18" rx="1.5"/><rect x="7" y="7" width="6" height="6" rx="0.5"/><line x1="3" y1="9.5" x2="1" y2="9.5"/><line x1="3" y1="13.5" x2="1" y2="13.5"/><line x1="21" y1="9.5" x2="23" y2="9.5"/><line x1="21" y1="13.5" x2="23" y2="13.5"/><line x1="16" y1="16" x2="19" y2="16"/><line x1="16" y1="18.5" x2="19" y2="18.5"/></svg></span><span class="badge green">マザーボード</span></div>
+  <h3>ASRock A520M-HDV (AM4・Micro ATX)</h3>
+  <p class="price"><span class="num-mono">¥6,980</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>Ryzen 5 5600GでAPU構成を組むための、コスト最優先のAM4マザーボード。</p>
+  <ul><li>◎ Ryzen 5 5600G等のAM4・APU構成を最安クラスで組める</li><li>◎ Micro ATXで対応ケースの選択肢が広い</li><li>◎ DDR4メモリ対応でメモリ自体も比較的安い</li><li>△ AM5(Ryzen 7000/9000番台)とは非対応、拡張性は最小限</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B08G1Y95SZ?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+      <p class="section-link"><a href="../../guides/pc-build-office/">一般事務・軽作業編ガイドをフルパーツで見る →</a></p>
+      <div class="quiz-result-actions">
+        <a class="btn-share" href="https://twitter.com/intent/tweet?text=%E3%80%90AI%20Desk%20Labo%E8%A8%BA%E6%96%AD%E3%80%91%E7%A7%81%E3%81%AB%E5%90%91%E3%81%84%E3%81%A6%E3%82%8B%E3%81%AE%E3%81%AF%E3%80%8CAMD%20Ryzen%205%205600G%E3%81%AE%E3%82%AA%E3%83%95%E3%82%A3%E3%82%B9%E8%87%AA%E4%BD%9CPC%E3%80%8D%E3%81%A7%E3%81%97%E3%81%9F%F0%9F%96%A5%EF%B8%8F%20%23AIDeskLabo%E8%A8%BA%E6%96%AD%20%23%E8%87%AA%E4%BD%9CPC" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><polygon points="12 2.5 14.7 8.8 21.5 9.4 16.3 13.9 17.9 20.6 12 17 6.1 20.6 7.7 13.9 2.5 9.4 9.3 8.8"/></svg>診断結果をXでシェア</a>
+        <button type="button" class="quiz-retry">もう一度診断する</button>
+      </div>
+    </div>
+<div class="quiz-result" data-result-key="office_intel" hidden>
+      <p class="quiz-result-kicker">診断結果</p>
+      <h3 class="quiz-result-title">Intel Core i5-14400で組む、内蔵GPU搭載オフィスPC</h3>
+      <p class="quiz-result-body">10コアのCore i5-14400は内蔵GPU搭載でグラフィックボード不要。AMD構成よりCPU価格は上がりますが、安定志向・Intel派ならこちらが選択肢になります。</p>
+      <div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.5"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></svg></span><span class="badge blue">CPU</span></div>
+  <h3>インテル Core i5-14400 BOX (LGA1700・内蔵GPU搭載)</h3>
+  <p class="price"><span class="num-mono">¥36,970</span>Amazon.co.jp限定・国内正規代理店保証品、実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>AMDではなくIntelで組みたい人向けの、内蔵GPU搭載オフィス〜ライトゲーミングCPU。</p>
+  <ul><li>◎ 10コア(6P+4E)・最大4.70GHzでオフィス〜軽いゲームまで幅広くこなせる</li><li>◎ 内蔵GPU搭載でグラフィックボードなしでも映像出力できる</li><li>◎ 国内正規代理店保証1年付き</li><li>△ Ryzen 5 5600Gより価格は高め</li><li>△ 本格的な4Kゲーミング・動画編集にはグラフィックボードの追加が必要</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0CQ3WP67C?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="3" width="18" height="18" rx="1.5"/><rect x="7" y="7" width="6" height="6" rx="0.5"/><line x1="3" y1="9.5" x2="1" y2="9.5"/><line x1="3" y1="13.5" x2="1" y2="13.5"/><line x1="21" y1="9.5" x2="23" y2="9.5"/><line x1="21" y1="13.5" x2="23" y2="13.5"/><line x1="16" y1="16" x2="19" y2="16"/><line x1="16" y1="18.5" x2="19" y2="18.5"/></svg></span><span class="badge green">マザーボード</span></div>
+  <h3>MSI PRO B760M-A DDR4 II (LGA1700・Micro ATX)</h3>
+  <p class="price"><span class="num-mono">¥15,480</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>Core i5-14400でIntel構成を組む際の、DDR4対応・コスト重視のマザーボード。</p>
+  <ul><li>◎ Core i5-14400などLGA1700 CPUに対応</li><li>◎ DDR4メモリ対応でDDR5より総予算を抑えやすい</li><li>◎ Micro ATXでケースの選択肢が広い</li><li>△ 第12〜14世代までの対応、将来の最新Intel CPUへの対応は要確認</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0CMPZMGVT?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+      <p class="section-link"><a href="../../guides/pc-build-office/">一般事務・軽作業編ガイド(Intel構成)を見る →</a></p>
+      <div class="quiz-result-actions">
+        <a class="btn-share" href="https://twitter.com/intent/tweet?text=%E3%80%90AI%20Desk%20Labo%E8%A8%BA%E6%96%AD%E3%80%91%E7%A7%81%E3%81%AB%E5%90%91%E3%81%84%E3%81%A6%E3%82%8B%E3%81%AE%E3%81%AF%E3%80%8CIntel%20Core%20i5-14400%E3%81%AE%E3%82%AA%E3%83%95%E3%82%A3%E3%82%B9%E8%87%AA%E4%BD%9CPC%E3%80%8D%E3%81%A7%E3%81%97%E3%81%9F%F0%9F%96%A5%EF%B8%8F%20%23AIDeskLabo%E8%A8%BA%E6%96%AD%20%23%E8%87%AA%E4%BD%9CPC" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><polygon points="12 2.5 14.7 8.8 21.5 9.4 16.3 13.9 17.9 20.6 12 17 6.1 20.6 7.7 13.9 2.5 9.4 9.3 8.8"/></svg>診断結果をXでシェア</a>
+        <button type="button" class="quiz-retry">もう一度診断する</button>
+      </div>
+    </div>
+<div class="quiz-result" data-result-key="office_mac" hidden>
+      <p class="quiz-result-kicker">診断結果</p>
+      <h3 class="quiz-result-title">自作PCより、MacBook Airという選択肢</h3>
+      <p class="quiz-result-body">組み立ての手間なし、静音・省スペース・バッテリー持ちも良好。Windows専用ソフトを使わないなら、新品MacBook Airの方が合理的な場合があります。Apple公式サイトで最新構成を確認してみてください。</p>
+      
+      <p class="section-link"><a href="../../guides/pc-build-office/">Mac vs 自作PCの判断基準を詳しく読む →</a></p>
+      <div class="quiz-result-actions">
+        <a class="btn-share" href="https://twitter.com/intent/tweet?text=%E3%80%90AI%20Desk%20Labo%E8%A8%BA%E6%96%AD%E3%80%91%E7%A7%81%E3%81%AB%E5%90%91%E3%81%84%E3%81%A6%E3%82%8B%E3%81%AE%E3%81%AF%E3%80%8C%E8%87%AA%E4%BD%9CPC%E3%81%98%E3%82%83%E3%81%AA%E3%81%8FMacBook%20Air%E3%80%8D%E3%81%A7%E3%81%97%E3%81%9F%F0%9F%8D%8E%20%23AIDeskLabo%E8%A8%BA%E6%96%AD%20%23Mac" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><polygon points="12 2.5 14.7 8.8 21.5 9.4 16.3 13.9 17.9 20.6 12 17 6.1 20.6 7.7 13.9 2.5 9.4 9.3 8.8"/></svg>診断結果をXでシェア</a>
+        <button type="button" class="quiz-retry">もう一度診断する</button>
+      </div>
+    </div>
+<div class="quiz-result" data-result-key="gaming_amd" hidden>
+      <p class="quiz-result-kicker">診断結果</p>
+      <h3 class="quiz-result-title">AMD Ryzen 5 7600 + RTX 4060で組む、フルHDゲーミングPC</h3>
+      <p class="quiz-result-body">GPUを軸にCPUを合わせるのがゲーミングPCの基本。RTX 4060クラスならフルHD高設定・60fps以上が狙えます。AM5プラットフォームで将来のCPUアップグレードにも対応。</p>
+      <div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.5"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></svg></span><span class="badge blue">CPU</span></div>
+  <h3>AMD Ryzen 5 7600 (Wraith Stealthクーラー付・Amazon.co.jp限定)</h3>
+  <p class="price"><span class="num-mono">¥28,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)</p>
+  <p>1080pゲーミング構成の土台になる、コストパフォーマンスの良いミドルCPU。</p>
+  <ul><li>◎ AM5プラットフォームで今後のアップグレードがしやすい</li><li>◎ 1080pゲーミングでGPU性能を引き出せる十分な処理性能</li><li>◎ Amazon.co.jp限定モデルで3年+1年の保証</li><li>△ メモリはDDR5必須(DDR4非対応)でマザーボード選びに注意</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/%E3%80%90Amazon-co-jp%E9%99%90%E5%AE%9A%E3%80%91-AMD-Stealth-100-100001015BOX-EW-1Y/dp/B0BS8PRCYV?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a><a class="btn-room" href="https://room.rakuten.co.jp/aidesklabo/1700394654532178" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>楽天ROOMで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="8" cy="12" r="2.1"/><circle cx="14" cy="12" r="2.1"/><line x1="19" y1="7" x2="19" y2="4"/><line x1="4.5" y1="17" x2="4.5" y2="20"/></svg></span><span class="badge orange">GPU</span></div>
+  <h3>MSI GeForce RTX 4060 VENTUS 2X BLACK 8G OC</h3>
+  <p class="price"><span class="num-mono">¥52,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ、GPUは価格変動が大きめ)</p>
+  <p>フルHDゲーミング構成の定番グラフィックボード。</p>
+  <ul><li>◎ 1080p高設定で60fps以上を狙える定番クラス</li><li>◎ 8GB VRAMでeスポーツ〜中量級タイトルに対応</li><li>◎ 消費電力が控えめで電源ユニットの要求が緩い</li><li>△ WQHD以上や重量級タイトルの高設定は力不足</li><li>△ 2026年はGPU全般が品薄・価格高騰気味で入手性は要確認</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/MSI-RTX-4060-VENTUS-BLACK/dp/B0C8BPW1SP?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="3" width="18" height="18" rx="1.5"/><rect x="7" y="7" width="6" height="6" rx="0.5"/><line x1="3" y1="9.5" x2="1" y2="9.5"/><line x1="3" y1="13.5" x2="1" y2="13.5"/><line x1="21" y1="9.5" x2="23" y2="9.5"/><line x1="21" y1="13.5" x2="23" y2="13.5"/><line x1="16" y1="16" x2="19" y2="16"/><line x1="16" y1="18.5" x2="19" y2="18.5"/></svg></span><span class="badge green">マザーボード</span></div>
+  <h3>ASRock B650M Pro X3D WiFi (AM5・Micro ATX)</h3>
+  <p class="price"><span class="num-mono">¥16,980</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>ゲーミング・動画編集向けAM5構成(Ryzen 7600/9900X)の土台になるMicro ATXマザーボード。</p>
+  <ul><li>◎ Ryzen 5 7600・Ryzen 9 9900Xなど幅広いAM5 CPUに対応</li><li>◎ WiFi内蔵で無線LANカードを別途足す必要がない</li><li>◎ Micro ATXでケースの選択肢が広い</li><li>△ DDR5メモリ専用でAM4マザーボードとの流用は不可</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0F3DG1NVW?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+      <p class="section-link"><a href="../../guides/pc-build-gaming/">ゲーミング編ガイドをフルパーツで見る →</a></p>
+      <div class="quiz-result-actions">
+        <a class="btn-share" href="https://twitter.com/intent/tweet?text=%E3%80%90AI%20Desk%20Labo%E8%A8%BA%E6%96%AD%E3%80%91%E7%A7%81%E3%81%AB%E5%90%91%E3%81%84%E3%81%A6%E3%82%8B%E3%81%AE%E3%81%AF%E3%80%8CRyzen%205%207600%20%2B%20RTX%204060%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC%E3%80%8D%E3%81%A7%E3%81%97%E3%81%9F%F0%9F%8E%AE%20%23AIDeskLabo%E8%A8%BA%E6%96%AD%20%23%E8%87%AA%E4%BD%9CPC" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><polygon points="12 2.5 14.7 8.8 21.5 9.4 16.3 13.9 17.9 20.6 12 17 6.1 20.6 7.7 13.9 2.5 9.4 9.3 8.8"/></svg>診断結果をXでシェア</a>
+        <button type="button" class="quiz-retry">もう一度診断する</button>
+      </div>
+    </div>
+<div class="quiz-result" data-result-key="gaming_intel" hidden>
+      <p class="quiz-result-kicker">診断結果</p>
+      <h3 class="quiz-result-title">Intel Core i5-14400 + RTX 4060で組む、フルHDゲーミングPC</h3>
+      <p class="quiz-result-body">IntelでもGPUを軸に考える方針は同じ。Core i5-14400 + RTX 4060クラスでフルHDゲーミングは十分成立します。DDR4対応マザーボードでメモリ予算を抑えられるのも利点です。</p>
+      <div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.5"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></svg></span><span class="badge blue">CPU</span></div>
+  <h3>インテル Core i5-14400 BOX (LGA1700・内蔵GPU搭載)</h3>
+  <p class="price"><span class="num-mono">¥36,970</span>Amazon.co.jp限定・国内正規代理店保証品、実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>AMDではなくIntelで組みたい人向けの、内蔵GPU搭載オフィス〜ライトゲーミングCPU。</p>
+  <ul><li>◎ 10コア(6P+4E)・最大4.70GHzでオフィス〜軽いゲームまで幅広くこなせる</li><li>◎ 内蔵GPU搭載でグラフィックボードなしでも映像出力できる</li><li>◎ 国内正規代理店保証1年付き</li><li>△ Ryzen 5 5600Gより価格は高め</li><li>△ 本格的な4Kゲーミング・動画編集にはグラフィックボードの追加が必要</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0CQ3WP67C?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="8" cy="12" r="2.1"/><circle cx="14" cy="12" r="2.1"/><line x1="19" y1="7" x2="19" y2="4"/><line x1="4.5" y1="17" x2="4.5" y2="20"/></svg></span><span class="badge orange">GPU</span></div>
+  <h3>MSI GeForce RTX 4060 VENTUS 2X BLACK 8G OC</h3>
+  <p class="price"><span class="num-mono">¥52,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ、GPUは価格変動が大きめ)</p>
+  <p>フルHDゲーミング構成の定番グラフィックボード。</p>
+  <ul><li>◎ 1080p高設定で60fps以上を狙える定番クラス</li><li>◎ 8GB VRAMでeスポーツ〜中量級タイトルに対応</li><li>◎ 消費電力が控えめで電源ユニットの要求が緩い</li><li>△ WQHD以上や重量級タイトルの高設定は力不足</li><li>△ 2026年はGPU全般が品薄・価格高騰気味で入手性は要確認</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/MSI-RTX-4060-VENTUS-BLACK/dp/B0C8BPW1SP?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="3" width="18" height="18" rx="1.5"/><rect x="7" y="7" width="6" height="6" rx="0.5"/><line x1="3" y1="9.5" x2="1" y2="9.5"/><line x1="3" y1="13.5" x2="1" y2="13.5"/><line x1="21" y1="9.5" x2="23" y2="9.5"/><line x1="21" y1="13.5" x2="23" y2="13.5"/><line x1="16" y1="16" x2="19" y2="16"/><line x1="16" y1="18.5" x2="19" y2="18.5"/></svg></span><span class="badge green">マザーボード</span></div>
+  <h3>MSI PRO B760M-A DDR4 II (LGA1700・Micro ATX)</h3>
+  <p class="price"><span class="num-mono">¥15,480</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>Core i5-14400でIntel構成を組む際の、DDR4対応・コスト重視のマザーボード。</p>
+  <ul><li>◎ Core i5-14400などLGA1700 CPUに対応</li><li>◎ DDR4メモリ対応でDDR5より総予算を抑えやすい</li><li>◎ Micro ATXでケースの選択肢が広い</li><li>△ 第12〜14世代までの対応、将来の最新Intel CPUへの対応は要確認</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0CMPZMGVT?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+      <p class="section-link"><a href="../../guides/pc-build-gaming/">ゲーミング編ガイド(Intel構成)を見る →</a></p>
+      <div class="quiz-result-actions">
+        <a class="btn-share" href="https://twitter.com/intent/tweet?text=%E3%80%90AI%20Desk%20Labo%E8%A8%BA%E6%96%AD%E3%80%91%E7%A7%81%E3%81%AB%E5%90%91%E3%81%84%E3%81%A6%E3%82%8B%E3%81%AE%E3%81%AF%E3%80%8CIntel%20Core%20i5-14400%20%2B%20RTX%204060%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0PC%E3%80%8D%E3%81%A7%E3%81%97%E3%81%9F%F0%9F%8E%AE%20%23AIDeskLabo%E8%A8%BA%E6%96%AD%20%23%E8%87%AA%E4%BD%9CPC" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><polygon points="12 2.5 14.7 8.8 21.5 9.4 16.3 13.9 17.9 20.6 12 17 6.1 20.6 7.7 13.9 2.5 9.4 9.3 8.8"/></svg>診断結果をXでシェア</a>
+        <button type="button" class="quiz-retry">もう一度診断する</button>
+      </div>
+    </div>
+<div class="quiz-result" data-result-key="gaming_mac" hidden>
+      <p class="quiz-result-kicker">診断結果</p>
+      <h3 class="quiz-result-title">正直に言うと、ゲーミングにMacは向きません</h3>
+      <p class="quiz-result-body">AAAタイトルの多くがWindows前提で開発されており、Macでは遊べない・性能が出ないケースが多いのが実情です。本格的に遊びたいならAMDかIntelでの自作、または完成品ゲーミングPCをおすすめします。クラウドゲーミングという手もあります。</p>
+      
+      <p class="section-link"><a href="../../guides/pc-build-gaming/">ゲーミング編ガイドで代替案を見る →</a></p>
+      <div class="quiz-result-actions">
+        <a class="btn-share" href="https://twitter.com/intent/tweet?text=%E3%80%90AI%20Desk%20Labo%E8%A8%BA%E6%96%AD%E3%80%91%E3%82%B2%E3%83%BC%E3%83%9F%E3%83%B3%E3%82%B0%E7%94%A8%E9%80%94%E3%81%AB%E3%81%AFMac%E3%81%AF%E4%B8%8D%E5%90%91%E3%81%8D%E3%81%A8%E8%A8%BA%E6%96%AD%E3%81%95%E3%82%8C%E3%81%BE%E3%81%97%E3%81%9F%E2%80%A6%E7%B4%A0%E7%9B%B4%E3%81%ABAMD%2FIntel%E3%81%A7%E7%B5%84%E3%81%BF%E3%81%BE%E3%81%99%F0%9F%8E%AE%20%23AIDeskLabo%E8%A8%BA%E6%96%AD" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><polygon points="12 2.5 14.7 8.8 21.5 9.4 16.3 13.9 17.9 20.6 12 17 6.1 20.6 7.7 13.9 2.5 9.4 9.3 8.8"/></svg>診断結果をXでシェア</a>
+        <button type="button" class="quiz-retry">もう一度診断する</button>
+      </div>
+    </div>
+<div class="quiz-result" data-result-key="video_amd" hidden>
+      <p class="quiz-result-kicker">診断結果</p>
+      <h3 class="quiz-result-title">AMD Ryzen 9 9900X + RTX 4070 SUPERで組む、動画編集PC</h3>
+      <p class="quiz-result-body">12コア24スレッドのRyzen 9 9900XとVRAM 12GB以上のRTX 4070 SUPERで、4Kマルチレイヤー編集にも余裕を持たせた構成。クーラー非同梱のため別途CPUクーラーが必要です。</p>
+      <div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.5"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></svg></span><span class="badge blue">CPU</span></div>
+  <h3>AMD Ryzen 9 9900X (12コア24スレッド・クーラーなし)</h3>
+  <p class="price"><span class="num-mono">¥64,980</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)</p>
+  <p>4K動画編集・書き出しを重視する人向けのハイエンドCPU。</p>
+  <ul><li>◎ 12コア24スレッドで動画エンコード・書き出しが速い</li><li>◎ AM5プラットフォームでDDR5・PCIe5.0に対応</li><li>◎ 内蔵GPUもあり検証用の映像出力に困らない</li><li>△ クーラー別売り(サードパーティ製クーラーが必要)</li><li>△ 高負荷時の発熱・消費電力はミドルCPUより大きい</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/100-100000662WOF-9900X-24T%E3%80%814-4GHz%E3%80%81TDP-120W%E3%80%81AM5%E3%80%81Radeon-Graphics/dp/B0D6NN87T8?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a><a class="btn-room" href="https://room.rakuten.co.jp/aidesklabo/1700394654531408" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>楽天ROOMで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="8" cy="12" r="2.1"/><circle cx="14" cy="12" r="2.1"/><line x1="19" y1="7" x2="19" y2="4"/><line x1="4.5" y1="17" x2="4.5" y2="20"/></svg></span><span class="badge orange">GPU</span></div>
+  <h3>ASUS Dual GeForce RTX 4070 SUPER OC 12GB</h3>
+  <p class="price"><span class="num-mono">¥89,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ、GPUは価格変動が大きめ)</p>
+  <p>動画編集のVRAM要件を満たす、4K編集向けグラフィックボード。</p>
+  <ul><li>◎ 12GB VRAMでDaVinci Resolve・Premiere Proのカラーグレーディングも余裕</li><li>◎ AV1エンコード対応で書き出しが高速</li><li>◎ WQHDゲーミングとの兼用もしやすい</li><li>△ 2スロット占有・補助電源が必要でケース/電源要件を事前確認</li><li>△ 2026年はGPU全般が品薄・価格高騰気味で入手性は要確認</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/ASUS-GeForce-2%E9%80%A3%E3%83%95%E3%82%A1%E3%83%B3%E6%90%AD%E8%BC%89%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%83%9C%E3%83%BC%E3%83%89-DUAL-RTX4070S-O12G-%E5%9B%BD%E5%86%85%E6%AD%A3%E8%A6%8F%E6%B5%81%E9%80%9A%E5%93%81/dp/B0CS67885B?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="3" width="18" height="18" rx="1.5"/><rect x="7" y="7" width="6" height="6" rx="0.5"/><line x1="3" y1="9.5" x2="1" y2="9.5"/><line x1="3" y1="13.5" x2="1" y2="13.5"/><line x1="21" y1="9.5" x2="23" y2="9.5"/><line x1="21" y1="13.5" x2="23" y2="13.5"/><line x1="16" y1="16" x2="19" y2="16"/><line x1="16" y1="18.5" x2="19" y2="18.5"/></svg></span><span class="badge green">マザーボード</span></div>
+  <h3>ASRock B650M Pro X3D WiFi (AM5・Micro ATX)</h3>
+  <p class="price"><span class="num-mono">¥16,980</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>ゲーミング・動画編集向けAM5構成(Ryzen 7600/9900X)の土台になるMicro ATXマザーボード。</p>
+  <ul><li>◎ Ryzen 5 7600・Ryzen 9 9900Xなど幅広いAM5 CPUに対応</li><li>◎ WiFi内蔵で無線LANカードを別途足す必要がない</li><li>◎ Micro ATXでケースの選択肢が広い</li><li>△ DDR5メモリ専用でAM4マザーボードとの流用は不可</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0F3DG1NVW?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+      <p class="section-link"><a href="../../guides/pc-build-video-editing/">動画編集編ガイドをフルパーツで見る →</a></p>
+      <div class="quiz-result-actions">
+        <a class="btn-share" href="https://twitter.com/intent/tweet?text=%E3%80%90AI%20Desk%20Labo%E8%A8%BA%E6%96%AD%E3%80%91%E7%A7%81%E3%81%AB%E5%90%91%E3%81%84%E3%81%A6%E3%82%8B%E3%81%AE%E3%81%AF%E3%80%8CRyzen%209%209900X%20%2B%20RTX%204070%20SUPER%E3%81%AE%E5%8B%95%E7%94%BB%E7%B7%A8%E9%9B%86PC%E3%80%8D%E3%81%A7%E3%81%97%E3%81%9F%F0%9F%8E%AC%20%23AIDeskLabo%E8%A8%BA%E6%96%AD%20%23%E8%87%AA%E4%BD%9CPC" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><polygon points="12 2.5 14.7 8.8 21.5 9.4 16.3 13.9 17.9 20.6 12 17 6.1 20.6 7.7 13.9 2.5 9.4 9.3 8.8"/></svg>診断結果をXでシェア</a>
+        <button type="button" class="quiz-retry">もう一度診断する</button>
+      </div>
+    </div>
+<div class="quiz-result" data-result-key="video_intel" hidden>
+      <p class="quiz-result-kicker">診断結果</p>
+      <h3 class="quiz-result-title">Intel構成で動画編集、ただし上位クラスの検討もおすすめ</h3>
+      <p class="quiz-result-body">Core i5-14400 + B760マザーボードでも動画編集PCは組めますが、正直10コアクラスは本格的な4K編集にはやや力不足。予算が許せばCore i7以上のクラスを検討してください。</p>
+      <div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.5"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></svg></span><span class="badge blue">CPU</span></div>
+  <h3>インテル Core i5-14400 BOX (LGA1700・内蔵GPU搭載)</h3>
+  <p class="price"><span class="num-mono">¥36,970</span>Amazon.co.jp限定・国内正規代理店保証品、実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>AMDではなくIntelで組みたい人向けの、内蔵GPU搭載オフィス〜ライトゲーミングCPU。</p>
+  <ul><li>◎ 10コア(6P+4E)・最大4.70GHzでオフィス〜軽いゲームまで幅広くこなせる</li><li>◎ 内蔵GPU搭載でグラフィックボードなしでも映像出力できる</li><li>◎ 国内正規代理店保証1年付き</li><li>△ Ryzen 5 5600Gより価格は高め</li><li>△ 本格的な4Kゲーミング・動画編集にはグラフィックボードの追加が必要</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0CQ3WP67C?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="3" width="18" height="18" rx="1.5"/><rect x="7" y="7" width="6" height="6" rx="0.5"/><line x1="3" y1="9.5" x2="1" y2="9.5"/><line x1="3" y1="13.5" x2="1" y2="13.5"/><line x1="21" y1="9.5" x2="23" y2="9.5"/><line x1="21" y1="13.5" x2="23" y2="13.5"/><line x1="16" y1="16" x2="19" y2="16"/><line x1="16" y1="18.5" x2="19" y2="18.5"/></svg></span><span class="badge green">マザーボード</span></div>
+  <h3>MSI PRO B760M-A DDR4 II (LGA1700・Micro ATX)</h3>
+  <p class="price"><span class="num-mono">¥15,480</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>Core i5-14400でIntel構成を組む際の、DDR4対応・コスト重視のマザーボード。</p>
+  <ul><li>◎ Core i5-14400などLGA1700 CPUに対応</li><li>◎ DDR4メモリ対応でDDR5より総予算を抑えやすい</li><li>◎ Micro ATXでケースの選択肢が広い</li><li>△ 第12〜14世代までの対応、将来の最新Intel CPUへの対応は要確認</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0CMPZMGVT?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+      <p class="section-link"><a href="../../guides/pc-build-video-editing/">動画編集編ガイド(Intel構成)を見る →</a></p>
+      <div class="quiz-result-actions">
+        <a class="btn-share" href="https://twitter.com/intent/tweet?text=%E3%80%90AI%20Desk%20Labo%E8%A8%BA%E6%96%AD%E3%80%91%E5%8B%95%E7%94%BB%E7%B7%A8%E9%9B%86%E7%94%A8%E9%80%94%E3%80%81Intel%E6%A7%8B%E6%88%90%E3%81%A0%E3%81%A8%E4%B8%8A%E4%BD%8DCPU%E3%81%AE%E6%A4%9C%E8%A8%8E%E3%82%82%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E3%81%A8%E8%A8%BA%E6%96%AD%E3%81%95%E3%82%8C%E3%81%BE%E3%81%97%E3%81%9F%F0%9F%8E%AC%20%23AIDeskLabo%E8%A8%BA%E6%96%AD" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><polygon points="12 2.5 14.7 8.8 21.5 9.4 16.3 13.9 17.9 20.6 12 17 6.1 20.6 7.7 13.9 2.5 9.4 9.3 8.8"/></svg>診断結果をXでシェア</a>
+        <button type="button" class="quiz-retry">もう一度診断する</button>
+      </div>
+    </div>
+<div class="quiz-result" data-result-key="video_mac" hidden>
+      <p class="quiz-result-kicker">診断結果</p>
+      <h3 class="quiz-result-title">動画編集なら、MacBook Pro/Mac miniも正当な選択肢</h3>
+      <p class="quiz-result-body">Apple Siliconのハードウェアエンコードは強力で、Premiere Pro・DaVinci Resolveも快適。統合メモリでVRAM不足に悩みにくく、静音性も自作デスクトップより優れる傾向があります。組み立てに興味がないなら有力候補です。</p>
+      
+      <p class="section-link"><a href="../../guides/pc-build-video-editing/">Mac vs 自作PCの判断基準を詳しく読む →</a></p>
+      <div class="quiz-result-actions">
+        <a class="btn-share" href="https://twitter.com/intent/tweet?text=%E3%80%90AI%20Desk%20Labo%E8%A8%BA%E6%96%AD%E3%80%91%E7%A7%81%E3%81%AB%E5%90%91%E3%81%84%E3%81%A6%E3%82%8B%E3%81%AE%E3%81%AF%E3%80%8CMacBook%20Pro%2FMac%20mini%E3%81%A7%E3%81%AE%E5%8B%95%E7%94%BB%E7%B7%A8%E9%9B%86%E3%80%8D%E3%81%A7%E3%81%97%E3%81%9F%F0%9F%8E%AC%F0%9F%8D%8E%20%23AIDeskLabo%E8%A8%BA%E6%96%AD%20%23Mac" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><polygon points="12 2.5 14.7 8.8 21.5 9.4 16.3 13.9 17.9 20.6 12 17 6.1 20.6 7.7 13.9 2.5 9.4 9.3 8.8"/></svg>診断結果をXでシェア</a>
+        <button type="button" class="quiz-retry">もう一度診断する</button>
+      </div>
+    </div></div>
+</div>
+<script>
+(function () {
+  var root = document.getElementById("pc-diagnosis");
+  if (!root) return;
+  var stepKeys = ["usecase","platform"];
+  var answers = {};
+  var stepEls = root.querySelectorAll(".quiz-step");
+  var dotEls = root.querySelectorAll(".quiz-dot");
+  var resultEls = root.querySelectorAll(".quiz-result");
+
+  function showStep(index) {
+    stepEls.forEach(function (el) { el.hidden = Number(el.dataset.stepIndex) !== index; });
+    dotEls.forEach(function (el, i) { el.classList.toggle("is-active", i === index); });
+    root.querySelector(".quiz-results").hidden = true;
+    root.querySelector(".quiz-steps").hidden = false;
+  }
+
+  function showResult() {
+    var key = stepKeys.map(function (k) { return answers[k]; }).join("_");
+    root.querySelector(".quiz-steps").hidden = true;
+    var found = false;
+    resultEls.forEach(function (el) {
+      var match = el.dataset.resultKey === key;
+      el.hidden = !match;
+      if (match) found = true;
+    });
+    root.querySelector(".quiz-results").hidden = !found;
+    if (found) root.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  root.addEventListener("click", function (e) {
+    var opt = e.target.closest(".quiz-option");
+    if (opt) {
+      answers[opt.dataset.key] = opt.dataset.value;
+      var currentIndex = stepKeys.indexOf(opt.dataset.key);
+      if (currentIndex === stepKeys.length - 1) {
+        showResult();
+      } else {
+        showStep(currentIndex + 1);
+      }
+      return;
+    }
+    if (e.target.closest(".quiz-retry")) {
+      answers = {};
+      showStep(0);
+    }
+  });
+})();
+</script>
+<h2 id="h-1">この診断の考え方</h2>
+<p>用途に対して過剰なパーツを勧めないこと、Macの方が合理的な場面では正直にそう言うことを大事にしています。診断結果はあくまで出発点として、各ガイド記事で詳しい理由やパーツの選び方も確認してみてください。</p></article><div class="disclosure-note">本ページはAmazonアソシエイト・プログラムの参加者として、適格販売により収入を得ています。<a href="../../disclosure.html">詳細</a></div></div></section>
+</main>
+<footer class="site-footer">
+  <div class="footer-bg-word" aria-hidden="true">AI</div>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-badge">AI</span>
+        <span>AI DESK LABO</span>
+      </div>
+      <div class="links">
+        <a href="../../about.html">運営者情報</a>
+        <a href="../../disclosure.html">アフィリエイト表記</a>
+        <a href="../../privacy.html">プライバシーポリシー</a>
+        <a href="../../contact.html">お問い合わせ</a>
+      </div>
+      <div class="links">
+        <a href="https://x.com/yu_aidesklabo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4L4 20"/></svg>X (Twitter)</a>
+        <a href="https://note.com/yu_aidesklabo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>Note</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="y"></span> AI Desk Labo</div>
+  </div>
+</footer>
+<button class="back-to-top" aria-label="ページ上部へ戻る">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js" defer></script>
+<script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

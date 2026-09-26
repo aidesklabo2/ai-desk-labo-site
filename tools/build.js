@@ -12,19 +12,19 @@ const SITE_ORIGIN = "https://aidesklabo.com"; // update once the domain is regis
 const AMAZON_TAG = "aidesklabo-22";
 const SITE_TITLE = "AI Desk Labo";
 
-const FOLDER_BY_TYPE = { review: "reviews", ranking: "rankings", compare: "compare", guide: "guides" };
-const TYPE_LABEL_JA = { review: "レビュー", ranking: "ランキング", compare: "比較", guide: "ガイド" };
+const FOLDER_BY_TYPE = { review: "reviews", ranking: "rankings", compare: "compare", guide: "guides", diagnosis: "diagnosis" };
+const TYPE_LABEL_JA = { review: "レビュー", ranking: "ランキング", compare: "比較", guide: "ガイド", diagnosis: "診断" };
 // Small decorative English kicker printed next to the Japanese eyebrow label
 // (see eyebrowHtml()) — purely typographic texture, not meant to add meaning
 // on top of the Japanese it sits beside.
-const TYPE_LABEL_EN = { review: "Review", ranking: "Ranking", compare: "Compare", guide: "Guide" };
-const TYPE_COLOR = { review: "blue", ranking: "orange", compare: "green", guide: "blue" };
-const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange", cpu: "blue", gpu: "orange", cable: "green", tablet: "blue", reader: "green", case: "blue", macropad: "orange" };
+const TYPE_LABEL_EN = { review: "Review", ranking: "Ranking", compare: "Compare", guide: "Guide", diagnosis: "Diagnosis" };
+const TYPE_COLOR = { review: "blue", ranking: "orange", compare: "green", guide: "blue", diagnosis: "orange" };
+const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange", cpu: "blue", gpu: "orange", cable: "green", tablet: "blue", reader: "green", case: "blue", macropad: "orange", motherboard: "green", psu: "orange", thermalpaste: "green", ram: "blue", storage: "orange", cooler: "blue" };
 // Product-card badges show this label, not the raw `category` key — the key
 // is an internal English slug (also used to look up CATEGORY_COLOR/ICONS)
 // and was previously printed as-is, which read as stray English jargon on
 // an otherwise all-Japanese page.
-const CATEGORY_LABEL_JA = { keyboard: "キーボード", mouse: "マウス", charger: "充電器", monitor: "モニター", stand: "スタンド", mic: "マイク", light: "ライト", footrest: "フットレスト", wristrest: "リストレスト", monitorarm: "モニターアーム", cpu: "CPU", gpu: "GPU", cable: "ケーブル", tablet: "タブレット", reader: "カードリーダー", case: "ケース", macropad: "マクロパッド" };
+const CATEGORY_LABEL_JA = { keyboard: "キーボード", mouse: "マウス", charger: "充電器", monitor: "モニター", stand: "スタンド", mic: "マイク", light: "ライト", footrest: "フットレスト", wristrest: "リストレスト", monitorarm: "モニターアーム", cpu: "CPU", gpu: "GPU", cable: "ケーブル", tablet: "タブレット", reader: "カードリーダー", case: "ケース", macropad: "マクロパッド", motherboard: "マザーボード", psu: "電源ユニット", thermalpaste: "グリス", ram: "メモリ", storage: "SSD", cooler: "CPUクーラー" };
 
 // Small hand-authored line-icon set (24x24, stroke-based, no external icon font/CDN).
 const ICONS = {
@@ -50,6 +50,13 @@ const ICONS = {
   reader: `<path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><line x1="8.5" y1="10" x2="8.5" y2="15"/><line x1="12" y1="10" x2="12" y2="15"/><line x1="15.5" y1="10" x2="15.5" y2="15"/>`,
   case: `<path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/>`,
   macropad: `<rect x="3" y="3" width="18" height="18" rx="2"/><rect x="6" y="6" width="4.5" height="4.5" rx="1"/><rect x="13.5" y="6" width="4.5" height="4.5" rx="1"/><rect x="6" y="13.5" width="4.5" height="4.5" rx="1"/><rect x="13.5" y="13.5" width="4.5" height="4.5" rx="1"/>`,
+  motherboard: `<rect x="3" y="3" width="18" height="18" rx="1.5"/><rect x="7" y="7" width="6" height="6" rx="0.5"/><line x1="3" y1="9.5" x2="1" y2="9.5"/><line x1="3" y1="13.5" x2="1" y2="13.5"/><line x1="21" y1="9.5" x2="23" y2="9.5"/><line x1="21" y1="13.5" x2="23" y2="13.5"/><line x1="16" y1="16" x2="19" y2="16"/><line x1="16" y1="18.5" x2="19" y2="18.5"/>`,
+  psu: `<rect x="2" y="6" width="20" height="12" rx="1.5"/><circle cx="9" cy="12" r="3.2"/><line x1="15.5" y1="9" x2="18.5" y2="9"/><line x1="15.5" y1="15" x2="18.5" y2="15"/>`,
+  thermalpaste: `<rect x="10" y="2" width="4" height="8" rx="1"/><path d="M9 10h6l-0.8 9.2a2 2 0 0 1-4.4 0z"/>`,
+  ram: `<rect x="6" y="2" width="12" height="20" rx="1"/><line x1="9" y1="5" x2="9" y2="8.5"/><line x1="12" y1="5" x2="12" y2="8.5"/><line x1="15" y1="5" x2="15" y2="8.5"/><line x1="9" y1="12" x2="9" y2="15.5"/><line x1="12" y1="12" x2="12" y2="15.5"/><line x1="15" y1="12" x2="15" y2="15.5"/>`,
+  storage: `<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="12" r="2"/><line x1="14" y1="10" x2="18" y2="10"/><line x1="14" y1="14" x2="18" y2="14"/>`,
+  cooler: `<circle cx="12" cy="12" r="9.5"/><path d="M12 12 15.8 6.6"/><path d="M12 12 6.3 9.3"/><path d="M12 12 13.1 18.8"/><circle cx="12" cy="12" r="1.6"/>`,
+  diagnosis: `<circle cx="12" cy="12" r="9.5"/><polyline points="7.5 12.5 10.5 15.5 16.5 8.5"/>`,
 };
 
 // Hand-authored "network" illustration for the homepage hero — replaces a
@@ -166,6 +173,112 @@ function renderTable(table) {
   return `<div class="table-wrap"><table><thead>${head}</thead><tbody>${rows}</tbody></table></div>`;
 }
 
+// Self-contained branching quiz widget (currently used only by the PC
+// diagnosis article). Pure vanilla JS, no build step, no external state —
+// answers only ever live in the visitor's own browser tab. Each step is a
+// set of big tappable cards; the result key is the selected values joined
+// with "_" (e.g. "gaming_amd"), looked up directly in quiz.results.
+function renderQuiz(quiz, productsMap) {
+  const uid = quiz.id || "quiz";
+  const stepsHtml = quiz.steps
+    .map((step, i) => {
+      const options = step.options
+        .map(
+          (opt) => `<button type="button" class="quiz-option" data-key="${escapeHtml(step.key)}" data-value="${escapeHtml(opt.value)}">
+        <span class="quiz-option-label">${escapeHtml(opt.label)}</span>
+        <span class="quiz-option-desc">${escapeHtml(opt.desc)}</span>
+      </button>`
+        )
+        .join("\n");
+      return `<div class="quiz-step" data-step-index="${i}"${i === 0 ? "" : " hidden"}>
+      <p class="quiz-step-count">STEP ${i + 1} / ${quiz.steps.length}</p>
+      <h3 class="quiz-question">${escapeHtml(step.question)}</h3>
+      <div class="quiz-options">${options}</div>
+    </div>`;
+    })
+    .join("\n");
+
+  const resultsHtml = Object.entries(quiz.results)
+    .map(([key, result]) => {
+      const cards = (result.products || []).map((asin) => renderProductCard(productsMap[asin])).join("\n");
+      const cardGrid = cards ? `<div class="card-grid">${cards}</div>` : "";
+      const link = result.link
+        ? `<p class="section-link"><a href="${result.link.href}">${escapeHtml(result.link.label)} →</a></p>`
+        : "";
+      const shareText = encodeURIComponent(result.shareText || result.title);
+      const shareUrl = `https://twitter.com/intent/tweet?text=${shareText}`;
+      return `<div class="quiz-result" data-result-key="${escapeHtml(key)}" hidden>
+      <p class="quiz-result-kicker">診断結果</p>
+      <h3 class="quiz-result-title">${escapeHtml(result.title)}</h3>
+      <p class="quiz-result-body">${result.body}</p>
+      ${cardGrid}
+      ${link}
+      <div class="quiz-result-actions">
+        <a class="btn-share" href="${shareUrl}" target="_blank" rel="noopener">${icon("review")}診断結果をXでシェア</a>
+        <button type="button" class="quiz-retry">もう一度診断する</button>
+      </div>
+    </div>`;
+    })
+    .join("\n");
+
+  const dots = quiz.steps.map((_, i) => `<span class="quiz-dot" data-dot-index="${i}"></span>`).join("");
+
+  return `<div class="quiz" id="${uid}" data-quiz>
+  <div class="quiz-progress">${dots}</div>
+  <div class="quiz-steps">${stepsHtml}</div>
+  <div class="quiz-results">${resultsHtml}</div>
+</div>
+<script>
+(function () {
+  var root = document.getElementById(${JSON.stringify(uid)});
+  if (!root) return;
+  var stepKeys = ${JSON.stringify(quiz.steps.map((s) => s.key))};
+  var answers = {};
+  var stepEls = root.querySelectorAll(".quiz-step");
+  var dotEls = root.querySelectorAll(".quiz-dot");
+  var resultEls = root.querySelectorAll(".quiz-result");
+
+  function showStep(index) {
+    stepEls.forEach(function (el) { el.hidden = Number(el.dataset.stepIndex) !== index; });
+    dotEls.forEach(function (el, i) { el.classList.toggle("is-active", i === index); });
+    root.querySelector(".quiz-results").hidden = true;
+    root.querySelector(".quiz-steps").hidden = false;
+  }
+
+  function showResult() {
+    var key = stepKeys.map(function (k) { return answers[k]; }).join("_");
+    root.querySelector(".quiz-steps").hidden = true;
+    var found = false;
+    resultEls.forEach(function (el) {
+      var match = el.dataset.resultKey === key;
+      el.hidden = !match;
+      if (match) found = true;
+    });
+    root.querySelector(".quiz-results").hidden = !found;
+    if (found) root.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  root.addEventListener("click", function (e) {
+    var opt = e.target.closest(".quiz-option");
+    if (opt) {
+      answers[opt.dataset.key] = opt.dataset.value;
+      var currentIndex = stepKeys.indexOf(opt.dataset.key);
+      if (currentIndex === stepKeys.length - 1) {
+        showResult();
+      } else {
+        showStep(currentIndex + 1);
+      }
+      return;
+    }
+    if (e.target.closest(".quiz-retry")) {
+      answers = {};
+      showStep(0);
+    }
+  });
+})();
+</script>`;
+}
+
 // Renders content blocks to HTML. h2 blocks get sequential ids and are
 // collected into a table-of-contents list returned alongside the HTML.
 function renderBody(blocks, productsMap) {
@@ -186,6 +299,7 @@ function renderBody(blocks, productsMap) {
         const cards = block.products.map((asin) => renderProductCard(productsMap[asin])).join("\n");
         return `<div class="card-grid">${cards}</div>`;
       }
+      if (block.quiz) return renderQuiz(block.quiz, productsMap);
       throw new Error(`Unknown content block: ${JSON.stringify(block)}`);
     })
     .join("\n");
@@ -400,7 +514,7 @@ function main() {
   // navigation to each section already exists in the header and chip row.
   // Each JP word is paired with its English kicker (reusing TYPE_LABEL_EN)
   // for the same quiet bilingual-editorial texture as the eyebrow tags.
-  const marqueeWords = ["ranking", "review", "compare", "guide"];
+  const marqueeWords = ["ranking", "review", "compare", "guide", "diagnosis"];
   const marqueeHtml = `<div class="marquee-band" aria-hidden="true">
   <div class="marquee-track">
     ${Array(3)
