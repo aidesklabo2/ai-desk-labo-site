@@ -6,7 +6,7 @@
     "price": 32538,
     "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、kakaku.com調べ)",
     "url": "https://www.amazon.co.jp/dp/B0DH88QC5B",
-    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/items",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394422416260",
     "pros": ["静電容量無接点方式で打鍵感が滑らか", "APC機能で各キーの反応位置を0.8〜3.0mmの範囲で調整可能(専用アプリREALFORCE CONNECT使用)", "テンキーレスで省スペース"],
     "cons": ["価格が高め", "タイピング音は完全な無音ではない"],
     "summary": "長時間タイピングする人向けの高級キーボード。Note本編レビュー記事のダイジェスト版。",
@@ -191,5 +191,77 @@
     "cons": ["2スロット占有・補助電源が必要でケース/電源要件を事前確認", "2026年はGPU全般が品薄・価格高騰気味で入手性は要確認"],
     "summary": "動画編集のVRAM要件を満たす、4K編集向けグラフィックボード。",
     "lastChecked": "2026-09-25"
+  },
+  {
+    "asin": "ROOM-CT009BK",
+    "name": "サンワダイレクト ケーブルトレー 200-CT009BK(クランプ式・デスク下収納)",
+    "category": "cable",
+    "price": 4230,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394418631176",
+    "pros": ["幅80/100/120cmに調整でき机のサイズに合わせやすい", "クランプ固定で穴あけ不要、耐荷重5kgのスチール製", "床置きの電源タップ・ケーブルをまとめて隠せて掃除しやすくなる"],
+    "cons": ["対応天板厚は0.5〜4.5cm、机の脚(筋交い)との干渉は事前の採寸が必要"],
+    "summary": "床置きの電源タップ・ケーブルを机下へ移して、足元をすっきりさせるケーブルトレー。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-A9129",
+    "name": "Anker Nano Charging Station (6-in-1, 67W)",
+    "category": "charger",
+    "price": 6990,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394418555233",
+    "pros": ["AC2口+USB-C2口+USB-A2口でMacBook・スマホ・イヤホンの充電を1つに集約", "約100×93×19mmとコンパクトで置き場所を取らない", "単ポートなら最大67Wで急速充電できる"],
+    "cons": ["複数ポート同時使用時は出力が分配され最大65Wになる", "充電ケーブルは別売"],
+    "summary": "MacBook・スマホ・イヤホンの充電場所を1つに集約できる多口充電ステーション。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-UGREEN65W",
+    "name": "UGREEN 65W GaN充電器(USB-C×2+USB-A×1)",
+    "category": "charger",
+    "price": 5480,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点、セール時は変動)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394422636219",
+    "pros": ["折りたたみ式プラグで持ち運びしやすい", "USB-C×2・USB-A×1で複数端末を同時充電できる", "GaN採用で本体サイズの割に高出力"],
+    "cons": ["同時接続時は出力が分配される", "抜き差しのタイミングで充電が一瞬途切れる場合がある"],
+    "summary": "MacBook・スマホ・イヤホンの充電器を1つにまとめたい人向けのGaN急速充電器。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-CIOFLATSPIRAL",
+    "name": "CIO Mate Flat Spiral Cable (USB-C to USB-C)",
+    "category": "cable",
+    "price": 1980,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点、長さにより変動)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394422483381",
+    "pros": ["ケーブル同士が磁力でくっつき、使わない長さを薄く巻いてまとめられる", "最大240W・PD3.1対応で高出力充電にも使える", "束ねるバンドが不要で机上が散らかりにくい"],
+    "cons": ["データ転送は最大480Mbpsに留まり映像出力には非対応"],
+    "summary": "余った長さを磁力でまとめられる、机上のケーブル整理用USB-Cケーブル。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-CIOSPIRAL",
+    "name": "CIO スパイラルシリコンケーブル(マグネットケーブル・USB-C to USB-C)",
+    "category": "cable",
+    "price": 2180,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点、長さにより変動)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394421272235",
+    "pros": ["シリコン製で柔らかく断線しにくい", "最大240W対応で高出力なMacBook等の充電にも使える", "マグネットでくるくるまとまり、机の上で邪魔になりにくい"],
+    "cons": ["映像出力には非対応(充電・データ用途中心)"],
+    "summary": "柔らかいシリコン素材でくるくるまとまる、断線しにくいUSB-Cケーブル。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-ANKER332HUB",
+    "name": "Anker 332 USB-Cハブ(5-in-1)",
+    "category": "charger",
+    "price": 2790,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点、セール時は変動)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394421350385",
+    "pros": ["HDMI(4K/30Hz)・USB-C・USB-A×2・PD入力を1台に集約", "MacBookの端子不足を持ち歩ける1台で補える", "データ転送は最大5Gbps"],
+    "cons": ["最大85Wのパススルー充電には100W対応の充電器・ケーブルが別途必要"],
+    "summary": "MacBookの端子不足を、持ち歩ける1台のUSB-Cハブで補う。",
+    "lastChecked": "2026-09-26"
   }
 ]
