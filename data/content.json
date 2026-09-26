@@ -56,101 +56,82 @@
   {
     "type": "diagnosis",
     "slug": "pc-builder",
-    "title": "自作PC診断 — あなたに最適な構成を2問で診断",
-    "description": "用途と好みを2つ選ぶだけで、AMD・Intel・Macのどれがあなたに向いているかを診断。おすすめパーツまでまとめて提案します。",
+    "title": "自作PC診断 — 6つの質問であなたの構成を診断",
+    "description": "用途・予算・使うソフト・Apple製品との連携・組み立てへの興味まで、6つの質問からAMD・Intel・Mac・完成品のどれが向いているかとフルパーツ構成を診断します。",
     "updated": "2026-09-27",
-    "products": ["B092L9GF5N", "B0CQ3WP67C", "B0BS8PRCYV", "B0C8BPW1SP", "B0D6NN87T8", "B0CS67885B", "B08G1Y95SZ", "B0F3DG1NVW", "B0CMPZMGVT"],
+    "products": ["B092L9GF5N", "B0CQ3WP67C", "B0BS8PRCYV", "B0C8BPW1SP", "B0D6NN87T8", "B0CS67885B", "B08G1Y95SZ", "B0F3DG1NVW", "B0CMPZMGVT", "B0DQPMJ6MJ", "B0DKT9JRF1", "B0795DP124", "B08C53LL9J", "B0C2B7W1W4", "B0DGKMQPYC", "B09NZB9Z9Z"],
     "body": [
-      {"p": "「自作PCって結局何を選べばいいの？」「そもそも自作すべき？Macでよくない？」——そんな疑問に、2つの質問だけで答える診断ツールです。用途と好みを選ぶと、AMD・Intel・Macのうちあなたに合う選択肢と、具体的なパーツ構成が表示されます。"},
+      {"p": "「結局何を選べばいいの？」「そもそも自作すべき？Macでよくない？」——この診断は、用途を1つに絞らせません。ゲームをしながら配信もする、その録画を動画編集もする、といった重なりも考慮したうえで、予算感・使うソフト・Apple製品との連携度合いまで含めた6つの質問から、CPUからケース・電源・グリスまでのフルパーツ構成を提案します。"},
       {
-        "quiz": {
+        "diagnosis": {
           "id": "pc-diagnosis",
-          "steps": [
+          "questions": [
             {
-              "key": "usecase",
-              "question": "何にPCを使いますか？",
+              "key": "usecases",
+              "type": "multi",
+              "question": "PCで何をしますか？(いくつでも選べます)",
               "options": [
-                {"value": "office", "label": "オフィス・AIチャット中心", "desc": "文章作成、Web閲覧、AIチャットがメイン"},
+                {"value": "office", "label": "オフィス・AIチャット", "desc": "文章作成、Web閲覧、AIチャット"},
+                {"value": "illustration", "label": "イラスト・AI画像生成", "desc": "板タブ・液タブでの制作、ローカルAI生成"},
                 {"value": "gaming", "label": "ゲーミング", "desc": "フルHDで高fps・快適に遊びたい"},
-                {"value": "video", "label": "動画編集・AI画像生成", "desc": "4K編集やイラスト制作も視野に入れたい"}
+                {"value": "streaming", "label": "ゲーム配信・実況", "desc": "プレイと同時に配信・録画もする"},
+                {"value": "video", "label": "動画編集", "desc": "4K編集、配信アーカイブの編集も含む"}
+              ]
+            },
+            {
+              "key": "budget",
+              "type": "single",
+              "question": "パーツ代の予算感は？(概算・目安です)",
+              "options": [
+                {"value": "10", "label": "〜10万円", "desc": "できるだけ安く組みたい"},
+                {"value": "15", "label": "10万〜15万円", "desc": "標準的な予算感"},
+                {"value": "20", "label": "15万〜20万円", "desc": "性能もそれなりに欲しい"},
+                {"value": "99", "label": "20万円以上・妥協したくない", "desc": "予算より性能を優先したい"}
+              ]
+            },
+            {
+              "key": "software",
+              "type": "single",
+              "question": "使う予定のソフトは？",
+              "options": [
+                {"value": "windows_only", "label": "Windows専用ソフトが必須", "desc": "特定のゲーム・業務ソフトなど"},
+                {"value": "mac_ok", "label": "Adobe・Final Cutなど、Mac対応ソフトで完結する", "desc": "クリエイティブ系ソフト中心"},
+                {"value": "either", "label": "特にこだわりはない・わからない", "desc": "どちらでも困らない"}
+              ]
+            },
+            {
+              "key": "ecosystem",
+              "type": "single",
+              "question": "普段iPhone・iPadなどApple製品をよく使いますか？",
+              "options": [
+                {"value": "yes", "label": "よく使う・素材のやり取りなど連携を活かしたい", "desc": "AirDropや写真同期を日常的に使う"},
+                {"value": "no", "label": "特に使っていない・気にしない", "desc": "Windows/Androidが中心"}
+              ]
+            },
+            {
+              "key": "effort",
+              "type": "single",
+              "question": "組み立てへの興味は？",
+              "options": [
+                {"value": "diy", "label": "自作を楽しみたい", "desc": "パーツ選び・組み立て自体が好き"},
+                {"value": "prebuilt", "label": "手間は省きたい、動けば十分", "desc": "完成品でも構わない"}
               ]
             },
             {
               "key": "platform",
-              "question": "PCへのこだわりは？",
+              "type": "single",
+              "question": "AMD・Intelへのこだわりは？(自作する場合)",
               "options": [
-                {"value": "amd", "label": "自作する(AMD Ryzen)", "desc": "コスパと将来のアップグレード性重視"},
-                {"value": "intel", "label": "自作する(Intel Core)", "desc": "定番・安定志向"},
-                {"value": "mac", "label": "できればMacがいい", "desc": "持ち運び・静音性・手間の少なさ重視"}
+                {"value": "amd", "label": "AMD(Ryzen)がいい", "desc": "コスパと将来のアップグレード性重視"},
+                {"value": "intel", "label": "Intel(Core)がいい", "desc": "定番・安定志向"},
+                {"value": "auto", "label": "おまかせ", "desc": "用途に合わせて自動で選んでほしい"}
               ]
             }
-          ],
-          "results": {
-            "office_amd": {
-              "title": "AMD Ryzen 5 5600Gで組む、コスパ最優先のオフィスPC",
-              "body": "グラフィックボードなしのAPU構成なら、書類作成・AIチャット・Web閲覧は十分快適。自作PCの中では最も低コストで組める部類です。",
-              "products": ["B092L9GF5N", "B08G1Y95SZ"],
-              "link": {"href": "../../guides/pc-build-office/", "label": "一般事務・軽作業編ガイドをフルパーツで見る"},
-              "shareText": "【AI Desk Labo診断】私に向いてるのは「AMD Ryzen 5 5600Gのオフィス自作PC」でした🖥️ #AIDeskLabo診断 #自作PC"
-            },
-            "office_intel": {
-              "title": "Intel Core i5-14400で組む、内蔵GPU搭載オフィスPC",
-              "body": "10コアのCore i5-14400は内蔵GPU搭載でグラフィックボード不要。AMD構成よりCPU価格は上がりますが、安定志向・Intel派ならこちらが選択肢になります。",
-              "products": ["B0CQ3WP67C", "B0CMPZMGVT"],
-              "link": {"href": "../../guides/pc-build-office/", "label": "一般事務・軽作業編ガイド(Intel構成)を見る"},
-              "shareText": "【AI Desk Labo診断】私に向いてるのは「Intel Core i5-14400のオフィス自作PC」でした🖥️ #AIDeskLabo診断 #自作PC"
-            },
-            "office_mac": {
-              "title": "自作PCより、MacBook Airという選択肢",
-              "body": "組み立ての手間なし、静音・省スペース・バッテリー持ちも良好。Windows専用ソフトを使わないなら、新品MacBook Airの方が合理的な場合があります。Apple公式サイトで最新構成を確認してみてください。",
-              "link": {"href": "../../guides/pc-build-office/", "label": "Mac vs 自作PCの判断基準を詳しく読む"},
-              "shareText": "【AI Desk Labo診断】私に向いてるのは「自作PCじゃなくMacBook Air」でした🍎 #AIDeskLabo診断 #Mac"
-            },
-            "gaming_amd": {
-              "title": "AMD Ryzen 5 7600 + RTX 4060で組む、フルHDゲーミングPC",
-              "body": "GPUを軸にCPUを合わせるのがゲーミングPCの基本。RTX 4060クラスならフルHD高設定・60fps以上が狙えます。AM5プラットフォームで将来のCPUアップグレードにも対応。",
-              "products": ["B0BS8PRCYV", "B0C8BPW1SP", "B0F3DG1NVW"],
-              "link": {"href": "../../guides/pc-build-gaming/", "label": "ゲーミング編ガイドをフルパーツで見る"},
-              "shareText": "【AI Desk Labo診断】私に向いてるのは「Ryzen 5 7600 + RTX 4060のゲーミングPC」でした🎮 #AIDeskLabo診断 #自作PC"
-            },
-            "gaming_intel": {
-              "title": "Intel Core i5-14400 + RTX 4060で組む、フルHDゲーミングPC",
-              "body": "IntelでもGPUを軸に考える方針は同じ。Core i5-14400 + RTX 4060クラスでフルHDゲーミングは十分成立します。DDR4対応マザーボードでメモリ予算を抑えられるのも利点です。",
-              "products": ["B0CQ3WP67C", "B0C8BPW1SP", "B0CMPZMGVT"],
-              "link": {"href": "../../guides/pc-build-gaming/", "label": "ゲーミング編ガイド(Intel構成)を見る"},
-              "shareText": "【AI Desk Labo診断】私に向いてるのは「Intel Core i5-14400 + RTX 4060のゲーミングPC」でした🎮 #AIDeskLabo診断 #自作PC"
-            },
-            "gaming_mac": {
-              "title": "正直に言うと、ゲーミングにMacは向きません",
-              "body": "AAAタイトルの多くがWindows前提で開発されており、Macでは遊べない・性能が出ないケースが多いのが実情です。本格的に遊びたいならAMDかIntelでの自作、または完成品ゲーミングPCをおすすめします。クラウドゲーミングという手もあります。",
-              "link": {"href": "../../guides/pc-build-gaming/", "label": "ゲーミング編ガイドで代替案を見る"},
-              "shareText": "【AI Desk Labo診断】ゲーミング用途にはMacは不向きと診断されました…素直にAMD/Intelで組みます🎮 #AIDeskLabo診断"
-            },
-            "video_amd": {
-              "title": "AMD Ryzen 9 9900X + RTX 4070 SUPERで組む、動画編集PC",
-              "body": "12コア24スレッドのRyzen 9 9900XとVRAM 12GB以上のRTX 4070 SUPERで、4Kマルチレイヤー編集にも余裕を持たせた構成。クーラー非同梱のため別途CPUクーラーが必要です。",
-              "products": ["B0D6NN87T8", "B0CS67885B", "B0F3DG1NVW"],
-              "link": {"href": "../../guides/pc-build-video-editing/", "label": "動画編集編ガイドをフルパーツで見る"},
-              "shareText": "【AI Desk Labo診断】私に向いてるのは「Ryzen 9 9900X + RTX 4070 SUPERの動画編集PC」でした🎬 #AIDeskLabo診断 #自作PC"
-            },
-            "video_intel": {
-              "title": "Intel構成で動画編集、ただし上位クラスの検討もおすすめ",
-              "body": "Core i5-14400 + B760マザーボードでも動画編集PCは組めますが、正直10コアクラスは本格的な4K編集にはやや力不足。予算が許せばCore i7以上のクラスを検討してください。",
-              "products": ["B0CQ3WP67C", "B0CMPZMGVT"],
-              "link": {"href": "../../guides/pc-build-video-editing/", "label": "動画編集編ガイド(Intel構成)を見る"},
-              "shareText": "【AI Desk Labo診断】動画編集用途、Intel構成だと上位CPUの検討もおすすめと診断されました🎬 #AIDeskLabo診断"
-            },
-            "video_mac": {
-              "title": "動画編集なら、MacBook Pro/Mac miniも正当な選択肢",
-              "body": "Apple Siliconのハードウェアエンコードは強力で、Premiere Pro・DaVinci Resolveも快適。統合メモリでVRAM不足に悩みにくく、静音性も自作デスクトップより優れる傾向があります。組み立てに興味がないなら有力候補です。",
-              "link": {"href": "../../guides/pc-build-video-editing/", "label": "Mac vs 自作PCの判断基準を詳しく読む"},
-              "shareText": "【AI Desk Labo診断】私に向いてるのは「MacBook Pro/Mac miniでの動画編集」でした🎬🍎 #AIDeskLabo診断 #Mac"
-            }
-          }
+          ]
         }
       },
       {"h2": "この診断の考え方"},
-      {"p": "用途に対して過剰なパーツを勧めないこと、Macの方が合理的な場面では正直にそう言うことを大事にしています。診断結果はあくまで出発点として、各ガイド記事で詳しい理由やパーツの選び方も確認してみてください。"}
+      {"p": "用途は1つに絞らず複数選択できるようにし、「ゲームをしながら配信し、その録画を動画編集する」といった重なりも考慮しています。予算に対して構成が過剰・不足していれば正直にそう伝え、マザーボード・メモリ・SSD・ケース・電源・グリスまで欠けのないパーツ一式を毎回提示します。Macをすすめる場合も、Apple製品との連携など具体的な理由がある時だけです。診断結果はあくまで出発点として、各ガイド記事で詳しい理由やパーツの選び方も確認してみてください。"}
     ]
   },
   {

@@ -173,105 +173,283 @@ function renderTable(table) {
   return `<div class="table-wrap"><table><thead>${head}</thead><tbody>${rows}</tbody></table></div>`;
 }
 
-// Self-contained branching quiz widget (currently used only by the PC
-// diagnosis article). Pure vanilla JS, no build step, no external state —
-// answers only ever live in the visitor's own browser tab. Each step is a
-// set of big tappable cards; the result key is the selected values joined
-// with "_" (e.g. "gaming_amd"), looked up directly in quiz.results.
-function renderQuiz(quiz, productsMap) {
-  const uid = quiz.id || "quiz";
-  const stepsHtml = quiz.steps
-    .map((step, i) => {
-      const options = step.options
+// Real Amazon ASINs used by the PC diagnosis rules engine (see
+// renderDiagnosis below). Kept as one table so every ASIN referenced by the
+// client-side scoring logic is guaranteed to exist in productsMap — the
+// build fails loudly (see the validation loop just below the table's use)
+// rather than shipping a diagnosis result that links to nothing.
+const DIAGNOSIS_CATALOG = {
+  cpuApuAmd: "B092L9GF5N", // Ryzen 5 5600G — AM4, no dGPU needed
+  cpuMidAmd: "B0BS8PRCYV", // Ryzen 5 7600 — AM5
+  cpuHighAmd: "B0D6NN87T8", // Ryzen 9 9900X — AM5, no bundled cooler
+  cpuIntel: "B0CQ3WP67C", // Core i5-14400 — LGA1700, only Intel SKU in catalog
+  moboAm4: "B08G1Y95SZ",
+  moboAm5: "B0F3DG1NVW",
+  moboIntel: "B0CMPZMGVT",
+  gpuMid: "B0C8BPW1SP", // RTX 4060
+  gpuHigh: "B0CS67885B", // RTX 4070 SUPER
+  ramDdr4: "B08C53LL9J", // 16GB(8GBx2)
+  ramDdr5: "B0C2B7W1W4", // 32GB(16GBx2)
+  storage: "B0DGKMQPYC",
+  case: "B0DQPMJ6MJ",
+  psu: "B0DKT9JRF1",
+  paste: "B0795DP124",
+  cooler: "B09NZB9Z9Z", // only needed with cpuHighAmd (no bundled cooler)
+};
+
+// Rules-based PC diagnosis engine. Unlike a simple answer-combination lookup
+// table, this asks several questions (some multi-select, since use cases
+// like "gaming" and "video editing" genuinely overlap — someone who streams
+// their gameplay and then edits the recording needs both) and computes a
+// full parts list — CPU *and* motherboard, RAM, storage, case, PSU, thermal
+// paste, cooler where needed — from real requirement rules, not a fixed
+// answer→result map. All scoring happens client-side in the visitor's own
+// browser; nothing is sent anywhere.
+function renderDiagnosis(diag, productsMap) {
+  const uid = diag.id || "diagnosis";
+  const catalogAsins = Object.values(DIAGNOSIS_CATALOG);
+  for (const asin of catalogAsins) {
+    if (!productsMap[asin]) throw new Error(`Diagnosis catalog references unknown product asin "${asin}"`);
+  }
+  // Every card the engine could ever show is pre-rendered server-side once;
+  // the client just picks which ASINs to reveal and injects the matching
+  // markup, instead of re-implementing card rendering in JS.
+  const cardsByAsin = {};
+  for (const asin of catalogAsins) cardsByAsin[asin] = renderProductCard(productsMap[asin]);
+  const pricesByAsin = {};
+  for (const asin of catalogAsins) pricesByAsin[asin] = productsMap[asin].price;
+
+  const stepsHtml = diag.questions
+    .map((q, i) => {
+      const options = q.options
         .map(
-          (opt) => `<button type="button" class="quiz-option" data-key="${escapeHtml(step.key)}" data-value="${escapeHtml(opt.value)}">
+          (opt) => `<button type="button" class="quiz-option" data-value="${escapeHtml(opt.value)}">
         <span class="quiz-option-label">${escapeHtml(opt.label)}</span>
         <span class="quiz-option-desc">${escapeHtml(opt.desc)}</span>
       </button>`
         )
         .join("\n");
-      return `<div class="quiz-step" data-step-index="${i}"${i === 0 ? "" : " hidden"}>
-      <p class="quiz-step-count">STEP ${i + 1} / ${quiz.steps.length}</p>
-      <h3 class="quiz-question">${escapeHtml(step.question)}</h3>
-      <div class="quiz-options">${options}</div>
+      const nextBtn = q.type === "multi" ? `<button type="button" class="quiz-next" disabled>次へ →</button>` : "";
+      return `<div class="quiz-step" data-step-index="${i}" data-key="${escapeHtml(q.key)}" data-type="${q.type}"${i === 0 ? "" : " hidden"}>
+      <p class="quiz-step-count">STEP ${i + 1} / ${diag.questions.length}</p>
+      <h3 class="quiz-question">${escapeHtml(q.question)}</h3>
+      <div class="quiz-options" data-multi="${q.type === "multi"}">${options}</div>
+      ${nextBtn}
     </div>`;
     })
     .join("\n");
 
-  const resultsHtml = Object.entries(quiz.results)
-    .map(([key, result]) => {
-      const cards = (result.products || []).map((asin) => renderProductCard(productsMap[asin])).join("\n");
-      const cardGrid = cards ? `<div class="card-grid">${cards}</div>` : "";
-      const link = result.link
-        ? `<p class="section-link"><a href="${result.link.href}">${escapeHtml(result.link.label)} →</a></p>`
-        : "";
-      const shareText = escapeHtml(result.shareText || result.title);
-      return `<div class="quiz-result" data-result-key="${escapeHtml(key)}" hidden>
-      <p class="quiz-result-kicker">診断結果</p>
-      <h3 class="quiz-result-title">${escapeHtml(result.title)}</h3>
-      <p class="quiz-result-body">${result.body}</p>
-      ${cardGrid}
-      ${link}
-      <div class="quiz-result-actions">
-        <button type="button" class="btn-share" data-share-text="${shareText}">${icon("review")}診断結果をXでシェア</button>
-        <button type="button" class="quiz-retry">もう一度診断する</button>
-      </div>
-    </div>`;
-    })
-    .join("\n");
-
-  const dots = quiz.steps.map((_, i) => `<span class="quiz-dot" data-dot-index="${i}"></span>`).join("");
+  const dots = diag.questions.map((_, i) => `<span class="quiz-dot" data-dot-index="${i}"></span>`).join("");
 
   return `<div class="quiz" id="${uid}" data-quiz>
   <div class="quiz-progress">${dots}</div>
   <div class="quiz-steps">${stepsHtml}</div>
-  <div class="quiz-results">${resultsHtml}</div>
+  <div class="quiz-results"></div>
 </div>
 <script>
 (function () {
   var root = document.getElementById(${JSON.stringify(uid)});
   if (!root) return;
-  var stepKeys = ${JSON.stringify(quiz.steps.map((s) => s.key))};
+  var CATALOG = ${JSON.stringify(DIAGNOSIS_CATALOG)};
+  var CARDS = ${JSON.stringify(cardsByAsin)};
+  var PRICES = ${JSON.stringify(pricesByAsin)};
+  var GUIDE_ROOT = "../../guides/";
+  var stepKeys = ${JSON.stringify(diag.questions.map((q) => q.key))};
+  var stepTypes = ${JSON.stringify(diag.questions.map((q) => q.type))};
   var answers = {};
   var stepEls = root.querySelectorAll(".quiz-step");
   var dotEls = root.querySelectorAll(".quiz-dot");
-  var resultEls = root.querySelectorAll(".quiz-result");
+  var resultsBox = root.querySelector(".quiz-results");
+
+  function yen(n) { return "\\u00a5" + n.toLocaleString("ja-JP"); }
 
   function showStep(index) {
     stepEls.forEach(function (el) { el.hidden = Number(el.dataset.stepIndex) !== index; });
     dotEls.forEach(function (el, i) { el.classList.toggle("is-active", i === index); });
-    root.querySelector(".quiz-results").hidden = true;
+    resultsBox.hidden = true;
     root.querySelector(".quiz-steps").hidden = false;
   }
 
+  // --- scoring: turn the 6 answers into a concrete parts list + copy ---
+  function compute() {
+    var usecases = answers.usecases || [];
+    if (!usecases.length) usecases = ["office"];
+    var hasOffice = usecases.indexOf("office") !== -1;
+    var hasIllustration = usecases.indexOf("illustration") !== -1;
+    var hasGaming = usecases.indexOf("gaming") !== -1;
+    var hasStreaming = usecases.indexOf("streaming") !== -1;
+    var hasVideo = usecases.indexOf("video") !== -1;
+    var heavyCount = (hasGaming ? 1 : 0) + (hasStreaming ? 1 : 0) + (hasVideo ? 1 : 0);
+
+    var gpuTier = 0; // 0 none, 1 mid(RTX4060), 2 high(RTX4070 SUPER)
+    var ramGB = 16;
+    var coreTier = "low"; // low(6-10 core) or high(12 core, Ryzen 9 9900X tier)
+    if (hasIllustration) gpuTier = Math.max(gpuTier, 1);
+    if (hasGaming) gpuTier = Math.max(gpuTier, 1);
+    if (hasStreaming) { coreTier = "high"; ramGB = Math.max(ramGB, 32); }
+    if (hasVideo) { gpuTier = Math.max(gpuTier, 2); coreTier = "high"; ramGB = Math.max(ramGB, 32); }
+    if (heavyCount >= 2) { ramGB = Math.max(ramGB, 32); coreTier = "high"; }
+    if (heavyCount >= 3) ramGB = 64;
+
+    var usecaseLabels = { office: "オフィス・AIチャット", illustration: "イラスト・AI画像生成", gaming: "ゲーミング", streaming: "ゲーム配信", video: "動画編集" };
+    var usecaseText = usecases.map(function (u) { return usecaseLabels[u]; }).join("・");
+
+    var software = answers.software;
+    var ecosystem = answers.ecosystem;
+    var effort = answers.effort;
+    var platformPref = answers.platform;
+
+    var macEligible = software !== "windows_only" && ecosystem === "yes" && !hasGaming;
+    var platform = macEligible ? "mac" : "windows";
+    var hybridNote = null;
+    if (!macEligible && software !== "windows_only" && ecosystem === "yes" && hasGaming) {
+      hybridNote = "普段Apple製品をよく使われるなら、ゲーム以外の作業は普段のMacに任せて、ゲーム専用機としてこのWindows構成を別に組む「2台持ち」も現実的な落としどころです。";
+    }
+
+    var title, paragraphs = [], asins = [], notes = [], guideLink = null, shareText;
+
+    if (platform === "mac") {
+      title = "自作PCより、Macという選択肢";
+      var reasons = [];
+      reasons.push("普段からiPhone・iPadなどApple製品をよく使っていて連携を活かしたいとのことなので、AirDropや写真・ファイルのやり取りの一貫性を考えるとMacが合理的です。");
+      if (hasVideo) reasons.push("動画編集も選んでいるので、Apple SiliconのハードウェアエンコードはPremiere Pro・DaVinci Resolveでも強力に効きます。統合メモリでVRAM不足にも悩みにくい構成です。");
+      if (hasIllustration) reasons.push("iPadとの連携で、イラスト制作の素材受け渡しもスムーズになります。");
+      if (hasOffice && !hasVideo && !hasIllustration) reasons.push("オフィス・AIチャット中心の使い方なら、組み立ての手間がない分MacBook Airで十分快適です。");
+      if (software === "mac_ok") reasons.push("使う予定のソフトもMac対応で完結するとのことなので、無理にWindowsを選ぶ理由もありません。");
+      paragraphs = reasons;
+      notes.push("Apple公式サイトまたはAmazonで最新のMacBook Air/Pro構成を確認してみてください。");
+      shareText = "\\u3010AI Desk Labo\\u8a3a\\u65ad\\u3011\\u79c1\\u306b\\u5411\\u3044\\u3066\\u308b\\u306e\\u306f\\u300cMac\\u300d\\u3067\\u3057\\u305f\\ud83c\\udf4e #AIDeskLabo\\u8a3a\\u65ad #Mac";
+    } else {
+      var windowsPlatform = platformPref === "intel" ? "intel" : "amd";
+      var cpuAsin, moboAsin, ramAsin, needsCooler = false;
+      if (windowsPlatform === "intel") {
+        cpuAsin = CATALOG.cpuIntel;
+        moboAsin = CATALOG.moboIntel;
+        ramAsin = CATALOG.ramDdr4;
+      } else {
+        ramAsin = CATALOG.ramDdr5;
+        if (coreTier === "high") { cpuAsin = CATALOG.cpuHighAmd; moboAsin = CATALOG.moboAm5; needsCooler = true; }
+        else if (gpuTier >= 1) { cpuAsin = CATALOG.cpuMidAmd; moboAsin = CATALOG.moboAm5; }
+        else { cpuAsin = CATALOG.cpuApuAmd; moboAsin = CATALOG.moboAm4; ramAsin = CATALOG.ramDdr4; }
+      }
+      var gpuAsin = gpuTier === 2 ? CATALOG.gpuHigh : gpuTier === 1 ? CATALOG.gpuMid : null;
+      var platformLabel = windowsPlatform === "intel" ? "Intel" : "AMD";
+
+      title = platformLabel + "構成で組む、" + usecaseText + "PC";
+      paragraphs.push("選んだ用途(" + usecaseText + ")をもとに、CPUのコア数・GPUの有無・メモリ容量を決めています。");
+      if (gpuTier === 0) paragraphs.push("グラフィックボードなしのAPU/内蔵GPU構成で十分なので、最もコストを抑えたパターンにしました。");
+      else if (gpuTier === 1) paragraphs.push("フルHD高設定・60fps以上を狙えるミドルクラスのGPUを組み合わせています。");
+      else paragraphs.push("動画編集・高負荷な配信も見据えて、VRAM 12GB以上のGPUを選定しました。");
+      if (coreTier === "high") paragraphs.push(heavyCount >= 2 ? "複数の用途を同時にこなす想定なので、コア数の多いCPUとメモリ" + ramGB + "GBを確保しています。" : "動画編集のエンコード・書き出しを考慮して、コア数の多いCPUにしています。");
+      if (windowsPlatform === "intel" && (coreTier === "high" || gpuTier === 2)) notes.push("正直に言うと、10コアクラスのCore i5-14400は本格的な4K編集・重い配信にはやや力不足です。予算が許せばCore i7以上のクラスを検討してください。");
+      if (hasVideo) notes.push("動画編集は素材量が多くなりがちです。1TB SSDで不足する場合は2TBモデルや外付けSSDの追加も検討してください。");
+      if (hybridNote) notes.push(hybridNote);
+
+      if (effort === "prebuilt") {
+        notes.unshift("組み立てには興味がないとのことなので、無理に自作はすすめません。下記のCPU・GPUクラスを目安のスペックとして、完成品・BTOパソコンを探すと今回の診断に近い性能で失敗しにくいです。");
+        asins = gpuAsin ? [cpuAsin, gpuAsin] : [cpuAsin];
+        guideLink = null;
+      } else {
+        asins.push(cpuAsin);
+        if (gpuAsin) asins.push(gpuAsin);
+        asins.push(moboAsin);
+        asins.push(ramAsin);
+        var ramKitGB = ramAsin === CATALOG.ramDdr5 ? 32 : 16;
+        if (ramGB > ramKitGB) notes.push("メモリは" + ramGB + "GB以上を推奨。掲載の" + ramKitGB + "GBキットを2セット使うと" + (ramKitGB * 2) + "GBになります。");
+        asins.push(CATALOG.storage);
+        asins.push(CATALOG.case);
+        asins.push(CATALOG.psu);
+        asins.push(CATALOG.paste);
+        if (needsCooler) asins.push(CATALOG.cooler);
+
+        var total = asins.reduce(function (sum, a) { return sum + (PRICES[a] || 0); }, 0);
+        var budgetMap = { "10": 100000, "15": 150000, "20": 200000, "99": Infinity };
+        var budgetLabelMap = { "10": "\\uff5e10\\u4e07\\u5186", "15": "10\\u4e07\\uff5e15\\u4e07\\u5186", "20": "15\\u4e07\\uff5e20\\u4e07\\u5186", "99": "20\\u4e07\\u5186\\u4ee5\\u4e0a" };
+        var ceil = budgetMap[answers.budget];
+        var budgetLabel = budgetLabelMap[answers.budget];
+        if (ceil !== undefined) {
+          if (ceil !== Infinity && total > ceil * 1.1) {
+            notes.push("この構成の目安は約" + yen(total) + "。予算(" + budgetLabel + ")に対して約" + yen(total - ceil) + "オーバーしています。GPUのランクを下げる、またはメモリ容量を抑えると予算内に収まりやすくなります。");
+          } else if (ceil !== Infinity && total < ceil * 0.7) {
+            notes.push("この構成の目安は約" + yen(total) + "。予算(" + budgetLabel + ")にはまだ余裕があるので、GPUやメモリを一段階上げる余地があります。");
+          } else {
+            notes.push("この構成の目安は約" + yen(total) + "。予算(" + budgetLabel + ")の範囲に収まっています。");
+          }
+        }
+        var guideSlug = hasVideo && heavyCount >= 2 ? "pc-build-video-editing" : hasVideo ? "pc-build-video-editing" : hasGaming || hasStreaming ? "pc-build-gaming" : "pc-build-office";
+        guideLink = { href: GUIDE_ROOT + guideSlug + "/", label: "詳しい解説をガイド記事で読む" };
+      }
+      shareText = "\\u3010AI Desk Labo\\u8a3a\\u65ad\\u3011\\u79c1\\u306b\\u5411\\u3044\\u3066\\u308b\\u306e\\u306f\\u300c" + platformLabel + "\\u69cb\\u6210\\u306e" + usecaseText + "PC\\u300d\\u3067\\u3057\\u305f\\ud83d\\udda5\\ufe0f #AIDeskLabo\\u8a3a\\u65ad #\\u81ea\\u4f5cPC";
+    }
+
+    return { title: title, paragraphs: paragraphs, notes: notes, asins: asins, guideLink: guideLink, shareText: shareText };
+  }
+
+  function escapeText(s) {
+    var div = document.createElement("div");
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
   function showResult() {
-    var key = stepKeys.map(function (k) { return answers[k]; }).join("_");
     root.querySelector(".quiz-steps").hidden = true;
-    var found = false;
-    resultEls.forEach(function (el) {
-      var match = el.dataset.resultKey === key;
-      el.hidden = !match;
-      if (match) found = true;
-    });
-    root.querySelector(".quiz-results").hidden = !found;
-    if (found) root.scrollIntoView({ behavior: "smooth", block: "start" });
+    var r = compute();
+    var html = "";
+    html += '<p class="quiz-result-kicker">\\u8a3a\\u65ad\\u7d50\\u679c</p>';
+    html += '<h3 class="quiz-result-title">' + escapeText(r.title) + "</h3>";
+    r.paragraphs.forEach(function (p) { html += '<p class="quiz-result-body">' + escapeText(p) + "</p>"; });
+    if (r.asins.length) {
+      html += '<div class="card-grid">';
+      r.asins.forEach(function (a) { html += CARDS[a] || ""; });
+      html += "</div>";
+    }
+    r.notes.forEach(function (n) { html += '<p class="quiz-result-note">' + escapeText(n) + "</p>"; });
+    if (r.guideLink) html += '<p class="section-link"><a href="' + r.guideLink.href + '">' + escapeText(r.guideLink.label) + " \\u2192</a></p>";
+    html += '<div class="quiz-result-actions">';
+    html += '<button type="button" class="btn-share" data-share-text="' + escapeText(r.shareText) + '">' + ${JSON.stringify(icon("review"))} + "\\u8a3a\\u65ad\\u7d50\\u679c\\u3092X\\u3067\\u30b7\\u30a7\\u30a2</button>";
+    html += '<button type="button" class="quiz-retry">\\u3082\\u3046\\u4e00\\u5ea6\\u8a3a\\u65ad\\u3059\\u308b</button>';
+    html += "</div>";
+    resultsBox.innerHTML = html;
+    resultsBox.hidden = false;
+    root.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function goToStep(currentIndex) {
+    if (currentIndex === stepKeys.length - 1) showResult();
+    else showStep(currentIndex + 1);
   }
 
   root.addEventListener("click", function (e) {
     var opt = e.target.closest(".quiz-option");
     if (opt) {
-      answers[opt.dataset.key] = opt.dataset.value;
-      var currentIndex = stepKeys.indexOf(opt.dataset.key);
-      if (currentIndex === stepKeys.length - 1) {
-        showResult();
+      var stepEl = opt.closest(".quiz-step");
+      var key = stepEl.dataset.key;
+      var type = stepEl.dataset.type;
+      var currentIndex = stepKeys.indexOf(key);
+      if (type === "multi") {
+        opt.classList.toggle("is-selected");
+        var selected = Array.prototype.slice.call(stepEl.querySelectorAll(".quiz-option.is-selected")).map(function (el) { return el.dataset.value; });
+        answers[key] = selected;
+        var nextBtn = stepEl.querySelector(".quiz-next");
+        if (nextBtn) nextBtn.disabled = selected.length === 0;
       } else {
-        showStep(currentIndex + 1);
+        answers[key] = opt.dataset.value;
+        goToStep(currentIndex);
       }
+      return;
+    }
+    var nextBtn2 = e.target.closest(".quiz-next");
+    if (nextBtn2) {
+      var stepEl2 = nextBtn2.closest(".quiz-step");
+      goToStep(stepKeys.indexOf(stepEl2.dataset.key));
       return;
     }
     if (e.target.closest(".quiz-retry")) {
       answers = {};
+      root.querySelectorAll(".quiz-option.is-selected").forEach(function (el) { el.classList.remove("is-selected"); });
+      root.querySelectorAll(".quiz-next").forEach(function (el) { el.disabled = true; });
       showStep(0);
+      return;
     }
     var shareBtn = e.target.closest(".btn-share");
     if (shareBtn) {
@@ -304,7 +482,7 @@ function renderBody(blocks, productsMap) {
         const cards = block.products.map((asin) => renderProductCard(productsMap[asin])).join("\n");
         return `<div class="card-grid">${cards}</div>`;
       }
-      if (block.quiz) return renderQuiz(block.quiz, productsMap);
+      if (block.diagnosis) return renderDiagnosis(block.diagnosis, productsMap);
       throw new Error(`Unknown content block: ${JSON.stringify(block)}`);
     })
     .join("\n");
