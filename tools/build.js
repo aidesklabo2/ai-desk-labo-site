@@ -267,7 +267,7 @@ function main() {
   const marqueeWords = ["ランキング", "レビュー", "比較", "ガイド"];
   const marqueeHtml = `<div class="marquee-band" aria-hidden="true">
   <div class="marquee-track">
-    ${Array(3).fill(marqueeWords.map((w, i) => `<span class="${i % 2 ? "outline" : ""}">${w}</span><span class="dot">◆</span>`).join("\n")).join("\n")}
+    ${Array(3).fill(marqueeWords.map((w, i) => `<span class="${i % 2 ? "accent" : ""}">${w}</span><span class="dot">◆</span>`).join("\n")).join("\n")}
   </div>
 </div>`;
 

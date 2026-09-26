@@ -213,9 +213,9 @@
   if (heroCanvas && heroCanvas.getContext && !reduceMotion) {
     var ctx = heroCanvas.getContext("2d");
     var blobs = [
-      { x: 0.26, y: 0.32, r: 0.3, color: "239,154,61" },
-      { x: 0.74, y: 0.62, r: 0.26, color: "57,135,229" },
-      { x: 0.56, y: 0.18, r: 0.19, color: "203,255,77" },
+      { x: 0.26, y: 0.32, r: 0.3, color: "179,86,15" },
+      { x: 0.74, y: 0.62, r: 0.26, color: "18,17,15" },
+      { x: 0.56, y: 0.18, r: 0.19, color: "18,17,15" },
     ];
     var canvasRunning = false;
     var resizeCanvas = function () {
@@ -234,7 +234,7 @@
         var cy = (b.y + Math.cos(frame * 0.0026 + i * 2) * 0.09) * h;
         var r = b.r * Math.max(w, h);
         var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
-        grad.addColorStop(0, "rgba(" + b.color + ",0.55)");
+        grad.addColorStop(0, "rgba(" + b.color + ",0.16)");
         grad.addColorStop(1, "rgba(" + b.color + ",0)");
         ctx.fillStyle = grad;
         ctx.beginPath();
