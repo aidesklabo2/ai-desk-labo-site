@@ -379,6 +379,28 @@
     }
   }
 
+  // Hero network illustration: subtle pointer-parallax on the SVG group.
+  // The idle float (CSS keyframe) and the entrance draw (CSS on the SVG's
+  // own children) live on separate elements, so this inline transform can
+  // never fight either of them.
+  var heroSection = document.querySelector(".hero");
+  var heroIllustration = document.querySelector(".hero-illustration");
+  if (heroSection && heroIllustration && isFinePointer && !reduceMotion) {
+    heroSection.addEventListener(
+      "pointermove",
+      function (e) {
+        var rect = heroSection.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width - 0.5;
+        var py = (e.clientY - rect.top) / rect.height - 0.5;
+        heroIllustration.style.transform = "translate(" + (px * -16).toFixed(1) + "px," + (py * -12).toFixed(1) + "px)";
+      },
+      { passive: true }
+    );
+    heroSection.addEventListener("pointerleave", function () {
+      heroIllustration.style.transform = "";
+    });
+  }
+
   // Card / showcase-card tilt + spotlight: a fine pointer tilts the card in
   // 3D toward the cursor (inline transform, so it simply overrides the
   // plain CSS :hover lift while active) and drives the existing --mx/--my

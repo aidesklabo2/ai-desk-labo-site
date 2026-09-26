@@ -43,6 +43,46 @@ const ICONS = {
   macropad: `<rect x="3" y="3" width="18" height="18" rx="2"/><rect x="6" y="6" width="4.5" height="4.5" rx="1"/><rect x="13.5" y="6" width="4.5" height="4.5" rx="1"/><rect x="6" y="13.5" width="4.5" height="4.5" rx="1"/><rect x="13.5" y="13.5" width="4.5" height="4.5" rx="1"/>`,
 };
 
+// Hand-authored "network" illustration for the homepage hero — replaces a
+// stock photo with an SVG scene in the same line-icon language as ICONS
+// above (currentColor strokes, no external asset). site.js/style.css drive
+// the entrance draw and idle float; this is purely the static markup.
+const HERO_NETWORK_SVG = `<svg class="net" viewBox="0 0 440 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g class="net-edges" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+    <line x1="55" y1="115" x2="130" y2="55"/>
+    <line x1="130" y1="55" x2="225" y2="35"/>
+    <line x1="225" y1="35" x2="325" y2="60"/>
+    <line x1="325" y1="60" x2="395" y2="140"/>
+    <line x1="395" y1="140" x2="385" y2="245"/>
+    <line x1="385" y1="245" x2="310" y2="325"/>
+    <line x1="310" y1="325" x2="205" y2="355"/>
+    <line x1="205" y1="355" x2="100" y2="300"/>
+    <line x1="100" y1="300" x2="35" y2="195"/>
+    <line x1="35" y1="195" x2="55" y2="115"/>
+    <line x1="225" y1="35" x2="220" y2="166"/>
+    <line x1="395" y1="140" x2="244" y2="190"/>
+    <line x1="205" y1="355" x2="220" y2="214"/>
+    <line x1="35" y1="195" x2="196" y2="190"/>
+  </g>
+  <rect class="net-hub" x="196" y="166" width="48" height="48" rx="12" stroke-width="2"/>
+  <g class="net-hub-mark" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+    <line x1="220" y1="178" x2="220" y2="202"/>
+    <line x1="208" y1="190" x2="232" y2="190"/>
+  </g>
+  <g class="net-nodes">
+    <circle cx="55" cy="115" r="5"/>
+    <circle cx="130" cy="55" r="4"/>
+    <circle cx="225" cy="35" r="5.5"/>
+    <circle cx="325" cy="60" r="4"/>
+    <circle class="accent" cx="395" cy="140" r="6.5"/>
+    <circle cx="385" cy="245" r="4"/>
+    <circle cx="310" cy="325" r="5"/>
+    <circle class="accent" cx="205" cy="355" r="6"/>
+    <circle cx="100" cy="300" r="4.5"/>
+    <circle cx="35" cy="195" r="5"/>
+  </g>
+</svg>`;
+
 function icon(name, extraAttrs = "") {
   const body = ICONS[name];
   if (!body) throw new Error(`Unknown icon "${name}"`);
@@ -86,8 +126,9 @@ function escapeHtml(str) {
   return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-function section(innerHtml, { tint = false, reveal = true } = {}) {
-  return `<section class="section${tint ? " tint" : ""}"${reveal ? ' data-reveal=""' : ""}><div class="wrap">${innerHtml}</div></section>`;
+function section(innerHtml, { tint = false, invert = false, reveal = true } = {}) {
+  const variant = invert ? " invert" : tint ? " tint" : "";
+  return `<section class="section${variant}"${reveal ? ' data-reveal=""' : ""}><div class="wrap">${innerHtml}</div></section>`;
 }
 
 // Block bodies are allowed a small set of inline tags (e.g. <a href>) written
@@ -286,24 +327,59 @@ function main() {
   const heroHtml = `<section class="hero">
   <canvas class="hero-canvas" aria-hidden="true"></canvas>
   <div class="wrap">
-    <p class="eyebrow">AI × ガジェット比較メディア</p>
-    <h1>
-      <span class="split-line"><span>AIと過ごす毎日を、</span></span>
-      <span class="split-line"><span>もっと快適にする</span></span>
-      <span class="split-line"><span class="grad">モノを選ぶ。</span></span>
-    </h1>
-    <p class="lede">実際に使い倒したAIツールとガジェットだけを、比較・ランキング・レビュー形式でまとめています。</p>
-    <div class="stat-row">
-      <div class="stat"><span class="num" data-count-to="${nonStatic.length}">0</span><span class="label">掲載記事</span></div>
-      <div class="stat"><span class="num" data-count-to="${products.length}">0</span><span class="label">掲載商品</span></div>
-      <div class="stat"><span class="num" data-count-to="${categoryCount}">0</span><span class="label">カテゴリ</span></div>
-    </div>
-    <div class="chip-row">
-      ${Object.entries(FOLDER_BY_TYPE).map(([type, folder]) => `<a class="chip" href="${folder}/">${icon(type)}${TYPE_LABEL_JA[type]}</a>`).join("\n")}
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="eyebrow">AI × ガジェット比較メディア</p>
+        <h1>
+          <span class="split-line"><span>AIと過ごす毎日を、</span></span>
+          <span class="split-line"><span>もっと快適にする</span></span>
+          <span class="split-line"><span class="grad">モノを選ぶ。</span></span>
+        </h1>
+        <p class="lede">実際に使い倒したAIツールとガジェットだけを、比較・ランキング・レビュー形式でまとめています。</p>
+        <div class="stat-row">
+          <div class="stat"><span class="num" data-count-to="${nonStatic.length}">0</span><span class="label">掲載記事</span></div>
+          <div class="stat"><span class="num" data-count-to="${products.length}">0</span><span class="label">掲載商品</span></div>
+          <div class="stat"><span class="num" data-count-to="${categoryCount}">0</span><span class="label">カテゴリ</span></div>
+        </div>
+        <div class="chip-row">
+          ${Object.entries(FOLDER_BY_TYPE).map(([type, folder]) => `<a class="chip" href="${folder}/">${icon(type)}${TYPE_LABEL_JA[type]}</a>`).join("\n")}
+        </div>
+      </div>
+      <div class="hero-illustration" aria-hidden="true">
+        <div class="hero-illustration-float">${HERO_NETWORK_SVG}</div>
+      </div>
     </div>
   </div>
   <div class="scroll-cue" aria-hidden="true"><span class="cue-line"></span>SCROLL</div>
 </section>`;
+
+  // Dark "pillars" band — the one deliberate inverted-color section on the
+  // homepage, giving the otherwise all-white page a contrast beat without
+  // needing a photograph.
+  const pillarsHtml = section(
+    `<div class="section-head"><p class="eyebrow">Our Standard</p><h2>AI Desk Laboが大事にしていること</h2></div>
+    <div class="pillar-grid">
+      <div class="pillar">
+        <span class="pillar-index">01</span>
+        ${iconBadge("review", "orange")}
+        <h3>実機検証してから書く</h3>
+        <p>気になった製品はまず購入・使用し、実際に触ってみた上での良い点・気になる点だけを記事にしています。</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-index">02</span>
+        ${iconBadge("ranking", "blue")}
+        <h3>価格の変動まで追跡</h3>
+        <p>掲載して終わりにせず、価格や仕様が変わっていないか定期的に見直し、最終更新日を明記しています。</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-index">03</span>
+        ${iconBadge("guide", "green")}
+        <h3>初心者目線でわかりやすく</h3>
+        <p>専門用語はできるだけ避け、AIやガジェットに詳しくない人でも選び方が分かる説明を心がけています。</p>
+      </div>
+    </div>`,
+    { invert: true }
+  );
 
   // Full-bleed kinetic-type band — decorative only (aria-hidden), real
   // navigation to each section already exists in the header and chip row.
@@ -346,7 +422,7 @@ function main() {
     description: "AIツールとガジェットの実体験レビュー・比較・ランキングを発信するAI Desk Labo公式サイト。",
     canonical: `${SITE_ORIGIN}/`,
     root: "",
-    bodyHtml: heroHtml + marqueeHtml + budgetHtml + showcaseHtml + latestHtml,
+    bodyHtml: heroHtml + marqueeHtml + budgetHtml + showcaseHtml + pillarsHtml + latestHtml,
     intro: HOME_INTRO,
   }));
   sitemapUrls.unshift({ loc: `${SITE_ORIGIN}/` });

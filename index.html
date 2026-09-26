@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://aidesklabo.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M4L5M94YCB"></script>
@@ -50,23 +50,64 @@
 <section class="hero">
   <canvas class="hero-canvas" aria-hidden="true"></canvas>
   <div class="wrap">
-    <p class="eyebrow">AI × ガジェット比較メディア</p>
-    <h1>
-      <span class="split-line"><span>AIと過ごす毎日を、</span></span>
-      <span class="split-line"><span>もっと快適にする</span></span>
-      <span class="split-line"><span class="grad">モノを選ぶ。</span></span>
-    </h1>
-    <p class="lede">実際に使い倒したAIツールとガジェットだけを、比較・ランキング・レビュー形式でまとめています。</p>
-    <div class="stat-row">
-      <div class="stat"><span class="num" data-count-to="17">0</span><span class="label">掲載記事</span></div>
-      <div class="stat"><span class="num" data-count-to="33">0</span><span class="label">掲載商品</span></div>
-      <div class="stat"><span class="num" data-count-to="17">0</span><span class="label">カテゴリ</span></div>
-    </div>
-    <div class="chip-row">
-      <a class="chip" href="reviews/"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><polygon points="12 2.5 14.7 8.8 21.5 9.4 16.3 13.9 17.9 20.6 12 17 6.1 20.6 7.7 13.9 2.5 9.4 9.3 8.8"/></svg>レビュー</a>
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="eyebrow">AI × ガジェット比較メディア</p>
+        <h1>
+          <span class="split-line"><span>AIと過ごす毎日を、</span></span>
+          <span class="split-line"><span>もっと快適にする</span></span>
+          <span class="split-line"><span class="grad">モノを選ぶ。</span></span>
+        </h1>
+        <p class="lede">実際に使い倒したAIツールとガジェットだけを、比較・ランキング・レビュー形式でまとめています。</p>
+        <div class="stat-row">
+          <div class="stat"><span class="num" data-count-to="17">0</span><span class="label">掲載記事</span></div>
+          <div class="stat"><span class="num" data-count-to="33">0</span><span class="label">掲載商品</span></div>
+          <div class="stat"><span class="num" data-count-to="17">0</span><span class="label">カテゴリ</span></div>
+        </div>
+        <div class="chip-row">
+          <a class="chip" href="reviews/"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><polygon points="12 2.5 14.7 8.8 21.5 9.4 16.3 13.9 17.9 20.6 12 17 6.1 20.6 7.7 13.9 2.5 9.4 9.3 8.8"/></svg>レビュー</a>
 <a class="chip" href="rankings/"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><line x1="4" y1="21" x2="4" y2="13"/><line x1="10" y1="21" x2="10" y2="6"/><line x1="16" y1="21" x2="16" y2="16"/><line x1="21" y1="21" x2="21" y2="10"/></svg>ランキング</a>
 <a class="chip" href="compare/"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="4" width="7" height="17" rx="1.5"/><rect x="14" y="4" width="7" height="17" rx="1.5"/></svg>比較</a>
 <a class="chip" href="guides/"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8.5" y1="7" x2="15.5" y2="7"/><line x1="8.5" y1="11" x2="15.5" y2="11"/></svg>ガイド</a>
+        </div>
+      </div>
+      <div class="hero-illustration" aria-hidden="true">
+        <div class="hero-illustration-float"><svg class="net" viewBox="0 0 440 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g class="net-edges" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+    <line x1="55" y1="115" x2="130" y2="55"/>
+    <line x1="130" y1="55" x2="225" y2="35"/>
+    <line x1="225" y1="35" x2="325" y2="60"/>
+    <line x1="325" y1="60" x2="395" y2="140"/>
+    <line x1="395" y1="140" x2="385" y2="245"/>
+    <line x1="385" y1="245" x2="310" y2="325"/>
+    <line x1="310" y1="325" x2="205" y2="355"/>
+    <line x1="205" y1="355" x2="100" y2="300"/>
+    <line x1="100" y1="300" x2="35" y2="195"/>
+    <line x1="35" y1="195" x2="55" y2="115"/>
+    <line x1="225" y1="35" x2="220" y2="166"/>
+    <line x1="395" y1="140" x2="244" y2="190"/>
+    <line x1="205" y1="355" x2="220" y2="214"/>
+    <line x1="35" y1="195" x2="196" y2="190"/>
+  </g>
+  <rect class="net-hub" x="196" y="166" width="48" height="48" rx="12" stroke-width="2"/>
+  <g class="net-hub-mark" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+    <line x1="220" y1="178" x2="220" y2="202"/>
+    <line x1="208" y1="190" x2="232" y2="190"/>
+  </g>
+  <g class="net-nodes">
+    <circle cx="55" cy="115" r="5"/>
+    <circle cx="130" cy="55" r="4"/>
+    <circle cx="225" cy="35" r="5.5"/>
+    <circle cx="325" cy="60" r="4"/>
+    <circle class="accent" cx="395" cy="140" r="6.5"/>
+    <circle cx="385" cy="245" r="4"/>
+    <circle cx="310" cy="325" r="5"/>
+    <circle class="accent" cx="205" cy="355" r="6"/>
+    <circle cx="100" cy="300" r="4.5"/>
+    <circle cx="35" cy="195" r="5"/>
+  </g>
+</svg></div>
+      </div>
     </div>
   </div>
   <div class="scroll-cue" aria-hidden="true"><span class="cue-line"></span>SCROLL</div>
@@ -96,10 +137,10 @@
 </div>
 <div class="card">
   <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 18h16"/><path d="M7.5 18 9.5 8h5l2 10"/><line x1="9" y1="13" x2="15" y2="13"/></svg></span><span class="badge green">stand</span></div>
-  <h3>MOFT ノートパソコンスタンド (2段階調整・Jet Black)</h3>
+  <h3>MOFT AirFlow ノートパソコンスタンド (2段階調整)</h3>
   <p class="price"><span class="num-mono">¥3,480</span>実勢価格帯の目安・変動あり(2026年8月時点)</p>
   <p>カフェや外出先でもAI作業をする人向けの、超薄型・軽量ノートPCスタンド。</p>
-  <ul><li>◎ 3mm・約89gの極薄軽量設計で持ち運びやすい</li><li>◎ 15°/25°の2段階角度調整</li><li>◎ 粘着式でPC背面に直接貼り付けて使える</li><li>△ 対応は15.6インチまでとやや小さめのPC向け</li><li>△ 粘着面は汚れると粘着力が落ちることがある</li></ul>
+  <ul><li>◎ 厚さ約2.5mm・約65gの薄型軽量設計で持ち運びやすい</li><li>◎ 15°/25°の2段階角度調整</li><li>◎ 粘着式でPC背面に直接貼り付けて使える</li><li>△ 貼り付け位置によって安定感が変わり、打鍵時に揺れを感じる場合がある</li><li>△ 粘着面は汚れると粘着力が落ちることがある</li></ul>
   <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0B15B32NV?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
 </div>
 <div class="card">
@@ -143,7 +184,27 @@
     <p class="price">¥3,480</p>
     <p>初めてモニターアームを試す人向けの、価格と実用性のバランスが良いモデル。</p>
     <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0CQXMT3QC?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
-  </div></div></div></div></section><section class="section tint" data-reveal=""><div class="wrap"><div class="section-head"><p class="eyebrow">Latest</p><h2>最新の記事</h2></div><div class="card-grid bento"><div class="card index-card">
+  </div></div></div></div></section><section class="section invert" data-reveal=""><div class="wrap"><div class="section-head"><p class="eyebrow">Our Standard</p><h2>AI Desk Laboが大事にしていること</h2></div>
+    <div class="pillar-grid">
+      <div class="pillar">
+        <span class="pillar-index">01</span>
+        <span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><polygon points="12 2.5 14.7 8.8 21.5 9.4 16.3 13.9 17.9 20.6 12 17 6.1 20.6 7.7 13.9 2.5 9.4 9.3 8.8"/></svg></span>
+        <h3>実機検証してから書く</h3>
+        <p>気になった製品はまず購入・使用し、実際に触ってみた上での良い点・気になる点だけを記事にしています。</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-index">02</span>
+        <span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><line x1="4" y1="21" x2="4" y2="13"/><line x1="10" y1="21" x2="10" y2="6"/><line x1="16" y1="21" x2="16" y2="16"/><line x1="21" y1="21" x2="21" y2="10"/></svg></span>
+        <h3>価格の変動まで追跡</h3>
+        <p>掲載して終わりにせず、価格や仕様が変わっていないか定期的に見直し、最終更新日を明記しています。</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-index">03</span>
+        <span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8.5" y1="7" x2="15.5" y2="7"/><line x1="8.5" y1="11" x2="15.5" y2="11"/></svg></span>
+        <h3>初心者目線でわかりやすく</h3>
+        <p>専門用語はできるだけ避け、AIやガジェットに詳しくない人でも選び方が分かる説明を心がけています。</p>
+      </div>
+    </div></div></section><section class="section tint" data-reveal=""><div class="wrap"><div class="section-head"><p class="eyebrow">Latest</p><h2>最新の記事</h2></div><div class="card-grid bento"><div class="card index-card">
   <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="4" width="7" height="17" rx="1.5"/><rect x="14" y="4" width="7" height="17" rx="1.5"/></svg></span><span class="badge green">比較</span></div>
   <h3><a href="compare/monitor-arm-comparison/">モニターアーム比較: サンワダイレクト vs Amazonベーシック</a></h3>
   <p>初めてモニターアームを検討する人向けに、サンワダイレクト100-LAC003とAmazonベーシックのガス式シングルアームを比較しました。</p>

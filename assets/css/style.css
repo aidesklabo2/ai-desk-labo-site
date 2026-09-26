@@ -23,6 +23,7 @@
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --font-jp: "Hiragino Sans", "Yu Gothic UI", "Noto Sans JP", system-ui, sans-serif;
   --font-display: "Zen Kaku Gothic New", var(--font-jp);
+  --font-serif: "Fraunces", "Times New Roman", serif;
   --font-mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, monospace;
   --shadow-card: 0 1px 2px rgba(15, 14, 12, 0.05), 0 14px 30px -16px rgba(15, 14, 12, 0.16);
   --shadow-card-hover: 0 1px 2px rgba(15, 14, 12, 0.06), 0 26px 46px -18px rgba(15, 14, 12, 0.2);
@@ -373,7 +374,110 @@ img, svg { max-width: 100%; height: auto; }
   line-height: 1.9;
 }
 
-.grad { color: var(--accent-orange); }
+.grad {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--accent-orange);
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Hero layout: copy + generative "network" illustration ----------
+   The illustration is a hand-authored SVG (no stock asset), so it stays in
+   the DOM on every viewport but is only shown from 980px up — below that the
+   hero stays copy-only, matching the previous single-column layout exactly. */
+.hero-grid {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 980px) {
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.85fr;
+    align-items: center;
+    gap: 24px;
+  }
+  /* .wrap caps out at --max-width (1080px) however wide the viewport gets,
+     so the content column's available width is effectively fixed once this
+     grid is active — the vw-based clamp used for the single-column hero
+     (sized against the full viewport) would badly overflow this narrower
+     column, so the grid layout gets its own, much flatter, clamp. */
+  .hero-grid .hero-content h1 { font-size: clamp(2.3rem, 3.4vw, 3.6rem); }
+}
+.hero-illustration { display: none; }
+@media (min-width: 980px) {
+  .hero-illustration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-primary);
+    transition: transform 0.4s var(--ease);
+    will-change: transform;
+  }
+  .hero-illustration-float {
+    width: 100%;
+    max-width: 380px;
+    animation: illustrationFloat 7s ease-in-out infinite;
+  }
+  .hero-illustration svg { width: 100%; height: auto; display: block; }
+}
+@keyframes illustrationFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.net-edges {
+  color: var(--border-strong);
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+  animation: netDraw 1.8s var(--ease) forwards;
+  animation-delay: 1.85s;
+}
+.net-hub {
+  fill: var(--surface);
+  stroke: var(--ink-primary);
+  opacity: 0;
+  animation: netFadeIn 0.6s var(--ease) forwards;
+  animation-delay: 2.5s;
+}
+.net-hub-mark {
+  stroke: var(--accent-orange);
+  opacity: 0;
+  animation: netFadeIn 0.5s var(--ease) forwards;
+  animation-delay: 2.9s;
+}
+.net-nodes circle {
+  fill: var(--ink-primary);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: netNodeIn 0.5s var(--ease) both;
+}
+.net-nodes circle.accent { fill: var(--accent-orange); }
+.net-nodes circle:nth-child(1) { animation-delay: 2.0s; }
+.net-nodes circle:nth-child(2) { animation-delay: 2.08s; }
+.net-nodes circle:nth-child(3) { animation-delay: 2.16s; }
+.net-nodes circle:nth-child(4) { animation-delay: 2.24s; }
+.net-nodes circle:nth-child(5) { animation-delay: 2.32s; }
+.net-nodes circle:nth-child(6) { animation-delay: 2.40s; }
+.net-nodes circle:nth-child(7) { animation-delay: 2.48s; }
+.net-nodes circle:nth-child(8) { animation-delay: 2.56s; }
+.net-nodes circle:nth-child(9) { animation-delay: 2.64s; }
+.net-nodes circle:nth-child(10) { animation-delay: 2.72s; }
+@keyframes netDraw { to { stroke-dashoffset: 0; } }
+@keyframes netFadeIn { to { opacity: 1; } }
+@keyframes netNodeIn {
+  0% { opacity: 0; transform: scale(0.2); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-illustration-float { animation: none; }
+  .net-edges, .net-hub, .net-hub-mark, .net-nodes circle {
+    animation: none;
+    opacity: 1;
+    stroke-dashoffset: 0;
+    transform: none;
+  }
+}
 
 .scroll-cue {
   position: absolute;
@@ -441,6 +545,7 @@ img, svg { max-width: 100%; height: auto; }
   margin-top: 30px;
 }
 .chip {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -449,10 +554,24 @@ img, svg { max-width: 100%; height: auto; }
   padding: 8px 16px 8px 10px;
   font-size: 0.85rem;
   color: var(--ink-secondary);
+  overflow: hidden;
   transition: border-color 0.25s var(--ease), color 0.25s var(--ease), background 0.25s var(--ease);
 }
 .chip svg { width: 16px; height: 16px; }
 .chip:hover { color: #fff; border-color: var(--ink-primary); background: var(--ink-primary); text-decoration: none; }
+.chip::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.65s var(--ease);
+  pointer-events: none;
+}
+.chip:hover::before { left: 130%; }
 
 /* ---------- Kinetic-type marquee band ---------- */
 .marquee-band {
@@ -498,6 +617,39 @@ main { padding-bottom: 72px; }
 .section-head { margin-bottom: 30px; }
 .section-head h2 { font-family: var(--font-display); font-weight: 900; font-size: clamp(1.6rem, 3.4vw, 2.4rem); letter-spacing: -0.01em; margin: 0; border: none; padding: 0; color: var(--ink-primary); }
 .section-link { text-align: right; margin-top: 4px; font-family: var(--font-display); font-weight: 700; }
+
+/* ---------- Inverted (dark) section — one deliberate contrast band per
+   homepage, breaking up an otherwise all-white page without needing a
+   photograph. Every child color is re-pointed here rather than relying on
+   currentColor cascades, so nothing from the light theme leaks through. */
+.section.invert {
+  background: var(--ink-primary);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.section.invert .eyebrow { color: var(--accent-orange); }
+.section.invert .section-head h2 { color: #fff; }
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-top: 8px;
+}
+.pillar {
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  transition: border-color 0.3s var(--ease);
+}
+.pillar:hover { border-color: var(--accent-orange); }
+.pillar-index {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.38);
+}
+.pillar .icon-badge { margin: 14px 0 4px; }
+.pillar h3 { font-family: var(--font-display); font-weight: 800; font-size: 1.12rem; margin: 12px 0 8px; color: #fff; }
+.pillar p { color: rgba(255, 255, 255, 0.66); font-size: 0.92rem; line-height: 1.85; margin: 0; }
 
 article h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.32; letter-spacing: -0.01em; color: var(--ink-primary); }
 article h2 {
@@ -776,6 +928,7 @@ tbody tr:last-child td { border-bottom: none; }
 /* ---------- CTA buttons ---------- */
 .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0; }
 .btn-amazon, .btn-room {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -784,8 +937,25 @@ tbody tr:last-child td { border-bottom: none; }
   padding: 12px 24px;
   border-radius: 999px;
   margin: 0;
+  overflow: hidden;
   transition: transform 0.2s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
 }
+/* Light-sweep on hover — pure CSS, fires only while the button's own
+   background is dark (both buttons flip to var(--ink-primary) on hover),
+   so it never needs a separate rule per variant. */
+.btn-amazon::before, .btn-room::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.65s var(--ease);
+  pointer-events: none;
+}
+.btn-amazon:hover::before, .btn-room:hover::before { left: 130%; }
 .btn-amazon {
   background: var(--ink-primary);
   color: #fff;
