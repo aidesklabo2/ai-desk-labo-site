@@ -8,7 +8,8 @@
 <link rel="canonical" href="https://aidesklabo.com/compare/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;800;900&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/style.css">
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M4L5M94YCB"></script>
@@ -20,6 +21,10 @@
 </script>
 </head>
 <body>
+<div class="loader" aria-hidden="true"><span class="loader-mark">AI DESK LABO</span></div>
+<div class="progress-bar" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="../index.html">
@@ -40,13 +45,20 @@
 </header>
 <main>
 <section class="section" data-reveal=""><div class="wrap"><p class="eyebrow">AI Desk Labo</p><h2>比較一覧</h2><div class="card-grid"><div class="card index-card">
-  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="17" rx="1.5"/><rect x="14" y="4" width="7" height="17" rx="1.5"/></svg></span><span class="badge green">比較</span></div>
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="4" width="7" height="17" rx="1.5"/><rect x="14" y="4" width="7" height="17" rx="1.5"/></svg></span><span class="badge green">比較</span></div>
+  <h3><a href="monitor-arm-comparison/">モニターアーム比較: サンワダイレクト vs Amazonベーシック</a></h3>
+  <p>初めてモニターアームを検討する人向けに、サンワダイレクト100-LAC003とAmazonベーシックのガス式シングルアームを比較しました。</p>
+  <p class="updated">2026-09-26</p>
+</div>
+<div class="card index-card">
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="4" width="7" height="17" rx="1.5"/><rect x="14" y="4" width="7" height="17" rx="1.5"/></svg></span><span class="badge green">比較</span></div>
   <h3><a href="chatgpt-vs-claude-vs-gemini/">ChatGPT・Claude・Gemini 使い分け実践比較</a></h3>
   <p>ChatGPT・Claude・Geminiを実際に使い分けている筆者が、用途別のおすすめを比較表で解説します。</p>
   <p class="updated">2026-08-05</p>
 </div></div></div></section>
 </main>
 <footer class="site-footer">
+  <div class="footer-bg-word" aria-hidden="true">AI</div>
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
@@ -73,6 +85,7 @@
 <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js" defer></script>
 <script src="../assets/js/site.js" defer></script>
 </body>
 </html>

@@ -8,7 +8,8 @@
 <link rel="canonical" href="https://aidesklabo.com/contact.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;800;900&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 <!-- Google Analytics (GA4) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-M4L5M94YCB"></script>
@@ -20,6 +21,10 @@
 </script>
 </head>
 <body>
+<div class="loader" aria-hidden="true"><span class="loader-mark">AI DESK LABO</span></div>
+<div class="progress-bar" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html">
@@ -43,6 +48,7 @@
 <p>ご意見・ご指摘・掲載に関するお問い合わせは、X(<a href="https://x.com/yu_aidesklabo">@yu_aidesklabo</a>)のDMまでお願いいたします。</p></article></div></section>
 </main>
 <footer class="site-footer">
+  <div class="footer-bg-word" aria-hidden="true">AI</div>
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
@@ -69,6 +75,7 @@
 <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js" defer></script>
 <script src="assets/js/site.js" defer></script>
 </body>
 </html>

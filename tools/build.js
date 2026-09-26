@@ -14,8 +14,17 @@ const SITE_TITLE = "AI Desk Labo";
 
 const FOLDER_BY_TYPE = { review: "reviews", ranking: "rankings", compare: "compare", guide: "guides" };
 const TYPE_LABEL_JA = { review: "レビュー", ranking: "ランキング", compare: "比較", guide: "ガイド" };
+// Small decorative English kicker printed next to the Japanese eyebrow label
+// (see eyebrowHtml()) — purely typographic texture, not meant to add meaning
+// on top of the Japanese it sits beside.
+const TYPE_LABEL_EN = { review: "Review", ranking: "Ranking", compare: "Compare", guide: "Guide" };
 const TYPE_COLOR = { review: "blue", ranking: "orange", compare: "green", guide: "blue" };
-const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange" };
+const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange", cpu: "blue", gpu: "orange", cable: "green", tablet: "blue", reader: "green", case: "blue", macropad: "orange" };
+// Product-card badges show this label, not the raw `category` key — the key
+// is an internal English slug (also used to look up CATEGORY_COLOR/ICONS)
+// and was previously printed as-is, which read as stray English jargon on
+// an otherwise all-Japanese page.
+const CATEGORY_LABEL_JA = { keyboard: "キーボード", mouse: "マウス", charger: "充電器", monitor: "モニター", stand: "スタンド", mic: "マイク", light: "ライト", footrest: "フットレスト", wristrest: "リストレスト", monitorarm: "モニターアーム", cpu: "CPU", gpu: "GPU", cable: "ケーブル", tablet: "タブレット", reader: "カードリーダー", case: "ケース", macropad: "マクロパッド" };
 
 // Small hand-authored line-icon set (24x24, stroke-based, no external icon font/CDN).
 const ICONS = {
@@ -34,7 +43,51 @@ const ICONS = {
   footrest: `<path d="M3 19h18"/><path d="M5 19v-3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3"/><line x1="9" y1="14" x2="15" y2="14"/>`,
   wristrest: `<rect x="2" y="9" width="20" height="7" rx="3.5"/><line x1="7" y1="12.5" x2="17" y2="12.5"/>`,
   monitorarm: `<rect x="8" y="3" width="11" height="8" rx="1.5"/><path d="M13 11v3"/><path d="M13 14H6"/><path d="M6 14v-5"/>`,
+  cpu: `<rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.5"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/>`,
+  gpu: `<rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="8" cy="12" r="2.1"/><circle cx="14" cy="12" r="2.1"/><line x1="19" y1="7" x2="19" y2="4"/><line x1="4.5" y1="17" x2="4.5" y2="20"/>`,
+  cable: `<path d="M4 4v6a4 4 0 0 0 4 4h8a4 4 0 0 1 4 4v6"/><circle cx="4" cy="4" r="2"/><circle cx="20" cy="20" r="2"/>`,
+  tablet: `<rect x="3" y="3" width="18" height="15" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><path d="M14 9l3 3-5 5-3 1 1-3z"/>`,
+  reader: `<path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><line x1="8.5" y1="10" x2="8.5" y2="15"/><line x1="12" y1="10" x2="12" y2="15"/><line x1="15.5" y1="10" x2="15.5" y2="15"/>`,
+  case: `<path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/>`,
+  macropad: `<rect x="3" y="3" width="18" height="18" rx="2"/><rect x="6" y="6" width="4.5" height="4.5" rx="1"/><rect x="13.5" y="6" width="4.5" height="4.5" rx="1"/><rect x="6" y="13.5" width="4.5" height="4.5" rx="1"/><rect x="13.5" y="13.5" width="4.5" height="4.5" rx="1"/>`,
 };
+
+// Hand-authored "network" illustration for the homepage hero — replaces a
+// stock photo with an SVG scene in the same line-icon language as ICONS
+// above (currentColor strokes, no external asset). site.js/style.css drive
+// the entrance draw and idle float; this is purely the static markup.
+const HERO_NETWORK_SVG = `<svg class="net" viewBox="0 0 440 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g class="net-edges" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+    <line x1="55" y1="115" x2="130" y2="55"/>
+    <line x1="130" y1="55" x2="225" y2="35"/>
+    <line x1="225" y1="35" x2="325" y2="60"/>
+    <line x1="325" y1="60" x2="395" y2="140"/>
+    <line x1="395" y1="140" x2="385" y2="245"/>
+    <line x1="385" y1="245" x2="310" y2="325"/>
+    <line x1="310" y1="325" x2="205" y2="355"/>
+    <line x1="205" y1="355" x2="100" y2="300"/>
+    <line x1="100" y1="300" x2="35" y2="195"/>
+    <line x1="35" y1="195" x2="55" y2="115"/>
+    <line x1="225" y1="35" x2="220" y2="166"/>
+    <line x1="395" y1="140" x2="244" y2="190"/>
+    <line x1="205" y1="355" x2="220" y2="214"/>
+    <line x1="35" y1="195" x2="196" y2="190"/>
+  </g>
+  <rect class="net-hub" x="196" y="166" width="48" height="48" rx="12" stroke-width="2"/>
+  <text class="net-hub-mark" x="220" y="191" text-anchor="middle" dominant-baseline="central">AI</text>
+  <g class="net-nodes">
+    <circle cx="55" cy="115" r="5"/>
+    <circle cx="130" cy="55" r="4"/>
+    <circle cx="225" cy="35" r="5.5"/>
+    <circle cx="325" cy="60" r="4"/>
+    <circle class="accent" cx="395" cy="140" r="6.5"/>
+    <circle cx="385" cy="245" r="4"/>
+    <circle cx="310" cy="325" r="5"/>
+    <circle class="accent" cx="205" cy="355" r="6"/>
+    <circle cx="100" cy="300" r="4.5"/>
+    <circle cx="35" cy="195" r="5"/>
+  </g>
+</svg>`;
 
 function icon(name, extraAttrs = "") {
   const body = ICONS[name];
@@ -56,12 +109,39 @@ function amazonLink(product) {
   return url.toString();
 }
 
+// A product may carry an Amazon link (`url`), a Rakuten ROOM link
+// (`roomUrl`), or both — whichever the article author found easier to
+// write up / expects to convert better for that item. At least one should
+// be present, but neither is hard-required so a ROOM-only product works.
+function renderCtaButtons(product) {
+  const buttons = [];
+  if (product.url) {
+    buttons.push(
+      `<a class="btn-amazon" href="${amazonLink(product)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}Amazonで見る</a>`
+    );
+  }
+  if (product.roomUrl) {
+    buttons.push(
+      `<a class="btn-room" href="${escapeHtml(product.roomUrl)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}楽天ROOMで見る</a>`
+    );
+  }
+  return `<div class="cta-row">${buttons.join("")}</div>`;
+}
+
 function escapeHtml(str) {
   return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-function section(innerHtml, { tint = false, reveal = true } = {}) {
-  return `<section class="section${tint ? " tint" : ""}"${reveal ? ' data-reveal=""' : ""}><div class="wrap">${innerHtml}</div></section>`;
+function section(innerHtml, { tint = false, invert = false, reveal = true } = {}) {
+  const variant = invert ? " invert" : tint ? " tint" : "";
+  return `<section class="section${variant}"${reveal ? ' data-reveal=""' : ""}><div class="wrap">${innerHtml}</div></section>`;
+}
+
+// Japanese eyebrow label + a small English kicker beside it — decorative
+// typographic texture (see .eyebrow-en in style.css), not a translation the
+// visitor is expected to read.
+function eyebrowHtml(jaText, enText) {
+  return `<p class="eyebrow">${escapeHtml(jaText)}<span class="eyebrow-en">${escapeHtml(enText)}</span></p>`;
 }
 
 // Block bodies are allowed a small set of inline tags (e.g. <a href>) written
@@ -69,13 +149,14 @@ function section(innerHtml, { tint = false, reveal = true } = {}) {
 // only plain strings coming from data (like table cells, product fields) are escaped.
 function renderProductCard(product) {
   const badgeColor = CATEGORY_COLOR[product.category] || "blue";
+  const badgeLabel = CATEGORY_LABEL_JA[product.category] || product.category;
   return `<div class="card">
-  <div class="card-top">${iconBadge(product.category, badgeColor)}<span class="badge ${badgeColor}">${escapeHtml(product.category)}</span></div>
+  <div class="card-top">${iconBadge(product.category, badgeColor)}<span class="badge ${badgeColor}">${escapeHtml(badgeLabel)}</span></div>
   <h3>${escapeHtml(product.name)}</h3>
-  <p class="price">¥${product.price.toLocaleString("ja-JP")}<br><small>${escapeHtml(product.priceNote || "")}</small></p>
+  <p class="price"><span class="num-mono">¥${product.price.toLocaleString("ja-JP")}</span>${escapeHtml(product.priceNote || "")}</p>
   <p>${escapeHtml(product.summary || "")}</p>
   <ul>${(product.pros || []).map((x) => `<li>◎ ${escapeHtml(x)}</li>`).join("")}${(product.cons || []).map((x) => `<li>△ ${escapeHtml(x)}</li>`).join("")}</ul>
-  <a class="btn-amazon" href="${amazonLink(product)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}Amazonで見る</a>
+  ${renderCtaButtons(product)}
 </div>`;
 }
 
@@ -117,12 +198,29 @@ function renderToc(toc) {
   return `<nav class="toc"><p class="toc-title">この記事の目次</p><ol>${items}</ol></nav>`;
 }
 
-function renderPage(template, { title, description, canonical, root, bodyHtml }) {
+// Lightweight intro for every interior page: a brief CSS-only fade (see
+// .loader in style.css), never JS-dependent.
+const SIMPLE_LOADER = `<div class="loader" aria-hidden="true"><span class="loader-mark">AI DESK LABO</span></div>`;
+
+// Homepage-only "first impression" intro: two panels covering the screen
+// with the wordmark, then site.js's GSAP timeline slides them apart to
+// reveal the hero underneath (chaining straight into the hero's own
+// headline reveal). The CSS side (see .intro-panel/.intro-mark) already
+// fades and hides everything on its own after a fixed delay, so this is
+// still safe if GSAP never loads or errors out.
+const HOME_INTRO = `<div class="intro" aria-hidden="true">
+  <div class="intro-panel left"></div>
+  <div class="intro-panel right"></div>
+  <div class="intro-mark">AI DESK LABO</div>
+</div>`;
+
+function renderPage(template, { title, description, canonical, root, bodyHtml, intro = SIMPLE_LOADER }) {
   return template
     .replaceAll("{{TITLE}}", escapeHtml(title))
     .replaceAll("{{DESCRIPTION}}", escapeHtml(description))
     .replaceAll("{{CANONICAL}}", canonical)
     .replaceAll("{{ROOT}}", root)
+    .replace("{{INTRO}}", intro)
     .replace("{{BODY}}", bodyHtml);
 }
 
@@ -145,17 +243,17 @@ function renderShowcase(rankedProducts) {
     .map((product, i) => {
       const badgeColor = CATEGORY_COLOR[product.category] || "blue";
       return `<div class="showcase-card">
-    <span class="rank">${i + 1}位</span>
+    <span class="rank"><span class="rank-num">${String(i + 1).padStart(2, "0")}</span><span class="rank-suffix">位</span></span>
     ${iconBadge(product.category, badgeColor)}
     <h3>${escapeHtml(product.name)}</h3>
     <p class="price">¥${product.price.toLocaleString("ja-JP")}</p>
     <p>${escapeHtml(product.summary || "")}</p>
-    <a class="btn-amazon" href="${amazonLink(product)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}Amazonで見る</a>
+    ${renderCtaButtons(product)}
   </div>`;
     })
     .join("\n");
   return section(
-    `<div class="section-head"><p class="eyebrow">Ranking</p><h2>今、注目のアイテム</h2></div>
+    `<div class="section-head"><p class="eyebrow">Ranking</p><span class="section-index">( 02 )</span><h2>今、注目のアイテム</h2></div>
     <p class="showcase-hint">スクロールすると連動して切り替わります(スマホ・タブレットは横にスワイプ)</p>
     <div class="showcase-track-outer"><div class="showcase-track" id="showcaseTrack">${cards}</div></div>`
   );
@@ -206,7 +304,7 @@ function main() {
     if (isStatic) {
       bodyHtml = section(`<h1>${escapeHtml(entry.title)}</h1><article>${bodyBlocksHtml}</article>`);
     } else {
-      const eyebrow = `<p class="eyebrow">${TYPE_LABEL_JA[entry.type]}</p>`;
+      const eyebrow = eyebrowHtml(TYPE_LABEL_JA[entry.type], TYPE_LABEL_EN[entry.type]);
       const updatedHtml = `<p class="updated">最終更新日: ${escapeHtml(entry.updated)}</p>`;
       const disclosure = `<div class="disclosure-note">本ページはAmazonアソシエイト・プログラムの参加者として、適格販売により収入を得ています。<a href="${root}disclosure.html">詳細</a></div>`;
       bodyHtml = section(
@@ -240,25 +338,86 @@ function main() {
   const latest = [...nonStatic].sort((a, b) => (a.updated < b.updated ? 1 : -1)).slice(0, 12);
   const categoryCount = new Set(products.map((p) => p.category)).size;
 
-  const heroHtml = `<section class="hero" data-reveal="">
-  <span class="hero-blob b1"></span><span class="hero-blob b2"></span><span class="hero-blob b3"></span>
+  const heroHtml = `<section class="hero">
+  <canvas class="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-spine" aria-hidden="true">AI Desk Labo — Curated Tech Journal</div>
   <div class="wrap">
-    <p class="eyebrow">AI × ガジェット比較メディア</p>
-    <h1>AIと過ごす毎日を、<br>もっと快適にするモノを選ぶ。</h1>
-    <p class="lede">実際に使い倒したAIツールとガジェットだけを、比較・ランキング・レビュー形式でまとめています。</p>
-    <div class="stat-row">
-      <div class="stat"><span class="num" data-count-to="${nonStatic.length}">0</span><span class="label">掲載記事</span></div>
-      <div class="stat"><span class="num" data-count-to="${products.length}">0</span><span class="label">掲載商品</span></div>
-      <div class="stat"><span class="num" data-count-to="${categoryCount}">0</span><span class="label">カテゴリ</span></div>
-    </div>
-    <div class="chip-row">
-      ${Object.entries(FOLDER_BY_TYPE).map(([type, folder]) => `<a class="chip" href="${folder}/">${icon(type)}${TYPE_LABEL_JA[type]}</a>`).join("\n")}
+    <div class="hero-grid">
+      <div class="hero-content">
+        ${eyebrowHtml("AI × ガジェット比較メディア", "Est. 2026")}
+        <h1>
+          <span class="split-line"><span>AIと過ごす毎日を、</span></span>
+          <span class="split-line"><span>もっと快適にする</span></span>
+          <span class="split-line"><span class="grad">モノを選ぶ。</span></span>
+        </h1>
+        <p class="lede">実際に使い倒したAIツールとガジェットだけを、比較・ランキング・レビュー形式でまとめています。</p>
+        <div class="stat-row">
+          <div class="stat"><span class="num" data-count-to="${nonStatic.length}">0</span><span class="label">掲載記事</span></div>
+          <div class="stat"><span class="num" data-count-to="${products.length}">0</span><span class="label">掲載商品</span></div>
+          <div class="stat"><span class="num" data-count-to="${categoryCount}">0</span><span class="label">カテゴリ</span></div>
+        </div>
+        <div class="chip-row">
+          ${Object.entries(FOLDER_BY_TYPE).map(([type, folder]) => `<a class="chip" href="${folder}/">${icon(type)}${TYPE_LABEL_JA[type]}</a>`).join("\n")}
+        </div>
+      </div>
+      <div class="hero-illustration" aria-hidden="true">
+        <div class="hero-illustration-float">${HERO_NETWORK_SVG}</div>
+      </div>
     </div>
   </div>
+  <div class="scroll-cue" aria-hidden="true"><span class="cue-line"></span>SCROLL</div>
 </section>`;
 
+  // Dark "pillars" band — the one deliberate inverted-color section on the
+  // homepage, giving the otherwise all-white page a contrast beat without
+  // needing a photograph.
+  const pillarsHtml = section(
+    `<div class="section-head"><p class="eyebrow">Our Standard</p><span class="section-index">( 03 )</span><h2>AI Desk Laboが大事にしていること</h2></div>
+    <div class="pillar-grid">
+      <div class="pillar">
+        <span class="pillar-index">01</span>
+        ${iconBadge("review", "orange")}
+        <h3>実機検証してから書く</h3>
+        <p>気になった製品はまず購入・使用し、実際に触ってみた上での良い点・気になる点だけを記事にしています。</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-index">02</span>
+        ${iconBadge("ranking", "blue")}
+        <h3>価格の変動まで追跡</h3>
+        <p>掲載して終わりにせず、価格や仕様が変わっていないか定期的に見直し、最終更新日を明記しています。</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-index">03</span>
+        ${iconBadge("guide", "green")}
+        <h3>初心者目線でわかりやすく</h3>
+        <p>専門用語はできるだけ避け、AIやガジェットに詳しくない人でも選び方が分かる説明を心がけています。</p>
+      </div>
+    </div>`,
+    { invert: true }
+  );
+
+  // Full-bleed kinetic-type band — decorative only (aria-hidden), real
+  // navigation to each section already exists in the header and chip row.
+  // Each JP word is paired with its English kicker (reusing TYPE_LABEL_EN)
+  // for the same quiet bilingual-editorial texture as the eyebrow tags.
+  const marqueeWords = ["ranking", "review", "compare", "guide"];
+  const marqueeHtml = `<div class="marquee-band" aria-hidden="true">
+  <div class="marquee-track">
+    ${Array(3)
+      .fill(
+        marqueeWords
+          .map(
+            (type, i) =>
+              `<span class="${i % 2 ? "accent" : ""}">${TYPE_LABEL_JA[type]}<span class="marquee-en">${TYPE_LABEL_EN[type]}</span></span><span class="dot">◆</span>`
+          )
+          .join("\n")
+      )
+      .join("\n")}
+  </div>
+</div>`;
+
   const latestHtml = section(
-    `<div class="section-head"><p class="eyebrow">Latest</p><h2>最新の記事</h2></div><div class="card-grid">${latest
+    `<div class="section-head"><p class="eyebrow">Latest</p><span class="section-index">( 04 )</span><h2>最新の記事</h2></div><div class="card-grid bento">${latest
       .map((e) => renderEntryCard(e, `${FOLDER_BY_TYPE[e.type]}/${e.slug}/`))
       .join("\n")}</div>`,
     { tint: true }
@@ -278,8 +437,8 @@ function main() {
   if (budgetEntry) {
     const budgetCards = budgetEntry.products.map((asin) => renderProductCard(productsMap[asin])).join("\n");
     budgetHtml = section(
-      `<div class="section-head"><p class="eyebrow">お手頃価格</p><h2>予算重視ならこちら</h2></div>
-      <div class="card-grid">${budgetCards}</div>
+      `<div class="section-head">${eyebrowHtml("お手頃価格", "Budget Picks")}<span class="section-index">( 01 )</span><h2>予算重視ならこちら</h2></div>
+      <div class="card-grid bento">${budgetCards}</div>
       <p class="section-link"><a href="${FOLDER_BY_TYPE[budgetEntry.type]}/${budgetEntry.slug}/">${escapeHtml(budgetEntry.title)}を見る →</a></p>`
     );
   }
@@ -289,7 +448,8 @@ function main() {
     description: "AIツールとガジェットの実体験レビュー・比較・ランキングを発信するAI Desk Labo公式サイト。",
     canonical: `${SITE_ORIGIN}/`,
     root: "",
-    bodyHtml: heroHtml + budgetHtml + showcaseHtml + latestHtml,
+    bodyHtml: heroHtml + marqueeHtml + budgetHtml + showcaseHtml + pillarsHtml + latestHtml,
+    intro: HOME_INTRO,
   }));
   sitemapUrls.unshift({ loc: `${SITE_ORIGIN}/` });
 

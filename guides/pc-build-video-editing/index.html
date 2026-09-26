@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自作PC構成ガイド 動画編集編(2026年9月版) | AI Desk Labo</title>
+<meta name="description" content="4K動画編集を快適にこなすPC構成を、メモリ容量とGPUのVRAMという2つの軸から解説します。">
+<link rel="canonical" href="https://aidesklabo.com/guides/pc-build-video-editing/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;800;900&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M4L5M94YCB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M4L5M94YCB');
+</script>
+</head>
+<body>
+<div class="loader" aria-hidden="true"><span class="loader-mark">AI DESK LABO</span></div>
+<div class="progress-bar" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">
+      <span class="logo-badge">AI</span>
+      <span>AI DESK LABO</span>
+    </a>
+    <nav class="site-nav">
+      <a href="../../rankings/">ランキング</a>
+      <a href="../../reviews/">レビュー</a>
+      <a href="../../compare/">比較</a>
+      <a href="../../guides/">ガイド</a>
+      <a href="../../about.html">About</a>
+    </nav>
+    <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+<main>
+<section class="section" data-reveal=""><div class="wrap"><p class="eyebrow">ガイド<span class="eyebrow-en">Guide</span></p><h1>自作PC構成ガイド 動画編集編(2026年9月版)</h1><p class="updated">最終更新日: 2026-09-26</p><nav class="toc"><p class="toc-title">この記事の目次</p><ol><li><a href="#h-1">STEP1: GPUを決める(VRAM優先)</a></li><li><a href="#h-2">STEP2: CPUを決める(コア数重視)</a></li><li><a href="#h-3">メモリは32GBを下限に</a></li><li><a href="#h-4">ストレージはNVMe SSD必須</a></li></ol></nav><article><p>動画編集PCの快適さは、CPUの世代よりも「メモリ容量」と「GPUのVRAM」で決まる部分が大きいです。Premiere ProのAI文字起こし・テキストベース編集やDaVinci ResolveのカラーグレーディングはGPUを酷使するため、この2つを優先して予算を配分するのが失敗しにくい考え方です。</p>
+<h2 id="h-1">STEP1: GPUを決める(VRAM優先)</h2>
+<p>4K編集やカラーグレーディングを視野に入れるなら、VRAM 12GB以上のGPUが安心です。RTX 4070 SUPERクラスならAV1エンコードにも対応し、書き出し時間を大きく短縮できます。</p>
+<div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="8" cy="12" r="2.1"/><circle cx="14" cy="12" r="2.1"/><line x1="19" y1="7" x2="19" y2="4"/><line x1="4.5" y1="17" x2="4.5" y2="20"/></svg></span><span class="badge orange">GPU</span></div>
+  <h3>ASUS Dual GeForce RTX 4070 SUPER OC 12GB</h3>
+  <p class="price"><span class="num-mono">¥89,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ、GPUは価格変動が大きめ)</p>
+  <p>動画編集のVRAM要件を満たす、4K編集向けグラフィックボード。</p>
+  <ul><li>◎ 12GB VRAMでDaVinci Resolve・Premiere Proのカラーグレーディングも余裕</li><li>◎ AV1エンコード対応で書き出しが高速</li><li>◎ WQHDゲーミングとの兼用もしやすい</li><li>△ 2スロット占有・補助電源が必要でケース/電源要件を事前確認</li><li>△ 2026年はGPU全般が品薄・価格高騰気味で入手性は要確認</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/ASUS-GeForce-2%E9%80%A3%E3%83%95%E3%82%A1%E3%83%B3%E6%90%AD%E8%BC%89%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%83%9C%E3%83%BC%E3%83%89-DUAL-RTX4070S-O12G-%E5%9B%BD%E5%86%85%E6%AD%A3%E8%A6%8F%E6%B5%81%E9%80%9A%E5%93%81/dp/B0CS67885B?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+<h2 id="h-2">STEP2: CPUを決める(コア数重視)</h2>
+<p>書き出し・エンコード・プレビューのカクつきを減らすには、コア数の多いCPUが効きます。Ryzen 9 9900Xは12コア24スレッドで、複数レイヤーを重ねた4K編集でも余裕を持たせやすい構成です。</p>
+<div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.5"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></svg></span><span class="badge blue">CPU</span></div>
+  <h3>AMD Ryzen 9 9900X (12コア24スレッド・クーラーなし)</h3>
+  <p class="price"><span class="num-mono">¥64,980</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)</p>
+  <p>4K動画編集・書き出しを重視する人向けのハイエンドCPU。</p>
+  <ul><li>◎ 12コア24スレッドで動画エンコード・書き出しが速い</li><li>◎ AM5プラットフォームでDDR5・PCIe5.0に対応</li><li>◎ 内蔵GPUもあり検証用の映像出力に困らない</li><li>△ クーラー別売り(サードパーティ製クーラーが必要)</li><li>△ 高負荷時の発熱・消費電力はミドルCPUより大きい</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/100-100000662WOF-9900X-24T%E3%80%814-4GHz%E3%80%81TDP-120W%E3%80%81AM5%E3%80%81Radeon-Graphics/dp/B0D6NN87T8?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a><a class="btn-room" href="https://room.rakuten.co.jp/aidesklabo/1700394654531408" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>楽天ROOMで見る</a></div>
+</div></div>
+<h2 id="h-3">メモリは32GBを下限に</h2>
+<p>2026年の動画編集PCは、メモリ32GBが実質的な最低ラインです。DDR5メモリは値上がりが続いているため、購入タイミングによって総予算が大きく変わる点に注意してください。予算が厳しい場合は、CPUのグレードを一段下げてでもメモリ容量を確保する方が体感の快適さにつながります。</p>
+<h2 id="h-4">ストレージはNVMe SSD必須</h2>
+<p>動画ファイルの読み込み・プレビュー・書き出しすべてにストレージ速度が影響します。HDDではなくNVMe(M.2)SSDを、編集素材用に1TB以上確保するのがおすすめです。</p></article><div class="disclosure-note">本ページはAmazonアソシエイト・プログラムの参加者として、適格販売により収入を得ています。<a href="../../disclosure.html">詳細</a></div></div></section>
+</main>
+<footer class="site-footer">
+  <div class="footer-bg-word" aria-hidden="true">AI</div>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-badge">AI</span>
+        <span>AI DESK LABO</span>
+      </div>
+      <div class="links">
+        <a href="../../about.html">運営者情報</a>
+        <a href="../../disclosure.html">アフィリエイト表記</a>
+        <a href="../../privacy.html">プライバシーポリシー</a>
+        <a href="../../contact.html">お問い合わせ</a>
+      </div>
+      <div class="links">
+        <a href="https://x.com/yu_aidesklabo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4L4 20"/></svg>X (Twitter)</a>
+        <a href="https://note.com/yu_aidesklabo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>Note</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="y"></span> AI Desk Labo</div>
+  </div>
+</footer>
+<button class="back-to-top" aria-label="ページ上部へ戻る">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js" defer></script>
+<script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

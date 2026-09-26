@@ -39,9 +39,43 @@
   document.addEventListener("auxclick", trackAmazonClick);
 })();
 
-// AI Desk Labo — shared site interactions. Vanilla JS, no dependencies.
+// Rakuten ROOM outbound intent — same shape as the Amazon tracker above but
+// kept as its own listener so the two can never interfere with each other.
 (function () {
   "use strict";
+  function trackRoomClick(event) {
+    if ((event.type === "click" && event.button !== 0) ||
+        (event.type === "auxclick" && event.button !== 1)) return;
+    var target = event.target;
+    var link = target && target.closest && target.closest("a.btn-room");
+    if (!link || typeof window.gtag !== "function") return;
+    try {
+      var url = new URL(link.href);
+      if (url.protocol !== "https:" || !/(^|\.)rakuten\.co\.jp$/.test(url.hostname)) return;
+      var pagePath = window.location.pathname.replace(/\/index\.html$/, "/");
+      var placement = link.closest("#showcaseTrack") ? "home_ranking" : link.closest("article .card") ? "article_product" : link.closest(".card") ? "home_card" : "other";
+      window.gtag("event", "room_click", {
+        send_to: "G-M4L5M94YCB",
+        placement: placement,
+        page_path: pagePath
+      });
+    } catch (err) {
+      // Measurement must never interrupt the original link action.
+    }
+  }
+  document.addEventListener("click", trackRoomClick);
+  document.addEventListener("auxclick", trackRoomClick);
+})();
+
+// AI Desk Labo — shared site interactions. Vanilla JS + GSAP/Lenis (CDN,
+// both free/open-source). Every enhancement below is progressive: if a
+// CDN script is blocked or slow, the page still renders and reads fine
+// with the plain CSS fallback already in place.
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var isFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   // Sticky header: add a class once the page scrolls past the hero.
   var header = document.querySelector(".site-header");
@@ -70,7 +104,9 @@
     });
   }
 
-  // Scroll-reveal: fade/slide elements in as they enter the viewport.
+  // Scroll-reveal fallback: fade/slide [data-reveal] sections in as they
+  // enter the viewport. Always runs — GSAP's per-card stagger below is an
+  // additional enhancement layered on top, not a replacement.
   var revealEls = document.querySelectorAll("[data-reveal]");
   if (revealEls.length) {
     if ("IntersectionObserver" in window) {
@@ -136,6 +172,275 @@
     });
   }
 
+  // Floating quick-jump menu: cloned from the inline .toc (long articles
+  // only — build.js only renders one when a page has 2+ h2 sections, so
+  // short reviews and static pages never get this element). Opposite
+  // corner from .back-to-top, appears past the same scroll threshold.
+  var tocSource = document.querySelector(".toc");
+  if (tocSource) {
+    var tocList = tocSource.querySelector("ol");
+    if (tocList) {
+      var tocFloat = document.createElement("div");
+      tocFloat.className = "toc-float";
+      tocFloat.innerHTML =
+        '<div class="toc-float-panel"><p class="toc-title">目次</p>' + tocList.outerHTML + "</div>" +
+        '<button class="toc-float-btn" type="button" aria-label="目次を開く" aria-expanded="false">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg>' +
+        "</button>";
+      document.body.appendChild(tocFloat);
+
+      var tocFloatBtn = tocFloat.querySelector(".toc-float-btn");
+      tocFloatBtn.addEventListener("click", function () {
+        var willOpen = !tocFloat.classList.contains("is-open");
+        tocFloat.classList.toggle("is-open", willOpen);
+        tocFloatBtn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+      });
+      var tocFloatLinks = tocFloat.querySelectorAll("a");
+      tocFloatLinks.forEach(function (a) {
+        a.addEventListener("click", function () {
+          tocFloat.classList.remove("is-open");
+          tocFloatBtn.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      document.addEventListener(
+        "scroll",
+        function () {
+          tocFloat.classList.toggle("is-visible", window.scrollY > 500);
+        },
+        { passive: true }
+      );
+
+      // Highlight whichever section is currently in view.
+      var tocHeadings = Array.prototype.map.call(tocFloatLinks, function (a) {
+        var id = a.getAttribute("href").slice(1);
+        return document.getElementById(id);
+      }).filter(Boolean);
+      if (tocHeadings.length && "IntersectionObserver" in window) {
+        var setActive = function (id) {
+          tocFloatLinks.forEach(function (a) {
+            a.classList.toggle("is-active", a.getAttribute("href") === "#" + id);
+          });
+        };
+        var headingIo = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) setActive(entry.target.id);
+            });
+          },
+          { rootMargin: "-20% 0px -70% 0px" }
+        );
+        tocHeadings.forEach(function (h) { headingIo.observe(h); });
+      }
+    }
+  }
+
+  // Scroll progress bar.
+  var progressBar = document.querySelector(".progress-bar");
+  if (progressBar) {
+    var updateProgress = function () {
+      var docEl = document.documentElement;
+      var scrollTop = docEl.scrollTop || document.body.scrollTop;
+      var scrollHeight = docEl.scrollHeight - docEl.clientHeight || 1;
+      progressBar.style.width = Math.min(100, (scrollTop / scrollHeight) * 100) + "%";
+    };
+    document.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    updateProgress();
+  }
+
+  // Custom cursor: only ever enabled for a confirmed fine/hover pointer,
+  // so touch visitors and no-JS visitors keep the native cursor untouched.
+  if (isFinePointer) {
+    var cursorDot = document.querySelector(".cursor-dot");
+    var cursorRing = document.querySelector(".cursor-ring");
+    if (cursorDot && cursorRing) {
+      document.documentElement.classList.add("has-custom-cursor");
+      document.addEventListener(
+        "pointermove",
+        function (e) {
+          var t = "translate(" + e.clientX + "px," + e.clientY + "px) translate(-50%,-50%)";
+          cursorDot.style.transform = t;
+          cursorRing.style.transform = t;
+        },
+        { passive: true }
+      );
+      document.addEventListener("pointerdown", function () { cursorRing.classList.add("is-active"); });
+      document.addEventListener("pointerup", function () { cursorRing.classList.remove("is-active"); });
+      document.addEventListener("pointerover", function (e) {
+        if (e.target.closest && e.target.closest("a, button, .card, .showcase-card, .chip")) {
+          cursorRing.classList.add("is-active");
+        }
+      });
+      document.addEventListener("pointerout", function (e) {
+        if (e.target.closest && e.target.closest("a, button, .card, .showcase-card, .chip")) {
+          cursorRing.classList.remove("is-active");
+        }
+      });
+    }
+  }
+
+  // Hero: split-line headline reveal (vanilla-split, no paid plugin needed
+  // — build.js already wraps each line in .split-line > span). Falls back
+  // to the plain, fully visible heading if GSAP never loads. Exposed as a
+  // function so the homepage-only intro timeline below can chain straight
+  // into it instead of the two racing on independent timers.
+  var heroLines = document.querySelectorAll(".hero h1 .split-line > span");
+  function revealHeroLines(delay) {
+    if (!heroLines.length || !window.gsap || reduceMotion) return;
+    try {
+      gsap.fromTo(
+        heroLines,
+        { yPercent: 110 },
+        { yPercent: 0, duration: 1, ease: "expo.out", stagger: 0.08, delay: delay || 0 }
+      );
+    } catch (err) {
+      heroLines.forEach(function (el) { el.style.transform = ""; });
+    }
+  }
+
+  // Homepage-only "first impression" entrance: two panels covering the
+  // screen snap the wordmark in, hold briefly, then slide apart — timed to
+  // finish right as the hero headline stagger takes over. The CSS side
+  // (.intro-panel/.intro-mark, see style.css) already fades and hides
+  // everything on a fixed timer on its own, so a GSAP failure here just
+  // means the plainer CSS version plays out instead of this richer one.
+  var introPanels = document.querySelectorAll(".intro-panel");
+  var introMark = document.querySelector(".intro-mark");
+  if (introPanels.length && window.gsap && !reduceMotion) {
+    try {
+      gsap.timeline({ onComplete: function () { revealHeroLines(0); } })
+        .fromTo(introMark, { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" })
+        .to(introMark, { opacity: 0, scale: 1.04, duration: 0.3, ease: "power2.in" }, "+=0.3")
+        .to(introPanels[0], { xPercent: -100, duration: 0.7, ease: "power4.inOut" }, "<")
+        .to(introPanels[1], { xPercent: 100, duration: 0.7, ease: "power4.inOut" }, "<")
+        .set(introPanels, { display: "none" })
+        .set(introMark, { display: "none" });
+    } catch (err) {
+      introPanels.forEach(function (p) { p.style.display = "none"; });
+      if (introMark) introMark.style.display = "none";
+      revealHeroLines(0);
+    }
+  } else {
+    revealHeroLines(introPanels.length ? 1.7 : 0.5);
+  }
+
+  // Hero backdrop: three soft, slowly drifting gradient blobs drawn on a
+  // <canvas> (blurred via CSS, cheap to draw). Paused while the hero is
+  // off-screen; skipped entirely under reduced motion or without 2D canvas
+  // support — the body's own CSS gradient is still there underneath.
+  var heroCanvas = document.querySelector(".hero-canvas");
+  if (heroCanvas && heroCanvas.getContext && !reduceMotion) {
+    var ctx = heroCanvas.getContext("2d");
+    var blobs = [
+      { x: 0.26, y: 0.32, r: 0.3, color: "179,86,15" },
+      { x: 0.74, y: 0.62, r: 0.26, color: "18,17,15" },
+      { x: 0.56, y: 0.18, r: 0.19, color: "18,17,15" },
+    ];
+    var canvasRunning = false;
+    var resizeCanvas = function () {
+      heroCanvas.width = heroCanvas.offsetWidth;
+      heroCanvas.height = heroCanvas.offsetHeight;
+    };
+    var frame = 0;
+    var drawBlobs = function () {
+      if (!canvasRunning) return;
+      frame += 1;
+      var w = heroCanvas.width;
+      var h = heroCanvas.height;
+      ctx.clearRect(0, 0, w, h);
+      blobs.forEach(function (b, i) {
+        var cx = (b.x + Math.sin(frame * 0.0032 + i * 2) * 0.09) * w;
+        var cy = (b.y + Math.cos(frame * 0.0026 + i * 2) * 0.09) * h;
+        var r = b.r * Math.max(w, h);
+        var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+        grad.addColorStop(0, "rgba(" + b.color + ",0.16)");
+        grad.addColorStop(1, "rgba(" + b.color + ",0)");
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      requestAnimationFrame(drawBlobs);
+    };
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+    if ("IntersectionObserver" in window) {
+      var heroIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          canvasRunning = entry.isIntersecting;
+          if (canvasRunning) requestAnimationFrame(drawBlobs);
+        });
+      });
+      heroIo.observe(heroCanvas);
+    } else {
+      canvasRunning = true;
+      requestAnimationFrame(drawBlobs);
+    }
+  }
+
+  // Hero network illustration: subtle pointer-parallax on the SVG group.
+  // The idle float (CSS keyframe) and the entrance draw (CSS on the SVG's
+  // own children) live on separate elements, so this inline transform can
+  // never fight either of them.
+  var heroSection = document.querySelector(".hero");
+  var heroIllustration = document.querySelector(".hero-illustration");
+  if (heroSection && heroIllustration && isFinePointer && !reduceMotion) {
+    heroSection.addEventListener(
+      "pointermove",
+      function (e) {
+        var rect = heroSection.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width - 0.5;
+        var py = (e.clientY - rect.top) / rect.height - 0.5;
+        heroIllustration.style.transform = "translate(" + (px * -16).toFixed(1) + "px," + (py * -12).toFixed(1) + "px)";
+      },
+      { passive: true }
+    );
+    heroSection.addEventListener("pointerleave", function () {
+      heroIllustration.style.transform = "";
+    });
+  }
+
+  // Card / showcase-card tilt + spotlight: a fine pointer tilts the card in
+  // 3D toward the cursor (inline transform, so it simply overrides the
+  // plain CSS :hover lift while active) and drives the existing --mx/--my
+  // radial spotlight. Resets on pointerleave, which is non-bubbling, so
+  // each card gets its own listener rather than one delegated on document.
+  if (isFinePointer) {
+    document.addEventListener(
+      "pointermove",
+      function (e) {
+        var el = e.target.closest && e.target.closest(".card, .showcase-card");
+        if (!el) return;
+        var rect = el.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width;
+        var py = (e.clientY - rect.top) / rect.height;
+        el.style.setProperty("--mx", px * 100 + "%");
+        el.style.setProperty("--my", py * 100 + "%");
+        var rx = (py - 0.5) * -8;
+        var ry = (px - 0.5) * 8;
+        el.style.transform = "perspective(1000px) rotateX(" + rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg) translateY(-6px)";
+      },
+      { passive: true }
+    );
+    document.querySelectorAll(".card, .showcase-card").forEach(function (el) {
+      el.addEventListener("pointerleave", function () { el.style.transform = ""; });
+    });
+
+    // Magnetic buttons: the Amazon CTA is gently pulled toward the cursor
+    // within its own bounds, and springs back via the existing CSS
+    // transition on pointerleave.
+    document.querySelectorAll(".btn-amazon").forEach(function (btn) {
+      btn.addEventListener("pointermove", function (e) {
+        var r = btn.getBoundingClientRect();
+        var mx = (e.clientX - r.left - r.width / 2) * 0.3;
+        var my = (e.clientY - r.top - r.height / 2) * 0.3;
+        btn.style.transform = "translate(" + mx.toFixed(1) + "px," + my.toFixed(1) + "px)";
+      });
+      btn.addEventListener("pointerleave", function () { btn.style.transform = ""; });
+    });
+  }
+
   // Ranking showcase: scroll-synced horizontal reveal (GSAP ScrollTrigger).
   // Progressive enhancement only — the CSS scroll-snap row above already
   // works as a plain swipeable carousel with zero JS, so if the GSAP CDN
@@ -144,32 +449,92 @@
   // silently stays as that plain carousel instead of breaking.
   var showcaseOuter = document.querySelector(".showcase-track-outer");
   var showcaseTrack = document.getElementById("showcaseTrack");
-  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var isWideEnough = window.matchMedia("(min-width: 900px)").matches;
-  if (showcaseOuter && showcaseTrack && !prefersReducedMotion && isWideEnough) {
-    window.addEventListener("load", function () {
+
+  window.addEventListener("load", function () {
+    var gsapReady = window.gsap && window.ScrollTrigger;
+    if (gsapReady) {
       try {
-        if (!window.gsap || !window.ScrollTrigger) return;
         gsap.registerPlugin(ScrollTrigger);
-        var distance = showcaseTrack.scrollWidth - showcaseOuter.clientWidth;
-        if (distance <= 0) return;
-        showcaseOuter.classList.add("js-driven");
-        gsap.to(showcaseTrack, {
-          x: -distance,
-          ease: "none",
-          scrollTrigger: {
-            trigger: showcaseOuter,
-            start: "top center",
-            end: "+=" + distance,
-            scrub: 0.6,
-            pin: true,
-            invalidateOnRefresh: true,
-          },
-        });
       } catch (err) {
-        // Leave the plain scroll-snap carousel in place on any failure.
+        gsapReady = false;
+      }
+    }
+
+    if (showcaseOuter && showcaseTrack && gsapReady && !reduceMotion && isWideEnough) {
+      try {
+        var distance = showcaseTrack.scrollWidth - showcaseOuter.clientWidth;
+        if (distance > 0) {
+          showcaseOuter.classList.add("js-driven");
+          gsap.to(showcaseTrack, {
+            x: -distance,
+            ease: "none",
+            scrollTrigger: {
+              trigger: showcaseOuter,
+              start: "top center",
+              end: "+=" + distance,
+              scrub: 0.6,
+              pin: true,
+              invalidateOnRefresh: true,
+            },
+          });
+        }
+      } catch (err) {
         if (showcaseOuter) showcaseOuter.classList.remove("js-driven");
       }
-    });
-  }
+    }
+
+    // Per-card staggered reveal, layered on top of the section-level
+    // [data-reveal] fade above. Guarded end-to-end: if anything throws
+    // after cards are hidden, the catch blocks immediately restore them,
+    // so a script error can never leave content invisible.
+    if (gsapReady && !reduceMotion) {
+      try {
+        document.querySelectorAll(".card-grid").forEach(function (grid) {
+          var cards = grid.querySelectorAll(".card");
+          if (!cards.length) return;
+          gsap.set(cards, { autoAlpha: 0, y: 24 });
+          ScrollTrigger.batch(cards, {
+            start: "top 90%",
+            once: true,
+            onEnter: function (batch) {
+              try {
+                gsap.to(batch, { autoAlpha: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.08 });
+              } catch (err) {
+                gsap.set(batch, { autoAlpha: 1, y: 0 });
+              }
+            },
+          });
+        });
+      } catch (err) {
+        document.querySelectorAll(".card-grid .card").forEach(function (c) {
+          c.style.opacity = "";
+          c.style.visibility = "";
+          c.style.transform = "";
+        });
+      }
+    }
+
+    // Smooth inertia scrolling (Lenis, MIT-licensed, via CDN). Kept native
+    // on touch (Lenis' default) and skipped under reduced motion; wired
+    // into ScrollTrigger's own ticker per GSAP's documented integration so
+    // the pinned showcase above keeps tracking scroll position correctly.
+    if (!reduceMotion && window.Lenis) {
+      try {
+        var lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+        if (gsapReady) {
+          lenis.on("scroll", ScrollTrigger.update);
+          gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+          gsap.ticker.lagSmoothing(0);
+        } else {
+          (function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+          })();
+        }
+      } catch (err) {
+        // Native scroll (html { scroll-behavior: smooth }) is already in place.
+      }
+    }
+  });
 })();
