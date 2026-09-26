@@ -172,6 +172,69 @@
     });
   }
 
+  // Floating quick-jump menu: cloned from the inline .toc (long articles
+  // only — build.js only renders one when a page has 2+ h2 sections, so
+  // short reviews and static pages never get this element). Opposite
+  // corner from .back-to-top, appears past the same scroll threshold.
+  var tocSource = document.querySelector(".toc");
+  if (tocSource) {
+    var tocList = tocSource.querySelector("ol");
+    if (tocList) {
+      var tocFloat = document.createElement("div");
+      tocFloat.className = "toc-float";
+      tocFloat.innerHTML =
+        '<div class="toc-float-panel"><p class="toc-title">目次</p>' + tocList.outerHTML + "</div>" +
+        '<button class="toc-float-btn" type="button" aria-label="目次を開く" aria-expanded="false">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="14" y2="17"/></svg>' +
+        "</button>";
+      document.body.appendChild(tocFloat);
+
+      var tocFloatBtn = tocFloat.querySelector(".toc-float-btn");
+      tocFloatBtn.addEventListener("click", function () {
+        var willOpen = !tocFloat.classList.contains("is-open");
+        tocFloat.classList.toggle("is-open", willOpen);
+        tocFloatBtn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+      });
+      var tocFloatLinks = tocFloat.querySelectorAll("a");
+      tocFloatLinks.forEach(function (a) {
+        a.addEventListener("click", function () {
+          tocFloat.classList.remove("is-open");
+          tocFloatBtn.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      document.addEventListener(
+        "scroll",
+        function () {
+          tocFloat.classList.toggle("is-visible", window.scrollY > 500);
+        },
+        { passive: true }
+      );
+
+      // Highlight whichever section is currently in view.
+      var tocHeadings = Array.prototype.map.call(tocFloatLinks, function (a) {
+        var id = a.getAttribute("href").slice(1);
+        return document.getElementById(id);
+      }).filter(Boolean);
+      if (tocHeadings.length && "IntersectionObserver" in window) {
+        var setActive = function (id) {
+          tocFloatLinks.forEach(function (a) {
+            a.classList.toggle("is-active", a.getAttribute("href") === "#" + id);
+          });
+        };
+        var headingIo = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) setActive(entry.target.id);
+            });
+          },
+          { rootMargin: "-20% 0px -70% 0px" }
+        );
+        tocHeadings.forEach(function (h) { headingIo.observe(h); });
+      }
+    }
+  }
+
   // Scroll progress bar.
   var progressBar = document.querySelector(".progress-bar");
   if (progressBar) {

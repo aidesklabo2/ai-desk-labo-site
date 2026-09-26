@@ -526,6 +526,66 @@ article > p, article > ul > li { font-size: 1rem; line-height: 1.95; color: var(
 .toc li { margin: 6px 0; }
 .toc a { color: var(--ink-primary); }
 
+/* ---------- Floating quick-jump menu ----------
+   Cloned from the inline .toc by site.js on long articles only (pages
+   without one — most reviews, static pages — never get this element).
+   Sits opposite .back-to-top so the two never collide. */
+.toc-float {
+  position: fixed;
+  left: 22px;
+  bottom: 22px;
+  z-index: 35;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.toc-float.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.toc-float-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--ink-primary);
+  transition: background 0.25s var(--ease), color 0.25s var(--ease);
+}
+.toc-float-btn svg { width: 19px; height: 19px; }
+.toc-float-btn:hover, .toc-float.is-open .toc-float-btn { background: var(--ink-primary); color: #fff; }
+.toc-float-panel {
+  position: absolute;
+  left: 0;
+  bottom: 56px;
+  width: 250px;
+  max-height: 60vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card-hover);
+  padding: 16px 18px;
+  opacity: 0;
+  transform: translateY(8px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.toc-float.is-open .toc-float-panel { opacity: 1; transform: none; pointer-events: auto; }
+.toc-float-panel .toc-title { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin: 0 0 8px; }
+.toc-float-panel ol { margin: 0; padding-left: 1.1em; }
+.toc-float-panel li { margin: 7px 0; font-size: 0.88rem; line-height: 1.5; }
+.toc-float-panel a { color: var(--ink-primary); }
+.toc-float-panel a.is-active { color: var(--accent-orange); font-weight: 700; }
+@media (max-width: 760px) {
+  .toc-float { left: 14px; bottom: 14px; }
+  .toc-float-panel { width: min(78vw, 260px); }
+}
+
 /* ---------- Scroll reveal ----------
    CSS-only fallback (IntersectionObserver toggles .is-visible) stays as
    the safety net; site.js prefers a GSAP ScrollTrigger stagger when the
