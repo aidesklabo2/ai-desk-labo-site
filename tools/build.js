@@ -253,7 +253,7 @@ function renderShowcase(rankedProducts) {
     })
     .join("\n");
   return section(
-    `<div class="section-head"><p class="eyebrow">Ranking</p><h2>今、注目のアイテム</h2></div>
+    `<div class="section-head"><p class="eyebrow">Ranking</p><span class="section-index">( 02 )</span><h2>今、注目のアイテム</h2></div>
     <p class="showcase-hint">スクロールすると連動して切り替わります(スマホ・タブレットは横にスワイプ)</p>
     <div class="showcase-track-outer"><div class="showcase-track" id="showcaseTrack">${cards}</div></div>`
   );
@@ -344,7 +344,7 @@ function main() {
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-content">
-        <p class="eyebrow">AI × ガジェット比較メディア</p>
+        ${eyebrowHtml("AI × ガジェット比較メディア", "Est. 2026")}
         <h1>
           <span class="split-line"><span>AIと過ごす毎日を、</span></span>
           <span class="split-line"><span>もっと快適にする</span></span>
@@ -372,7 +372,7 @@ function main() {
   // homepage, giving the otherwise all-white page a contrast beat without
   // needing a photograph.
   const pillarsHtml = section(
-    `<div class="section-head"><p class="eyebrow">Our Standard</p><h2>AI Desk Laboが大事にしていること</h2></div>
+    `<div class="section-head"><p class="eyebrow">Our Standard</p><span class="section-index">( 03 )</span><h2>AI Desk Laboが大事にしていること</h2></div>
     <div class="pillar-grid">
       <div class="pillar">
         <span class="pillar-index">01</span>
@@ -398,15 +398,26 @@ function main() {
 
   // Full-bleed kinetic-type band — decorative only (aria-hidden), real
   // navigation to each section already exists in the header and chip row.
-  const marqueeWords = ["ランキング", "レビュー", "比較", "ガイド"];
+  // Each JP word is paired with its English kicker (reusing TYPE_LABEL_EN)
+  // for the same quiet bilingual-editorial texture as the eyebrow tags.
+  const marqueeWords = ["ranking", "review", "compare", "guide"];
   const marqueeHtml = `<div class="marquee-band" aria-hidden="true">
   <div class="marquee-track">
-    ${Array(3).fill(marqueeWords.map((w, i) => `<span class="${i % 2 ? "accent" : ""}">${w}</span><span class="dot">◆</span>`).join("\n")).join("\n")}
+    ${Array(3)
+      .fill(
+        marqueeWords
+          .map(
+            (type, i) =>
+              `<span class="${i % 2 ? "accent" : ""}">${TYPE_LABEL_JA[type]}<span class="marquee-en">${TYPE_LABEL_EN[type]}</span></span><span class="dot">◆</span>`
+          )
+          .join("\n")
+      )
+      .join("\n")}
   </div>
 </div>`;
 
   const latestHtml = section(
-    `<div class="section-head"><p class="eyebrow">Latest</p><h2>最新の記事</h2></div><div class="card-grid bento">${latest
+    `<div class="section-head"><p class="eyebrow">Latest</p><span class="section-index">( 04 )</span><h2>最新の記事</h2></div><div class="card-grid bento">${latest
       .map((e) => renderEntryCard(e, `${FOLDER_BY_TYPE[e.type]}/${e.slug}/`))
       .join("\n")}</div>`,
     { tint: true }
@@ -426,7 +437,7 @@ function main() {
   if (budgetEntry) {
     const budgetCards = budgetEntry.products.map((asin) => renderProductCard(productsMap[asin])).join("\n");
     budgetHtml = section(
-      `<div class="section-head">${eyebrowHtml("お手頃価格", "Budget Picks")}<h2>予算重視ならこちら</h2></div>
+      `<div class="section-head">${eyebrowHtml("お手頃価格", "Budget Picks")}<span class="section-index">( 01 )</span><h2>予算重視ならこちら</h2></div>
       <div class="card-grid bento">${budgetCards}</div>
       <p class="section-link"><a href="${FOLDER_BY_TYPE[budgetEntry.type]}/${budgetEntry.slug}/">${escapeHtml(budgetEntry.title)}を見る →</a></p>`
     );
