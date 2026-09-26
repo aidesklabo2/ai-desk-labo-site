@@ -16,6 +16,11 @@ const FOLDER_BY_TYPE = { review: "reviews", ranking: "rankings", compare: "compa
 const TYPE_LABEL_JA = { review: "レビュー", ranking: "ランキング", compare: "比較", guide: "ガイド" };
 const TYPE_COLOR = { review: "blue", ranking: "orange", compare: "green", guide: "blue" };
 const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange", cpu: "blue", gpu: "orange", cable: "green", tablet: "blue", reader: "green", case: "blue", macropad: "orange" };
+// Product-card badges show this label, not the raw `category` key — the key
+// is an internal English slug (also used to look up CATEGORY_COLOR/ICONS)
+// and was previously printed as-is, which read as stray English jargon on
+// an otherwise all-Japanese page.
+const CATEGORY_LABEL_JA = { keyboard: "キーボード", mouse: "マウス", charger: "充電器", monitor: "モニター", stand: "スタンド", mic: "マイク", light: "ライト", footrest: "フットレスト", wristrest: "リストレスト", monitorarm: "モニターアーム", cpu: "CPU", gpu: "GPU", cable: "ケーブル", tablet: "タブレット", reader: "カードリーダー", case: "ケース", macropad: "マクロパッド" };
 
 // Small hand-authored line-icon set (24x24, stroke-based, no external icon font/CDN).
 const ICONS = {
@@ -136,8 +141,9 @@ function section(innerHtml, { tint = false, invert = false, reveal = true } = {}
 // only plain strings coming from data (like table cells, product fields) are escaped.
 function renderProductCard(product) {
   const badgeColor = CATEGORY_COLOR[product.category] || "blue";
+  const badgeLabel = CATEGORY_LABEL_JA[product.category] || product.category;
   return `<div class="card">
-  <div class="card-top">${iconBadge(product.category, badgeColor)}<span class="badge ${badgeColor}">${escapeHtml(product.category)}</span></div>
+  <div class="card-top">${iconBadge(product.category, badgeColor)}<span class="badge ${badgeColor}">${escapeHtml(badgeLabel)}</span></div>
   <h3>${escapeHtml(product.name)}</h3>
   <p class="price"><span class="num-mono">¥${product.price.toLocaleString("ja-JP")}</span>${escapeHtml(product.priceNote || "")}</p>
   <p>${escapeHtml(product.summary || "")}</p>
