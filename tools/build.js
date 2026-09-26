@@ -117,12 +117,29 @@ function renderToc(toc) {
   return `<nav class="toc"><p class="toc-title">この記事の目次</p><ol>${items}</ol></nav>`;
 }
 
-function renderPage(template, { title, description, canonical, root, bodyHtml }) {
+// Lightweight intro for every interior page: a brief CSS-only fade (see
+// .loader in style.css), never JS-dependent.
+const SIMPLE_LOADER = `<div class="loader" aria-hidden="true"><span class="loader-mark">AI DESK LABO</span></div>`;
+
+// Homepage-only "first impression" intro: two panels covering the screen
+// with the wordmark, then site.js's GSAP timeline slides them apart to
+// reveal the hero underneath (chaining straight into the hero's own
+// headline reveal). The CSS side (see .intro-panel/.intro-mark) already
+// fades and hides everything on its own after a fixed delay, so this is
+// still safe if GSAP never loads or errors out.
+const HOME_INTRO = `<div class="intro" aria-hidden="true">
+  <div class="intro-panel left"></div>
+  <div class="intro-panel right"></div>
+  <div class="intro-mark">AI DESK LABO</div>
+</div>`;
+
+function renderPage(template, { title, description, canonical, root, bodyHtml, intro = SIMPLE_LOADER }) {
   return template
     .replaceAll("{{TITLE}}", escapeHtml(title))
     .replaceAll("{{DESCRIPTION}}", escapeHtml(description))
     .replaceAll("{{CANONICAL}}", canonical)
     .replaceAll("{{ROOT}}", root)
+    .replace("{{INTRO}}", intro)
     .replace("{{BODY}}", bodyHtml);
 }
 
@@ -304,6 +321,7 @@ function main() {
     canonical: `${SITE_ORIGIN}/`,
     root: "",
     bodyHtml: heroHtml + marqueeHtml + budgetHtml + showcaseHtml + latestHtml,
+    intro: HOME_INTRO,
   }));
   sitemapUrls.unshift({ loc: `${SITE_ORIGIN}/` });
 

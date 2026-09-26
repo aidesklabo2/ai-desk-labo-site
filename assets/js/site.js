@@ -191,18 +191,47 @@
 
   // Hero: split-line headline reveal (vanilla-split, no paid plugin needed
   // — build.js already wraps each line in .split-line > span). Falls back
-  // to the plain, fully visible heading if GSAP never loads.
+  // to the plain, fully visible heading if GSAP never loads. Exposed as a
+  // function so the homepage-only intro timeline below can chain straight
+  // into it instead of the two racing on independent timers.
   var heroLines = document.querySelectorAll(".hero h1 .split-line > span");
-  if (heroLines.length && window.gsap && !reduceMotion) {
+  function revealHeroLines(delay) {
+    if (!heroLines.length || !window.gsap || reduceMotion) return;
     try {
       gsap.fromTo(
         heroLines,
         { yPercent: 110 },
-        { yPercent: 0, duration: 1, ease: "expo.out", stagger: 0.08, delay: 0.5 }
+        { yPercent: 0, duration: 1, ease: "expo.out", stagger: 0.08, delay: delay || 0 }
       );
     } catch (err) {
       heroLines.forEach(function (el) { el.style.transform = ""; });
     }
+  }
+
+  // Homepage-only "first impression" entrance: two panels covering the
+  // screen snap the wordmark in, hold briefly, then slide apart — timed to
+  // finish right as the hero headline stagger takes over. The CSS side
+  // (.intro-panel/.intro-mark, see style.css) already fades and hides
+  // everything on a fixed timer on its own, so a GSAP failure here just
+  // means the plainer CSS version plays out instead of this richer one.
+  var introPanels = document.querySelectorAll(".intro-panel");
+  var introMark = document.querySelector(".intro-mark");
+  if (introPanels.length && window.gsap && !reduceMotion) {
+    try {
+      gsap.timeline({ onComplete: function () { revealHeroLines(0); } })
+        .fromTo(introMark, { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" })
+        .to(introMark, { opacity: 0, scale: 1.04, duration: 0.3, ease: "power2.in" }, "+=0.3")
+        .to(introPanels[0], { xPercent: -100, duration: 0.7, ease: "power4.inOut" }, "<")
+        .to(introPanels[1], { xPercent: 100, duration: 0.7, ease: "power4.inOut" }, "<")
+        .set(introPanels, { display: "none" })
+        .set(introMark, { display: "none" });
+    } catch (err) {
+      introPanels.forEach(function (p) { p.style.display = "none"; });
+      if (introMark) introMark.style.display = "none";
+      revealHeroLines(0);
+    }
+  } else {
+    revealHeroLines(introPanels.length ? 1.7 : 0.5);
   }
 
   // Hero backdrop: three soft, slowly drifting gradient blobs drawn on a

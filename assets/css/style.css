@@ -126,6 +126,49 @@ img, svg { max-width: 100%; height: auto; }
   .loader { animation: none; opacity: 0; visibility: hidden; }
 }
 
+/* ---------- Homepage-only entrance (site.js drives the GSAP version;
+   these rules are also a complete, self-contained CSS fallback) ---------- */
+.intro-panel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: var(--ink-primary);
+  z-index: 1001;
+  pointer-events: none;
+  animation: introPanelOut 0.01s 1.7s forwards;
+}
+.intro-panel.left { left: 0; }
+.intro-panel.right { right: 0; }
+@keyframes introPanelOut {
+  to { opacity: 0; visibility: hidden; }
+}
+.intro-mark {
+  position: fixed;
+  inset: 0;
+  z-index: 1002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.4rem, 4.4vw, 2.2rem);
+  letter-spacing: 0.12em;
+  color: #fff;
+  pointer-events: none;
+  opacity: 0;
+  animation: introMarkPulse 1.7s var(--ease) forwards;
+}
+@keyframes introMarkPulse {
+  0% { opacity: 0; transform: scale(0.85); }
+  28% { opacity: 1; transform: scale(1); }
+  70% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.04); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-panel, .intro-mark { display: none; }
+}
+
 /* ---------- Scroll progress bar ---------- */
 .progress-bar {
   position: fixed;
