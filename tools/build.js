@@ -74,10 +74,7 @@ const HERO_NETWORK_SVG = `<svg class="net" viewBox="0 0 440 400" fill="none" xml
     <line x1="35" y1="195" x2="196" y2="190"/>
   </g>
   <rect class="net-hub" x="196" y="166" width="48" height="48" rx="12" stroke-width="2"/>
-  <g class="net-hub-mark" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-    <line x1="220" y1="178" x2="220" y2="202"/>
-    <line x1="208" y1="190" x2="232" y2="190"/>
-  </g>
+  <text class="net-hub-mark" x="220" y="191" text-anchor="middle" dominant-baseline="central">AI</text>
   <g class="net-nodes">
     <circle cx="55" cy="115" r="5"/>
     <circle cx="130" cy="55" r="4"/>
@@ -246,7 +243,7 @@ function renderShowcase(rankedProducts) {
     .map((product, i) => {
       const badgeColor = CATEGORY_COLOR[product.category] || "blue";
       return `<div class="showcase-card">
-    <span class="rank">${i + 1}位</span>
+    <span class="rank"><span class="rank-num">${String(i + 1).padStart(2, "0")}</span><span class="rank-suffix">位</span></span>
     ${iconBadge(product.category, badgeColor)}
     <h3>${escapeHtml(product.name)}</h3>
     <p class="price">¥${product.price.toLocaleString("ja-JP")}</p>
@@ -343,7 +340,7 @@ function main() {
 
   const heroHtml = `<section class="hero">
   <canvas class="hero-canvas" aria-hidden="true"></canvas>
-  <div class="hero-bg-word" aria-hidden="true">SELECT.</div>
+  <div class="hero-spine" aria-hidden="true">AI Desk Labo — Curated Tech Journal</div>
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-content">

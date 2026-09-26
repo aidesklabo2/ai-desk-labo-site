@@ -366,27 +366,42 @@ img, svg { max-width: 100%; height: auto; }
   mask-image: radial-gradient(ellipse 90% 70% at 50% 20%, black, transparent 75%);
   pointer-events: none;
 }
-/* Oversized decorative English word behind the hero copy — purely
-   atmospheric typography (nobody is meant to actually read "SELECT." here),
-   kept at ~3% opacity so it reads as texture, not content, and never
-   competes with the real (Japanese) headline sitting in front of it. */
-.hero-bg-word {
+/* Vertical "colophon" spine on the hero's left edge — mirrors .scroll-cue
+   on the opposite corner so the hero reads like a printed magazine page
+   bracketed by two quiet marginal notes, rather than one oversized word
+   sitting behind the copy (which read as a generic template trick). */
+.hero-spine {
   position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(6rem, 20vw, 17rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--ink-primary);
-  opacity: 0.035;
-  white-space: nowrap;
+  left: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  opacity: 0.65;
   pointer-events: none;
   user-select: none;
-  overflow: hidden;
+}
+.hero-spine::before {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 40px;
+  margin: 0 auto 14px;
+  background: currentColor;
+  border-radius: 2px;
+}
+/* .wrap caps at --max-width (1080px) + 40px padding, so it only floats
+   clear of the viewport edge (leaving room for this spine without crowding
+   the headline) once the viewport is comfortably past that — hidden below
+   it rather than switching to a cramped, closer-in position. */
+.hero-spine { display: none; }
+@media (min-width: 1180px) {
+  .hero-spine { display: block; }
 }
 .hero .wrap { position: relative; width: 100%; }
 
@@ -481,8 +496,14 @@ img, svg { max-width: 100%; height: auto; }
   animation: netFadeIn 0.6s var(--ease) forwards;
   animation-delay: 2.5s;
 }
+/* The hub reads as the brand's own "AI" mark rather than a generic plus/
+   spark glyph — ties the illustration back to the logo badge in the header
+   instead of being an unrelated decorative shape. */
 .net-hub-mark {
-  stroke: var(--accent-orange);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 15px;
+  fill: var(--accent-orange);
   opacity: 0;
   animation: netFadeIn 0.5s var(--ease) forwards;
   animation-delay: 2.9s;
@@ -853,23 +874,29 @@ article > p, article > ul > li { font-size: 1rem; line-height: 1.95; color: var(
 }
 .showcase-card:hover::after { opacity: 1; }
 .showcase-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-card-hover); }
+/* An editorial "best-of list" numeral rather than a generic dark pill badge
+   — reuses the same serif accent already loaded for .grad, so it doesn't
+   pull in a third typeface just for this. */
 .showcase-card .rank {
   position: absolute;
-  top: 14px;
-  right: 18px;
-  min-width: 46px;
-  height: 30px;
-  padding: 0 13px;
+  top: 12px;
+  right: 20px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: baseline;
+  gap: 4px;
+}
+.showcase-card .rank-num {
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 2.1rem;
+  line-height: 1;
+  color: var(--accent-orange);
+}
+.showcase-card .rank-suffix {
   font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.02em;
-  color: #fff;
-  background: var(--ink-primary);
-  border-radius: 8px;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
 }
 .showcase-card .icon-badge { margin-top: 14px; }
 .showcase-card h3 { font-family: var(--font-display); font-weight: 800; margin: 14px 0 6px; color: var(--ink-primary); }
@@ -1024,21 +1051,23 @@ tbody tr:last-child td { border-bottom: none; }
 
 /* ---------- Footer ---------- */
 .site-footer { position: relative; overflow: hidden; border-top: 1px solid var(--border); padding: 40px 0 32px; color: var(--ink-muted); font-size: 0.85rem; }
-/* Same decorative-English treatment as .hero-bg-word, cropped along the
-   footer's bottom edge — a giant, barely-there brand wordmark rather than
-   anything meant to be read letter by letter. */
+/* Same "AI" monogram as the header logo badge and the hero network hub,
+   just huge and cropped at the footer's bottom edge — one mark echoed at
+   three sizes through the page, rather than three unrelated decorative
+   ideas (a full wordmark here read as a generic "giant brand name in the
+   footer" template move once the hero got a more considered treatment). */
 .footer-bg-word {
   position: absolute;
   left: 50%;
-  bottom: -0.22em;
+  bottom: -0.3em;
   transform: translateX(-50%);
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(2.6rem, 13vw, 8rem);
+  font-size: clamp(7rem, 22vw, 15rem);
   line-height: 1;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: var(--ink-primary);
-  opacity: 0.04;
+  opacity: 0.045;
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
