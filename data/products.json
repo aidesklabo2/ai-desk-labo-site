@@ -535,5 +535,29 @@
     "cons": ["デュアルタワー構造のためケース内のクリアランス(メモリ・ケースサイズ)を要確認"],
     "summary": "クーラー非同梱のRyzen 9 9900Xなどに必要な、コスパに優れた空冷CPUクーラー。",
     "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0B55YL7TP",
+    "name": "Fractal Design Pop Silent Black Solid ミドルタワーケース",
+    "category": "case",
+    "price": 13270,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点)",
+    "url": "https://www.amazon.co.jp/dp/B0B55YL7TP",
+    "pros": ["密閉式フロント/トップと吸音フォーム貼付サイドパネルで動作音を抑えやすい", "120mmファン3基標準付属", "ATX/Micro-ATX/Mini-ITXいずれにも対応"],
+    "cons": ["密閉構造のぶん、同価格帯のメッシュケースよりエアフローは控えめ(高発熱構成では要注意)"],
+    "summary": "性能より静かさを優先したい人向けの、吸音パネル付きミドルタワーケース。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0DGKTMN6L",
+    "name": "Crucial P310 2TB NVMe PCIe Gen4 M.2 SSD",
+    "category": "storage",
+    "price": 59980,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点)",
+    "url": "https://www.amazon.co.jp/dp/B0DGKTMN6L",
+    "pros": ["最大7,100MB/秒のGen4 SSDで大容量でも読み込みが速い", "動画編集の素材や大量のイラストデータを1台にまとめやすい", "M.2スロットに挿すだけで配線不要"],
+    "cons": ["1TBモデルよりGB単価は割高"],
+    "summary": "素材データが多い動画編集・イラスト制作向けの、2TB大容量NVMe SSD。",
+    "lastChecked": "2026-09-27"
   }
 ]

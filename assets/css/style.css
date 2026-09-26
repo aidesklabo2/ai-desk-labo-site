@@ -967,7 +967,27 @@ article > p, article > ul > li { font-size: 1rem; line-height: 1.95; color: var(
   background: var(--card-bg-hover);
 }
 .card:hover::after { opacity: 1; }
-.card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+.card-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.card-top .icon-badge:first-child { margin-right: auto; }
+.fav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--ink-muted);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), background 0.2s var(--ease), transform 0.15s var(--ease);
+}
+.fav-btn svg { width: 15px; height: 15px; fill: none; stroke-width: 1.8; }
+.fav-btn:hover { border-color: var(--accent-orange); color: var(--accent-orange); transform: scale(1.08); }
+.fav-btn.is-active { background: var(--accent-orange); border-color: var(--accent-orange); color: #fff; }
+.fav-btn.is-active svg { fill: currentColor; }
 .card .badge {
   display: inline-block;
   font-size: 0.72rem;
@@ -1233,6 +1253,22 @@ tbody tr:last-child td { border-bottom: none; }
   padding: 10px 14px;
   margin: 10px 0;
 }
+.quiz-part { display: flex; flex-direction: column; }
+.quiz-swap-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.quiz-swap-btn {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.quiz-swap-btn:hover:not(:disabled) { border-color: var(--accent-orange); color: var(--accent-orange); }
+.quiz-swap-btn.is-current { background: var(--ink-primary); color: #fff; border-color: var(--ink-primary); cursor: default; }
+.quiz-swap-btn:disabled { cursor: default; }
 .quiz-result-kicker {
   font-family: var(--font-mono);
   font-size: 0.72rem;
@@ -1273,4 +1309,54 @@ tbody tr:last-child td { border-bottom: none; }
 @media (max-width: 640px) {
   .quiz { padding: 20px 16px; }
   .quiz-question { font-size: 1.1rem; }
+}
+
+/* ---------- Favorites / Search / Changelog ---------- */
+.lede-small { color: var(--ink-secondary); margin: 8px 0 26px; max-width: 60ch; }
+.nav-fav { position: relative; }
+.nav-fav-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  margin-left: 5px;
+  border-radius: 999px;
+  background: var(--accent-orange);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+.favorites-empty { color: var(--ink-secondary); padding: 30px 0; }
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 12px 18px;
+  margin-bottom: 8px;
+  background: var(--surface);
+}
+.search-box svg { width: 18px; height: 18px; color: var(--ink-muted); flex-shrink: 0; }
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--ink-primary);
+}
+.search-count { color: var(--ink-muted); font-size: 0.85rem; margin: 0 0 20px; }
+.changelog-timeline { display: flex; flex-direction: column; gap: 22px; }
+.changelog-day { display: grid; grid-template-columns: 130px 1fr; gap: 16px; border-top: 1px solid var(--border); padding-top: 16px; }
+.changelog-date { font-family: var(--font-mono); font-size: 0.85rem; color: var(--ink-muted); }
+.changelog-items { margin: 0; padding-left: 1.1em; color: var(--ink-secondary); font-size: 0.94rem; }
+.changelog-items li { margin: 4px 0; }
+@media (max-width: 560px) {
+  .changelog-day { grid-template-columns: 1fr; gap: 4px; }
 }

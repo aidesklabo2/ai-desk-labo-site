@@ -57,6 +57,9 @@ const ICONS = {
   storage: `<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="12" r="2"/><line x1="14" y1="10" x2="18" y2="10"/><line x1="14" y1="14" x2="18" y2="14"/>`,
   cooler: `<circle cx="12" cy="12" r="9.5"/><path d="M12 12 15.8 6.6"/><path d="M12 12 6.3 9.3"/><path d="M12 12 13.1 18.8"/><circle cx="12" cy="12" r="1.6"/>`,
   diagnosis: `<circle cx="12" cy="12" r="9.5"/><polyline points="7.5 12.5 10.5 15.5 16.5 8.5"/>`,
+  heart: `<path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/>`,
+  search: `<circle cx="10.5" cy="10.5" r="7"/><line x1="21" y1="21" x2="15.5" y2="15.5"/>`,
+  clock: `<circle cx="12" cy="12" r="9.5"/><polyline points="12 6.5 12 12 16.5 14.5"/>`,
 };
 
 // Hand-authored "network" illustration for the homepage hero — replaces a
@@ -158,7 +161,7 @@ function renderProductCard(product) {
   const badgeColor = CATEGORY_COLOR[product.category] || "blue";
   const badgeLabel = CATEGORY_LABEL_JA[product.category] || product.category;
   return `<div class="card">
-  <div class="card-top">${iconBadge(product.category, badgeColor)}<span class="badge ${badgeColor}">${escapeHtml(badgeLabel)}</span></div>
+  <div class="card-top">${iconBadge(product.category, badgeColor)}<span class="badge ${badgeColor}">${escapeHtml(badgeLabel)}</span><button type="button" class="fav-btn" data-fav-asin="${escapeHtml(product.asin)}" aria-label="気になるリストに追加">${icon("heart")}</button></div>
   <h3>${escapeHtml(product.name)}</h3>
   <p class="price"><span class="num-mono">¥${product.price.toLocaleString("ja-JP")}</span>${escapeHtml(product.priceNote || "")}</p>
   <p>${escapeHtml(product.summary || "")}</p>
@@ -190,12 +193,22 @@ const DIAGNOSIS_CATALOG = {
   gpuHigh: "B0CS67885B", // RTX 4070 SUPER
   ramDdr4: "B08C53LL9J", // 16GB(8GBx2)
   ramDdr5: "B0C2B7W1W4", // 32GB(16GBx2)
-  storage: "B0DGKMQPYC",
-  case: "B0DQPMJ6MJ",
+  storage: "B0DGKMQPYC", // 1TB
+  storage2tb: "B0DGKTMN6L", // 2TB — swappable with `storage` for heavy footage/asset use
+  case: "B0DQPMJ6MJ", // airflow-focused
+  caseQuiet: "B0B55YL7TP", // acoustic-dampened — swappable with `case`
   psu: "B0DKT9JRF1",
   paste: "B0795DP124",
   cooler: "B09NZB9Z9Z", // only needed with cpuHighAmd (no bundled cooler)
 };
+// Categories the result UI lets a visitor swap in place, without
+// recomputing the whole diagnosis — e.g. "keep everything, just give me the
+// quiet case instead". Each entry is the pair of catalog keys that are
+// interchangeable; swapping never changes any other part.
+const DIAGNOSIS_SWAPS = [
+  { category: "case", options: ["case", "caseQuiet"], labels: { case: "通気重視", caseQuiet: "静音重視" } },
+  { category: "storage", options: ["storage", "storage2tb"], labels: { storage: "1TB", storage2tb: "2TB" } },
+];
 
 // Rules-based PC diagnosis engine. Unlike a simple answer-combination lookup
 // table, this asks several questions (some multi-select, since use cases
@@ -253,15 +266,27 @@ function renderDiagnosis(diag, productsMap) {
   var CATALOG = ${JSON.stringify(DIAGNOSIS_CATALOG)};
   var CARDS = ${JSON.stringify(cardsByAsin)};
   var PRICES = ${JSON.stringify(pricesByAsin)};
+  var SWAPS = ${JSON.stringify(DIAGNOSIS_SWAPS)};
   var GUIDE_ROOT = "../../guides/";
   var stepKeys = ${JSON.stringify(diag.questions.map((q) => q.key))};
   var stepTypes = ${JSON.stringify(diag.questions.map((q) => q.type))};
+  var stepDependsOn = ${JSON.stringify(diag.questions.map((q) => q.dependsOn || null))};
   var answers = {};
+  var resultState = null; // set by showResult(); mutated by swap clicks
   var stepEls = root.querySelectorAll(".quiz-step");
   var dotEls = root.querySelectorAll(".quiz-dot");
   var resultsBox = root.querySelector(".quiz-results");
 
   function yen(n) { return "\\u00a5" + n.toLocaleString("ja-JP"); }
+
+  function shouldSkip(index) {
+    var dep = stepDependsOn[index];
+    if (!dep) return false;
+    var given = answers[dep.key];
+    if (given === undefined) return true;
+    var givenArr = Array.isArray(given) ? given : [given];
+    return !dep.anyOf.some(function (v) { return givenArr.indexOf(v) !== -1; });
+  }
 
   function showStep(index) {
     stepEls.forEach(function (el) { el.hidden = Number(el.dataset.stepIndex) !== index; });
@@ -270,7 +295,7 @@ function renderDiagnosis(diag, productsMap) {
     root.querySelector(".quiz-steps").hidden = false;
   }
 
-  // --- scoring: turn the 6 answers into a concrete parts list + copy ---
+  // --- scoring: turn the answers into a concrete parts list + copy ---
   function compute() {
     var usecases = answers.usecases || [];
     if (!usecases.length) usecases = ["office"];
@@ -286,8 +311,9 @@ function renderDiagnosis(diag, productsMap) {
     var coreTier = "low"; // low(6-10 core) or high(12 core, Ryzen 9 9900X tier)
     if (hasIllustration) gpuTier = Math.max(gpuTier, 1);
     if (hasGaming) gpuTier = Math.max(gpuTier, 1);
-    if (hasStreaming) { coreTier = "high"; ramGB = Math.max(ramGB, 32); }
+    if (hasStreaming) { coreTier = "high"; ramGB = Math.max(ramGB, 32); gpuTier = Math.max(gpuTier, 1); }
     if (hasVideo) { gpuTier = Math.max(gpuTier, 2); coreTier = "high"; ramGB = Math.max(ramGB, 32); }
+    if ((hasGaming || hasStreaming) && answers.resolution === "fhd144plus") gpuTier = Math.max(gpuTier, 2);
     if (heavyCount >= 2) { ramGB = Math.max(ramGB, 32); coreTier = "high"; }
     if (heavyCount >= 3) ramGB = 64;
 
@@ -339,25 +365,34 @@ function renderDiagnosis(diag, productsMap) {
       paragraphs.push("選んだ用途(" + usecaseText + ")をもとに、CPUのコア数・GPUの有無・メモリ容量を決めています。");
       if (gpuTier === 0) paragraphs.push("グラフィックボードなしのAPU/内蔵GPU構成で十分なので、最もコストを抑えたパターンにしました。");
       else if (gpuTier === 1) paragraphs.push("フルHD高設定・60fps以上を狙えるミドルクラスのGPUを組み合わせています。");
-      else paragraphs.push("動画編集・高負荷な配信も見据えて、VRAM 12GB以上のGPUを選定しました。");
-      if (coreTier === "high") paragraphs.push(heavyCount >= 2 ? "複数の用途を同時にこなす想定なので、コア数の多いCPUとメモリ" + ramGB + "GBを確保しています。" : "動画編集のエンコード・書き出しを考慮して、コア数の多いCPUにしています。");
+      else if (hasVideo) paragraphs.push("動画編集も見据えて、VRAM 12GB以上のGPUを選定しました。");
+      else paragraphs.push("144fps以上 / WQHD以上を狙う設定なので、余裕を持たせた上位クラスのGPUにしています。");
+      if (coreTier === "high") {
+        if (heavyCount >= 2) paragraphs.push("複数の用途を同時にこなす想定なので、コア数の多いCPUとメモリ" + ramGB + "GBを確保しています。");
+        else if (hasVideo) paragraphs.push("動画編集のエンコード・書き出しを考慮して、コア数の多いCPUにしています。");
+        else paragraphs.push("配信しながらのプレイでもCPUに余裕を持たせるため、コア数の多いCPUにしています。");
+      }
       if (windowsPlatform === "intel" && (coreTier === "high" || gpuTier === 2)) notes.push("正直に言うと、10コアクラスのCore i5-14400は本格的な4K編集・重い配信にはやや力不足です。予算が許せばCore i7以上のクラスを検討してください。");
-      if (hasVideo) notes.push("動画編集は素材量が多くなりがちです。1TB SSDで不足する場合は2TBモデルや外付けSSDの追加も検討してください。");
       if (hybridNote) notes.push(hybridNote);
 
+      var budgetInfo = null;
       if (effort === "prebuilt") {
         notes.unshift("組み立てには興味がないとのことなので、無理に自作はすすめません。下記のCPU・GPUクラスを目安のスペックとして、完成品・BTOパソコンを探すと今回の診断に近い性能で失敗しにくいです。");
         asins = gpuAsin ? [cpuAsin, gpuAsin] : [cpuAsin];
         guideLink = null;
       } else {
+        var storageAsin = answers.storage === "2tb" ? CATALOG.storage2tb : CATALOG.storage;
+        var caseAsin = answers.noise === "quiet" ? CATALOG.caseQuiet : CATALOG.case;
+        if (hasVideo && storageAsin === CATALOG.storage) notes.push("動画編集は素材量が多くなりがちです。1TB SSDで不足する場合は2TBモデルへの入れ替え、または外付けSSDの追加も検討してください。");
+
         asins.push(cpuAsin);
         if (gpuAsin) asins.push(gpuAsin);
         asins.push(moboAsin);
         asins.push(ramAsin);
         var ramKitGB = ramAsin === CATALOG.ramDdr5 ? 32 : 16;
         if (ramGB > ramKitGB) notes.push("メモリは" + ramGB + "GB以上を推奨。掲載の" + ramKitGB + "GBキットを2セット使うと" + (ramKitGB * 2) + "GBになります。");
-        asins.push(CATALOG.storage);
-        asins.push(CATALOG.case);
+        asins.push(storageAsin);
+        asins.push(caseAsin);
         asins.push(CATALOG.psu);
         asins.push(CATALOG.paste);
         if (needsCooler) asins.push(CATALOG.cooler);
@@ -367,22 +402,24 @@ function renderDiagnosis(diag, productsMap) {
         var budgetLabelMap = { "10": "\\uff5e10\\u4e07\\u5186", "15": "10\\u4e07\\uff5e15\\u4e07\\u5186", "20": "15\\u4e07\\uff5e20\\u4e07\\u5186", "99": "20\\u4e07\\u5186\\u4ee5\\u4e0a" };
         var ceil = budgetMap[answers.budget];
         var budgetLabel = budgetLabelMap[answers.budget];
-        if (ceil !== undefined) {
-          if (ceil !== Infinity && total > ceil * 1.1) {
-            notes.push("この構成の目安は約" + yen(total) + "。予算(" + budgetLabel + ")に対して約" + yen(total - ceil) + "オーバーしています。GPUのランクを下げる、またはメモリ容量を抑えると予算内に収まりやすくなります。");
-          } else if (ceil !== Infinity && total < ceil * 0.7) {
-            notes.push("この構成の目安は約" + yen(total) + "。予算(" + budgetLabel + ")にはまだ余裕があるので、GPUやメモリを一段階上げる余地があります。");
-          } else {
-            notes.push("この構成の目安は約" + yen(total) + "。予算(" + budgetLabel + ")の範囲に収まっています。");
-          }
-        }
-        var guideSlug = hasVideo && heavyCount >= 2 ? "pc-build-video-editing" : hasVideo ? "pc-build-video-editing" : hasGaming || hasStreaming ? "pc-build-gaming" : "pc-build-office";
+        if (ceil !== undefined) budgetInfo = { total: total, ceil: ceil, label: budgetLabel };
+        var guideSlug = hasVideo ? "pc-build-video-editing" : hasGaming || hasStreaming ? "pc-build-gaming" : "pc-build-office";
         guideLink = { href: GUIDE_ROOT + guideSlug + "/", label: "詳しい解説をガイド記事で読む" };
       }
       shareText = "\\u3010AI Desk Labo\\u8a3a\\u65ad\\u3011\\u79c1\\u306b\\u5411\\u3044\\u3066\\u308b\\u306e\\u306f\\u300c" + platformLabel + "\\u69cb\\u6210\\u306e" + usecaseText + "PC\\u300d\\u3067\\u3057\\u305f\\ud83d\\udda5\\ufe0f #AIDeskLabo\\u8a3a\\u65ad #\\u81ea\\u4f5cPC";
     }
 
-    return { title: title, paragraphs: paragraphs, notes: notes, asins: asins, guideLink: guideLink, shareText: shareText };
+    return { title: title, paragraphs: paragraphs, notes: notes, asins: asins, guideLink: guideLink, shareText: shareText, budgetInfo: budgetInfo };
+  }
+
+  function budgetNoteText(total, ceil, label) {
+    if (ceil !== Infinity && total > ceil * 1.1) {
+      return "この構成の目安は約" + yen(total) + "。予算(" + label + ")に対して約" + yen(total - ceil) + "オーバーしています。GPUのランクを下げる、またはメモリ容量を抑えると予算内に収まりやすくなります。";
+    }
+    if (ceil !== Infinity && total < ceil * 0.7) {
+      return "この構成の目安は約" + yen(total) + "。予算(" + label + ")にはまだ余裕があるので、GPUやメモリを一段階上げる余地があります。";
+    }
+    return "この構成の目安は約" + yen(total) + "。予算(" + label + ")の範囲に収まっています。";
   }
 
   function escapeText(s) {
@@ -391,18 +428,50 @@ function renderDiagnosis(diag, productsMap) {
     return div.innerHTML;
   }
 
+  // Finds a swap definition covering the given asin, if that ASIN's category
+  // is one the result UI lets the visitor change in place (currently case
+  // and storage — the categories where a different pick never invalidates
+  // any other part). Returns null for everything else.
+  function findSwap(asin) {
+    for (var i = 0; i < SWAPS.length; i++) {
+      var s = SWAPS[i];
+      for (var j = 0; j < s.options.length; j++) {
+        if (CATALOG[s.options[j]] === asin) return s;
+      }
+    }
+    return null;
+  }
+
+  function swapButtonsHtml(swap, currentAsin) {
+    var html = '<div class="quiz-swap-row">';
+    swap.options.forEach(function (key) {
+      var asin = CATALOG[key];
+      var isCurrent = asin === currentAsin;
+      html += '<button type="button" class="quiz-swap-btn' + (isCurrent ? " is-current" : "") + '" data-swap-asin="' + asin + '"' + (isCurrent ? " disabled" : "") + ">" + escapeText(swap.labels[key]) + "</button>";
+    });
+    html += "</div>";
+    return html;
+  }
+
+  function partHtml(asin) {
+    var swap = findSwap(asin);
+    return '<div class="quiz-part" data-asin="' + asin + '">' + (CARDS[asin] || "") + (swap ? swapButtonsHtml(swap, asin) : "") + "</div>";
+  }
+
   function showResult() {
     root.querySelector(".quiz-steps").hidden = true;
     var r = compute();
+    resultState = r;
     var html = "";
     html += '<p class="quiz-result-kicker">\\u8a3a\\u65ad\\u7d50\\u679c</p>';
     html += '<h3 class="quiz-result-title">' + escapeText(r.title) + "</h3>";
     r.paragraphs.forEach(function (p) { html += '<p class="quiz-result-body">' + escapeText(p) + "</p>"; });
     if (r.asins.length) {
-      html += '<div class="card-grid">';
-      r.asins.forEach(function (a) { html += CARDS[a] || ""; });
+      html += '<div class="card-grid" data-parts>';
+      r.asins.forEach(function (a) { html += partHtml(a); });
       html += "</div>";
     }
+    if (r.budgetInfo) html += '<p class="quiz-result-note" data-budget-note>' + escapeText(budgetNoteText(r.budgetInfo.total, r.budgetInfo.ceil, r.budgetInfo.label)) + "</p>";
     r.notes.forEach(function (n) { html += '<p class="quiz-result-note">' + escapeText(n) + "</p>"; });
     if (r.guideLink) html += '<p class="section-link"><a href="' + r.guideLink.href + '">' + escapeText(r.guideLink.label) + " \\u2192</a></p>";
     html += '<div class="quiz-result-actions">';
@@ -412,11 +481,31 @@ function renderDiagnosis(diag, productsMap) {
     resultsBox.innerHTML = html;
     resultsBox.hidden = false;
     root.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (typeof window.aidesklaboSyncFavorites === "function") window.aidesklaboSyncFavorites();
+  }
+
+  function handleSwap(btn) {
+    if (!resultState) return;
+    var partEl = btn.closest(".quiz-part");
+    var oldAsin = partEl.dataset.asin;
+    var newAsin = btn.dataset.swapAsin;
+    if (!newAsin || newAsin === oldAsin) return;
+    var idx = resultState.asins.indexOf(oldAsin);
+    if (idx !== -1) resultState.asins[idx] = newAsin;
+    partEl.outerHTML = partHtml(newAsin);
+    if (typeof window.aidesklaboSyncFavorites === "function") window.aidesklaboSyncFavorites();
+    if (resultState.budgetInfo) {
+      resultState.budgetInfo.total += (PRICES[newAsin] || 0) - (PRICES[oldAsin] || 0);
+      var note = resultsBox.querySelector("[data-budget-note]");
+      if (note) note.textContent = budgetNoteText(resultState.budgetInfo.total, resultState.budgetInfo.ceil, resultState.budgetInfo.label);
+    }
   }
 
   function goToStep(currentIndex) {
-    if (currentIndex === stepKeys.length - 1) showResult();
-    else showStep(currentIndex + 1);
+    var next = currentIndex + 1;
+    while (next < stepKeys.length && shouldSkip(next)) next++;
+    if (next >= stepKeys.length) showResult();
+    else showStep(next);
   }
 
   root.addEventListener("click", function (e) {
@@ -444,8 +533,14 @@ function renderDiagnosis(diag, productsMap) {
       goToStep(stepKeys.indexOf(stepEl2.dataset.key));
       return;
     }
+    var swapBtn = e.target.closest(".quiz-swap-btn");
+    if (swapBtn) {
+      handleSwap(swapBtn);
+      return;
+    }
     if (e.target.closest(".quiz-retry")) {
       answers = {};
+      resultState = null;
       root.querySelectorAll(".quiz-option.is-selected").forEach(function (el) { el.classList.remove("is-selected"); });
       root.querySelectorAll(".quiz-next").forEach(function (el) { el.disabled = true; });
       showStep(0);
@@ -554,6 +649,156 @@ function renderShowcase(rankedProducts) {
     <p class="showcase-hint">スクロールすると連動して切り替わります(スマホ・タブレットは横にスワイプ)</p>
     <div class="showcase-track-outer"><div class="showcase-track" id="showcaseTrack">${cards}</div></div>`
   );
+}
+
+// "気になるリスト" (favorites) page. Every product card on the site is
+// pre-rendered once and embedded here keyed by ASIN — the page itself ships
+// empty and a small inline script (see the matching IIFE in site.js for the
+// heart-button side) fills it in from localStorage on load. No server, no
+// account, nothing leaves the visitor's browser.
+function renderFavoritesPage(products) {
+  const cardsByAsin = {};
+  for (const p of products) cardsByAsin[p.asin] = renderProductCard(p);
+
+  const bodyHtml = section(
+    `<p class="eyebrow">Favorites</p><h2>気になるリスト</h2>
+    <p class="lede-small">ハートマークで保存した商品がここに並びます。保存はこの端末のブラウザだけに残り、どこにも送信されません。</p>
+    <div id="favoritesEmpty" class="favorites-empty" hidden>
+      <p>まだ何も保存されていません。気になる商品のハートマークをタップすると、ここに一覧できます。</p>
+      <p class="section-link"><a href="../rankings/">ランキングを見る →</a></p>
+    </div>
+    <div id="favoritesList" class="card-grid bento"></div>`
+  );
+
+  const script = `<script>
+(function () {
+  var CARDS = ${JSON.stringify(cardsByAsin)};
+  var listEl = document.getElementById("favoritesList");
+  var emptyEl = document.getElementById("favoritesEmpty");
+  if (!listEl) return;
+  function render() {
+    var favs = [];
+    try {
+      var raw = window.localStorage.getItem("aidesklabo_favorites");
+      favs = raw ? JSON.parse(raw) : [];
+      if (!Array.isArray(favs)) favs = [];
+    } catch (err) { favs = []; }
+    listEl.innerHTML = favs.map(function (a) { return CARDS[a] || ""; }).join("");
+    listEl.hidden = favs.length === 0;
+    if (emptyEl) emptyEl.hidden = favs.length !== 0;
+  }
+  render();
+  document.addEventListener("aidesklabo:favorites-changed", render);
+})();
+</script>`;
+
+  return { bodyHtml: bodyHtml + script };
+}
+
+// Auto-generated update history — pulled straight from every content entry's
+// `updated` and every product's `lastChecked`, so it never goes stale and
+// nobody has to remember to hand-author a changelog entry.
+function renderChangelogPage(content, products) {
+  const events = [];
+  for (const entry of content) {
+    if (entry.type === "static") continue;
+    const href = `${FOLDER_BY_TYPE[entry.type]}/${entry.slug}/`;
+    events.push({ date: entry.updated, label: `${TYPE_LABEL_JA[entry.type]}を更新: ${entry.title}`, href, type: entry.type });
+  }
+  const seenProductDates = new Map();
+  for (const p of products) {
+    if (!p.lastChecked) continue;
+    const key = p.lastChecked;
+    seenProductDates.set(key, (seenProductDates.get(key) || 0) + 1);
+  }
+  for (const [date, count] of seenProductDates) {
+    events.push({ date, label: `掲載商品の価格・仕様を${count}点確認`, href: null, type: "product" });
+  }
+  events.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+
+  const grouped = [];
+  for (const e of events) {
+    const last = grouped[grouped.length - 1];
+    if (last && last.date === e.date) last.items.push(e);
+    else grouped.push({ date: e.date, items: [e] });
+  }
+
+  const timelineHtml = grouped
+    .slice(0, 60)
+    .map(
+      (g) => `<div class="changelog-day">
+      <p class="changelog-date">${escapeHtml(g.date)}</p>
+      <ul class="changelog-items">${g.items
+        .map((item) => (item.href ? `<li><a href="${item.href}">${escapeHtml(item.label)}</a></li>` : `<li>${escapeHtml(item.label)}</li>`))
+        .join("")}</ul>
+    </div>`
+    )
+    .join("\n");
+
+  return section(
+    `<p class="eyebrow">Updates</p><h2>更新履歴</h2>
+    <p class="lede-small">記事の追加・改稿や、掲載商品の価格・仕様の確認履歴を新しい順に並べています。「価格の変動まで追跡」を裏付ける記録です。</p>
+    <div class="changelog-timeline">${timelineHtml}</div>`
+  );
+}
+
+// Site-wide search. Every product and every non-static article is
+// pre-rendered once (same pattern as the favorites page) and embedded with
+// a small searchable text blob per entry; a plain substring match against
+// that blob — no fuzzy scoring, no external index — filters the list as
+// the visitor types. Good enough for ~40 products and ~20 articles; would
+// need a real index before it'd be worth it at 10x that size.
+function renderSearchPage(content, products) {
+  const items = [];
+  for (const p of products) {
+    items.push({
+      asin: p.asin,
+      html: renderProductCard(p),
+      text: [p.name, p.summary, CATEGORY_LABEL_JA[p.category] || p.category].join(" ").toLowerCase(),
+    });
+  }
+  for (const entry of content) {
+    if (entry.type === "static") continue;
+    items.push({
+      asin: `article:${entry.slug}`,
+      html: renderEntryCard(entry, `../${FOLDER_BY_TYPE[entry.type]}/${entry.slug}/`),
+      text: [entry.title, entry.description].join(" ").toLowerCase(),
+    });
+  }
+
+  const bodyHtml = section(
+    `<p class="eyebrow">Search</p><h2>サイト内検索</h2>
+    <p class="lede-small">商品名・記事タイトルで、掲載中のレビュー・比較・ガイド・商品を横断して検索できます。</p>
+    <div class="search-box">${icon("search")}<input type="search" id="searchInput" placeholder="例: キーボード、モニターアーム、ゲーミング" autocomplete="off"></div>
+    <p class="search-count" id="searchCount"></p>
+    <div id="searchResults" class="card-grid bento"></div>`
+  );
+
+  const script = `<script>
+(function () {
+  var ITEMS = ${JSON.stringify(items)};
+  var input = document.getElementById("searchInput");
+  var resultsEl = document.getElementById("searchResults");
+  var countEl = document.getElementById("searchCount");
+  if (!input || !resultsEl) return;
+  function render() {
+    var q = input.value.trim().toLowerCase();
+    if (!q) {
+      resultsEl.innerHTML = "";
+      countEl.textContent = "\\u5165\\u529b\\u3059\\u308b\\u3068\\u3053\\u3053\\u306b\\u7d50\\u679c\\u304c\\u8868\\u793a\\u3055\\u308c\\u307e\\u3059\\u3002";
+      return;
+    }
+    var matches = ITEMS.filter(function (it) { return it.text.indexOf(q) !== -1; });
+    resultsEl.innerHTML = matches.map(function (it) { return it.html; }).join("");
+    countEl.textContent = matches.length + "\\u4ef6\\u306e\\u7d50\\u679c";
+    if (typeof window.aidesklaboSyncFavorites === "function") window.aidesklaboSyncFavorites();
+  }
+  input.addEventListener("input", render);
+  render();
+})();
+</script>`;
+
+  return bodyHtml + script;
 }
 
 function writeFile(relPath, content) {
@@ -749,6 +994,39 @@ function main() {
     intro: HOME_INTRO,
   }));
   sitemapUrls.unshift({ loc: `${SITE_ORIGIN}/` });
+
+  // "気になるリスト" (favorites) — purely client-side, per-visitor (see
+  // renderFavoritesPage). Still worth a sitemap entry since the page shell
+  // itself (with its empty-state copy) is real indexable content.
+  const favoritesPage = renderFavoritesPage(products);
+  writeFile("favorites/index.html", renderPage(template, {
+    title: "気になるリスト",
+    description: "保存した商品を一覧できる、あなただけの気になるリスト。保存はこの端末のブラウザにのみ残ります。",
+    canonical: `${SITE_ORIGIN}/favorites/`,
+    root: "../",
+    bodyHtml: favoritesPage.bodyHtml,
+  }));
+  sitemapUrls.push({ loc: `${SITE_ORIGIN}/favorites/` });
+
+  writeFile("search/index.html", renderPage(template, {
+    title: "サイト内検索",
+    description: "AI Desk Labo掲載の商品・記事を横断検索できます。",
+    canonical: `${SITE_ORIGIN}/search/`,
+    root: "../",
+    bodyHtml: renderSearchPage(content, products),
+  }));
+  sitemapUrls.push({ loc: `${SITE_ORIGIN}/search/` });
+
+  // Auto-generated changelog — see renderChangelogPage; no hand-authored
+  // entries to keep in sync, it derives everything from existing dates.
+  writeFile("updates/index.html", renderPage(template, {
+    title: "更新履歴",
+    description: "AI Desk Laboの記事更新・商品の価格改定チェック履歴。",
+    canonical: `${SITE_ORIGIN}/updates/`,
+    root: "../",
+    bodyHtml: renderChangelogPage(content, products),
+  }));
+  sitemapUrls.push({ loc: `${SITE_ORIGIN}/updates/` });
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls
     .map((u) => `  <url><loc>${u.loc}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ""}</url>`)

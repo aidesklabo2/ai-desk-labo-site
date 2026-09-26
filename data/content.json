@@ -56,12 +56,12 @@
   {
     "type": "diagnosis",
     "slug": "pc-builder",
-    "title": "自作PC診断 — 6つの質問であなたの構成を診断",
-    "description": "用途・予算・使うソフト・Apple製品との連携・組み立てへの興味まで、6つの質問からAMD・Intel・Mac・完成品のどれが向いているかとフルパーツ構成を診断します。",
+    "title": "自作PC診断 — 質問に答えてあなたの構成を診断",
+    "description": "用途・解像度・予算・使うソフト・Apple製品との連携・静音性・保存容量まで、複数の質問からAMD・Intel・Mac・完成品のどれが向いているかとフルパーツ構成を診断します。ケースやSSDは結果から個別に入れ替えも可能。",
     "updated": "2026-09-27",
-    "products": ["B092L9GF5N", "B0CQ3WP67C", "B0BS8PRCYV", "B0C8BPW1SP", "B0D6NN87T8", "B0CS67885B", "B08G1Y95SZ", "B0F3DG1NVW", "B0CMPZMGVT", "B0DQPMJ6MJ", "B0DKT9JRF1", "B0795DP124", "B08C53LL9J", "B0C2B7W1W4", "B0DGKMQPYC", "B09NZB9Z9Z"],
+    "products": ["B092L9GF5N", "B0CQ3WP67C", "B0BS8PRCYV", "B0C8BPW1SP", "B0D6NN87T8", "B0CS67885B", "B08G1Y95SZ", "B0F3DG1NVW", "B0CMPZMGVT", "B0DQPMJ6MJ", "B0DKT9JRF1", "B0795DP124", "B08C53LL9J", "B0C2B7W1W4", "B0DGKMQPYC", "B09NZB9Z9Z", "B0B55YL7TP", "B0DGKTMN6L"],
     "body": [
-      {"p": "「結局何を選べばいいの？」「そもそも自作すべき？Macでよくない？」——この診断は、用途を1つに絞らせません。ゲームをしながら配信もする、その録画を動画編集もする、といった重なりも考慮したうえで、予算感・使うソフト・Apple製品との連携度合いまで含めた6つの質問から、CPUからケース・電源・グリスまでのフルパーツ構成を提案します。"},
+      {"p": "「結局何を選べばいいの？」「そもそも自作すべき？Macでよくない？」——この診断は、用途を1つに絞らせません。ゲームをしながら配信もする、その録画を動画編集もする、といった重なりも考慮したうえで、解像度・予算感・使うソフト・Apple製品との連携度合い・静音性・保存容量まで含めた質問から、CPUからケース・電源・グリスまでのフルパーツ構成を提案します。診断後はケースやSSDだけを個別に入れ替えることもできます。"},
       {
         "diagnosis": {
           "id": "pc-diagnosis",
@@ -76,6 +76,16 @@
                 {"value": "gaming", "label": "ゲーミング", "desc": "フルHDで高fps・快適に遊びたい"},
                 {"value": "streaming", "label": "ゲーム配信・実況", "desc": "プレイと同時に配信・録画もする"},
                 {"value": "video", "label": "動画編集", "desc": "4K編集、配信アーカイブの編集も含む"}
+              ]
+            },
+            {
+              "key": "resolution",
+              "type": "single",
+              "question": "目指す解像度・フレームレートは？",
+              "dependsOn": {"key": "usecases", "anyOf": ["gaming", "streaming", "video"]},
+              "options": [
+                {"value": "fhd60", "label": "フルHD・60fps前後", "desc": "標準的な設定で十分"},
+                {"value": "fhd144plus", "label": "フルHD・144fps以上 / WQHD以上", "desc": "高fps・高解像度を狙いたい"}
               ]
             },
             {
@@ -125,6 +135,26 @@
                 {"value": "amd", "label": "AMD(Ryzen)がいい", "desc": "コスパと将来のアップグレード性重視"},
                 {"value": "intel", "label": "Intel(Core)がいい", "desc": "定番・安定志向"},
                 {"value": "auto", "label": "おまかせ", "desc": "用途に合わせて自動で選んでほしい"}
+              ]
+            },
+            {
+              "key": "noise",
+              "type": "single",
+              "question": "設置場所や動作音は気になりますか？(自作する場合)",
+              "dependsOn": {"key": "effort", "anyOf": ["diy"]},
+              "options": [
+                {"value": "airflow", "label": "静かさより冷却・性能重視", "desc": "ファン音は気にしない"},
+                {"value": "quiet", "label": "できれば静かがいい", "desc": "寝室・リビングなど音が気になる環境"}
+              ]
+            },
+            {
+              "key": "storage",
+              "type": "single",
+              "question": "保存するデータ量の目安は？(自作する場合)",
+              "dependsOn": {"key": "effort", "anyOf": ["diy"]},
+              "options": [
+                {"value": "1tb", "label": "1TBで十分", "desc": "一般的な使い方"},
+                {"value": "2tb", "label": "素材・データが多い・2TB欲しい", "desc": "動画素材やイラスト、AI生成物が多い"}
               ]
             }
           ]

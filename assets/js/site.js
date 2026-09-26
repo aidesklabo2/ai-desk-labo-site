@@ -39,6 +39,69 @@
   document.addEventListener("auxclick", trackAmazonClick);
 })();
 
+// "気になるリスト" (favorites) — per-visitor only. Saved ASINs live in this
+// browser's localStorage and are never sent anywhere; the heart button on
+// every product card (see renderProductCard in tools/build.js) toggles
+// membership, and the /favorites/ page renders whichever of its
+// pre-rendered cards match what's currently saved.
+(function () {
+  "use strict";
+  var STORAGE_KEY = "aidesklabo_favorites";
+
+  function readFavorites() {
+    try {
+      var raw = window.localStorage.getItem(STORAGE_KEY);
+      var arr = raw ? JSON.parse(raw) : [];
+      return Array.isArray(arr) ? arr : [];
+    } catch (err) {
+      return [];
+    }
+  }
+
+  function writeFavorites(list) {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    } catch (err) {
+      // Private browsing / blocked storage: favoriting just won't persist.
+    }
+  }
+
+  function syncButtons() {
+    var favs = readFavorites();
+    document.querySelectorAll(".fav-btn[data-fav-asin]").forEach(function (btn) {
+      btn.classList.toggle("is-active", favs.indexOf(btn.dataset.favAsin) !== -1);
+    });
+    document.querySelectorAll("[data-fav-count]").forEach(function (el) {
+      el.textContent = String(favs.length);
+      el.hidden = favs.length === 0;
+    });
+  }
+
+  // Exposed so other widgets that inject fresh product cards after load
+  // (e.g. the PC diagnosis part-swap feature) can re-sync heart state on
+  // just-inserted buttons without reinventing this logic.
+  window.aidesklaboSyncFavorites = syncButtons;
+
+  document.addEventListener("click", function (event) {
+    var btn = event.target && event.target.closest && event.target.closest(".fav-btn[data-fav-asin]");
+    if (!btn) return;
+    var asin = btn.dataset.favAsin;
+    var favs = readFavorites();
+    var idx = favs.indexOf(asin);
+    if (idx === -1) favs.push(asin);
+    else favs.splice(idx, 1);
+    writeFavorites(favs);
+    syncButtons();
+    document.dispatchEvent(new CustomEvent("aidesklabo:favorites-changed", { detail: { favorites: favs } }));
+  });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", syncButtons);
+  } else {
+    syncButtons();
+  }
+})();
+
 // Rakuten ROOM outbound intent — same shape as the Amazon tracker above but
 // kept as its own listener so the two can never interfere with each other.
 (function () {
