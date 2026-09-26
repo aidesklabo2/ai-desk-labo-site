@@ -205,8 +205,7 @@ function renderQuiz(quiz, productsMap) {
       const link = result.link
         ? `<p class="section-link"><a href="${result.link.href}">${escapeHtml(result.link.label)} →</a></p>`
         : "";
-      const shareText = encodeURIComponent(result.shareText || result.title);
-      const shareUrl = `https://twitter.com/intent/tweet?text=${shareText}`;
+      const shareText = escapeHtml(result.shareText || result.title);
       return `<div class="quiz-result" data-result-key="${escapeHtml(key)}" hidden>
       <p class="quiz-result-kicker">診断結果</p>
       <h3 class="quiz-result-title">${escapeHtml(result.title)}</h3>
@@ -214,7 +213,7 @@ function renderQuiz(quiz, productsMap) {
       ${cardGrid}
       ${link}
       <div class="quiz-result-actions">
-        <a class="btn-share" href="${shareUrl}" target="_blank" rel="noopener">${icon("review")}診断結果をXでシェア</a>
+        <button type="button" class="btn-share" data-share-text="${shareText}">${icon("review")}診断結果をXでシェア</button>
         <button type="button" class="quiz-retry">もう一度診断する</button>
       </div>
     </div>`;
@@ -273,6 +272,12 @@ function renderQuiz(quiz, productsMap) {
     if (e.target.closest(".quiz-retry")) {
       answers = {};
       showStep(0);
+    }
+    var shareBtn = e.target.closest(".btn-share");
+    if (shareBtn) {
+      var text = encodeURIComponent(shareBtn.dataset.shareText || "");
+      var url = encodeURIComponent(window.location.href);
+      window.open("https://twitter.com/intent/tweet?text=" + text + "&url=" + url, "_blank", "noopener");
     }
   });
 })();
