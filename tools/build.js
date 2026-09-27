@@ -26,12 +26,12 @@ const TYPE_INDEX_INTRO = {
   guide: "何から揃えるべきか迷う人向けに、優先順位付きで選び方を解説しています。",
   diagnosis: "質問に答えるだけで、あなたの用途・予算に合ったPC構成や買い方を診断します。",
 };
-const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange", cpu: "blue", gpu: "orange", cable: "green", tablet: "blue", reader: "green", case: "blue", macropad: "orange", motherboard: "green", psu: "orange", thermalpaste: "green", ram: "blue", storage: "orange", cooler: "blue" };
+const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange", cpu: "blue", gpu: "orange", cable: "green", tablet: "blue", reader: "green", case: "blue", macropad: "orange", motherboard: "green", psu: "orange", thermalpaste: "green", ram: "blue", storage: "orange", cooler: "blue", wifi: "green" };
 // Product-card badges show this label, not the raw `category` key — the key
 // is an internal English slug (also used to look up CATEGORY_COLOR/ICONS)
 // and was previously printed as-is, which read as stray English jargon on
 // an otherwise all-Japanese page.
-const CATEGORY_LABEL_JA = { keyboard: "キーボード", mouse: "マウス", charger: "充電器", monitor: "モニター", stand: "スタンド", mic: "マイク", light: "ライト", footrest: "フットレスト", wristrest: "リストレスト", monitorarm: "モニターアーム", cpu: "CPU", gpu: "GPU", cable: "ケーブル", tablet: "タブレット", reader: "カードリーダー", case: "ケース", macropad: "マクロパッド", motherboard: "マザーボード", psu: "電源ユニット", thermalpaste: "グリス", ram: "メモリ", storage: "SSD", cooler: "CPUクーラー" };
+const CATEGORY_LABEL_JA = { keyboard: "キーボード", mouse: "マウス", charger: "充電器", monitor: "モニター", stand: "スタンド", mic: "マイク", light: "ライト", footrest: "フットレスト", wristrest: "リストレスト", monitorarm: "モニターアーム", cpu: "CPU", gpu: "GPU", cable: "ケーブル", tablet: "タブレット", reader: "カードリーダー", case: "ケース", macropad: "マクロパッド", motherboard: "マザーボード", psu: "電源ユニット", thermalpaste: "グリス", ram: "メモリ", storage: "SSD", cooler: "CPUクーラー", wifi: "Wi-Fi子機" };
 
 // Small hand-authored line-icon set (24x24, stroke-based, no external icon font/CDN).
 const ICONS = {
@@ -63,6 +63,9 @@ const ICONS = {
   ram: `<rect x="6" y="2" width="12" height="20" rx="1"/><line x1="9" y1="5" x2="9" y2="8.5"/><line x1="12" y1="5" x2="12" y2="8.5"/><line x1="15" y1="5" x2="15" y2="8.5"/><line x1="9" y1="12" x2="9" y2="15.5"/><line x1="12" y1="12" x2="12" y2="15.5"/><line x1="15" y1="12" x2="15" y2="15.5"/>`,
   storage: `<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="12" r="2"/><line x1="14" y1="10" x2="18" y2="10"/><line x1="14" y1="14" x2="18" y2="14"/>`,
   cooler: `<circle cx="12" cy="12" r="9.5"/><path d="M12 12 15.8 6.6"/><path d="M12 12 6.3 9.3"/><path d="M12 12 13.1 18.8"/><circle cx="12" cy="12" r="1.6"/>`,
+  wifi: `<path d="M2 8.5c5.5-5.3 14.5-5.3 20 0"/><path d="M5.5 12.5c3.6-3.4 9.4-3.4 13 0"/><path d="M9 16.5c1.8-1.7 4.2-1.7 6 0"/><circle cx="12" cy="20" r="1.2"/>`,
+  code: `<polyline points="8.5 7 3 12 8.5 17"/><polyline points="15.5 7 21 12 15.5 17"/><line x1="13.5" y1="4" x2="10.5" y2="20"/>`,
+  sparkle: `<path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6z"/><path d="M19 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/>`,
   diagnosis: `<circle cx="12" cy="12" r="9.5"/><polyline points="7.5 12.5 10.5 15.5 16.5 8.5"/>`,
   heart: `<path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/>`,
   search: `<circle cx="10.5" cy="10.5" r="7"/><line x1="21" y1="21" x2="15.5" y2="15.5"/>`,
@@ -193,33 +196,52 @@ function renderTable(table) {
 // build fails loudly (see the validation loop just below the table's use)
 // rather than shipping a diagnosis result that links to nothing.
 const DIAGNOSIS_CATALOG = {
-  cpuApuAmd: "B092L9GF5N", // Ryzen 5 5600G — AM4, no dGPU needed
-  cpuMidAmd: "B0BS8PRCYV", // Ryzen 5 7600 — AM5
-  cpuHighAmd: "B0D6NN87T8", // Ryzen 9 9900X — AM5, no bundled cooler
-  cpuIntel: "B0CQ3WP67C", // Core i5-14400 — LGA1700, only Intel SKU in catalog
+  cpuApuAmd: "B092L9GF5N", // Ryzen 5 5600G — AM4, no dGPU needed, real iGPU
+  cpuAm4Amd: "B09VCHR1VH", // Ryzen 5 5600 — AM4/DDR4, budget mid-tier for discrete-GPU builds
+  cpuMidAmd: "B0BS8PRCYV", // Ryzen 5 7600 — AM5/DDR5
+  cpuHighAmd: "B0D6NN87T8", // Ryzen 9 9900X — AM5, 12C/24T, no bundled cooler
+  cpuX3D: "B0DKFMSMYK", // Ryzen 7 9800X3D — AM5, no bundled cooler, best-in-class competitive-gaming cache
+  cpuIntel: "B0DT2WX4X8", // Core Ultra 5 225F — LGA1851, no iGPU (F), 2026-current Intel value pick
   moboAm4: "B08G1Y95SZ",
-  moboAm5: "B0F3DG1NVW",
-  moboIntel: "B0CMPZMGVT",
-  gpuMid: "B0C8BPW1SP", // RTX 4060
-  gpuHigh: "B0CS67885B", // RTX 4070 SUPER
+  moboAm5: "B0F3DG1NVW", // has WiFi built in
+  moboIntel: "B0DRTV8HQY", // B860 LGA1851, has WiFi built in
+  gpuMid: "B0972BP9YR", // RTX 5060 8GB
+  gpuVram: "B0F4XC69KL", // RTX 5060 Ti 16GB — VRAM-priority tier (AI image gen / heavy modern titles)
+  gpuVramAmd: "B0FY2G9YGH", // RX 9060 XT 16GB — cheaper VRAM alt, CUDA-incompatible, mentioned only as a note
+  gpuHigh: "B0DX7JJ87N", // RTX 5070 12GB
   ramDdr4: "B08C53LL9J", // 16GB(8GBx2)
+  ramDdr5_16: "B0F1FW31Y8", // 16GB(8GBx2) — for light Intel builds where 32GB is overkill
   ramDdr5: "B0C2B7W1W4", // 32GB(16GBx2)
+  ramDdr5_64: "B0BD4SRW3H", // 64GB(32GBx2) — real 2-stick 64GB kit, AMD/Intel both
   storage: "B0DGKMQPYC", // 1TB
   storage2tb: "B0DGKTMN6L", // 2TB — swappable with `storage` for heavy footage/asset use
   case: "B0DQPMJ6MJ", // airflow-focused
   caseQuiet: "B0B55YL7TP", // acoustic-dampened — swappable with `case`
   psu: "B0DKT9JRF1",
   paste: "B0795DP124",
-  cooler: "B09NZB9Z9Z", // only needed with cpuHighAmd (no bundled cooler)
+  cooler: "B09NZB9Z9Z", // needed with cpuHighAmd / cpuX3D (neither ships with a cooler)
+  wifiAdapter: "B0D1K9NX2T", // USB Wi-Fi 6 adapter — added when the picked board has no WiFi and the visitor is Wi-Fi-only
 };
 // Categories the result UI lets a visitor swap in place, without
 // recomputing the whole diagnosis — e.g. "keep everything, just give me the
 // quiet case instead". Each entry is the pair of catalog keys that are
-// interchangeable; swapping never changes any other part.
+// interchangeable; swapping never changes any other part or requires a
+// compatibility recheck. GPU tier is deliberately NOT swappable here since
+// an AI-image-gen build requires CUDA and a naive swap could silently hand
+// someone a GPU their workflow can't use — that's handled with a plain-text
+// note instead (see gpuVramAmd in compute()).
 const DIAGNOSIS_SWAPS = [
   { category: "case", options: ["case", "caseQuiet"], labels: { case: "通気重視", caseQuiet: "静音重視" } },
   { category: "storage", options: ["storage", "storage2tb"], labels: { storage: "1TB", storage2tb: "2TB" } },
 ];
+// Real-world reference costs used by the budget math (see compute()).
+// Windows 11 Home パッケージ版の実勢最安値(2026年9月時点、価格.com調べ)。
+const OS_LICENSE_COST = 16500;
+// 組み立て代行の実勢レンジ(2026年9月調査、他店購入パーツ持ち込み時)。
+// ドスパラ簡易プラン+持ち込み¥22,000〜ドスパラ通常プラン+持ち込み¥33,000。
+// 中央値として表示に使う代表額と、実際にはレンジがあることを notes で明記する。
+const ASSEMBLY_SERVICE_FEE = 25000;
+const ASSEMBLY_SERVICE_FEE_RANGE = "1.1万円〜3.3万円(店舗・プランにより変動)";
 
 // Rules-based PC diagnosis engine. Unlike a simple answer-combination lookup
 // table, this asks several questions (some multi-select, since use cases
@@ -235,7 +257,10 @@ const DIAGNOSIS_SWAPS = [
 // forcing an icon onto options where one wouldn't add real meaning.
 const DIAGNOSIS_OPTION_ICONS = {
   "usecases:office": ["briefcase", "blue"],
+  "usecases:programming": ["code", "green"],
   "usecases:illustration": ["tablet", "green"],
+  "usecases:ai_image": ["sparkle", "orange"],
+  "usecases:local_llm": ["sparkle", "blue"],
   "usecases:gaming": ["gamepad", "orange"],
   "usecases:streaming": ["broadcast", "blue"],
   "usecases:video": ["video", "orange"],
@@ -302,6 +327,9 @@ function renderDiagnosis(diag, productsMap) {
   var NAMES = ${JSON.stringify(nameByAsin)};
   var SWAPS = ${JSON.stringify(DIAGNOSIS_SWAPS)};
   var GUIDE_ROOT = "../../guides/";
+  var OS_LICENSE_COST = ${JSON.stringify(OS_LICENSE_COST)};
+  var ASSEMBLY_SERVICE_FEE = ${JSON.stringify(ASSEMBLY_SERVICE_FEE)};
+  var ASSEMBLY_SERVICE_FEE_RANGE = ${JSON.stringify(ASSEMBLY_SERVICE_FEE_RANGE)};
   var stepKeys = ${JSON.stringify(diag.questions.map((q) => q.key))};
   var stepTypes = ${JSON.stringify(diag.questions.map((q) => q.type))};
   var stepDependsOn = ${JSON.stringify(diag.questions.map((q) => q.dependsOn || null))};
@@ -330,39 +358,107 @@ function renderDiagnosis(diag, productsMap) {
   }
 
   // --- scoring: turn the answers into a concrete parts list + copy ---
+  var BUDGET_MAP = { "10": 100000, "15": 150000, "20": 200000, "30": 300000, "40": 400000, "99": Infinity };
+  var BUDGET_LABEL_MAP = { "10": "\\uff5e10\\u4e07\\u5186", "15": "10\\u4e07\\uff5e15\\u4e07\\u5186", "20": "15\\u4e07\\uff5e20\\u4e07\\u5186", "30": "20\\u4e07\\uff5e30\\u4e07\\u5186", "40": "30\\u4e07\\uff5e40\\u4e07\\u5186", "99": "40\\u4e07\\u5186\\u4ee5\\u4e0a" };
+  var USECASE_LABELS = { office: "\\u30aa\\u30d5\\u30a3\\u30b9\\u30fb AI\\u30c1\\u30e3\\u30c3\\u30c8", programming: "\\u30d7\\u30ed\\u30b0\\u30e9\\u30df\\u30f3\\u30b0", illustration: "\\u30a4\\u30e9\\u30b9\\u30c8", ai_image: "AI\\u753b\\u50cf\\u751f\\u6210", local_llm: "\\u30ed\\u30fc\\u30ab\\u30ebLLM", gaming: "\\u30b2\\u30fc\\u30df\\u30f3\\u30b0", streaming: "\\u30b2\\u30fc\\u30e0\\u914d\\u4fe1", video: "\\u52d5\\u753b\\u7de8\\u96c6" };
+
+  // Builds the concrete parts list (CPU/mobo/RAM/GPU + accessories) for a
+  // given set of requirement tiers on the Windows side. Kept separate from
+  // compute() so the same logic can run twice: once for the initial pick,
+  // once more if that pick needs a budget-driven GPU step-down. Returns
+  // both the ASIN list and enough metadata (per-part reasoning) to build
+  // the result text without recomputing anything.
+  function buildWindowsParts(req) {
+    var windowsPlatform = req.platformPref === "intel" ? "intel" : "amd";
+    var cpuAsin, moboAsin, ramAsin, needsCooler = false, cpuNote = null;
+    if (windowsPlatform === "intel") {
+      cpuAsin = CATALOG.cpuIntel;
+      moboAsin = CATALOG.moboIntel;
+      ramAsin = req.ramGB >= 64 ? CATALOG.ramDdr5_64 : req.ramGB <= 16 ? CATALOG.ramDdr5_16 : CATALOG.ramDdr5;
+      // Core Ultra 5 225F has no iGPU (F suffix) — a monitor needs *some*
+      // GPU, so a pure-office Intel pick can't be GPU-less the way the AMD
+      // APU path can.
+      if (req.gpuTier === 0) { req.gpuTier = 1; cpuNote = "Core Ultra 5 225F\\u306f\\u5185\\u8535GPU\\u975e\\u642d\\u8f09(F\\u4ed8\\u304d)\\u306e\\u305f\\u3081\\u3001\\u30e2\\u30cb\\u30bf\\u30fc\\u51fa\\u529b\\u7528\\u306b\\u6700\\u4f4e\\u9650\\u306e\\u30b0\\u30e9\\u30dc\\u3092\\u4ed8\\u3051\\u3066\\u3044\\u307e\\u3059\\u3002"; }
+    } else if (req.wantsHighCore) {
+      cpuAsin = CATALOG.cpuHighAmd; moboAsin = CATALOG.moboAm5; needsCooler = true;
+      ramAsin = req.ramGB >= 64 ? CATALOG.ramDdr5_64 : CATALOG.ramDdr5;
+    } else if (req.wantsX3D) {
+      cpuAsin = CATALOG.cpuX3D; moboAsin = CATALOG.moboAm5; needsCooler = true;
+      ramAsin = req.ramGB >= 64 ? CATALOG.ramDdr5_64 : CATALOG.ramDdr5;
+    } else if (req.wantsMidCore || req.gpuTier >= 1) {
+      // 2026's DDR5 price surge makes the AM4/DDR4 platform a genuine
+      // budget move at this performance tier, not just an old leftover —
+      // so low-budget mid-tier builds default to it instead of AM5/DDR5.
+      if ((req.budgetNum <= 15) && req.gpuTier <= 1) {
+        cpuAsin = CATALOG.cpuAm4Amd; moboAsin = CATALOG.moboAm4; ramAsin = CATALOG.ramDdr4;
+      } else {
+        cpuAsin = CATALOG.cpuMidAmd; moboAsin = CATALOG.moboAm5;
+        ramAsin = req.ramGB >= 64 ? CATALOG.ramDdr5_64 : CATALOG.ramDdr5;
+      }
+    } else {
+      cpuAsin = CATALOG.cpuApuAmd; moboAsin = CATALOG.moboAm4; ramAsin = CATALOG.ramDdr4;
+    }
+    var gpuAsin = req.gpuTier >= 3 ? CATALOG.gpuHigh : req.gpuTier === 2 ? CATALOG.gpuVram : req.gpuTier === 1 ? CATALOG.gpuMid : null;
+    var storageAsin = req.storage === "2tb" ? CATALOG.storage2tb : CATALOG.storage;
+    var caseAsin = req.noise === "quiet" ? CATALOG.caseQuiet : CATALOG.case;
+
+    var asins = [cpuAsin];
+    if (gpuAsin) asins.push(gpuAsin);
+    asins.push(moboAsin, ramAsin, storageAsin, caseAsin, CATALOG.psu, CATALOG.paste);
+    if (needsCooler) asins.push(CATALOG.cooler);
+    var needsWifiAdapter = req.network === "wifi_only" && moboAsin === CATALOG.moboAm4;
+    if (needsWifiAdapter) asins.push(CATALOG.wifiAdapter);
+
+    var partsTotal = asins.reduce(function (sum, a) { return sum + (PRICES[a] || 0); }, 0);
+    return { windowsPlatform: windowsPlatform, cpuAsin: cpuAsin, moboAsin: moboAsin, ramAsin: ramAsin, gpuAsin: gpuAsin, storageAsin: storageAsin, caseAsin: caseAsin, needsCooler: needsCooler, needsWifiAdapter: needsWifiAdapter, cpuNote: cpuNote, asins: asins, partsTotal: partsTotal };
+  }
+
   function compute() {
     var usecases = answers.usecases || [];
     if (!usecases.length) usecases = ["office"];
-    var hasOffice = usecases.indexOf("office") !== -1;
-    var hasIllustration = usecases.indexOf("illustration") !== -1;
-    var hasGaming = usecases.indexOf("gaming") !== -1;
-    var hasStreaming = usecases.indexOf("streaming") !== -1;
-    var hasVideo = usecases.indexOf("video") !== -1;
-    var heavyCount = (hasGaming ? 1 : 0) + (hasStreaming ? 1 : 0) + (hasVideo ? 1 : 0);
+    var has = function (v) { return usecases.indexOf(v) !== -1; };
+    var hasProgramming = has("programming"), hasIllustration = has("illustration"),
+      hasAiImage = has("ai_image"), hasLocalLlm = has("local_llm"),
+      hasGaming = has("gaming"), hasStreaming = has("streaming"), hasVideo = has("video");
+    var heavyCount = [hasGaming, hasStreaming, hasVideo, hasAiImage, hasLocalLlm].filter(Boolean).length;
 
-    var gpuTier = 0; // 0 none, 1 mid(RTX4060), 2 high(RTX4070 SUPER)
-    var ramGB = 16;
-    var coreTier = "low"; // low(6-10 core) or high(12 core, Ryzen 9 9900X tier)
     var videoHeavy = hasVideo && answers.videoIntensity === "heavy";
+    var aiHeavy = (hasAiImage || hasLocalLlm) && answers.aiScale === "heavy";
+    var competitive = (hasGaming || hasStreaming) && answers.gameGenre === "competitive";
+    var heavyAaa = (hasGaming || hasStreaming) && answers.gameGenre === "heavy_aaa";
+
+    var gpuTier = 0; // 0 none, 1 entry(RTX5060 8GB), 2 vram(RTX5060 Ti 16GB), 3 high(RTX5070 12GB)
+    var ramGB = 16;
+    var wantsX3D = false, wantsHighCore = false, wantsMidCore = false;
+    var needsCuda = hasAiImage || hasLocalLlm;
+
+    if (hasProgramming) { ramGB = Math.max(ramGB, 32); wantsMidCore = true; }
     if (hasIllustration) gpuTier = Math.max(gpuTier, 1);
+    if (hasAiImage || hasLocalLlm) {
+      gpuTier = Math.max(gpuTier, aiHeavy ? 3 : 2);
+      ramGB = Math.max(ramGB, 32);
+    }
     if (hasGaming) gpuTier = Math.max(gpuTier, 1);
-    if (hasStreaming) { coreTier = "high"; ramGB = Math.max(ramGB, 32); gpuTier = Math.max(gpuTier, 1); }
+    if (hasStreaming) { wantsMidCore = true; ramGB = Math.max(ramGB, 32); gpuTier = Math.max(gpuTier, 1); }
     if (hasVideo) {
       ramGB = Math.max(ramGB, 32);
-      if (videoHeavy) { gpuTier = Math.max(gpuTier, 2); coreTier = "high"; }
+      if (videoHeavy) { gpuTier = Math.max(gpuTier, 3); wantsHighCore = true; ramGB = Math.max(ramGB, 64); }
       else gpuTier = Math.max(gpuTier, 1);
     }
-    if ((hasGaming || hasStreaming) && answers.resolution === "fhd144plus") gpuTier = Math.max(gpuTier, 2);
-    if (heavyCount >= 2) { ramGB = Math.max(ramGB, 32); coreTier = "high"; }
-    if (heavyCount >= 3) ramGB = 64;
+    if ((hasGaming || hasStreaming) && answers.resolution === "wqhd_uhd") gpuTier = Math.max(gpuTier, 3);
+    if ((hasGaming || hasStreaming) && answers.resolution === "fhd144" && !competitive) gpuTier = Math.max(gpuTier, 2);
+    if (heavyAaa) gpuTier = Math.max(gpuTier, 2);
+    if (competitive) wantsX3D = true;
+    if (heavyCount >= 2) { ramGB = Math.max(ramGB, 32); wantsMidCore = true; }
+    if (heavyCount >= 3) { ramGB = Math.max(ramGB, 64); wantsHighCore = true; }
 
-    var usecaseLabels = { office: "オフィス・AIチャット", illustration: "イラスト・AI画像生成", gaming: "ゲーミング", streaming: "ゲーム配信", video: "動画編集" };
-    var usecaseText = usecases.map(function (u) { return usecaseLabels[u]; }).join("・");
+    var usecaseText = usecases.map(function (u) { return USECASE_LABELS[u] || u; }).join("\\u30fb");
 
     var software = answers.software;
     var appleWorkflow = answers.appleWorkflow || [];
     var effort = answers.effort;
     var platformPref = answers.platform;
+    var budgetNum = Number(answers.budget) || 99;
 
     // Owning an iPhone is not a reason to recommend a Mac — most of Japan
     // owns one. Only concrete workflow needs (moving photos in for editing,
@@ -373,118 +469,142 @@ function renderDiagnosis(diag, productsMap) {
     var integrationReasons = appleWorkflow.filter(function (v) { return ["photo_transfer", "ipad_handoff", "continuity"].indexOf(v) !== -1; });
     var hasAppleIntegrationNeed = integrationReasons.length > 0;
     var needsJpWindowsSoftware = appleWorkflow.indexOf("jp_software") !== -1;
-    var windowsRequired = software === "windows_only" || needsJpWindowsSoftware;
+    // A competitive-FPS diet or a local-AI/CUDA workflow both rule Mac out
+    // on their own, independent of Apple integration signals.
+    var windowsRequired = software === "windows_only" || needsJpWindowsSoftware || competitive || needsCuda;
 
     var macEligible = !windowsRequired && hasAppleIntegrationNeed && !hasGaming;
     var platform = macEligible ? "mac" : "windows";
     var hybridNote = null;
     if (!macEligible && !windowsRequired && hasAppleIntegrationNeed && hasGaming) {
-      hybridNote = "Apple製品との連携が必要とのことなので、ゲーム以外の作業は普段のMacに任せて、ゲーム専用機としてこのWindows構成を別に組む「2台持ち」も現実的な落としどころです。";
+      hybridNote = "Apple\\u88fd\\u54c1\\u3068\\u306e\\u9023\\u643a\\u304c\\u5fc5\\u8981\\u3068\\u306e\\u3053\\u3068\\u306a\\u306e\\u3067\\u3001\\u30b2\\u30fc\\u30e0\\u4ee5\\u5916\\u306e\\u4f5c\\u696d\\u306f\\u666e\\u6bb5\\u306eMac\\u306b\\u4efb\\u305b\\u3066\\u3001\\u30b2\\u30fc\\u30e0\\u5c02\\u7528\\u6a5f\\u3068\\u3057\\u3066\\u3053\\u306eWindows\\u69cb\\u6210\\u3092\\u5225\\u306b\\u7d44\\u3080\\u300c2\\u53f0\\u6301\\u3061\\u300d\\u3082\\u73fe\\u5b9f\\u7684\\u306a\\u843d\\u3068\\u3057\\u3069\\u3053\\u308d\\u3067\\u3059\\u3002";
     }
 
-    var title, paragraphs = [], asins = [], notes = [], guideLink = null, shareText;
+    var title, paragraphs = [], asins = [], notes = [], guideLink = null, shareText, budgetInfo = null, buyCompare = null;
 
     if (platform === "mac") {
-      title = "自作PCより、Macという選択肢";
+      title = "\\u81ea\\u4f5cPC\\u3088\\u308a\\u3001Mac\\u3068\\u3044\\u3046\\u9078\\u629e\\u80a2";
       var reasons = [];
       var reasonLabels = {
-        photo_transfer: "iPhoneで撮った写真・動画をすぐ作業に使いたいとのことなので、AirDropでの受け渡しが同じOS同士でスムーズなMacが合理的です。",
-        ipad_handoff: "iPadで描いた・書いたものをそのまま取り込みたいとのことなので、Macならファイル形式や同期を気にせず作業できます。",
-        continuity: "通知・コピペ・電話をPCでも使いたいとのことなので、Handoff・iMessageが使えるMacの方が体験として一段上です。",
+        photo_transfer: "iPhone\\u3067\\u64ae\\u3063\\u305f\\u5199\\u771f\\u30fb\\u52d5\\u753b\\u3092\\u3059\\u3050\\u4f5c\\u696d\\u306b\\u4f7f\\u3044\\u305f\\u3044\\u3068\\u306e\\u3053\\u3068\\u306a\\u306e\\u3067\\u3001AirDrop\\u3067\\u306e\\u53d7\\u3051\\u6e21\\u3057\\u304c\\u540c\\u3058OS\\u540c\\u58eb\\u3067\\u30b9\\u30e0\\u30fc\\u30ba\\u306aMac\\u304c\\u5408\\u7406\\u7684\\u3067\\u3059\\u3002",
+        ipad_handoff: "iPad\\u3067\\u63cf\\u3044\\u305f\\u30fb\\u66f8\\u3044\\u305f\\u3082\\u306e\\u3092\\u305d\\u306e\\u307e\\u307e\\u53d6\\u308a\\u8fbc\\u307f\\u305f\\u3044\\u3068\\u306e\\u3053\\u3068\\u306a\\u306e\\u3067\\u3001Mac\\u306a\\u3089\\u30d5\\u30a1\\u30a4\\u30eb\\u5f62\\u5f0f\\u3084\\u540c\\u671f\\u3092\\u6c17\\u306b\\u305b\\u305a\\u4f5c\\u696d\\u3067\\u304d\\u307e\\u3059\\u3002",
+        continuity: "\\u901a\\u77e5\\u30fb\\u30b3\\u30d4\\u30da\\u30fb\\u96fb\\u8a71\\u3092PC\\u3067\\u3082\\u4f7f\\u3044\\u305f\\u3044\\u3068\\u306e\\u3053\\u3068\\u306a\\u306e\\u3067\\u3001Handoff\\u30fbiMessage\\u304c\\u4f7f\\u3048\\u308bMac\\u306e\\u65b9\\u304c\\u4f53\\u9a13\\u3068\\u3057\\u3066\\u4e00\\u6bb5\\u4e0a\\u3067\\u3059\\u3002",
       };
       integrationReasons.forEach(function (r) { if (reasonLabels[r]) reasons.push(reasonLabels[r]); });
-      if (videoHeavy) reasons.push("4K編集・カラーグレーディングも選んでいるので、Apple SiliconのハードウェアエンコードはPremiere Pro・DaVinci Resolveでも強力に効きます。統合メモリでVRAM不足にも悩みにくい構成です。");
-      else if (hasVideo) reasons.push("動画編集も選んでいるので、Apple SiliconのハードウェアエンコードはフルHD中心の編集でも快適です。");
-      if (software === "mac_ok") reasons.push("使う予定のソフトもMac対応で完結するとのことなので、無理にWindowsを選ぶ理由もありません。");
+      if (videoHeavy) reasons.push("4K\\u7de8\\u96c6\\u30fb\\u30ab\\u30e9\\u30fc\\u30b0\\u30ec\\u30fc\\u30c7\\u30a3\\u30f3\\u30b0\\u3082\\u9078\\u3093\\u3067\\u3044\\u308b\\u306e\\u3067\\u3001Apple Silicon\\u306e\\u30cf\\u30fc\\u30c9\\u30a6\\u30a7\\u30a2\\u30a8\\u30f3\\u30b3\\u30fc\\u30c9\\u306fPremiere Pro\\u30fbDaVinci Resolve\\u3067\\u3082\\u5f37\\u529b\\u306b\\u52b9\\u304d\\u307e\\u3059\\u3002\\u7d71\\u5408\\u30e1\\u30e2\\u30ea\\u3067VRAM\\u4e0d\\u8db3\\u306b\\u3082\\u60a9\\u307f\\u306b\\u304f\\u3044\\u69cb\\u6210\\u3067\\u3059\\u3002");
+      else if (hasVideo) reasons.push("\\u52d5\\u753b\\u7de8\\u96c6\\u3082\\u9078\\u3093\\u3067\\u3044\\u308b\\u306e\\u3067\\u3001Apple Silicon\\u306e\\u30cf\\u30fc\\u30c9\\u30a6\\u30a7\\u30a2\\u30a8\\u30f3\\u30b3\\u30fc\\u30c9\\u306f\\u30d5\\u30eb HD\\u4e2d\\u5fc3\\u306e\\u7de8\\u96c6\\u3067\\u3082\\u5feb\\u9069\\u3067\\u3059\\u3002");
+      if (software === "mac_ok") reasons.push("\\u4f7f\\u3046\\u4e88\\u5b9a\\u306e\\u30bd\\u30d5\\u30c8\\u3082Mac\\u5bfe\\u5fdc\\u3067\\u5b8c\\u7d50\\u3059\\u308b\\u3068\\u306e\\u3053\\u3068\\u306a\\u306e\\u3067\\u3001\\u7121\\u7406\\u306bWindows\\u3092\\u9078\\u3076\\u7406\\u7531\\u3082\\u3042\\u308a\\u307e\\u305b\\u3093\\u3002");
       paragraphs = reasons;
-      notes.push("Apple公式サイトまたはAmazonで最新のMacBook Air/Pro構成を確認してみてください。");
+      notes.push("Apple\\u516c\\u5f0f\\u30b5\\u30a4\\u30c8\\u307e\\u305f\\u306fAmazon\\u3067\\u6700\\u65b0\\u306eMacBook Air/Pro\\u69cb\\u6210\\u3092\\u78ba\\u8a8d\\u3057\\u3066\\u307f\\u3066\\u304f\\u3060\\u3055\\u3044\\u3002\\u30012026\\u5e74\\u306fMac\\u3082\\u5024\\u4e0a\\u304c\\u308a\\u304c\\u7d9a\\u3044\\u3066\\u3044\\u308b\\u306e\\u3067\\u3001\\u8cfc\\u5165\\u76f4\\u524d\\u306b\\u5fc5\\u305a\\u6700\\u65b0\\u4fa1\\u683c\\u3092\\u78ba\\u8a8d\\u3057\\u3066\\u304f\\u3060\\u3055\\u3044\\u3002");
       shareText = "\\u3010AI Desk Labo\\u8a3a\\u65ad\\u3011\\u79c1\\u306b\\u5411\\u3044\\u3066\\u308b\\u306e\\u306f\\u300cMac\\u300d\\u3067\\u3057\\u305f\\ud83c\\udf4e #AIDeskLabo\\u8a3a\\u65ad #Mac";
     } else {
-      var windowsPlatform = platformPref === "intel" ? "intel" : "amd";
-      var cpuAsin, moboAsin, ramAsin, needsCooler = false;
-      if (windowsPlatform === "intel") {
-        cpuAsin = CATALOG.cpuIntel;
-        moboAsin = CATALOG.moboIntel;
-        ramAsin = CATALOG.ramDdr4;
-      } else {
-        ramAsin = CATALOG.ramDdr5;
-        if (coreTier === "high") { cpuAsin = CATALOG.cpuHighAmd; moboAsin = CATALOG.moboAm5; needsCooler = true; }
-        else if (gpuTier >= 1) { cpuAsin = CATALOG.cpuMidAmd; moboAsin = CATALOG.moboAm5; }
-        else { cpuAsin = CATALOG.cpuApuAmd; moboAsin = CATALOG.moboAm4; ramAsin = CATALOG.ramDdr4; }
+      var gpuTierBeforeIntelForce = gpuTier;
+      var req = { platformPref: platformPref, gpuTier: gpuTier, ramGB: ramGB, wantsX3D: wantsX3D, wantsHighCore: wantsHighCore, wantsMidCore: wantsMidCore, budgetNum: budgetNum, storage: answers.storage, noise: answers.noise, network: answers.network };
+      var built = buildWindowsParts(req);
+      var platformLabel = built.windowsPlatform === "intel" ? "Intel" : "AMD";
+      if (built.windowsPlatform === "intel" && gpuTierBeforeIntelForce === 0) {
+        notes.push("\\u30b0\\u30e9\\u30dc\\u4e0d\\u8981\\u306a\\u7528\\u9014\\u306a\\u306e\\u3067\\u3001\\u5185\\u8535GPU\\u4ed8\\u304dAMD Ryzen 5 5600G(APU)\\u306b\\u3059\\u308c\\u3070\\u30b0\\u30e9\\u30dc\\u4ee3\\u5206\\u3060\\u3051\\u5b89\\u304f\\u7d44\\u3081\\u307e\\u3059\\u3002");
       }
-      var gpuAsin = gpuTier === 2 ? CATALOG.gpuHigh : gpuTier === 1 ? CATALOG.gpuMid : null;
-      var platformLabel = windowsPlatform === "intel" ? "Intel" : "AMD";
 
-      title = platformLabel + "構成" + (effort === "prebuilt" ? "が近い、" : effort === "assembly_service" ? "で組んでもらう、" : "で組む、") + usecaseText + "PC";
-      paragraphs.push("選んだ用途(" + usecaseText + ")をもとに、CPUのコア数・GPUの有無・メモリ容量を決めています。");
-      if (gpuTier === 0) paragraphs.push("グラフィックボードなしのAPU/内蔵GPU構成で十分なので、最もコストを抑えたパターンにしました。");
+      // Budget-aware step-down: if the initial pick blows the budget by
+      // more than 15%, drop the GPU one tier and recompute once. This never
+      // silently removes something the visitor explicitly asked for
+      // (a competitive-FPS CPU pick, a 4K-editing RAM floor) — only the GPU
+      // tier, which is the least identity-defining lever — and the result
+      // always says in plain text whether that happened.
+      var ceilCheck = BUDGET_MAP[answers.budget];
+      var gpuSteppedDown = false;
+      if (ceilCheck !== undefined && ceilCheck !== Infinity) {
+        // The budget question asks about parts spend specifically (OS
+        // license / assembly fee are shown as separate line items below,
+        // since not everyone needs a fresh Windows license) — so the
+        // step-down trigger and the budget-vs-actual comparison both use
+        // partsTotal alone, not partsTotal+extras.
+        if (built.partsTotal > ceilCheck * 1.15 && req.gpuTier > 1) {
+          req.gpuTier = req.gpuTier - 1;
+          built = buildWindowsParts(req);
+          gpuSteppedDown = true;
+        }
+      }
+
+      title = platformLabel + "\\u69cb\\u6210\\u3067\\u7d44\\u3080\\u3001" + usecaseText + "PC";
+      paragraphs.push("\\u9078\\u3093\\u3060\\u7528\\u9014(" + usecaseText + ")\\u3092\\u3082\\u3068\\u306b\\u3001CPU\\u306e\\u30b3\\u30a2\\u6570\\u30fbGPU\\u306e\\u6709\\u7121\\u30fbVRAM\\u30fb\\u30e1\\u30e2\\u30ea\\u5bb9\\u91cf\\u3092\\u6c7a\\u3081\\u3066\\u3044\\u307e\\u3059\\u3002");
+      if (gpuTier === 0) paragraphs.push("\\u30b0\\u30e9\\u30d5\\u30a3\\u30c3\\u30af\\u30dc\\u30fc\\u30c9\\u306a\\u3057\\u306eAPU/\\u5185\\u8535GPU\\u69cb\\u6210\\u3067\\u5341\\u5206\\u306a\\u306e\\u3067\\u3001\\u6700\\u3082\\u30b3\\u30b9\\u30c8\\u3092\\u62bc\\u3055\\u3048\\u305f\\u30d1\\u30bf\\u30fc\\u30f3\\u306b\\u3057\\u307e\\u3057\\u305f\\u3002");
+      else if (needsCuda) {
+        paragraphs.push(aiHeavy
+          ? "FLUX\\u3084\\u5927\\u898f\\u6a21\\u306a\\u30ed\\u30fc\\u30ab\\u30ebLLM\\u3092\\u672c\\u683c\\u7684\\u306b\\u4f7f\\u3046\\u60f3\\u5b9a\\u306a\\u306e\\u3067\\u3001VRAM\\u3092\\u512a\\u5148\\u3057\\u305fGPU\\u3092\\u9078\\u3093\\u3067\\u3044\\u307e\\u3059\\u3002AI\\u7528\\u9014\\u306fCUDA\\u5bfe\\u5fdc\\u304c\\u4e8b\\u5b9f\\u4e0a\\u5fc5\\u9808\\u306a\\u306e\\u3067NVIDIA\\u88fd\\u3092\\u9078\\u3093\\u3067\\u3044\\u307e\\u3059\\u3002"
+          : "SDXL\\u3084\\u8efd\\u3081\\u306e\\u30ed\\u30fc\\u30ab\\u30ebLLM\\u304b\\u3089\\u8a66\\u3057\\u305f\\u3044\\u60f3\\u5b9a\\u306a\\u306e\\u3067\\u3001VRAM\\u3092\\u4e00\\u5b9a\\u78ba\\u4fdd\\u3057\\u305fNVIDIA\\u88fd GPU\\u3092\\u9078\\u3093\\u3067\\u3044\\u307e\\u3059\\u3002CUDA\\u975e\\u5bfe\\u5fdc\\u306eAMD GPU\\u3067\\u306f\\u3053\\u308c\\u3089\\u306e\\u30c4\\u30fc\\u30eb\\u306f\\u52d5\\u304d\\u307e\\u305b\\u3093\\u3002");
+        if (built.gpuAsin === CATALOG.gpuMid) notes.push("VRAM\\u3092\\u3082\\u3046\\u5c11\\u3057\\u78ba\\u4fdd\\u3057\\u305f\\u3044\\u5834\\u5408\\u306f\\u3001VRAM 16GB\\u306eRTX 5060 Ti\\u30b7\\u30ea\\u30fc\\u30ba\\u3078\\u306e\\u30b0\\u30ec\\u30fc\\u30c9\\u30a2\\u30c3\\u30d7\\u3082\\u691c\\u8a0e\\u3057\\u3066\\u304f\\u3060\\u3055\\u3044\\u3002");
+      }
       else if (gpuTier === 1) {
-        if (hasVideo && !hasGaming && !hasStreaming) paragraphs.push("フルHD中心のカット編集なら、ミドルクラスのGPUでも書き出しは快適です。4K・カラーグレーディングを本格的にやるなら上位クラスの検討もありです。");
-        else paragraphs.push("フルHD高設定・60fps以上を狙えるミドルクラスのGPUを組み合わせています。");
+        if (hasVideo && !hasGaming && !hasStreaming) paragraphs.push("\\u30d5\\u30eb HD\\u4e2d\\u5fc3\\u306e\\u30ab\\u30c3\\u30c8\\u7de8\\u96c6\\u306a\\u3089\\u3001\\u30df\\u30c9\\u30eb\\u30af\\u30e9\\u30b9\\u306eGPU\\u3067\\u3082\\u66f8\\u304d\\u51fa\\u3057\\u306f\\u5feb\\u9069\\u3067\\u3059\\u3002");
+        else if (competitive) paragraphs.push("\\u7af6\\u6280\\u7cfb\\u30bf\\u30a4\\u30c8\\u30eb\\u306fCPU\\u5074\\u304c\\u30dc\\u30c8\\u30eb\\u30cd\\u30c3\\u30af\\u306b\\u306a\\u308a\\u3084\\u3059\\u3044\\u305f\\u3081\\u3001GPU\\u306f\\u30df\\u30c9\\u30eb\\u30af\\u30e9\\u30b9\\u3067\\u5341\\u5206\\u3067\\u3059\\u3002");
+        else paragraphs.push("\\u30d5\\u30eb HD\\u9ad8\\u8a2d\\u5b9a\\u30fb60fps\\u4ee5\\u4e0a\\u3092\\u72d9\\u3048\\u308b\\u30df\\u30c9\\u30eb\\u30af\\u30e9\\u30b9\\u306eGPU\\u3092\\u7d44\\u307f\\u5408\\u308f\\u305b\\u3066\\u3044\\u307e\\u3059\\u3002");
+      } else if (gpuTier === 2) {
+        paragraphs.push(heavyAaa
+          ? "\\u30e2\\u30f3\\u30cf\\u30f3\\u30ef\\u30a4\\u30eb\\u30ba\\u306a\\u3069\\u306e\\u91cd\\u91cf\\u7d1a\\u30bf\\u30a4\\u30c8\\u30eb\\u306fVRAM\\u3092\\u591a\\u304f\\u4f7f\\u3046\\u305f\\u3081\\u3001VRAM 16GB\\u30af\\u30e9\\u30b9\\u306eGPU\\u306b\\u3057\\u3066\\u3044\\u307e\\u3059\\u3002"
+          : "144fps\\u4ee5\\u4e0a / WQHD\\u4ee5\\u4e0a\\u3092\\u72d9\\u3046\\u8a2d\\u5b9a\\u306a\\u306e\\u3067\\u3001\\u4f59\\u88d5\\u3092\\u6301\\u305f\\u305b\\u305fGPU\\u306b\\u3057\\u3066\\u3044\\u307e\\u3059\\u3002");
       } else {
-        if (videoHeavy) paragraphs.push("4K編集・カラーグレーディングも見据えて、VRAM 12GB以上のGPUを選定しました。");
-        else paragraphs.push("144fps以上 / WQHD以上を狙う設定なので、余裕を持たせた上位クラスのGPUにしています。");
+        if (videoHeavy) paragraphs.push("4K\\u7de8\\u96c6\\u30fb\\u30ab\\u30e9\\u30fc\\u30b0\\u30ec\\u30fc\\u30c7\\u30a3\\u30f3\\u30b0\\u3082\\u898b\\u636e\\u3048\\u3066\\u3001VRAM 12GB\\u4ee5\\u4e0a\\u306eGPU\\u3092\\u9078\\u5b9a\\u3057\\u307e\\u3057\\u305f\\u3002");
+        else paragraphs.push("WQHD\\u4ee5\\u4e0a / 4K\\u3092\\u72d9\\u3046\\u8a2d\\u5b9a\\u306a\\u306e\\u3067\\u3001\\u4e0a\\u4f4d\\u30af\\u30e9\\u30b9\\u306eGPU\\u306b\\u3057\\u3066\\u3044\\u307e\\u3059\\u3002");
       }
-      if (coreTier === "high") {
-        if (heavyCount >= 2) paragraphs.push("複数の用途を同時にこなす想定なので、コア数の多いCPUとメモリ" + ramGB + "GBを確保しています。");
-        else if (videoHeavy) paragraphs.push("4K編集のエンコード・書き出しを考慮して、コア数の多いCPUにしています。");
-        else paragraphs.push("配信しながらのプレイでもCPUに余裕を持たせるため、コア数の多いCPUにしています。");
+      if (gpuSteppedDown) notes.push("\\u9078\\u3093\\u3060\\u6761\\u4ef6\\u3060\\u3068\\u4e88\\u7b97\\u3092\\u5927\\u304d\\u304f\\u8d85\\u3048\\u308b\\u305f\\u3081\\u3001GPU\\u3092\\u4e00\\u6bb5\\u4e0b\\u3052\\u3066\\u4e88\\u7b97\\u306b\\u8fd1\\u3065\\u3051\\u3066\\u3044\\u307e\\u3059\\u3002\\u6027\\u80fd\\u3092\\u512a\\u5148\\u3059\\u308b\\u5834\\u5408\\u306f\\u4e0b\\u306e\\u4e88\\u7b97\\u30ce\\u30fc\\u30c8\\u3082\\u53c2\\u8003\\u306b\\u3057\\u3066\\u304f\\u3060\\u3055\\u3044\\u3002");
+
+      if (built.windowsPlatform === "amd" && platformPref === "auto") {
+        notes.push("\\u300c\\u304a\\u307e\\u304b\\u305b\\u300d\\u306e\\u5834\\u5408\\u306f\\u3001\\u30a2\\u30c3\\u30d7\\u30b0\\u30ec\\u30fc\\u30c9\\u4f59\\u5730\\u3068\\u30b3\\u30b9\\u30d1\\u3092\\u91cd\\u8996\\u3057\\u3066AMD\\u3092\\u57fa\\u672c\\u306b\\u3057\\u3066\\u3044\\u307e\\u3059\\u3002HEVC/10bit\\u7d20\\u6750\\u306e\\u52d5\\u753b\\u7de8\\u96c6\\u3092\\u983b\\u7e41\\u306b\\u3059\\u308b\\u306a\\u3089Intel(Core Ultra 5 225F)\\u306eQuick Sync\\u3082\\u6709\\u529b\\u3067\\u3059\\u3002");
       }
-      if (windowsPlatform === "intel" && (coreTier === "high" || gpuTier === 2)) notes.push("正直に言うと、10コアクラスのCore i5-14400は本格的な4K編集・重い配信にはやや力不足です。予算が許せばCore i7以上のクラスを検討してください。");
+      if (wantsX3D) paragraphs.push("\\u7af6\\u6280\\u7cfb\\u30bf\\u30a4\\u30c8\\u30eb\\u3092\\u9078\\u3093\\u3067\\u3044\\u308b\\u306e\\u3067\\u3001fps\\u306e\\u4f38\\u3073\\u306b\\u76f4\\u7d50\\u3059\\u308b3D V-Cache\\u642d\\u8f09CPU(X3D)\\u306b\\u3057\\u3066\\u3044\\u307e\\u3059\\u3002");
+      else if (wantsHighCore) {
+        if (heavyCount >= 2) paragraphs.push("\\u8907\\u6570\\u306e\\u7528\\u9014\\u3092\\u540c\\u6642\\u306b\\u3053\\u306a\\u3059\\u60f3\\u5b9a\\u306a\\u306e\\u3067\\u3001\\u30b3\\u30a2\\u6570\\u306e\\u591a\\u3044CPU\\u3068\\u30e1\\u30e2\\u30ea" + ramGB + "GB\\u3092\\u78ba\\u4fdd\\u3057\\u3066\\u3044\\u307e\\u3059\\u3002");
+        else paragraphs.push("4K\\u7de8\\u96c6\\u306e\\u30a8\\u30f3\\u30b3\\u30fc\\u30c9\\u30fb\\u66f8\\u304d\\u51fa\\u3057\\u3092\\u8003\\u616e\\u3057\\u3066\\u3001\\u30b3\\u30a2\\u6570\\u306e\\u591a\\u3044CPU\\u306b\\u3057\\u3066\\u3044\\u307e\\u3059\\u3002");
+      } else if (wantsMidCore && hasStreaming) paragraphs.push("\\u914d\\u4fe1\\u3057\\u306a\\u304c\\u3089\\u306e\\u30d7\\u30ec\\u30a4\\u3067\\u3082CPU\\u306b\\u4f59\\u88d5\\u3092\\u6301\\u305f\\u305b\\u308b\\u305f\\u3081\\u3001\\u30df\\u30c9\\u30eb\\u30af\\u30e9\\u30b9\\u4ee5\\u4e0a\\u306eCPU\\u306b\\u3057\\u3066\\u3044\\u307e\\u3059\\u3002");
+
+      if (built.cpuAsin === CATALOG.cpuAm4Amd) notes.push("2026\\u5e74\\u306fDDR5\\u30e1\\u30e2\\u30ea\\u304c\\u5927\\u5e45\\u9ad8\\u9a30\\u3057\\u3066\\u3044\\u308b\\u305f\\u3081\\u3001\\u4e88\\u7b97\\u3092\\u62bc\\u3055\\u3048\\u308b\\u76ee\\u7684\\u3067DDR4\\u5bfe\\u5fdc\\u306eAM4\\u30d7\\u30e9\\u30c3\\u30c8\\u30d5\\u30a9\\u30fc\\u30e0\\u3092\\u63d0\\u6848\\u3057\\u3066\\u3044\\u307e\\u3059\\u3002\\u5c06\\u6765\\u306eCPU\\u4e16\\u4ee3\\u30a2\\u30c3\\u30d7\\u30b0\\u30ec\\u30fc\\u30c9\\u306f\\u3067\\u304d\\u307e\\u305b\\u3093\\u3002");
+      if (built.cpuNote) notes.push(built.cpuNote);
+      if (built.needsWifiAdapter) notes.push("\\u9078\\u3093\\u3060\\u30de\\u30b6\\u30fc\\u30dc\\u30fc\\u30c9\\u306fWi-Fi\\u975e\\u642d\\u8f09\\u306e\\u305f\\u3081\\u3001USB\\u7121\\u7dda LAN\\u5b50\\u6a5f\\u3092\\u8ffd\\u52a0\\u3057\\u3066\\u3044\\u307e\\u3059\\u3002");
       if (hybridNote) notes.push(hybridNote);
+      if (videoHeavy && built.storageAsin === CATALOG.storage) notes.push("\\u52d5\\u753b\\u7de8\\u96c6\\u306f\\u7d20\\u6750\\u91cf\\u304c\\u591a\\u304f\\u306a\\u308a\\u304c\\u3061\\u3067\\u3059\\u30021TB SSD\\u3067\\u4e0d\\u8db3\\u3059\\u308b\\u5834\\u5408\\u306f2TB\\u30e2\\u30c7\\u30eb\\u3078\\u306e\\u5165\\u308c\\u66ff\\u3048\\u3001\\u307e\\u305f\\u306f\\u5916\\u4ed8\\u3051SSD\\u306e\\u8ffd\\u52a0\\u3082\\u691c\\u8a0e\\u3057\\u3066\\u304f\\u3060\\u3055\\u3044\\u3002");
+      if (effort === "assembly_service") notes.unshift("\\u7d44\\u307f\\u7acb\\u3066\\u306f\\u4efb\\u305b\\u305f\\u3044\\u3068\\u306e\\u3053\\u3068\\u306a\\u306e\\u3067\\u3001\\u4e0b\\u8a18\\u306e\\u30d1\\u30fc\\u30c4\\u3092\\u3054\\u81ea\\u8eab\\u3067\\u8cfc\\u5165\\u3057\\u305f\\u3046\\u3048\\u3001PC\\u30b7\\u30e7\\u30c3\\u30d7\\u306e\\u7d44\\u307f\\u7acb\\u3066\\u4ee3\\u884c\\u30b5\\u30fc\\u30d3\\u30b9(\\u6301\\u3061\\u8fbc\\u307f\\u30d1\\u30fc\\u30c4\\u306e\\u7d44\\u307f\\u7acb\\u3066\\u306e\\u307f\\u3092" + ASSEMBLY_SERVICE_FEE_RANGE + "\\u3067\\u8acb\\u3051\\u8ca0\\u3046\\u30b5\\u30fc\\u30d3\\u30b9)\\u306b\\u4f9d\\u983c\\u3059\\u308b\\u3068\\u30b9\\u30e0\\u30fc\\u30ba\\u3067\\u3059\\u3002");
 
-      var budgetInfo = null;
-      if (effort === "prebuilt") {
-        // No Amazon/ROOM buy buttons here on purpose: someone buying a
-        // finished PC isn't going to purchase a bare CPU or GPU from us
-        // separately, so showing those CTAs would be actively misleading.
-        // This is spec-reference text only.
-        var specNames = [NAMES[cpuAsin]];
-        if (gpuAsin) specNames.push(NAMES[gpuAsin]);
-        notes.unshift("組み立てには興味がないとのことなので、無理に自作はすすめません。目安のスペックは「" + specNames.join(" + ") + "」クラスです。これに近い完成品・BTOパソコンを探すと、今回の診断に近い性能で失敗しにくいです。");
-        asins = [];
-        guideLink = null;
-      } else {
-        var storageAsin = answers.storage === "2tb" ? CATALOG.storage2tb : CATALOG.storage;
-        var caseAsin = answers.noise === "quiet" ? CATALOG.caseQuiet : CATALOG.case;
-        if (effort === "assembly_service") notes.unshift("組み立ては任せたいとのことなので、下記のパーツをご自身で購入したうえで、PCショップの組み立て代行サービス(持ち込みパーツの組み立てのみを数千円程度で請け負うサービス)に依頼するとスムーズです。");
-        if (videoHeavy && storageAsin === CATALOG.storage) notes.push("動画編集は素材量が多くなりがちです。1TB SSDで不足する場合は2TBモデルへの入れ替え、または外付けSSDの追加も検討してください。");
+      asins = built.asins;
+      var total = built.partsTotal;
+      var extrasNote = "\\u4e0a\\u8a18\\u306f\\u30d1\\u30fc\\u30c4\\u4ee3(\\u8a08" + yen(built.partsTotal) + ")\\u306e\\u307f\\u3067\\u3059\\u3002Windows\\u672a\\u6240\\u6301\\u306a\\u3089\\u30e9\\u30a4\\u30bb\\u30f3\\u30b9\\u4ee3\\u7d04" + yen(OS_LICENSE_COST) + "\\u304c\\u5225\\u9014\\u5fc5\\u8981\\u3067\\u3059\\u3002";
+      if (effort === "assembly_service") extrasNote += "\\u7d44\\u307f\\u7acb\\u3066\\u4ee3\\u884c\\u6599(\\u76ee\\u5b89" + yen(ASSEMBLY_SERVICE_FEE) + "\\u3001" + ASSEMBLY_SERVICE_FEE_RANGE + ")\\u3082\\u5225\\u9014\\u304b\\u304b\\u308a\\u307e\\u3059\\u3002";
+      notes.push(extrasNote);
 
-        asins.push(cpuAsin);
-        if (gpuAsin) asins.push(gpuAsin);
-        asins.push(moboAsin);
-        asins.push(ramAsin);
-        var ramKitGB = ramAsin === CATALOG.ramDdr5 ? 32 : 16;
-        if (ramGB > ramKitGB) notes.push("メモリは" + ramGB + "GB以上を推奨。掲載の" + ramKitGB + "GBキットを2セット使うと" + (ramKitGB * 2) + "GBになります。");
-        asins.push(storageAsin);
-        asins.push(caseAsin);
-        asins.push(CATALOG.psu);
-        asins.push(CATALOG.paste);
-        if (needsCooler) asins.push(CATALOG.cooler);
+      var ceil = BUDGET_MAP[answers.budget];
+      var budgetLabel = BUDGET_LABEL_MAP[answers.budget];
+      if (ceil !== undefined) budgetInfo = { total: total, ceil: ceil, label: budgetLabel };
+      if (ceil !== undefined && ceil !== Infinity && total > ceil * 1.3 && effort !== "compare_all") {
+        notes.push("\\u4e88\\u7b97\\u3068\\u306e\\u5dee\\u304c\\u5927\\u304d\\u3044\\u306e\\u3067\\u3001\\u81ea\\u4f5c\\u4ee5\\u5916\\u306e\\u9078\\u629e\\u80a2(\\u5b8c\\u6210\\u54c1\\u30fbMac\\u306a\\u3069)\\u3082\\u6bd4\\u3079\\u3066\\u307f\\u308b\\u4fa1\\u5024\\u304c\\u3042\\u308a\\u307e\\u3059\\u3002\\u300c\\u7d44\\u307f\\u7acb\\u3066\\u306e\\u8208\\u5473\\u300d\\u306e\\u8cea\\u554f\\u3067\\u300c\\u81ea\\u4f5c\\u30fb\\u5b8c\\u6210\\u54c1\\u30fbMac\\u3092\\u6bd4\\u3079\\u3066\\u304b\\u3089\\u6c7a\\u3081\\u305f\\u3044\\u300d\\u3092\\u9078\\u3093\\u3067\\u3082\\u3046\\u4e00\\u5ea6\\u8a3a\\u65ad\\u3059\\u308b\\u3068\\u3001\\u8cb7\\u3044\\u65b9\\u306e\\u6bd4\\u8f03\\u304c\\u898b\\u3089\\u308c\\u307e\\u3059\\u3002");
+      }
+      var guideSlug = hasVideo ? "pc-build-video-editing" : (hasGaming || hasStreaming) ? "pc-build-gaming" : "pc-build-office";
+      guideLink = { href: GUIDE_ROOT + guideSlug + "/", label: "\\u8a73\\u3057\\u3044\\u89e3\\u8aac\\u3092\\u30ac\\u30a4\\u30c9\\u8a18\\u4e8b\\u3067\\u8aad\\u3080" };
 
-        var total = asins.reduce(function (sum, a) { return sum + (PRICES[a] || 0); }, 0);
-        var budgetMap = { "10": 100000, "15": 150000, "20": 200000, "99": Infinity };
-        var budgetLabelMap = { "10": "\\uff5e10\\u4e07\\u5186", "15": "10\\u4e07\\uff5e15\\u4e07\\u5186", "20": "15\\u4e07\\uff5e20\\u4e07\\u5186", "99": "20\\u4e07\\u5186\\u4ee5\\u4e0a" };
-        var ceil = budgetMap[answers.budget];
-        var budgetLabel = budgetLabelMap[answers.budget];
-        if (ceil !== undefined) budgetInfo = { total: total, ceil: ceil, label: budgetLabel };
-        var guideSlug = hasVideo ? "pc-build-video-editing" : hasGaming || hasStreaming ? "pc-build-gaming" : "pc-build-office";
-        guideLink = { href: GUIDE_ROOT + guideSlug + "/", label: "詳しい解説をガイド記事で読む" };
+      if (effort === "compare_all") {
+        var diyTotal = built.partsTotal + OS_LICENSE_COST;
+        var assemblyTotal = built.partsTotal + OS_LICENSE_COST + ASSEMBLY_SERVICE_FEE;
+        buyCompare = [
+          "\\u81ea\\u4f5c(\\u81ea\\u5206\\u3067\\u7d44\\u3080): \\u7d04" + yen(diyTotal) + "\\u3002\\u4e00\\u756a\\u5b89\\u304f\\u3067\\u304d\\u307e\\u3059\\u304c\\u3001\\u7d44\\u307f\\u7acb\\u3066\\u306e\\u624b\\u9593\\u3068\\u77e5\\u8b58\\u304c\\u5fc5\\u8981\\u3067\\u3059\\u3002",
+          "\\u7d44\\u307f\\u7acb\\u3066\\u4ee3\\u884c: \\u7d04" + yen(assemblyTotal) + "(\\u4ee3\\u884c\\u6599" + ASSEMBLY_SERVICE_FEE_RANGE + ")\\u3002\\u30d1\\u30fc\\u30c4\\u306f\\u3053\\u306e\\u30da\\u30fc\\u30b8\\u306e\\u30ea\\u30f3\\u30af\\u304b\\u3089\\u8cfc\\u5165\\u3057\\u3001\\u7d44\\u307f\\u7acb\\u3066\\u306e\\u307f\\u3092\\u4f9d\\u983c\\u3067\\u304d\\u307e\\u3059\\u3002",
+          "BTO\\u5b8c\\u6210\\u54c1(\\u30c9\\u30b9\\u30d1\\u30e9\\u30fb\\u30de\\u30a6\\u30b9\\u30b3\\u30f3\\u30d4\\u30e5\\u30fc\\u30bf\\u30fc\\u306a\\u3069): \\u3053\\u306e\\u69cb\\u6210\\u3068\\u540c\\u7b49\\u30b9\\u30da\\u30c3\\u30af\\u3060\\u3068\\u3001\\u76f8\\u5834\\u306f\\u81ea\\u4f5c\\u3068\\u540c\\u7b49\\u304b\\u3084\\u3084\\u5b89\\u3044\\u3053\\u3068\\u304c\\u3042\\u308a\\u307e\\u3059(2026\\u5e74\\u306fDDR5\\u9ad8\\u9a30\\u306e\\u5f71\\u97ff\\u3067BTO\\u306e\\u5927\\u91cf\\u4ed5\\u5165\\u308c\\u304c\\u6709\\u5229\\u306b\\u306a\\u308a\\u3084\\u3059\\u3044\\u305f\\u3081)\\u3002\\u697d\\u5929\\u5e02\\u5834\\u5185\\u306e\\u5404\\u30b7\\u30e7\\u30c3\\u30d7\\u516c\\u5f0f\\u5e97\\u3067\\u8fd1\\u3044\\u69cb\\u6210\\u3092\\u63a2\\u3059\\u306e\\u3082\\u624b\\u3067\\u3059\\u3002",
+          macEligible === false && hasAppleIntegrationNeed ? "Mac: Apple\\u9023\\u643a\\u306e\\u5fc5\\u8981\\u306f\\u3042\\u308a\\u307e\\u3059\\u304c\\u3001" + (windowsRequired ? "Windows\\u5fc5\\u9808\\u306e\\u30bd\\u30d5\\u30c8/\\u30b2\\u30fc\\u30e0\\u304c\\u3042\\u308b\\u305f\\u3081\\u5bfe\\u8c61\\u5916\\u3067\\u3059\\u3002" : "\\u4eca\\u56de\\u306f\\u5bfe\\u8c61\\u5916\\u3067\\u3059\\u3002") : "Mac: " + (competitive || needsCuda ? "\\u7af6\\u6280\\u7cfb\\u30b2\\u30fc\\u30e0/\\u30ed\\u30fc\\u30ab\\u30ebAI\\u306fWindows+NVIDIA\\u524d\\u63d0\\u306e\\u3082\\u306e\\u304c\\u591a\\u304f\\u3001\\u5bfe\\u8c61\\u5916\\u3067\\u3059\\u3002" : "Apple\\u88fd\\u54c1\\u3068\\u306e\\u5177\\u4f53\\u7684\\u306a\\u9023\\u643a\\u30cb\\u30fc\\u30ba\\u304c\\u306a\\u3044\\u9650\\u308a\\u3001\\u4eca\\u56de\\u306e\\u7528\\u9014\\u3067\\u306fWindows\\u69cb\\u6210\\u306e\\u65b9\\u304c\\u5408\\u7406\\u7684\\u3067\\u3059\\u3002"),
+        ];
       }
       shareText = "\\u3010AI Desk Labo\\u8a3a\\u65ad\\u3011\\u79c1\\u306b\\u5411\\u3044\\u3066\\u308b\\u306e\\u306f\\u300c" + platformLabel + "\\u69cb\\u6210\\u306e" + usecaseText + "PC\\u300d\\u3067\\u3057\\u305f\\ud83d\\udda5\\ufe0f #AIDeskLabo\\u8a3a\\u65ad #\\u81ea\\u4f5cPC";
     }
 
-    return { title: title, paragraphs: paragraphs, notes: notes, asins: asins, guideLink: guideLink, shareText: shareText, budgetInfo: budgetInfo };
+    return { title: title, paragraphs: paragraphs, notes: notes, asins: asins, guideLink: guideLink, shareText: shareText, budgetInfo: budgetInfo, buyCompare: buyCompare };
   }
 
   function budgetNoteText(total, ceil, label) {
     if (ceil !== Infinity && total > ceil * 1.1) {
-      return "この構成の目安は約" + yen(total) + "。予算(" + label + ")に対して約" + yen(total - ceil) + "オーバーしています。GPUのランクを下げる、またはメモリ容量を抑えると予算内に収まりやすくなります。";
+      return "この構成のパーツ代の目安は約" + yen(total) + "。予算(" + label + ")に対して約" + yen(total - ceil) + "オーバーしています。予算を上げるか、用途の絞り込み(解像度・ゲームジャンルなど)を見直すと予算に近づきます。";
     }
     if (ceil !== Infinity && total < ceil * 0.7) {
-      return "この構成の目安は約" + yen(total) + "。予算(" + label + ")にはまだ余裕があるので、GPUやメモリを一段階上げる余地があります。";
+      return "この構成のパーツ代の目安は約" + yen(total) + "。予算(" + label + ")にはまだ余裕があるので、GPUやメモリを一段階上げる余地があります。";
     }
-    return "この構成の目安は約" + yen(total) + "。予算(" + label + ")の範囲に収まっています。";
+    return "この構成のパーツ代の目安は約" + yen(total) + "。予算(" + label + ")の範囲に収まっています。";
   }
 
   function escapeText(s) {
@@ -540,6 +660,11 @@ function renderDiagnosis(diag, productsMap) {
     }
     if (r.budgetInfo) html += '<p class="quiz-result-note" data-budget-note>' + escapeText(budgetNoteText(r.budgetInfo.total, r.budgetInfo.ceil, r.budgetInfo.label)) + "</p>";
     r.notes.forEach(function (n) { html += '<p class="quiz-result-note">' + escapeText(n) + "</p>"; });
+    if (r.buyCompare) {
+      html += '<div class="quiz-buy-compare"><p class="quiz-buy-compare-title">\\u8cb7\\u3044\\u65b9\\u306e\\u6bd4\\u8f03</p><ul>';
+      r.buyCompare.forEach(function (line) { html += "<li>" + escapeText(line) + "</li>"; });
+      html += "</ul></div>";
+    }
     if (r.guideLink) html += '<p class="section-link"><a href="' + r.guideLink.href + '">' + escapeText(r.guideLink.label) + " \\u2192</a></p>";
     html += '<div class="quiz-result-actions">';
     html += '<button type="button" class="btn-share" data-share-text="' + escapeText(r.shareText) + '">' + ${JSON.stringify(icon("review"))} + "\\u8a3a\\u65ad\\u7d50\\u679c\\u3092X\\u3067\\u30b7\\u30a7\\u30a2</button>";
