@@ -251,6 +251,8 @@ function renderDiagnosis(diag, productsMap) {
   for (const asin of catalogAsins) pricesByAsin[asin] = productsMap[asin].price;
   const categoryLabelByAsin = {};
   for (const asin of catalogAsins) categoryLabelByAsin[asin] = CATEGORY_LABEL_JA[productsMap[asin].category] || productsMap[asin].category;
+  const nameByAsin = {};
+  for (const asin of catalogAsins) nameByAsin[asin] = productsMap[asin].name;
 
   const stepsHtml = diag.questions
     .map((q, i) => {
@@ -290,6 +292,7 @@ function renderDiagnosis(diag, productsMap) {
   var CARDS = ${JSON.stringify(cardsByAsin)};
   var PRICES = ${JSON.stringify(pricesByAsin)};
   var CATEGORY_LABELS = ${JSON.stringify(categoryLabelByAsin)};
+  var NAMES = ${JSON.stringify(nameByAsin)};
   var SWAPS = ${JSON.stringify(DIAGNOSIS_SWAPS)};
   var GUIDE_ROOT = "../../guides/";
   var stepKeys = ${JSON.stringify(diag.questions.map((q) => q.key))};
@@ -333,10 +336,15 @@ function renderDiagnosis(diag, productsMap) {
     var gpuTier = 0; // 0 none, 1 mid(RTX4060), 2 high(RTX4070 SUPER)
     var ramGB = 16;
     var coreTier = "low"; // low(6-10 core) or high(12 core, Ryzen 9 9900X tier)
+    var videoHeavy = hasVideo && answers.videoIntensity === "heavy";
     if (hasIllustration) gpuTier = Math.max(gpuTier, 1);
     if (hasGaming) gpuTier = Math.max(gpuTier, 1);
     if (hasStreaming) { coreTier = "high"; ramGB = Math.max(ramGB, 32); gpuTier = Math.max(gpuTier, 1); }
-    if (hasVideo) { gpuTier = Math.max(gpuTier, 2); coreTier = "high"; ramGB = Math.max(ramGB, 32); }
+    if (hasVideo) {
+      ramGB = Math.max(ramGB, 32);
+      if (videoHeavy) { gpuTier = Math.max(gpuTier, 2); coreTier = "high"; }
+      else gpuTier = Math.max(gpuTier, 1);
+    }
     if ((hasGaming || hasStreaming) && answers.resolution === "fhd144plus") gpuTier = Math.max(gpuTier, 2);
     if (heavyCount >= 2) { ramGB = Math.max(ramGB, 32); coreTier = "high"; }
     if (heavyCount >= 3) ramGB = 64;
@@ -378,7 +386,8 @@ function renderDiagnosis(diag, productsMap) {
         continuity: "通知・コピペ・電話をPCでも使いたいとのことなので、Handoff・iMessageが使えるMacの方が体験として一段上です。",
       };
       integrationReasons.forEach(function (r) { if (reasonLabels[r]) reasons.push(reasonLabels[r]); });
-      if (hasVideo) reasons.push("動画編集も選んでいるので、Apple SiliconのハードウェアエンコードはPremiere Pro・DaVinci Resolveでも強力に効きます。統合メモリでVRAM不足にも悩みにくい構成です。");
+      if (videoHeavy) reasons.push("4K編集・カラーグレーディングも選んでいるので、Apple SiliconのハードウェアエンコードはPremiere Pro・DaVinci Resolveでも強力に効きます。統合メモリでVRAM不足にも悩みにくい構成です。");
+      else if (hasVideo) reasons.push("動画編集も選んでいるので、Apple SiliconのハードウェアエンコードはフルHD中心の編集でも快適です。");
       if (software === "mac_ok") reasons.push("使う予定のソフトもMac対応で完結するとのことなので、無理にWindowsを選ぶ理由もありません。");
       paragraphs = reasons;
       notes.push("Apple公式サイトまたはAmazonで最新のMacBook Air/Pro構成を確認してみてください。");
@@ -399,15 +408,19 @@ function renderDiagnosis(diag, productsMap) {
       var gpuAsin = gpuTier === 2 ? CATALOG.gpuHigh : gpuTier === 1 ? CATALOG.gpuMid : null;
       var platformLabel = windowsPlatform === "intel" ? "Intel" : "AMD";
 
-      title = platformLabel + "構成" + (effort === "prebuilt" ? "が近い、" : effort === "bto" ? "でBTO注文する、" : "で組む、") + usecaseText + "PC";
+      title = platformLabel + "構成" + (effort === "prebuilt" ? "が近い、" : effort === "assembly_service" ? "で組んでもらう、" : "で組む、") + usecaseText + "PC";
       paragraphs.push("選んだ用途(" + usecaseText + ")をもとに、CPUのコア数・GPUの有無・メモリ容量を決めています。");
       if (gpuTier === 0) paragraphs.push("グラフィックボードなしのAPU/内蔵GPU構成で十分なので、最もコストを抑えたパターンにしました。");
-      else if (gpuTier === 1) paragraphs.push("フルHD高設定・60fps以上を狙えるミドルクラスのGPUを組み合わせています。");
-      else if (hasVideo) paragraphs.push("動画編集も見据えて、VRAM 12GB以上のGPUを選定しました。");
-      else paragraphs.push("144fps以上 / WQHD以上を狙う設定なので、余裕を持たせた上位クラスのGPUにしています。");
+      else if (gpuTier === 1) {
+        if (hasVideo && !hasGaming && !hasStreaming) paragraphs.push("フルHD中心のカット編集なら、ミドルクラスのGPUでも書き出しは快適です。4K・カラーグレーディングを本格的にやるなら上位クラスの検討もありです。");
+        else paragraphs.push("フルHD高設定・60fps以上を狙えるミドルクラスのGPUを組み合わせています。");
+      } else {
+        if (videoHeavy) paragraphs.push("4K編集・カラーグレーディングも見据えて、VRAM 12GB以上のGPUを選定しました。");
+        else paragraphs.push("144fps以上 / WQHD以上を狙う設定なので、余裕を持たせた上位クラスのGPUにしています。");
+      }
       if (coreTier === "high") {
         if (heavyCount >= 2) paragraphs.push("複数の用途を同時にこなす想定なので、コア数の多いCPUとメモリ" + ramGB + "GBを確保しています。");
-        else if (hasVideo) paragraphs.push("動画編集のエンコード・書き出しを考慮して、コア数の多いCPUにしています。");
+        else if (videoHeavy) paragraphs.push("4K編集のエンコード・書き出しを考慮して、コア数の多いCPUにしています。");
         else paragraphs.push("配信しながらのプレイでもCPUに余裕を持たせるため、コア数の多いCPUにしています。");
       }
       if (windowsPlatform === "intel" && (coreTier === "high" || gpuTier === 2)) notes.push("正直に言うと、10コアクラスのCore i5-14400は本格的な4K編集・重い配信にはやや力不足です。予算が許せばCore i7以上のクラスを検討してください。");
@@ -415,14 +428,20 @@ function renderDiagnosis(diag, productsMap) {
 
       var budgetInfo = null;
       if (effort === "prebuilt") {
-        notes.unshift("組み立てには興味がないとのことなので、無理に自作はすすめません。下記のCPU・GPUクラスを目安のスペックとして、完成品・BTOパソコンを探すと今回の診断に近い性能で失敗しにくいです。");
-        asins = gpuAsin ? [cpuAsin, gpuAsin] : [cpuAsin];
+        // No Amazon/ROOM buy buttons here on purpose: someone buying a
+        // finished PC isn't going to purchase a bare CPU or GPU from us
+        // separately, so showing those CTAs would be actively misleading.
+        // This is spec-reference text only.
+        var specNames = [NAMES[cpuAsin]];
+        if (gpuAsin) specNames.push(NAMES[gpuAsin]);
+        notes.unshift("組み立てには興味がないとのことなので、無理に自作はすすめません。目安のスペックは「" + specNames.join(" + ") + "」クラスです。これに近い完成品・BTOパソコンを探すと、今回の診断に近い性能で失敗しにくいです。");
+        asins = [];
         guideLink = null;
       } else {
         var storageAsin = answers.storage === "2tb" ? CATALOG.storage2tb : CATALOG.storage;
         var caseAsin = answers.noise === "quiet" ? CATALOG.caseQuiet : CATALOG.case;
-        if (effort === "bto") notes.unshift("組み立ては任せたいとのことなので、この構成をそのままBTOショップの注文フォームで指定するとスムーズです。ショップ独自のパーツに置き換わる場合もあるので、型番は目安として伝えてください。");
-        if (hasVideo && storageAsin === CATALOG.storage) notes.push("動画編集は素材量が多くなりがちです。1TB SSDで不足する場合は2TBモデルへの入れ替え、または外付けSSDの追加も検討してください。");
+        if (effort === "assembly_service") notes.unshift("組み立ては任せたいとのことなので、下記のパーツをご自身で購入したうえで、PCショップの組み立て代行サービス(持ち込みパーツの組み立てのみを数千円程度で請け負うサービス)に依頼するとスムーズです。");
+        if (videoHeavy && storageAsin === CATALOG.storage) notes.push("動画編集は素材量が多くなりがちです。1TB SSDで不足する場合は2TBモデルへの入れ替え、または外付けSSDの追加も検討してください。");
 
         asins.push(cpuAsin);
         if (gpuAsin) asins.push(gpuAsin);

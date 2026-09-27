@@ -81,11 +81,21 @@
             {
               "key": "resolution",
               "type": "single",
-              "question": "目指す解像度・フレームレートは？",
-              "dependsOn": {"key": "usecases", "anyOf": ["gaming", "streaming", "video"]},
+              "question": "ゲームで目指す解像度・フレームレートは？",
+              "dependsOn": {"key": "usecases", "anyOf": ["gaming", "streaming"]},
               "options": [
                 {"value": "fhd60", "label": "フルHD・60fps前後", "desc": "標準的な設定で十分"},
                 {"value": "fhd144plus", "label": "フルHD・144fps以上 / WQHD以上", "desc": "高fps・高解像度を狙いたい"}
+              ]
+            },
+            {
+              "key": "videoIntensity",
+              "type": "single",
+              "question": "動画編集の内容に近いものは？",
+              "dependsOn": {"key": "usecases", "anyOf": ["video"]},
+              "options": [
+                {"value": "light", "label": "フルHD中心のカット編集", "desc": "簡単な切り貼り・テロップ・書き出し程度"},
+                {"value": "heavy", "label": "4K編集・カラーグレーディング・マルチカム", "desc": "本格的な編集で書き出しも重い"}
               ]
             },
             {
@@ -128,8 +138,8 @@
               "question": "組み立てへの興味は？",
               "options": [
                 {"value": "diy", "label": "自作を楽しみたい", "desc": "パーツ選び・組み立て自体が好き"},
-                {"value": "bto", "label": "構成は自分で決めたいが、組み立ては任せたい", "desc": "BTOショップにこの構成で注文したい"},
-                {"value": "prebuilt", "label": "とにかく手間なく、今すぐ使えればいい", "desc": "店頭の完成品で十分"}
+                {"value": "assembly_service", "label": "パーツは自分で選びたいが、組み立ては任せたい", "desc": "パーツを購入し、組み立て代行サービスに依頼する"},
+                {"value": "prebuilt", "label": "とにかく手間なく、今すぐ使えればいい", "desc": "完成品・BTOパソコンで十分"}
               ]
             },
             {
@@ -146,7 +156,7 @@
               "key": "noise",
               "type": "single",
               "question": "設置場所や動作音は気になりますか？(自作する場合)",
-              "dependsOn": {"key": "effort", "anyOf": ["diy", "bto"]},
+              "dependsOn": {"key": "effort", "anyOf": ["diy", "assembly_service"]},
               "options": [
                 {"value": "airflow", "label": "静かさより冷却・性能重視", "desc": "ファン音は気にしない"},
                 {"value": "quiet", "label": "できれば静かがいい", "desc": "寝室・リビングなど音が気になる環境"}
@@ -156,7 +166,7 @@
               "key": "storage",
               "type": "single",
               "question": "保存するデータ量の目安は？(自作する場合)",
-              "dependsOn": {"key": "effort", "anyOf": ["diy", "bto"]},
+              "dependsOn": {"key": "effort", "anyOf": ["diy", "assembly_service"]},
               "options": [
                 {"value": "1tb", "label": "1TBで十分", "desc": "一般的な使い方"},
                 {"value": "2tb", "label": "素材・データが多い・2TB欲しい", "desc": "動画素材やイラスト、AI生成物が多い"}
