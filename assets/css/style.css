@@ -479,97 +479,81 @@ img, svg { max-width: 100%; height: auto; }
   50% { transform: translateY(-12px) rotate(0.6deg); }
 }
 
-/* ---------- Hero illustration: blob + floating icon chips ----------
-   Pure CSS, no inline SVG gradients — those turned out to render
-   unreliably in testing (position/opacity correct in the DOM, the fill
-   itself just didn't always paint). A single organic "blob" shape (the
-   classic asymmetric border-radius trick) plus a loose stack of oversized,
-   solid-color icon chips reads as bold and current without needing to be
-   a literal diagram of anything — style over explanation. */
-.hero-blob-wrap {
+/* ---------- Hero illustration: overlapping abstract circle cluster ----------
+   Third attempt at this graphic. Round 1 (thin-line network diagram) read
+   as too faint. Round 2 (one flat "blob" + icon chips stuck on it) read as
+   a big block of wasted color with icons that implied meaning they didn't
+   deliver. This version drops icons entirely — no literal "AI" mark, no
+   diagram to interpret — and gets its impact purely from several solid
+   circles at deliberately different sizes/colors overlapping with real
+   depth (drop shadows, z-order), plus two outline rings for graphic
+   contrast. Flat CSS colors only (no SVG gradient defs — those rendered
+   unreliably in testing), same design language as everywhere else. */
+.hero-cluster {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
 }
-.hero-blob {
+.hero-circle, .hero-ring, .hero-dot {
   position: absolute;
-  inset: 6%;
-  border-radius: 63% 37% 54% 46% / 43% 65% 35% 57%;
-  background: linear-gradient(135deg, #d97a34, var(--accent-orange) 55%, var(--accent-orange-deep));
-  box-shadow: 0 40px 70px -30px rgba(179, 86, 15, 0.55);
-  opacity: 0;
-  animation: blobIn 0.9s var(--ease) forwards, blobMorph 14s ease-in-out infinite 0.9s;
-}
-.hero-blob-ring {
-  position: absolute;
-  inset: -4%;
   border-radius: 50%;
-  border: 1.5px dashed var(--border-strong);
-  opacity: 0;
-  animation: chipFadeIn 1s var(--ease) forwards;
-  animation-delay: 0.5s;
-}
-.hero-chip {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 26%;
-  color: #fff;
   opacity: 0;
   transform-origin: center;
-  animation: chipIn 0.6s var(--ease) both;
-  will-change: transform;
+  animation: circleIn 0.65s var(--ease) both;
 }
-.hero-chip svg { width: 46%; height: 46%; stroke-width: 2; }
-.hero-chip-orange { background: linear-gradient(150deg, var(--accent-orange), var(--accent-orange-deep)); }
-.hero-chip-blue { background: linear-gradient(150deg, var(--accent-blue), #1d477f); }
-.hero-chip-green { background: linear-gradient(150deg, var(--accent-green), #0c5138); }
-.hero-chip-lg { width: 30%; height: 30%; box-shadow: 0 22px 34px -12px rgba(15, 14, 12, 0.32); }
-.hero-chip-md { width: 21%; height: 21%; box-shadow: 0 16px 26px -10px rgba(15, 14, 12, 0.28); }
-.hero-chip-sm { width: 14%; height: 14%; box-shadow: 0 10px 18px -8px rgba(15, 14, 12, 0.26); }
-.hero-chip-a { top: 4%; right: 8%; animation-delay: 0.55s; }
-.hero-chip-b { bottom: 10%; left: 0%; animation-delay: 0.7s; }
-.hero-chip-c { bottom: -2%; right: 14%; animation-delay: 0.85s; }
-.hero-chip-d { top: 32%; left: 3%; animation-delay: 1s; }
-.hero-dot {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0;
-  animation: chipFadeIn 0.5s var(--ease) forwards;
+.hero-circle-a {
+  width: 43%; height: 43%; left: 49%; top: 8%;
+  background: var(--accent-orange);
+  box-shadow: 0 30px 50px -20px rgba(179, 86, 15, 0.5);
+  animation-delay: 0.3s;
+  z-index: 3;
 }
-.hero-dot-a { width: 14px; height: 14px; top: 16%; left: 6%; background: var(--accent-blue); animation-delay: 1.15s; }
-.hero-dot-b { width: 10px; height: 10px; bottom: 22%; right: -2%; background: var(--accent-green); animation-delay: 1.25s; }
-@keyframes blobIn {
-  0% { opacity: 0; transform: scale(0.75) rotate(-6deg); }
-  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+.hero-circle-b {
+  width: 32%; height: 32%; left: 29%; top: 48%;
+  background: var(--accent-blue);
+  box-shadow: 0 26px 42px -18px rgba(43, 102, 194, 0.4);
+  animation-delay: 0.48s;
+  z-index: 2;
 }
-@keyframes blobMorph {
-  0%, 100% { border-radius: 63% 37% 54% 46% / 43% 65% 35% 57%; }
-  33% { border-radius: 45% 55% 62% 38% / 55% 40% 60% 45%; }
-  66% { border-radius: 58% 42% 40% 60% / 35% 58% 42% 65%; }
+.hero-circle-c {
+  width: 21%; height: 21%; left: 71%; top: 60%;
+  background: var(--accent-green);
+  box-shadow: 0 18px 30px -14px rgba(20, 122, 84, 0.4);
+  animation-delay: 0.62s;
+  z-index: 4;
 }
-@keyframes chipFadeIn { to { opacity: 1; } }
-@keyframes chipIn {
-  0% { opacity: 0; transform: scale(0.4) rotate(var(--chip-rot, 0deg)); }
-  70% { transform: scale(1.08) rotate(var(--chip-rot, 0deg)); }
-  100% { opacity: 1; transform: scale(1) rotate(var(--chip-rot, 0deg)); }
+.hero-circle-d {
+  width: 16%; height: 16%; left: 22%; top: 22%;
+  background: var(--ink-primary);
+  box-shadow: 0 14px 24px -12px rgba(15, 14, 12, 0.35);
+  animation-delay: 0.74s;
+  z-index: 1;
 }
-.hero-chip-a { --chip-rot: -6deg; }
-.hero-chip-b { --chip-rot: 9deg; }
-.hero-chip-c { --chip-rot: -4deg; }
-.hero-chip-d { --chip-rot: 12deg; }
-@media (hover: hover) {
-  .hero-blob-wrap:hover .hero-chip-a { transform: rotate(-6deg) translateY(-6px); }
-  .hero-blob-wrap:hover .hero-chip-b { transform: rotate(9deg) translateY(-6px); }
-  .hero-blob-wrap:hover .hero-chip-c { transform: rotate(-4deg) translateY(-6px); }
-  .hero-blob-wrap:hover .hero-chip-d { transform: rotate(12deg) translateY(-6px); }
-  .hero-chip { transition: transform 0.3s var(--ease); }
+.hero-ring {
+  background: none;
+  border: 2.5px solid var(--accent-orange);
+}
+.hero-ring-a { width: 27%; height: 27%; left: 12%; top: 62%; animation-delay: 0.86s; z-index: 5; }
+.hero-ring-b { width: 14%; height: 14%; left: 86%; top: 9%; border-color: var(--border-strong); animation-delay: 0.95s; z-index: 5; }
+.hero-dot { animation: circleIn 0.4s var(--ease) both; }
+.hero-dot-a { width: 9%; height: 9%; left: 57%; top: 86%; background: var(--accent-orange); animation-delay: 1.05s; }
+.hero-dot-b { width: 7%; height: 7%; left: 90%; top: 42%; background: var(--accent-blue); animation-delay: 1.12s; }
+.hero-dot-c { width: 4.5%; height: 4.5%; left: 5%; top: 80%; background: var(--accent-green); animation-delay: 1.2s; }
+@keyframes circleIn {
+  0% { opacity: 0; transform: scale(0.4); }
+  70% { transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.hero-dot-a { animation-name: circleInFaded; }
+@keyframes circleInFaded {
+  0% { opacity: 0; transform: scale(0.4); }
+  70% { transform: scale(1.06); }
+  100% { opacity: 0.55; transform: scale(1); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-illustration-float, .hero-blob { animation: blobIn 0.01s forwards; }
-  .hero-blob-ring, .hero-chip, .hero-dot { animation: chipFadeIn 0.01s forwards; }
-  .hero-chip { transform: rotate(var(--chip-rot, 0deg)); }
+  .hero-illustration-float { animation: none; }
+  .hero-circle, .hero-ring, .hero-dot { animation: none; opacity: 1; transform: none; }
+  .hero-dot-a { opacity: 0.55; }
 }
 
 .scroll-cue {

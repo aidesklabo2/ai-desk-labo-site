@@ -106,16 +106,26 @@ function iconBadge(name, color) {
 // blob-plus-floating-card hero graphics common on modern product sites.
 // Deliberately not literal ("AI" spelled out, a network diagram) — the
 // brief was visual impact and style, not a diagram anyone has to parse.
+// Purely abstract on purpose — a cluster of overlapping solid circles at
+// varied sizes/colors/depths, no icons or literal "AI" mark. Earlier
+// rounds tried (1) a thin-line network diagram (too faint) and (2) one
+// big flat blob with icon chips stuck on it (icons implied meaning they
+// didn't deliver, and the blob's flat interior read as wasted space).
+// This version has no single shape dominating and no icon anyone has to
+// interpret — the composition itself (size rhythm, layering, color mix)
+// is the whole point, closer to the "shape cluster" style common on
+// Stripe/Linear-type marketing pages.
 function heroBlobHtml() {
-  return `<div class="hero-blob-wrap">
-    <div class="hero-blob"></div>
-    <div class="hero-blob-ring" aria-hidden="true"></div>
-    <div class="hero-chip hero-chip-a hero-chip-orange hero-chip-lg">${icon("diagnosis")}</div>
-    <div class="hero-chip hero-chip-b hero-chip-blue hero-chip-md">${icon("review")}</div>
-    <div class="hero-chip hero-chip-c hero-chip-green hero-chip-md">${icon("compare")}</div>
-    <div class="hero-chip hero-chip-d hero-chip-orange hero-chip-sm">${icon("ranking")}</div>
-    <div class="hero-dot hero-dot-a" aria-hidden="true"></div>
-    <div class="hero-dot hero-dot-b" aria-hidden="true"></div>
+  return `<div class="hero-cluster" aria-hidden="true">
+    <div class="hero-circle hero-circle-a"></div>
+    <div class="hero-circle hero-circle-b"></div>
+    <div class="hero-circle hero-circle-c"></div>
+    <div class="hero-circle hero-circle-d"></div>
+    <div class="hero-ring hero-ring-a"></div>
+    <div class="hero-ring hero-ring-b"></div>
+    <div class="hero-dot hero-dot-a"></div>
+    <div class="hero-dot hero-dot-b"></div>
+    <div class="hero-dot hero-dot-c"></div>
   </div>`;
 }
 
