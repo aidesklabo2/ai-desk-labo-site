@@ -1446,9 +1446,16 @@ tbody tr:last-child td { border-bottom: none; }
 }
 @media (max-width: 860px) {
   .diag-spot { grid-template-columns: 1fr; padding: 30px 22px; }
-  .diag-spot-visual { height: 220px; margin-top: 8px; }
-  .diag-spot-card { width: 82%; }
-  .diag-spot-card-1 { right: 0; }
-  .diag-spot-card-2 { right: 10%; top: 78px; }
-  .diag-spot-card-3 { right: 0; top: 156px; }
+  /* The rotated overlapping card stack only works with room to breathe;
+     on narrow screens it just hides each card's tag behind the next one,
+     so switch to a plain vertical stack instead of fighting the overlap. */
+  .diag-spot-visual { height: auto; display: grid; gap: 14px; margin-top: 8px; }
+  .diag-spot-card { position: static; width: 100%; transform: none !important; }
+}
+
+/* Long eyebrow labels (e.g. a flagship-tool callout) could otherwise force
+   the JA text and the EN kicker into an ugly two-column jagged wrap on
+   narrow screens — let the row wrap cleanly onto its own line instead. */
+@media (max-width: 480px) {
+  .eyebrow { flex-wrap: wrap; row-gap: 4px; }
 }
