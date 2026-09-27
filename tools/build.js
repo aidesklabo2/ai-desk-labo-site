@@ -220,6 +220,7 @@ const DIAGNOSIS_CATALOG = {
   psu: "B0DKT9JRF1",
   paste: "B0795DP124",
   cooler: "B09NZB9Z9Z", // needed with cpuHighAmd / cpuX3D (neither ships with a cooler)
+  coolerQuiet: "B098XP1Y38", // Noctua NH-U12A — same need, picked instead when noise:quiet
   wifiAdapter: "B0D1K9NX2T", // USB Wi-Fi 6 adapter — added when the picked board has no WiFi and the visitor is Wi-Fi-only
 };
 // Categories the result UI lets a visitor swap in place, without
@@ -233,6 +234,11 @@ const DIAGNOSIS_CATALOG = {
 const DIAGNOSIS_SWAPS = [
   { category: "case", options: ["case", "caseQuiet"], labels: { case: "通気重視", caseQuiet: "静音重視" } },
   { category: "storage", options: ["storage", "storage2tb"], labels: { storage: "1TB", storage2tb: "2TB" } },
+  // Only ever appears when a build actually needs an aftermarket cooler
+  // (X3D / 9900X tier) — mid/APU tier builds keep their bundled stock
+  // cooler, which isn't in this list, so findSwap() simply won't match
+  // and no swap button renders for them.
+  { category: "cooler", options: ["cooler", "coolerQuiet"], labels: { cooler: "冷却重視", coolerQuiet: "静音重視" } },
 ];
 // Real-world reference costs used by the budget math (see compute()).
 // Windows 11 Home パッケージ版の実勢最安値(2026年9月時点、価格.com調べ)。
@@ -459,7 +465,7 @@ function renderDiagnosis(diag, productsMap) {
     var asins = [cpuAsin];
     if (gpuAsin) asins.push(gpuAsin);
     asins.push(moboAsin, ramAsin, storageAsin, caseAsin, CATALOG.psu, CATALOG.paste);
-    if (needsCooler) asins.push(CATALOG.cooler);
+    if (needsCooler) asins.push(req.noise === "quiet" ? CATALOG.coolerQuiet : CATALOG.cooler);
     var needsWifiAdapter = req.network === "wifi_only" && moboAsin === CATALOG.moboAm4;
     if (needsWifiAdapter) asins.push(CATALOG.wifiAdapter);
 

@@ -1064,5 +1064,25 @@
     ],
     "summary": "DDR5専用マザーボード(Intel Core Ultra 200Sなど)で、事務用途など軽い用途向けの最小構成メモリ。",
     "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B098XP1Y38",
+    "name": "Noctua NH-U12A chromax.black CPUクーラー",
+    "category": "cooler",
+    "price": 15980,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B098XP1Y38",
+    "roomUrl": null,
+    "pros": [
+      "NF-A12x25 PWMファン搭載で、性能の割に動作音が静か",
+      "AM5・LGA1851など主要ソケットにSecuFirm2マウントで対応",
+      "6年保証と実績のあるブランド"
+    ],
+    "cons": [
+      "Thermalright Peerless Assassinより価格が高め",
+      "存在感のあるサイズでケースのクリアランス確認が必要"
+    ],
+    "summary": "静音性を重視する人向けの高性能空冷CPUクーラー。9800X3D・9900Xクラスの発熱でも静かに冷やしたい場合に。",
+    "lastChecked": "2026-09-27"
   }
 ]
