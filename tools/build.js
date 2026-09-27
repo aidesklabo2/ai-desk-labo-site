@@ -1171,7 +1171,31 @@ function renderSearchPage(content, products) {
   return bodyHtml + script;
 }
 
+// Every inline <script> block in a generated page gets parse-checked before
+// the file is written. A page's client-side logic (the diagnosis engine
+// especially) is assembled by string concatenation inside JS template
+// literals in this file — a single mismatched quote or stray backtick
+// compiles fine here in build.js but silently breaks the *generated*
+// script, and that only shows up as a browser console error someone has
+// to go looking for. Catching it here fails the build immediately, at the
+// exact file, instead of shipping a page whose JS quietly doesn't run.
+function checkInlineScripts(relPath, html) {
+  const scriptRe = /<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g;
+  let match;
+  while ((match = scriptRe.exec(html))) {
+    const code = match[1];
+    if (!code.trim()) continue;
+    try {
+      // eslint-disable-next-line no-new-func -- parse-only, never invoked.
+      new Function(code);
+    } catch (err) {
+      throw new Error(`Generated inline <script> in "${relPath}" is invalid JavaScript: ${err.message}`);
+    }
+  }
+}
+
 function writeFile(relPath, content) {
+  if (relPath.endsWith(".html")) checkInlineScripts(relPath, content);
   const fullPath = path.join(ROOT_DIR, relPath);
   fs.mkdirSync(path.dirname(fullPath), { recursive: true });
   fs.writeFileSync(fullPath, content, "utf8");
