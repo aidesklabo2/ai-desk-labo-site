@@ -80,39 +80,16 @@ const ICONS = {
 // stock photo with an SVG scene in the same line-icon language as ICONS
 // above (currentColor strokes, no external asset). site.js/style.css drive
 // the entrance draw and idle float; this is purely the static markup.
-const HERO_NETWORK_SVG = `<svg class="net" viewBox="0 0 440 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <g class="net-edges" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-    <line x1="55" y1="115" x2="130" y2="55"/>
-    <line x1="130" y1="55" x2="225" y2="35"/>
-    <line x1="225" y1="35" x2="325" y2="60"/>
-    <line x1="325" y1="60" x2="395" y2="140"/>
-    <line x1="395" y1="140" x2="385" y2="245"/>
-    <line x1="385" y1="245" x2="310" y2="325"/>
-    <line x1="310" y1="325" x2="205" y2="355"/>
-    <line x1="205" y1="355" x2="100" y2="300"/>
-    <line x1="100" y1="300" x2="35" y2="195"/>
-    <line x1="35" y1="195" x2="55" y2="115"/>
-    <line x1="225" y1="35" x2="220" y2="166"/>
-    <line x1="395" y1="140" x2="244" y2="190"/>
-    <line x1="205" y1="355" x2="220" y2="214"/>
-    <line x1="35" y1="195" x2="196" y2="190"/>
-  </g>
-  <rect class="net-hub" x="196" y="166" width="48" height="48" rx="12" stroke-width="2"/>
-  <text class="net-hub-mark" x="220" y="191" text-anchor="middle" dominant-baseline="central">AI</text>
-  <g class="net-nodes">
-    <circle cx="55" cy="115" r="5"/>
-    <circle cx="130" cy="55" r="4"/>
-    <circle cx="225" cy="35" r="5.5"/>
-    <circle cx="325" cy="60" r="4"/>
-    <circle class="accent" cx="395" cy="140" r="6.5"/>
-    <circle cx="385" cy="245" r="4"/>
-    <circle cx="310" cy="325" r="5"/>
-    <circle class="accent" cx="205" cy="355" r="6"/>
-    <circle cx="100" cy="300" r="4.5"/>
-    <circle cx="35" cy="195" r="5"/>
-  </g>
-</svg>`;
-
+// Bold five-node "constellation" hero graphic — one node per content
+// category (icon + color match the site's own TYPE_COLOR/icon set, so this
+// reads as "what the site actually does" rather than generic decoration),
+// orbiting a large gradient-filled "AI" hub. Replaces an earlier thin-line
+// version that read as too faint next to the bold hero headline.
+// Flat solid fills on purpose, not SVG <linearGradient>/<radialGradient>
+// defs — gradient-fill-via-defs turned out to render unreliably for some
+// nodes in testing (opacity/position all correct in the DOM, fill just
+// didn't paint), so this trades a little depth for guaranteed-visible
+// color in every browser. Depth comes from the drop-shadow filters instead.
 function icon(name, extraAttrs = "") {
   const body = ICONS[name];
   if (!body) throw new Error(`Unknown icon "${name}"`);
@@ -121,6 +98,25 @@ function icon(name, extraAttrs = "") {
 
 function iconBadge(name, color) {
   return `<span class="icon-badge ${color}">${icon(name)}</span>`;
+}
+
+// Hero illustration — a bold organic "blob" (plain CSS border-radius, no
+// SVG gradients/defs, which turned out to render unreliably in testing)
+// with a loose stack of oversized icon chips on top, in the spirit of the
+// blob-plus-floating-card hero graphics common on modern product sites.
+// Deliberately not literal ("AI" spelled out, a network diagram) — the
+// brief was visual impact and style, not a diagram anyone has to parse.
+function heroBlobHtml() {
+  return `<div class="hero-blob-wrap">
+    <div class="hero-blob"></div>
+    <div class="hero-blob-ring" aria-hidden="true"></div>
+    <div class="hero-chip hero-chip-a hero-chip-orange hero-chip-lg">${icon("diagnosis")}</div>
+    <div class="hero-chip hero-chip-b hero-chip-blue hero-chip-md">${icon("review")}</div>
+    <div class="hero-chip hero-chip-c hero-chip-green hero-chip-md">${icon("compare")}</div>
+    <div class="hero-chip hero-chip-d hero-chip-orange hero-chip-sm">${icon("ranking")}</div>
+    <div class="hero-dot hero-dot-a" aria-hidden="true"></div>
+    <div class="hero-dot hero-dot-b" aria-hidden="true"></div>
+  </div>`;
 }
 
 function readJson(relPath) {
@@ -1318,7 +1314,7 @@ function main() {
         </div>
       </div>
       <div class="hero-illustration" aria-hidden="true">
-        <div class="hero-illustration-float">${HERO_NETWORK_SVG}</div>
+        <div class="hero-illustration-float">${heroBlobHtml()}</div>
       </div>
     </div>
   </div>
