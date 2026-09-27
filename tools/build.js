@@ -932,7 +932,7 @@ function renderDiagnosisIndexPage(entries) {
   const heroHtml = primary
     ? `<div class="diag-spot">
         <div class="diag-spot-copy">
-          ${eyebrowHtml("看板コンテンツ", "Flagship Tool")}
+          ${eyebrowHtml("診断ツール", "Diagnosis Tool")}
           <h1>自作PC診断</h1>
           <p class="lede-small">${escapeHtml(DIAGNOSIS_INDEX_DESCRIPTION)}</p>
           <ul class="diag-spot-points">
@@ -1382,7 +1382,7 @@ function main() {
     ? section(
         `<div class="diag-spot">
           <div class="diag-spot-copy">
-            ${eyebrowHtml("看板コンテンツ", "Flagship Tool")}
+            ${eyebrowHtml("診断ツール", "Diagnosis Tool")}
             <h2>自作PC診断</h2>
             <p class="lede-small">「結局何を選べばいいの？」に、13の質問で答えます。用途はいくつでも選べるので、ゲームしながら配信、AI画像生成もする、といった重なりもそのまま診断可能。予算内で現実的な構成と、自作・組み立て代行・完成品・Macどれが得かまで一度に分かります。</p>
             <ul class="diag-spot-points">
