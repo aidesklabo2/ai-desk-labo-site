@@ -19,6 +19,13 @@ const TYPE_LABEL_JA = { review: "レビュー", ranking: "ランキング", comp
 // on top of the Japanese it sits beside.
 const TYPE_LABEL_EN = { review: "Review", ranking: "Ranking", compare: "Compare", guide: "Guide", diagnosis: "Diagnosis" };
 const TYPE_COLOR = { review: "blue", ranking: "orange", compare: "green", guide: "blue", diagnosis: "orange" };
+const TYPE_INDEX_INTRO = {
+  review: "実際に使ってみたAIツール・ガジェットの使用感を、良かった点も気になった点も正直にまとめています。",
+  ranking: "用途・予算別に、実際に使って良かったものだけを順位付けしています。",
+  compare: "似た選択肢で迷いがちなツール・ガジェットを、実体験ベースで比較しています。",
+  guide: "何から揃えるべきか迷う人向けに、優先順位付きで選び方を解説しています。",
+  diagnosis: "質問に答えるだけで、あなたの用途・予算に合ったPC構成や買い方を診断します。",
+};
 const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange", cpu: "blue", gpu: "orange", cable: "green", tablet: "blue", reader: "green", case: "blue", macropad: "orange", motherboard: "green", psu: "orange", thermalpaste: "green", ram: "blue", storage: "orange", cooler: "blue" };
 // Product-card badges show this label, not the raw `category` key — the key
 // is an internal English slug (also used to look up CATEGORY_COLOR/ICONS)
@@ -721,7 +728,7 @@ function renderFavoritesPage(products) {
   for (const p of products) cardsByAsin[p.asin] = renderProductCard(p);
 
   const bodyHtml = section(
-    `${eyebrowHtml("保存済み", "Favorites")}<h2>気になるリスト</h2>
+    `${eyebrowHtml("保存済み", "Favorites")}<h1>気になるリスト</h1>
     <p class="lede-small">ハートマークで保存した商品がここに並びます。保存はこの端末のブラウザだけに残り、どこにも送信されません。</p>
     <div id="favoritesEmpty" class="favorites-empty" hidden>
       <p>まだ何も保存されていません。気になる商品のハートマークをタップすると、ここに一覧できます。</p>
@@ -762,7 +769,7 @@ function renderChangelogPage(content, products) {
   const events = [];
   for (const entry of content) {
     if (entry.type === "static") continue;
-    const href = `${FOLDER_BY_TYPE[entry.type]}/${entry.slug}/`;
+    const href = `../${FOLDER_BY_TYPE[entry.type]}/${entry.slug}/`;
     events.push({ date: entry.updated, label: `${TYPE_LABEL_JA[entry.type]}を更新: ${entry.title}`, href, type: entry.type });
   }
   const seenProductDates = new Map();
@@ -796,7 +803,7 @@ function renderChangelogPage(content, products) {
     .join("\n");
 
   return section(
-    `${eyebrowHtml("更新の記録", "Updates")}<h2>更新履歴</h2>
+    `${eyebrowHtml("更新の記録", "Updates")}<h1>更新履歴</h1>
     <p class="lede-small">記事の追加・改稿や、掲載商品の価格・仕様の確認履歴を新しい順に並べています。「価格の変動まで追跡」を裏付ける記録です。</p>
     <div class="changelog-timeline">${timelineHtml}</div>`
   );
@@ -827,7 +834,7 @@ function renderSearchPage(content, products) {
   }
 
   const bodyHtml = section(
-    `${eyebrowHtml("商品・記事を探す", "Search")}<h2>サイト内検索</h2>
+    `${eyebrowHtml("商品・記事を探す", "Search")}<h1>サイト内検索</h1>
     <p class="lede-small">商品名・記事タイトルで、掲載中のレビュー・比較・ガイド・商品を横断して検索できます。</p>
     <div class="search-box">${icon("search")}<input type="search" id="searchInput" placeholder="例: キーボード、モニターアーム、ゲーミング" autocomplete="off"></div>
     <p class="search-count" id="searchCount"></p>
@@ -923,7 +930,7 @@ function main() {
     const entries = content.filter((e) => e.type === type).sort((a, b) => (a.updated < b.updated ? 1 : -1));
     const cards = entries.map((e) => renderEntryCard(e, `${e.slug}/`)).join("\n");
     const bodyHtml = section(
-      `<p class="eyebrow">${SITE_TITLE}</p><h2>${TYPE_LABEL_JA[type]}一覧</h2><div class="card-grid">${cards}</div>`
+      `${eyebrowHtml(SITE_TITLE, TYPE_LABEL_EN[type])}<h1>${TYPE_LABEL_JA[type]}一覧</h1><p class="lede-small">${TYPE_INDEX_INTRO[type] || ""}</p><div class="card-grid">${cards}</div>`
     );
     writeFile(`${folder}/index.html`, renderPage(template, {
       title: `${TYPE_LABEL_JA[type]}一覧`,
