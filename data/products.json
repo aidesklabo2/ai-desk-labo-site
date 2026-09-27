@@ -1103,5 +1103,151 @@
     ],
     "summary": "内蔵GPU構成やミドルクラスGPUまでの自作PC向けの、無駄のない550W電源。",
     "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0HGGGHGRP",
+    "name": "Apple Mac mini (M6・12コアCPU/12コアGPU・16GB・512GB)",
+    "category": "mac_desktop",
+    "price": 185800,
+    "priceNote": "Apple公式価格・2026年9月時点(Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0HGGGHGRP",
+    "roomUrl": null,
+    "pros": [
+      "書類作成・Web閲覧・AIチャット中心なら十分すぎる性能",
+      "自作PCより静音・省スペースで、組み立ての手間もない",
+      "iPhone・iPadとの連係(AirDrop・Handoff等)が違和感なく使える"
+    ],
+    "cons": [
+      "モニター・キーボード・マウスは別売り",
+      "Windows専用ソフトは動かない",
+      "メモリ・ストレージは購入後に増設できない"
+    ],
+    "summary": "自作PC診断でApple連携ニーズがあり、かつ据え置き・軽い用途と判定された人向けのMac mini基本構成。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0HGGMDZ63",
+    "name": "Apple Mac mini (M5 Pro・15コアCPU/16コアGPU・24GB・512GB)",
+    "category": "mac_desktop",
+    "price": 299800,
+    "priceNote": "Apple公式価格・2026年9月時点(Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0HGGMDZ63",
+    "roomUrl": null,
+    "pros": [
+      "Premiere Pro・DaVinci Resolveでも快適に動くApple Siliconの上位モデル",
+      "統合メモリ24GBでVRAM不足に悩みにくい",
+      "複数用途(編集+AI処理など)を同時にこなしたい人向けの余裕"
+    ],
+    "cons": [
+      "自作PC診断のミドル〜上位Windows構成より価格が高くなりやすい",
+      "モニター・キーボード・マウスは別売り",
+      "Windows専用ソフト・NVIDIA GPU前提のツールは使えない"
+    ],
+    "summary": "自作PC診断でApple連携ニーズがあり、動画編集など重い用途と判定された人向けのMac mini上位構成。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0GR1T11D6",
+    "name": "Apple MacBook Air 13インチ (M5・16GB・512GB)",
+    "category": "mac_laptop",
+    "price": 224800,
+    "priceNote": "Apple公式価格・2026年9月時点(Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0GR1T11D6",
+    "roomUrl": null,
+    "pros": [
+      "ファンレスで静音・薄型軽量、持ち歩きに強い",
+      "iPhone・iPadとの連係(AirDrop・Handoff等)をそのまま使える",
+      "バッテリー持ちが良く、電源を気にせず作業できる"
+    ],
+    "cons": [
+      "拡張性がなく、あとからメモリ・ストレージを増やせない",
+      "Windows専用ソフトは動かない",
+      "重いゲーム・動画編集には非力"
+    ],
+    "summary": "自作PC診断でApple連携ニーズがあり、持ち歩く機会が多いと判定された人向けのMacBook Air基本構成。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0FWF4M2HP",
+    "name": "Apple MacBook Pro 14インチ (M5・16GB・1TB)",
+    "category": "mac_laptop",
+    "price": 339800,
+    "priceNote": "Apple公式価格・2026年9月時点(Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0FWF4M2HP",
+    "roomUrl": null,
+    "pros": [
+      "Liquid Retina XDRディスプレイと本体だけで、外出先でも4K編集が完結する",
+      "Apple Siliconのハードウェアエンコードでエンコード・書き出しが速い",
+      "1TB SSDで動画素材もある程度余裕を持って持ち歩ける"
+    ],
+    "cons": [
+      "自作PC診断のミドル〜上位Windows構成より価格が高くなりやすい",
+      "Windows専用ソフト・NVIDIA GPU前提のツールは使えない",
+      "重量・サイズはMacBook Airより増える"
+    ],
+    "summary": "自作PC診断でApple連携ニーズがあり、持ち歩きながら動画編集などの重い用途もこなしたい人向けのMacBook Pro構成。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0DV6WJ88D",
+    "name": "Satechi Mac mini用 ハブ&スタンド (M6/M5 Pro/M4対応・NVMe SSDケース搭載)",
+    "category": "hub",
+    "price": 16450,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0DV6WJ88D",
+    "roomUrl": null,
+    "pros": [
+      "Mac miniを持ち上げて設置でき、底面の吸排気を妨げない",
+      "USBポート・SDカードスロットなどを増設でき、背面の抜き挿しが減る",
+      "NVMe SSDケースを内蔵でき、外部ストレージを目立たず増設できる"
+    ],
+    "cons": [
+      "Mac mini本体より重量・サイズが増える",
+      "Mac mini以外の用途では使えない"
+    ],
+    "summary": "Mac miniを自作PC診断のおすすめとして選んだ人向けの、ポート不足を解消するハブ&スタンド。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0G25S1199",
+    "name": "GALLERIA XGR7M-R56-WL (Ryzen 7 5700X・RTX 5060・16GB・500GB)",
+    "category": "prebuilt_pc",
+    "price": 239880,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon・ドスパラ公式ストア調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0G25S1199",
+    "roomUrl": null,
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "この診断のミドルGPU構成に近いスペックを完成品として調達できる",
+      "ドスパラの実績あるBTOブランドで、サポート・保証面の安心感がある"
+    ],
+    "cons": [
+      "同スペックを自作するより割高になりやすい",
+      "ケースやパーツを自分好みに選べない",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断のミドルGPU構成(Ryzen 7 5700X・RTX 5060)に近い、組み立て不要の完成品ゲーミングPC。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0F4R72GYM",
+    "name": "Dell Slim ECS1250 (Core Ultra 5 225・16GB・512GB)",
+    "category": "prebuilt_pc",
+    "price": 199800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0F4R72GYM",
+    "roomUrl": null,
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "内蔵GPUのみでこの診断のオフィス構成に近いスペックを調達できる",
+      "Dellブランドでサポート・保証面の安心感がある"
+    ],
+    "cons": [
+      "ゲーム・動画編集など重い用途には非力",
+      "拡張性・カスタマイズ性は自作PCより低い",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断のオフィス構成(Core Ultra 5・内蔵GPU)に近い、組み立て不要の完成品デスクトップPC。",
+    "lastChecked": "2026-09-28"
   }
 ]

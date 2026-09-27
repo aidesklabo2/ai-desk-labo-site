@@ -26,12 +26,12 @@ const TYPE_INDEX_INTRO = {
   guide: "何から揃えるべきか迷う人向けに、優先順位付きで選び方を解説しています。",
   diagnosis: "質問に答えるだけで、あなたの用途・予算に合ったPC構成や買い方を診断します。",
 };
-const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange", cpu: "blue", gpu: "orange", cable: "green", tablet: "blue", reader: "green", case: "blue", macropad: "orange", motherboard: "green", psu: "orange", thermalpaste: "green", ram: "blue", storage: "orange", cooler: "blue", wifi: "green" };
+const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange", cpu: "blue", gpu: "orange", cable: "green", tablet: "blue", reader: "green", case: "blue", macropad: "orange", motherboard: "green", psu: "orange", thermalpaste: "green", ram: "blue", storage: "orange", cooler: "blue", wifi: "green", mac_desktop: "blue", mac_laptop: "blue", prebuilt_pc: "orange", hub: "green" };
 // Product-card badges show this label, not the raw `category` key — the key
 // is an internal English slug (also used to look up CATEGORY_COLOR/ICONS)
 // and was previously printed as-is, which read as stray English jargon on
 // an otherwise all-Japanese page.
-const CATEGORY_LABEL_JA = { keyboard: "キーボード", mouse: "マウス", charger: "充電器", monitor: "モニター", stand: "スタンド", mic: "マイク", light: "ライト", footrest: "フットレスト", wristrest: "リストレスト", monitorarm: "モニターアーム", cpu: "CPU", gpu: "GPU", cable: "ケーブル", tablet: "タブレット", reader: "カードリーダー", case: "ケース", macropad: "マクロパッド", motherboard: "マザーボード", psu: "電源ユニット", thermalpaste: "グリス", ram: "メモリ", storage: "SSD", cooler: "CPUクーラー", wifi: "Wi-Fi子機" };
+const CATEGORY_LABEL_JA = { keyboard: "キーボード", mouse: "マウス", charger: "充電器", monitor: "モニター", stand: "スタンド", mic: "マイク", light: "ライト", footrest: "フットレスト", wristrest: "リストレスト", monitorarm: "モニターアーム", cpu: "CPU", gpu: "GPU", cable: "ケーブル", tablet: "タブレット", reader: "カードリーダー", case: "ケース", macropad: "マクロパッド", motherboard: "マザーボード", psu: "電源ユニット", thermalpaste: "グリス", ram: "メモリ", storage: "SSD", cooler: "CPUクーラー", wifi: "Wi-Fi子機", mac_desktop: "Mac(デスクトップ)", mac_laptop: "Mac(ノート)", prebuilt_pc: "完成品PC", hub: "ハブ・スタンド" };
 
 // Small hand-authored line-icon set (24x24, stroke-based, no external icon font/CDN).
 const ICONS = {
@@ -74,6 +74,10 @@ const ICONS = {
   gamepad: `<rect x="3" y="7" width="18" height="11" rx="5.5"/><line x1="7" y1="11" x2="7" y2="14.5"/><line x1="5.25" y1="12.75" x2="8.75" y2="12.75"/><circle cx="16" cy="10.5" r="1"/><circle cx="18" cy="13" r="1"/>`,
   video: `<rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3.5v11L16 14z"/>`,
   broadcast: `<circle cx="12" cy="12" r="2.5"/><path d="M7.5 8.5a6.5 6.5 0 0 0 0 7"/><path d="M16.5 8.5a6.5 6.5 0 0 1 0 7"/><path d="M4.5 5.5a10.5 10.5 0 0 0 0 13"/><path d="M19.5 5.5a10.5 10.5 0 0 1 0 13"/>`,
+  mac_desktop: `<rect x="5" y="8" width="14" height="5" rx="2"/><line x1="9" y1="18" x2="15" y2="18"/><line x1="12" y1="13" x2="12" y2="18"/>`,
+  mac_laptop: `<rect x="4" y="5" width="16" height="10" rx="1.5"/><path d="M2 19h20l-1.5-3H3.5z"/>`,
+  prebuilt_pc: `<rect x="5" y="3" width="10" height="17" rx="1.5"/><line x1="10" y1="19.5" x2="10" y2="20.5"/><circle cx="10" cy="6" r="0.8"/>`,
+  hub: `<rect x="3" y="9" width="18" height="6" rx="1.5"/><line x1="7" y1="9" x2="7" y2="4"/><line x1="12" y1="9" x2="12" y2="4"/><line x1="17" y1="9" x2="17" y2="4"/>`,
 };
 
 // Hand-authored "network" illustration for the homepage hero — replaces a
@@ -271,6 +275,25 @@ const ACCESSORY_CATALOG = {
   tablet: "ROOM-XPPEN12", // XPPen Artist 12 3rd
 };
 
+// Real, buyable completed products for when the diagnosis lands on "buy it
+// finished, don't build it" — either because Mac won on Apple-integration
+// grounds (self-build parts can't assemble into a Mac, so the Mac branch
+// needs actual Mac SKUs to link to Amazon/ROOM) or because a real prebuilt
+// Windows desktop happens to match the diagnosed Windows spec closely enough
+// to link as a no-assembly-required alternative. Picked in compute(); never
+// mixed into the swappable self-build `asins` list.
+const MAC_CATALOG = {
+  macMiniBase: "B0HGGGHGRP", // Mac mini M6, 16GB/512GB — office/light desktop pick
+  macMiniPro: "B0HGGMDZ63", // Mac mini M5 Pro, 24GB/512GB — heavier multi-use/video desktop pick
+  macbookAir13: "B0GR1T11D6", // MacBook Air 13" M5, 16GB/512GB — portable, light/office
+  macbookPro14: "B0FWF4M2HP", // MacBook Pro 14" M5, 16GB/1TB — portable, heavy video
+  macMiniHub: "B0DV6WJ88D", // Satechi Mac mini用ハブ&スタンド — suggested alongside either Mac mini pick
+};
+const PREBUILT_CATALOG = {
+  gamingMid: "B0G25S1199", // GALLERIA XGR7M-R56-WL — Ryzen 7 5700X / RTX 5060 / 16GB / 500GB, ドスパラ公式
+  officeBudget: "B0F4R72GYM", // Dell Slim ECS1250 — Core Ultra 5 225 / 16GB / 512GB, 内蔵GPUのみ
+};
+
 // Rules-based PC diagnosis engine. Unlike a simple answer-combination lookup
 // table, this asks several questions (some multi-select, since use cases
 // like "gaming" and "video editing" genuinely overlap — someone who streams
@@ -298,7 +321,7 @@ const DIAGNOSIS_OPTION_ICONS = {
 
 function renderDiagnosis(diag, productsMap) {
   const uid = diag.id || "diagnosis";
-  const catalogAsins = [...new Set([...Object.values(DIAGNOSIS_CATALOG), ...Object.values(ACCESSORY_CATALOG)])];
+  const catalogAsins = [...new Set([...Object.values(DIAGNOSIS_CATALOG), ...Object.values(ACCESSORY_CATALOG), ...Object.values(MAC_CATALOG), ...Object.values(PREBUILT_CATALOG)])];
   for (const asin of catalogAsins) {
     if (!productsMap[asin]) throw new Error(`Diagnosis catalog references unknown product asin "${asin}"`);
   }
@@ -359,6 +382,8 @@ function renderDiagnosis(diag, productsMap) {
   var ASSEMBLY_SERVICE_FEE = ${JSON.stringify(ASSEMBLY_SERVICE_FEE)};
   var ASSEMBLY_SERVICE_FEE_RANGE = ${JSON.stringify(ASSEMBLY_SERVICE_FEE_RANGE)};
   var ACCESSORIES = ${JSON.stringify(ACCESSORY_CATALOG)};
+  var MAC_CATALOG = ${JSON.stringify(MAC_CATALOG)};
+  var PREBUILT_CATALOG = ${JSON.stringify(PREBUILT_CATALOG)};
   var stepKeys = ${JSON.stringify(diag.questions.map((q) => q.key))};
   var stepTypes = ${JSON.stringify(diag.questions.map((q) => q.type))};
   var stepDependsOn = ${JSON.stringify(diag.questions.map((q) => q.dependsOn || null))};
@@ -571,6 +596,10 @@ function renderDiagnosis(diag, productsMap) {
     var title, paragraphs = [], asins = [], notes = [], guideLink = null, shareText, budgetInfo = null, buyCompare = null;
     var wantsMonitorAccessory = (hasVideo || hasGaming || hasStreaming) && (answers.resolution === "wqhd_uhd" || videoHeavy);
     var accessories = pickAccessories(usecases, wantsMonitorAccessory);
+    // Real, buyable products (Mac SKUs, or a close-match prebuilt Windows
+    // desktop) shown as an alternative to the swappable self-build parts
+    // list — never mixed into asins, since these aren't a la carte parts.
+    var productPicks = [];
 
     if (platform === "mac") {
       title = "\\u81ea\\u4f5cPC\\u3088\\u308a\\u3001Mac\\u3068\\u3044\\u3046\\u9078\\u629e\\u80a2";
@@ -585,7 +614,24 @@ function renderDiagnosis(diag, productsMap) {
       else if (hasVideo) reasons.push("\\u52d5\\u753b\\u7de8\\u96c6\\u3082\\u9078\\u3093\\u3067\\u3044\\u308b\\u306e\\u3067\\u3001Apple Silicon\\u306e\\u30cf\\u30fc\\u30c9\\u30a6\\u30a7\\u30a2\\u30a8\\u30f3\\u30b3\\u30fc\\u30c9\\u306f\\u30d5\\u30eb HD\\u4e2d\\u5fc3\\u306e\\u7de8\\u96c6\\u3067\\u3082\\u5feb\\u9069\\u3067\\u3059\\u3002");
       if (software === "mac_ok") reasons.push("\\u4f7f\\u3046\\u4e88\\u5b9a\\u306e\\u30bd\\u30d5\\u30c8\\u3082Mac\\u5bfe\\u5fdc\\u3067\\u5b8c\\u7d50\\u3059\\u308b\\u3068\\u306e\\u3053\\u3068\\u306a\\u306e\\u3067\\u3001\\u7121\\u7406\\u306bWindows\\u3092\\u9078\\u3076\\u7406\\u7531\\u3082\\u3042\\u308a\\u307e\\u305b\\u3093\\u3002");
       paragraphs = reasons;
-      notes.push("Apple\\u516c\\u5f0f\\u30b5\\u30a4\\u30c8\\u307e\\u305f\\u306fAmazon\\u3067\\u6700\\u65b0\\u306eMacBook Air/Pro\\u69cb\\u6210\\u3092\\u78ba\\u8a8d\\u3057\\u3066\\u307f\\u3066\\u304f\\u3060\\u3055\\u3044\\u3002\\u30012026\\u5e74\\u306fMac\\u3082\\u5024\\u4e0a\\u304c\\u308a\\u304c\\u7d9a\\u3044\\u3066\\u3044\\u308b\\u306e\\u3067\\u3001\\u8cfc\\u5165\\u76f4\\u524d\\u306b\\u5fc5\\u305a\\u6700\\u65b0\\u4fa1\\u683c\\u3092\\u78ba\\u8a8d\\u3057\\u3066\\u304f\\u3060\\u3055\\u3044\\u3002");
+      // Concrete, buyable Mac SKUs — a self-build parts list can't apply to
+      // Mac, so without this the Mac branch had nothing to link to Amazon/
+      // ROOM from. Offered as a desktop pick + a portable pick rather than
+      // one single answer, since the diagnosis never asks laptop-vs-desktop.
+      if (videoHeavy) {
+        productPicks.push({ asin: MAC_CATALOG.macbookPro14, note: "持ち歩いて4K編集までこなすなら" });
+        productPicks.push({ asin: MAC_CATALOG.macMiniPro, note: "据え置きで同等以上の性能を確保するなら" });
+        accessories = accessories.concat([MAC_CATALOG.macMiniHub]);
+      } else if (wantsHighCore || wantsMidCore) {
+        productPicks.push({ asin: MAC_CATALOG.macMiniPro, note: "複数用途を同時にこなす想定なら" });
+        productPicks.push({ asin: MAC_CATALOG.macbookAir13, note: "持ち歩く機会が多いなら" });
+        accessories = accessories.concat([MAC_CATALOG.macMiniHub]);
+      } else {
+        productPicks.push({ asin: MAC_CATALOG.macMiniBase, note: "据え置きでコストを抑えるなら" });
+        productPicks.push({ asin: MAC_CATALOG.macbookAir13, note: "持ち歩く機会があるなら" });
+        accessories = accessories.concat([MAC_CATALOG.macMiniHub]);
+      }
+      notes.push("上記は2026年9月時点の実売品からの一例です。Appleは年に何度か構成を更新するため、購入直前にApple公式サイトでも最新構成・価格を確認してください。");
       shareText = "\\u3010AI Desk Labo\\u8a3a\\u65ad\\u3011\\u79c1\\u306b\\u5411\\u3044\\u3066\\u308b\\u306e\\u306f\\u300cMac\\u300d\\u3067\\u3057\\u305f\\ud83c\\udf4e #AIDeskLabo\\u8a3a\\u65ad #Mac";
     } else {
       var gpuTierBeforeIntelForce = gpuTier;
@@ -677,6 +723,23 @@ function renderDiagnosis(diag, productsMap) {
       var guideSlug = hasVideo ? "pc-build-video-editing" : (hasGaming || hasStreaming) ? "pc-build-gaming" : "pc-build-office";
       guideLink = { href: GUIDE_ROOT + guideSlug + "/", label: "\\u8a73\\u3057\\u3044\\u89e3\\u8aac\\u3092\\u30ac\\u30a4\\u30c9\\u8a18\\u4e8b\\u3067\\u8aad\\u3080" };
 
+      // A real prebuilt Windows desktop, offered only when its actual spec
+      // (fixed — we don't control it) is genuinely close to what this
+      // diagnosis just picked. Skipped entirely rather than shown as a loose
+      // "kind of similar" match, since a mismatched RAM/GPU tier here would
+      // undermine the diagnosis's own recommendation. Deliberately checked
+      // against gpuTierBeforeIntelForce (the visitor's actual GPU need), not
+      // built.gpuAsin — the Intel path can force a gpuMid pick onto a
+      // pure-office build purely because the 225F has no iGPU, and that
+      // forced pick must never be mistaken for a real gaming-tier match.
+      if (gpuTierBeforeIntelForce === 1 && ramGB <= 16 && !wantsHighCore && !wantsX3D && !competitive && !needsCuda) {
+        productPicks.push({ asin: PREBUILT_CATALOG.gamingMid, note: "自分で組まず、近い構成の完成品を買うなら" });
+        notes.push("上記の完成品はこの診断のパーツ構成と完全に同一ではありませんが、CPU・GPU・メモリ容量が近い実売品です。");
+      } else if (gpuTierBeforeIntelForce === 0 && ramGB <= 16) {
+        productPicks.push({ asin: PREBUILT_CATALOG.officeBudget, note: "自分で組まず、近い構成の完成品を買うなら" });
+        notes.push("上記の完成品はこの診断のパーツ構成と完全に同一ではありませんが、CPU・メモリ容量が近い実売品です。");
+      }
+
       if (effort === "compare_all") {
         var diyTotal = built.partsTotal + OS_LICENSE_COST;
         var assemblyTotal = built.partsTotal + OS_LICENSE_COST + ASSEMBLY_SERVICE_FEE;
@@ -690,7 +753,7 @@ function renderDiagnosis(diag, productsMap) {
       shareText = "\\u3010AI Desk Labo\\u8a3a\\u65ad\\u3011\\u79c1\\u306b\\u5411\\u3044\\u3066\\u308b\\u306e\\u306f\\u300c" + platformLabel + "\\u69cb\\u6210\\u306e" + usecaseText + "PC\\u300d\\u3067\\u3057\\u305f\\ud83d\\udda5\\ufe0f #AIDeskLabo\\u8a3a\\u65ad #\\u81ea\\u4f5cPC";
     }
 
-    return { title: title, paragraphs: paragraphs, notes: notes, asins: asins, guideLink: guideLink, shareText: shareText, budgetInfo: budgetInfo, buyCompare: buyCompare, accessories: accessories };
+    return { title: title, paragraphs: paragraphs, notes: notes, asins: asins, guideLink: guideLink, shareText: shareText, budgetInfo: budgetInfo, buyCompare: buyCompare, accessories: accessories, productPicks: productPicks };
   }
 
   function budgetNoteText(total, ceil, label) {
@@ -762,6 +825,14 @@ function renderDiagnosis(diag, productsMap) {
     }
     if (r.budgetInfo) html += '<p class="quiz-result-note" data-budget-note>' + escapeText(budgetNoteText(r.budgetInfo.total, r.budgetInfo.ceil, r.budgetInfo.label)) + "</p>";
     r.notes.forEach(function (n) { html += '<p class="quiz-result-note">' + escapeText(n) + "</p>"; });
+    if (r.productPicks && r.productPicks.length) {
+      html += '<p class="quiz-accessory-title">実際に買うならこれ</p>';
+      html += '<div class="card-grid">';
+      r.productPicks.forEach(function (p) {
+        html += '<div class="quiz-part"><p class="quiz-part-index">' + escapeText(p.note) + '</p>' + (CARDS[p.asin] || "") + '</div>';
+      });
+      html += '</div>';
+    }
     if (r.buyCompare) {
       html += '<div class="quiz-buy-compare"><p class="quiz-buy-compare-title">\\u8cb7\\u3044\\u65b9\\u306e\\u6bd4\\u8f03</p><ul>';
       r.buyCompare.forEach(function (line) { html += "<li>" + escapeText(line) + "</li>"; });
