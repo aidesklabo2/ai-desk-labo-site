@@ -548,7 +548,13 @@ function renderDiagnosis(diag, productsMap) {
         if (videoHeavy) paragraphs.push("4K\\u7de8\\u96c6\\u30fb\\u30ab\\u30e9\\u30fc\\u30b0\\u30ec\\u30fc\\u30c7\\u30a3\\u30f3\\u30b0\\u3082\\u898b\\u636e\\u3048\\u3066\\u3001VRAM 12GB\\u4ee5\\u4e0a\\u306eGPU\\u3092\\u9078\\u5b9a\\u3057\\u307e\\u3057\\u305f\\u3002");
         else paragraphs.push("WQHD\\u4ee5\\u4e0a / 4K\\u3092\\u72d9\\u3046\\u8a2d\\u5b9a\\u306a\\u306e\\u3067\\u3001\\u4e0a\\u4f4d\\u30af\\u30e9\\u30b9\\u306eGPU\\u306b\\u3057\\u3066\\u3044\\u307e\\u3059\\u3002");
       }
-      if (gpuSteppedDown) notes.push("\\u9078\\u3093\\u3060\\u6761\\u4ef6\\u3060\\u3068\\u4e88\\u7b97\\u3092\\u5927\\u304d\\u304f\\u8d85\\u3048\\u308b\\u305f\\u3081\\u3001GPU\\u3092\\u4e00\\u6bb5\\u4e0b\\u3052\\u3066\\u4e88\\u7b97\\u306b\\u8fd1\\u3065\\u3051\\u3066\\u3044\\u307e\\u3059\\u3002\\u6027\\u80fd\\u3092\\u512a\\u5148\\u3059\\u308b\\u5834\\u5408\\u306f\\u4e0b\\u306e\\u4e88\\u7b97\\u30ce\\u30fc\\u30c8\\u3082\\u53c2\\u8003\\u306b\\u3057\\u3066\\u304f\\u3060\\u3055\\u3044\\u3002");
+      // Worded in the past tense on purpose: by the time this note is shown,
+      // the step-down has already happened and the totals below already
+      // reflect it — saying "予算を超えるため下げています" (present tense,
+      // as if still over) reads as contradicting the "予算内に収まってい
+      // ます" message that can follow right after once the cheaper GPU
+      // brings the total back in range.
+      if (gpuSteppedDown) notes.push("最初の候補は予算を大きく超えていたため、GPUを一段階下げて調整しました。下の金額は調整後の構成です。性能を優先する場合は、予算を上げるかGPUを元のクラスに戻すことを検討してください。");
 
       if (built.windowsPlatform === "amd" && platformPref === "auto") {
         notes.push("\\u300c\\u304a\\u307e\\u304b\\u305b\\u300d\\u306e\\u5834\\u5408\\u306f\\u3001\\u30a2\\u30c3\\u30d7\\u30b0\\u30ec\\u30fc\\u30c9\\u4f59\\u5730\\u3068\\u30b3\\u30b9\\u30d1\\u3092\\u91cd\\u8996\\u3057\\u3066AMD\\u3092\\u57fa\\u672c\\u306b\\u3057\\u3066\\u3044\\u307e\\u3059\\u3002HEVC/10bit\\u7d20\\u6750\\u306e\\u52d5\\u753b\\u7de8\\u96c6\\u3092\\u983b\\u7e41\\u306b\\u3059\\u308b\\u306a\\u3089Intel(Core Ultra 5 225F)\\u306eQuick Sync\\u3082\\u6709\\u529b\\u3067\\u3059\\u3002");
