@@ -814,6 +814,83 @@ function renderPage(template, { title, description, canonical, root, bodyHtml, i
     .replace("{{BODY}}", bodyHtml);
 }
 
+const DIAGNOSIS_INDEX_DESCRIPTION =
+  "用途・予算・ゲームジャンルなど13の質問に答えるだけで、あなたに合ったPC構成と、自作・組み立て代行・完成品・Macどれが得かを診断します。完全無料・データ送信なし。";
+
+// Landing-page treatment for /diagnosis/ — the nav's "診断" link drops
+// visitors here directly, so a bare 1-card list (the generic per-type
+// index template every other type gets) would undersell the site's
+// flagship tool. Reuses the same .diag-spot visual language as the
+// homepage spotlight, then adds persona/FAQ content a plain card list
+// can't carry, and still lists every diagnosis entry below in case more
+// than one ever exists.
+function renderDiagnosisIndexPage(entries) {
+  const primary = entries[0];
+  const heroHtml = primary
+    ? `<div class="diag-spot">
+        <div class="diag-spot-copy">
+          ${eyebrowHtml("看板コンテンツ", "Flagship Tool")}
+          <h1>自作PC診断</h1>
+          <p class="lede-small">${escapeHtml(DIAGNOSIS_INDEX_DESCRIPTION)}</p>
+          <ul class="diag-spot-points">
+            <li>${iconBadge("gamepad", "orange")}<span>用途・予算・ゲームジャンルまで加味した13問</span></li>
+            <li>${iconBadge("cart", "blue")}<span>CPUからケース・電源・グリスまでフルパーツで提案</span></li>
+            <li>${iconBadge("compare", "green")}<span>自作/組み立て代行/完成品/Macの買い方を比較</span></li>
+          </ul>
+          <a class="btn-primary" href="${primary.slug}/">今すぐ診断してみる ${icon("diagnosis")}</a>
+        </div>
+        <div class="diag-spot-visual" aria-hidden="true">
+          <div class="diag-spot-card diag-spot-card-1"><span class="diag-spot-tag orange">競技FPS型</span><p>Ryzen 7 9800X3D + RTX 5060</p></div>
+          <div class="diag-spot-card diag-spot-card-2"><span class="diag-spot-tag blue">静音クリエイター型</span><p>Core Ultra 5 225F + RTX 5060 Ti</p></div>
+          <div class="diag-spot-card diag-spot-card-3"><span class="diag-spot-tag green">ローカルAI型</span><p>VRAM 16GB優先構成</p></div>
+        </div>
+      </div>`
+    : `${eyebrowHtml(SITE_TITLE, "Diagnosis")}<h1>診断一覧</h1><p class="lede-small">${escapeHtml(DIAGNOSIS_INDEX_DESCRIPTION)}</p>`;
+
+  const featureHtml = `<div class="section-head"><p class="eyebrow">この診断でできること</p><span class="section-index">( 01 )</span></div>
+    <div class="pillar-grid">
+      <div class="pillar">
+        <span class="pillar-index">01</span>
+        ${iconBadge("gamepad", "orange")}
+        <h3>用途の重なりをそのまま診断</h3>
+        <p>「ゲームしながら配信、その録画を動画編集」のような複数用途の重なりも、1つに絞らず診断できます。</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-index">02</span>
+        ${iconBadge("motherboard", "blue")}
+        <h3>フルパーツで提案</h3>
+        <p>CPU・GPUだけでなく、マザーボード・メモリ・SSD・ケース・電源・グリスまで欠けのない構成を毎回提示します。</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-index">03</span>
+        ${iconBadge("compare", "green")}
+        <h3>買い方まで比較</h3>
+        <p>自作・組み立て代行・完成品(BTO)・Macを同じ条件で比較。予算に対して過不足があれば正直に伝えます。</p>
+      </div>
+    </div>`;
+
+  const personaHtml = `<div class="section-head"><p class="eyebrow">こんな人におすすめ</p><span class="section-index">( 02 )</span></div>
+    <div class="quiz-options" data-multi="false" style="pointer-events:none">
+      <div class="quiz-option has-icon">${iconBadge("gamepad", "orange")}<span class="quiz-option-text"><span class="quiz-option-label">競技FPSでfpsを詰めたい</span><span class="quiz-option-desc">VALORANT・Apexなどで高fps環境を組みたい人</span></span></div>
+      <div class="quiz-option has-icon">${iconBadge("broadcast", "blue")}<span class="quiz-option-text"><span class="quiz-option-label">ゲームしながら配信もしたい</span><span class="quiz-option-desc">プレイと同時に配信・録画までこなしたい人</span></span></div>
+      <div class="quiz-option has-icon">${iconBadge("sparkle", "green")}<span class="quiz-option-text"><span class="quiz-option-label">AI画像生成・ローカルLLMを試したい</span><span class="quiz-option-desc">VRAM容量から逆算した構成を知りたい人</span></span></div>
+      <div class="quiz-option has-icon">${iconBadge("briefcase", "blue")}<span class="quiz-option-text"><span class="quiz-option-label">とりあえず何を買えばいいか分からない</span><span class="quiz-option-desc">自作すべきか完成品・Macにすべきか迷っている人</span></span></div>
+    </div>`;
+
+  const faqHtml = `<div class="section-head"><p class="eyebrow">よくある質問</p><span class="section-index">( 03 )</span></div>
+    <div class="pillar-grid">
+      <div class="pillar"><h3>料金はかかりますか？</h3><p>完全無料です。会員登録も不要で、何度でも診断できます。</p></div>
+      <div class="pillar"><h3>回答データはどこかに送信されますか？</h3><p>されません。診断の計算はすべてあなたのブラウザ内で完結し、サーバーには何も送られません。</p></div>
+      <div class="pillar"><h3>結果は保存できますか？</h3><p>結果画面からXでシェアできます。URL保存機能は現在ありませんが、もう一度診断すれば同じ答えで再現できます。</p></div>
+    </div>`;
+
+  const listHtml = entries.length
+    ? `<div class="section-head"><p class="eyebrow">診断ツール一覧</p><span class="section-index">( 04 )</span></div><div class="card-grid">${entries.map((e) => renderEntryCard(e, `${e.slug}/`)).join("\n")}</div>`
+    : "";
+
+  return section(heroHtml) + section(featureHtml) + section(personaHtml, { tint: true }) + section(faqHtml) + (listHtml ? section(listHtml) : "");
+}
+
 function renderEntryCard(entry, href) {
   const color = TYPE_COLOR[entry.type];
   return `<div class="card index-card">
@@ -1056,16 +1133,22 @@ function main() {
     sitemapUrls.push({ loc: canonical, lastmod: isStatic ? null : entry.updated });
   }
 
-  // Per-type index pages (e.g. /reviews/index.html).
+  // Per-type index pages (e.g. /reviews/index.html). "diagnosis" gets its
+  // own landing-page treatment (see renderDiagnosisIndexPage) since it's
+  // the site's flagship tool and the nav's "診断" link drops visitors here
+  // directly — a bare 1-card list would undersell it. Every other type
+  // keeps the plain card-grid listing.
   for (const [type, folder] of Object.entries(FOLDER_BY_TYPE)) {
     const entries = content.filter((e) => e.type === type).sort((a, b) => (a.updated < b.updated ? 1 : -1));
-    const cards = entries.map((e) => renderEntryCard(e, `${e.slug}/`)).join("\n");
-    const bodyHtml = section(
-      `${eyebrowHtml(SITE_TITLE, TYPE_LABEL_EN[type])}<h1>${TYPE_LABEL_JA[type]}一覧</h1><p class="lede-small">${TYPE_INDEX_INTRO[type] || ""}</p><div class="card-grid">${cards}</div>`
-    );
+    const bodyHtml =
+      type === "diagnosis"
+        ? renderDiagnosisIndexPage(entries)
+        : section(
+            `${eyebrowHtml(SITE_TITLE, TYPE_LABEL_EN[type])}<h1>${TYPE_LABEL_JA[type]}一覧</h1><p class="lede-small">${TYPE_INDEX_INTRO[type] || ""}</p><div class="card-grid">${entries.map((e) => renderEntryCard(e, `${e.slug}/`)).join("\n")}</div>`
+          );
     writeFile(`${folder}/index.html`, renderPage(template, {
-      title: `${TYPE_LABEL_JA[type]}一覧`,
-      description: `${SITE_TITLE}の${TYPE_LABEL_JA[type]}一覧`,
+      title: type === "diagnosis" ? "自作PC診断" : `${TYPE_LABEL_JA[type]}一覧`,
+      description: type === "diagnosis" ? DIAGNOSIS_INDEX_DESCRIPTION : `${SITE_TITLE}の${TYPE_LABEL_JA[type]}一覧`,
       canonical: `${SITE_ORIGIN}/${folder}/`,
       root: "../",
       bodyHtml,
