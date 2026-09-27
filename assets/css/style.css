@@ -470,7 +470,13 @@ img, svg { max-width: 100%; height: auto; }
   }
   .hero-illustration-float {
     width: 100%;
-    max-width: 440px;
+    /* Deliberately wider than the grid column naturally renders (~400px at
+       max page width) — it's allowed to bleed slightly past the column's
+       own edge rather than being capped to it, which is what actually
+       makes it bigger (the column ratio itself is untouched, so the chip
+       row / text column never has to give up space; verified no wrap or
+       overlap from 985px up to 1440px+). */
+    max-width: 480px;
     animation: illustrationFloat 8s ease-in-out infinite;
   }
 }
