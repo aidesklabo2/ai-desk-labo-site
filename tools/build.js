@@ -1123,9 +1123,16 @@ function main() {
     } else {
       const eyebrow = eyebrowHtml(TYPE_LABEL_JA[entry.type], TYPE_LABEL_EN[entry.type]);
       const updatedHtml = `<p class="updated">最終更新日: ${escapeHtml(entry.updated)}</p>`;
-      const disclosure = `<div class="disclosure-note">本ページはAmazonアソシエイト・プログラムの参加者として、適格販売により収入を得ています。<a href="${root}disclosure.html">詳細</a></div>`;
+      // Placed twice on purpose. Japan's stealth-marketing rules (景品表示法
+      // ステマ規制) require an ad disclosure to be immediately obvious, not
+      // just present somewhere on the page — a note only at the bottom,
+      // after the reader has already read the whole article, doesn't meet
+      // that bar. The compact badge sits right next to the title; the full
+      // explanation stays at the bottom for anyone who wants the detail.
+      const prBadge = `<a class="pr-badge" href="${root}disclosure.html" title="広告・アフィリエイトリンクを含みます">PR</a>`;
+      const disclosure = `<div class="disclosure-note">本ページはAmazonアソシエイト・プログラム、楽天アフィリエイトの参加者として、適格販売により収入を得ています。<a href="${root}disclosure.html">詳細</a></div>`;
       bodyHtml = section(
-        `${eyebrow}<h1>${escapeHtml(entry.title)}</h1>${updatedHtml}${renderToc(toc)}<article>${bodyBlocksHtml}</article>${disclosure}`
+        `<div class="title-row">${eyebrow}${prBadge}</div><h1>${escapeHtml(entry.title)}</h1>${updatedHtml}${renderToc(toc)}<article>${bodyBlocksHtml}</article>${disclosure}`
       );
     }
 
