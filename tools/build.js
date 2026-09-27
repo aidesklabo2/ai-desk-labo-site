@@ -1150,6 +1150,34 @@ function main() {
   </div>
 </div>`;
 
+  // The PC diagnosis is the site's flagship tool — it gets its own
+  // full-width spotlight right after the hero/marquee instead of blending
+  // into the plain product-grid sections below, so a first-time visitor
+  // sees it before anything else.
+  const diagnosisEntry = content.find((e) => e.type === "diagnosis" && e.slug === "pc-builder");
+  const diagnosisSpotlightHtml = diagnosisEntry
+    ? section(
+        `<div class="diag-spot">
+          <div class="diag-spot-copy">
+            ${eyebrowHtml("当サイト最大の看板コンテンツ", "Flagship Tool")}
+            <h2>自作PC診断</h2>
+            <p class="lede-small">「結局何を選べばいいの？」に、13の質問で答えます。用途はいくつでも選べるので、ゲームしながら配信、AI画像生成もする、といった重なりもそのまま診断可能。予算内で現実的な構成と、自作・組み立て代行・完成品・Macどれが得かまで一度に分かります。</p>
+            <ul class="diag-spot-points">
+              <li>${iconBadge("gamepad", "orange")}<span>用途・予算・ゲームジャンルまで加味した13問</span></li>
+              <li>${iconBadge("cart", "blue")}<span>CPUからケース・電源・グリスまでフルパーツで提案</span></li>
+              <li>${iconBadge("compare", "green")}<span>自作/組み立て代行/完成品/Macの買い方を比較</span></li>
+            </ul>
+            <a class="btn-primary" href="${FOLDER_BY_TYPE.diagnosis}/${diagnosisEntry.slug}/">今すぐ診断してみる ${icon("diagnosis")}</a>
+          </div>
+          <div class="diag-spot-visual" aria-hidden="true">
+            <div class="diag-spot-card diag-spot-card-1"><span class="diag-spot-tag orange">競技FPS型</span><p>Ryzen 7 9800X3D + RTX 5060</p></div>
+            <div class="diag-spot-card diag-spot-card-2"><span class="diag-spot-tag blue">静音クリエイター型</span><p>Core Ultra 5 225F + RTX 5060 Ti</p></div>
+            <div class="diag-spot-card diag-spot-card-3"><span class="diag-spot-tag green">ローカルAI型</span><p>VRAM 16GB優先構成</p></div>
+          </div>
+        </div>`
+      )
+    : "";
+
   const latestHtml = section(
     `<div class="section-head"><p class="eyebrow">Latest</p><span class="section-index">( 04 )</span><h2>最新の記事</h2></div><div class="card-grid bento">${latest
       .map((e) => renderEntryCard(e, `${FOLDER_BY_TYPE[e.type]}/${e.slug}/`))
@@ -1182,7 +1210,7 @@ function main() {
     description: "AIツールとガジェットの実体験レビュー・比較・ランキングを発信するAI Desk Labo公式サイト。",
     canonical: `${SITE_ORIGIN}/`,
     root: "",
-    bodyHtml: heroHtml + marqueeHtml + budgetHtml + showcaseHtml + pillarsHtml + latestHtml,
+    bodyHtml: heroHtml + marqueeHtml + diagnosisSpotlightHtml + budgetHtml + showcaseHtml + pillarsHtml + latestHtml,
     intro: HOME_INTRO,
   }));
   sitemapUrls.unshift({ loc: `${SITE_ORIGIN}/` });
