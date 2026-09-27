@@ -357,6 +357,44 @@ function renderDiagnosis(diag, productsMap) {
 
   function yen(n) { return "\\u00a5" + n.toLocaleString("ja-JP"); }
 
+  // Encodes the current answers into the URL's query string (one param per
+  // question, multi-select joined by commas) so a shared link reproduces
+  // the exact same result instead of dropping the visitor back at step 1 —
+  // the whole point of the "Xでシェア" button. Uses replaceState, not
+  // pushState, so retrying doesn't pollute browser history with every step.
+  function syncAnswersToUrl() {
+    if (typeof URLSearchParams === "undefined" || !window.history || !window.history.replaceState) return;
+    var params = new URLSearchParams();
+    stepKeys.forEach(function (k) {
+      var v = answers[k];
+      if (v === undefined || v === null) return;
+      var s = Array.isArray(v) ? v.join(",") : String(v);
+      if (s) params.set(k, s);
+    });
+    var q = params.toString();
+    var next = q ? "?" + q : window.location.pathname;
+    window.history.replaceState(null, "", next);
+  }
+
+  // Reverse of syncAnswersToUrl(), run once on load. Returns true if any
+  // answers were restored, so the caller can jump straight to the result
+  // instead of showing step 1.
+  function restoreAnswersFromUrl() {
+    if (typeof URLSearchParams === "undefined" || !window.location.search) return false;
+    var params = new URLSearchParams(window.location.search);
+    var restored = {};
+    var found = false;
+    stepKeys.forEach(function (k, i) {
+      if (!params.has(k)) return;
+      var raw = params.get(k);
+      restored[k] = stepTypes[i] === "multi" ? raw.split(",").filter(Boolean) : raw;
+      found = true;
+    });
+    if (!found) return false;
+    answers = restored;
+    return true;
+  }
+
   function shouldSkip(index) {
     var dep = stepDependsOn[index];
     if (!dep) return false;
@@ -722,6 +760,7 @@ function renderDiagnosis(diag, productsMap) {
     html += "</div>";
     resultsBox.innerHTML = html;
     resultsBox.hidden = false;
+    syncAnswersToUrl();
     root.scrollIntoView({ behavior: "smooth", block: "start" });
     if (typeof window.aidesklaboSyncFavorites === "function") window.aidesklaboSyncFavorites();
   }
@@ -785,6 +824,7 @@ function renderDiagnosis(diag, productsMap) {
       resultState = null;
       root.querySelectorAll(".quiz-option.is-selected").forEach(function (el) { el.classList.remove("is-selected"); });
       root.querySelectorAll(".quiz-next").forEach(function (el) { el.disabled = true; });
+      if (window.history && window.history.replaceState) window.history.replaceState(null, "", window.location.pathname);
       showStep(0);
       return;
     }
@@ -795,6 +835,11 @@ function renderDiagnosis(diag, productsMap) {
       window.open("https://twitter.com/intent/tweet?text=" + text + "&url=" + url, "_blank", "noopener");
     }
   });
+
+  // A shared result link (?usecases=gaming,streaming&budget=20&...) lands
+  // here — restore it and jump straight to the result instead of making
+  // the visitor re-answer 13 questions to see what was shared with them.
+  if (restoreAnswersFromUrl()) showResult();
 })();
 </script>`;
 }
