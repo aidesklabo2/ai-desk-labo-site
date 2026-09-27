@@ -1502,3 +1502,17 @@ tbody tr:last-child td { border-bottom: none; }
   padding-top: 20px;
   border-top: 1px dashed var(--border);
 }
+
+.quiz-compat-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 18px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(20, 122, 84, 0.08);
+  color: var(--accent-green);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+.quiz-compat-badge svg { width: 15px; height: 15px; stroke: var(--accent-green); flex-shrink: 0; }

@@ -736,6 +736,12 @@ function renderDiagnosis(diag, productsMap) {
     html += '<h3 class="quiz-result-title">' + escapeText(r.title) + "</h3>";
     r.paragraphs.forEach(function (p) { html += '<p class="quiz-result-body">' + escapeText(p) + "</p>"; });
     if (r.asins.length) {
+      // The engine only ever assembles CPU/mobo/RAM combinations it knows
+      // are socket- and memory-standard compatible (see buildWindowsParts)
+      // — this is a statement of that guarantee, not a live per-part check,
+      // and the case/storage swap buttons only ever swap within a
+      // form-factor-safe pair, so it stays true after a swap too.
+      html += '<p class="quiz-compat-badge">' + ${JSON.stringify(icon("compare"))} + "\\u30bd\\u30b1\\u30c3\\u30c8\\u30fb\\u30e1\\u30e2\\u30ea\\u898f\\u683c\\u306e\\u4e92\\u63db\\u6027\\u78ba\\u8a8d\\u6e08\\u307f\\u306e\\u7d44\\u307f\\u5408\\u308f\\u305b\\u3067\\u3059</p>";
       html += '<div class="card-grid" data-parts>';
       r.asins.forEach(function (a, i) { html += partHtml(a, i); });
       html += "</div>";
