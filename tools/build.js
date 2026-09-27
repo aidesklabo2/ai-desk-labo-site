@@ -217,7 +217,8 @@ const DIAGNOSIS_CATALOG = {
   storage2tb: "B0DGKTMN6L", // 2TB — swappable with `storage` for heavy footage/asset use
   case: "B0DQPMJ6MJ", // airflow-focused
   caseQuiet: "B0B55YL7TP", // acoustic-dampened — swappable with `case`
-  psu: "B0DKT9JRF1",
+  psu: "B0DKT9JRF1", // 750W — GPU-heavy builds (gpuTier >= 2)
+  psuLow: "B0CLL6896M", // 550W — no GPU / entry-GPU builds (gpuTier <= 1), cheaper and right-sized
   paste: "B0795DP124",
   cooler: "B09NZB9Z9Z", // needed with cpuHighAmd / cpuX3D (neither ships with a cooler)
   coolerQuiet: "B098XP1Y38", // Noctua NH-U12A — same need, picked instead when noise:quiet
@@ -464,7 +465,8 @@ function renderDiagnosis(diag, productsMap) {
 
     var asins = [cpuAsin];
     if (gpuAsin) asins.push(gpuAsin);
-    asins.push(moboAsin, ramAsin, storageAsin, caseAsin, CATALOG.psu, CATALOG.paste);
+    var psuAsin = req.gpuTier >= 2 ? CATALOG.psu : CATALOG.psuLow;
+    asins.push(moboAsin, ramAsin, storageAsin, caseAsin, psuAsin, CATALOG.paste);
     if (needsCooler) asins.push(req.noise === "quiet" ? CATALOG.coolerQuiet : CATALOG.cooler);
     var needsWifiAdapter = req.network === "wifi_only" && moboAsin === CATALOG.moboAm4;
     if (needsWifiAdapter) asins.push(CATALOG.wifiAdapter);
