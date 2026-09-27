@@ -243,6 +243,21 @@ const OS_LICENSE_COST = 16500;
 const ASSEMBLY_SERVICE_FEE = 25000;
 const ASSEMBLY_SERVICE_FEE_RANGE = "1.1万円〜3.3万円(店舗・プランにより変動)";
 
+// Non-PC-part products from the main catalog worth suggesting alongside a
+// diagnosis result — the site's existing desk-gadget content is otherwise
+// invisible from the diagnosis flow even though a new PC is exactly when
+// someone shops for a keyboard/monitor/mic too. Picked per use-case in
+// compute() below (see ACCESSORY_RULES); never swappable, never affects
+// the budget math — purely an upsell shelf.
+const ACCESSORY_CATALOG = {
+  keyboard: "B0DH88QC5B", // REALFORCE RC1
+  mouse: "B0B1Q6VB16", // Logicool MX Master 3S
+  monitor: "B0F23FWBJL", // Dell S2725QC-A 27インチ4K
+  mic: "ROOM-SOLOCAST2", // HyperX SoloCast 2
+  macropad: "ROOM-STREAMDECKNEO", // Elgato Stream Deck Neo
+  tablet: "ROOM-XPPEN12", // XPPen Artist 12 3rd
+};
+
 // Rules-based PC diagnosis engine. Unlike a simple answer-combination lookup
 // table, this asks several questions (some multi-select, since use cases
 // like "gaming" and "video editing" genuinely overlap — someone who streams
@@ -270,7 +285,7 @@ const DIAGNOSIS_OPTION_ICONS = {
 
 function renderDiagnosis(diag, productsMap) {
   const uid = diag.id || "diagnosis";
-  const catalogAsins = Object.values(DIAGNOSIS_CATALOG);
+  const catalogAsins = [...new Set([...Object.values(DIAGNOSIS_CATALOG), ...Object.values(ACCESSORY_CATALOG)])];
   for (const asin of catalogAsins) {
     if (!productsMap[asin]) throw new Error(`Diagnosis catalog references unknown product asin "${asin}"`);
   }
@@ -330,6 +345,7 @@ function renderDiagnosis(diag, productsMap) {
   var OS_LICENSE_COST = ${JSON.stringify(OS_LICENSE_COST)};
   var ASSEMBLY_SERVICE_FEE = ${JSON.stringify(ASSEMBLY_SERVICE_FEE)};
   var ASSEMBLY_SERVICE_FEE_RANGE = ${JSON.stringify(ASSEMBLY_SERVICE_FEE_RANGE)};
+  var ACCESSORIES = ${JSON.stringify(ACCESSORY_CATALOG)};
   var stepKeys = ${JSON.stringify(diag.questions.map((q) => q.key))};
   var stepTypes = ${JSON.stringify(diag.questions.map((q) => q.type))};
   var stepDependsOn = ${JSON.stringify(diag.questions.map((q) => q.dependsOn || null))};
@@ -413,6 +429,26 @@ function renderDiagnosis(diag, productsMap) {
     return { windowsPlatform: windowsPlatform, cpuAsin: cpuAsin, moboAsin: moboAsin, ramAsin: ramAsin, gpuAsin: gpuAsin, storageAsin: storageAsin, caseAsin: caseAsin, needsCooler: needsCooler, needsWifiAdapter: needsWifiAdapter, cpuNote: cpuNote, asins: asins, partsTotal: partsTotal };
   }
 
+  // Suggests up to 3 existing site products (keyboard/mouse/monitor/mic/
+  // macropad/tablet) that pair naturally with the selected use cases — a
+  // new-PC diagnosis is exactly when someone also shops for these, and
+  // otherwise the site's existing desk-gadget content is invisible from
+  // this flow. Never affects the budget math; purely a suggestion shelf.
+  function pickAccessories(usecases, wantsMonitor) {
+    var has = function (v) { return usecases.indexOf(v) !== -1; };
+    var keys = [];
+    if (has("streaming")) { keys.push("mic"); keys.push("macropad"); }
+    if (has("illustration")) keys.push("tablet");
+    if (wantsMonitor) keys.push("monitor");
+    if (has("office") || has("programming") || has("gaming")) { keys.push("keyboard"); keys.push("mouse"); }
+    var seen = {}, out = [];
+    keys.forEach(function (k) {
+      var asin = ACCESSORIES[k];
+      if (asin && !seen[asin]) { seen[asin] = true; out.push(asin); }
+    });
+    return out.slice(0, 3);
+  }
+
   function compute() {
     var usecases = answers.usecases || [];
     if (!usecases.length) usecases = ["office"];
@@ -481,6 +517,8 @@ function renderDiagnosis(diag, productsMap) {
     }
 
     var title, paragraphs = [], asins = [], notes = [], guideLink = null, shareText, budgetInfo = null, buyCompare = null;
+    var wantsMonitorAccessory = (hasVideo || hasGaming || hasStreaming) && (answers.resolution === "wqhd_uhd" || videoHeavy);
+    var accessories = pickAccessories(usecases, wantsMonitorAccessory);
 
     if (platform === "mac") {
       title = "\\u81ea\\u4f5cPC\\u3088\\u308a\\u3001Mac\\u3068\\u3044\\u3046\\u9078\\u629e\\u80a2";
@@ -600,7 +638,7 @@ function renderDiagnosis(diag, productsMap) {
       shareText = "\\u3010AI Desk Labo\\u8a3a\\u65ad\\u3011\\u79c1\\u306b\\u5411\\u3044\\u3066\\u308b\\u306e\\u306f\\u300c" + platformLabel + "\\u69cb\\u6210\\u306e" + usecaseText + "PC\\u300d\\u3067\\u3057\\u305f\\ud83d\\udda5\\ufe0f #AIDeskLabo\\u8a3a\\u65ad #\\u81ea\\u4f5cPC";
     }
 
-    return { title: title, paragraphs: paragraphs, notes: notes, asins: asins, guideLink: guideLink, shareText: shareText, budgetInfo: budgetInfo, buyCompare: buyCompare };
+    return { title: title, paragraphs: paragraphs, notes: notes, asins: asins, guideLink: guideLink, shareText: shareText, budgetInfo: budgetInfo, buyCompare: buyCompare, accessories: accessories };
   }
 
   function budgetNoteText(total, ceil, label) {
@@ -670,6 +708,12 @@ function renderDiagnosis(diag, productsMap) {
       html += '<div class="quiz-buy-compare"><p class="quiz-buy-compare-title">\\u8cb7\\u3044\\u65b9\\u306e\\u6bd4\\u8f03</p><ul>';
       r.buyCompare.forEach(function (line) { html += "<li>" + escapeText(line) + "</li>"; });
       html += "</ul></div>";
+    }
+    if (r.accessories && r.accessories.length) {
+      html += '<p class="quiz-accessory-title">\\u3042\\u308f\\u305b\\u3066\\u63c3\\u3048\\u305f\\u3044\\u5468\\u8fba\\u6a5f\\u5668</p>';
+      html += '<div class="card-grid">';
+      r.accessories.forEach(function (a) { html += CARDS[a] || ""; });
+      html += "</div>";
     }
     if (r.guideLink) html += '<p class="section-link"><a href="' + r.guideLink.href + '">' + escapeText(r.guideLink.label) + " \\u2192</a></p>";
     html += '<div class="quiz-result-actions">';

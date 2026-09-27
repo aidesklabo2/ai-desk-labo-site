@@ -1482,3 +1482,23 @@ tbody tr:last-child td { border-bottom: none; }
   flex-shrink: 0;
 }
 .pr-badge:hover { border-color: var(--accent-orange); color: var(--accent-orange); text-decoration: none; }
+
+/* ---------- Diagnosis result: buy-method comparison + accessory shelf ---------- */
+.quiz-buy-compare {
+  margin: 20px 0;
+  padding: 20px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+}
+.quiz-buy-compare-title { font-weight: 800; font-family: var(--font-display); margin: 0 0 10px; }
+.quiz-buy-compare ul { margin: 0; padding-left: 1.2em; }
+.quiz-buy-compare li { margin: 8px 0; color: var(--ink-secondary); font-size: 0.94rem; line-height: 1.6; }
+.quiz-accessory-title {
+  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 28px 0 14px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border);
+}
