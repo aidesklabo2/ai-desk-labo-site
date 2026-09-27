@@ -110,12 +110,16 @@
               ]
             },
             {
-              "key": "ecosystem",
-              "type": "single",
-              "question": "普段iPhone・iPadなどApple製品をよく使いますか？",
+              "key": "appleWorkflow",
+              "type": "multi",
+              "question": "Apple製品との関わり方に近いものは？(いくつでも選べます。iPhoneを持っているだけでは選ばなくてOKです)",
               "options": [
-                {"value": "yes", "label": "よく使う・素材のやり取りなど連携を活かしたい", "desc": "AirDropや写真同期を日常的に使う"},
-                {"value": "no", "label": "特に使っていない・気にしない", "desc": "Windows/Androidが中心"}
+                {"value": "photo_transfer", "label": "iPhoneで撮った写真・動画をすぐ作業に使いたい", "desc": "AirDropで送って編集・資料作成に使う"},
+                {"value": "ipad_handoff", "label": "iPadで描いた・書いたものをそのまま取り込みたい", "desc": "イラストや手書きメモの受け渡し"},
+                {"value": "continuity", "label": "通知・コピペ・電話をPCでも使いたい", "desc": "Handoff・iMessage・着信をPC側に連携"},
+                {"value": "jp_software", "label": "年賀状・会計ソフトなど、Windows専用の日本語ソフトを使う予定がある", "desc": "多くはMac非対応"},
+                {"value": "own_no_need", "label": "iPhoneなどは持っているが、PC作業との連携は特に必要ない", "desc": "普段使いと作業用PCは別で構わない"},
+                {"value": "none", "label": "Apple製品は使っていない", "desc": "Windows/Androidが中心"}
               ]
             },
             {
@@ -124,7 +128,8 @@
               "question": "組み立てへの興味は？",
               "options": [
                 {"value": "diy", "label": "自作を楽しみたい", "desc": "パーツ選び・組み立て自体が好き"},
-                {"value": "prebuilt", "label": "手間は省きたい、動けば十分", "desc": "完成品でも構わない"}
+                {"value": "bto", "label": "構成は自分で決めたいが、組み立ては任せたい", "desc": "BTOショップにこの構成で注文したい"},
+                {"value": "prebuilt", "label": "とにかく手間なく、今すぐ使えればいい", "desc": "店頭の完成品で十分"}
               ]
             },
             {
@@ -141,7 +146,7 @@
               "key": "noise",
               "type": "single",
               "question": "設置場所や動作音は気になりますか？(自作する場合)",
-              "dependsOn": {"key": "effort", "anyOf": ["diy"]},
+              "dependsOn": {"key": "effort", "anyOf": ["diy", "bto"]},
               "options": [
                 {"value": "airflow", "label": "静かさより冷却・性能重視", "desc": "ファン音は気にしない"},
                 {"value": "quiet", "label": "できれば静かがいい", "desc": "寝室・リビングなど音が気になる環境"}
@@ -151,7 +156,7 @@
               "key": "storage",
               "type": "single",
               "question": "保存するデータ量の目安は？(自作する場合)",
-              "dependsOn": {"key": "effort", "anyOf": ["diy"]},
+              "dependsOn": {"key": "effort", "anyOf": ["diy", "bto"]},
               "options": [
                 {"value": "1tb", "label": "1TBで十分", "desc": "一般的な使い方"},
                 {"value": "2tb", "label": "素材・データが多い・2TB欲しい", "desc": "動画素材やイラスト、AI生成物が多い"}

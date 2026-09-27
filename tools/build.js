@@ -60,6 +60,10 @@ const ICONS = {
   heart: `<path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/>`,
   search: `<circle cx="10.5" cy="10.5" r="7"/><line x1="21" y1="21" x2="15.5" y2="15.5"/>`,
   clock: `<circle cx="12" cy="12" r="9.5"/><polyline points="12 6.5 12 12 16.5 14.5"/>`,
+  briefcase: `<rect x="2" y="7" width="20" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="2" y1="12.5" x2="22" y2="12.5"/>`,
+  gamepad: `<rect x="3" y="7" width="18" height="11" rx="5.5"/><line x1="7" y1="11" x2="7" y2="14.5"/><line x1="5.25" y1="12.75" x2="8.75" y2="12.75"/><circle cx="16" cy="10.5" r="1"/><circle cx="18" cy="13" r="1"/>`,
+  video: `<rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3.5v11L16 14z"/>`,
+  broadcast: `<circle cx="12" cy="12" r="2.5"/><path d="M7.5 8.5a6.5 6.5 0 0 0 0 7"/><path d="M16.5 8.5a6.5 6.5 0 0 1 0 7"/><path d="M4.5 5.5a10.5 10.5 0 0 0 0 13"/><path d="M19.5 5.5a10.5 10.5 0 0 1 0 13"/>`,
 };
 
 // Hand-authored "network" illustration for the homepage hero — replaces a
@@ -218,6 +222,20 @@ const DIAGNOSIS_SWAPS = [
 // paste, cooler where needed — from real requirement rules, not a fixed
 // answer→result map. All scoring happens client-side in the visitor's own
 // browser; nothing is sent anywhere.
+// Icons for the diagnosis's most visually prominent question (use cases)
+// and the one where the icon directly echoes a real product category
+// (noise → case/cooler). Every other question stays text-only rather than
+// forcing an icon onto options where one wouldn't add real meaning.
+const DIAGNOSIS_OPTION_ICONS = {
+  "usecases:office": ["briefcase", "blue"],
+  "usecases:illustration": ["tablet", "green"],
+  "usecases:gaming": ["gamepad", "orange"],
+  "usecases:streaming": ["broadcast", "blue"],
+  "usecases:video": ["video", "orange"],
+  "noise:airflow": ["cooler", "blue"],
+  "noise:quiet": ["case", "green"],
+};
+
 function renderDiagnosis(diag, productsMap) {
   const uid = diag.id || "diagnosis";
   const catalogAsins = Object.values(DIAGNOSIS_CATALOG);
@@ -231,16 +249,21 @@ function renderDiagnosis(diag, productsMap) {
   for (const asin of catalogAsins) cardsByAsin[asin] = renderProductCard(productsMap[asin]);
   const pricesByAsin = {};
   for (const asin of catalogAsins) pricesByAsin[asin] = productsMap[asin].price;
+  const categoryLabelByAsin = {};
+  for (const asin of catalogAsins) categoryLabelByAsin[asin] = CATEGORY_LABEL_JA[productsMap[asin].category] || productsMap[asin].category;
 
   const stepsHtml = diag.questions
     .map((q, i) => {
       const options = q.options
-        .map(
-          (opt) => `<button type="button" class="quiz-option" data-value="${escapeHtml(opt.value)}">
-        <span class="quiz-option-label">${escapeHtml(opt.label)}</span>
-        <span class="quiz-option-desc">${escapeHtml(opt.desc)}</span>
-      </button>`
-        )
+        .map((opt) => {
+          const iconDef = DIAGNOSIS_OPTION_ICONS[`${q.key}:${opt.value}`];
+          const iconHtml = iconDef ? iconBadge(iconDef[0], iconDef[1]) : "";
+          return `<button type="button" class="quiz-option${iconDef ? " has-icon" : ""}" data-value="${escapeHtml(opt.value)}">
+        ${iconHtml}
+        <span class="quiz-option-text"><span class="quiz-option-label">${escapeHtml(opt.label)}</span>
+        <span class="quiz-option-desc">${escapeHtml(opt.desc)}</span></span>
+      </button>`;
+        })
         .join("\n");
       const nextBtn = q.type === "multi" ? `<button type="button" class="quiz-next" disabled>次へ →</button>` : "";
       return `<div class="quiz-step" data-step-index="${i}" data-key="${escapeHtml(q.key)}" data-type="${q.type}"${i === 0 ? "" : " hidden"}>
@@ -266,6 +289,7 @@ function renderDiagnosis(diag, productsMap) {
   var CATALOG = ${JSON.stringify(DIAGNOSIS_CATALOG)};
   var CARDS = ${JSON.stringify(cardsByAsin)};
   var PRICES = ${JSON.stringify(pricesByAsin)};
+  var CATEGORY_LABELS = ${JSON.stringify(categoryLabelByAsin)};
   var SWAPS = ${JSON.stringify(DIAGNOSIS_SWAPS)};
   var GUIDE_ROOT = "../../guides/";
   var stepKeys = ${JSON.stringify(diag.questions.map((q) => q.key))};
@@ -321,15 +345,26 @@ function renderDiagnosis(diag, productsMap) {
     var usecaseText = usecases.map(function (u) { return usecaseLabels[u]; }).join("・");
 
     var software = answers.software;
-    var ecosystem = answers.ecosystem;
+    var appleWorkflow = answers.appleWorkflow || [];
     var effort = answers.effort;
     var platformPref = answers.platform;
 
-    var macEligible = software !== "windows_only" && ecosystem === "yes" && !hasGaming;
+    // Owning an iPhone is not a reason to recommend a Mac — most of Japan
+    // owns one. Only concrete workflow needs (moving photos in for editing,
+    // Handoff/Continuity, iPad file handoff) count as real signal; "own it
+    // but PC work doesn't need it" and "don't use Apple stuff" are both
+    // explicitly non-signals so the diagnosis can't default to Mac just
+    // because someone picked *something* in that question.
+    var integrationReasons = appleWorkflow.filter(function (v) { return ["photo_transfer", "ipad_handoff", "continuity"].indexOf(v) !== -1; });
+    var hasAppleIntegrationNeed = integrationReasons.length > 0;
+    var needsJpWindowsSoftware = appleWorkflow.indexOf("jp_software") !== -1;
+    var windowsRequired = software === "windows_only" || needsJpWindowsSoftware;
+
+    var macEligible = !windowsRequired && hasAppleIntegrationNeed && !hasGaming;
     var platform = macEligible ? "mac" : "windows";
     var hybridNote = null;
-    if (!macEligible && software !== "windows_only" && ecosystem === "yes" && hasGaming) {
-      hybridNote = "普段Apple製品をよく使われるなら、ゲーム以外の作業は普段のMacに任せて、ゲーム専用機としてこのWindows構成を別に組む「2台持ち」も現実的な落としどころです。";
+    if (!macEligible && !windowsRequired && hasAppleIntegrationNeed && hasGaming) {
+      hybridNote = "Apple製品との連携が必要とのことなので、ゲーム以外の作業は普段のMacに任せて、ゲーム専用機としてこのWindows構成を別に組む「2台持ち」も現実的な落としどころです。";
     }
 
     var title, paragraphs = [], asins = [], notes = [], guideLink = null, shareText;
@@ -337,10 +372,13 @@ function renderDiagnosis(diag, productsMap) {
     if (platform === "mac") {
       title = "自作PCより、Macという選択肢";
       var reasons = [];
-      reasons.push("普段からiPhone・iPadなどApple製品をよく使っていて連携を活かしたいとのことなので、AirDropや写真・ファイルのやり取りの一貫性を考えるとMacが合理的です。");
+      var reasonLabels = {
+        photo_transfer: "iPhoneで撮った写真・動画をすぐ作業に使いたいとのことなので、AirDropでの受け渡しが同じOS同士でスムーズなMacが合理的です。",
+        ipad_handoff: "iPadで描いた・書いたものをそのまま取り込みたいとのことなので、Macならファイル形式や同期を気にせず作業できます。",
+        continuity: "通知・コピペ・電話をPCでも使いたいとのことなので、Handoff・iMessageが使えるMacの方が体験として一段上です。",
+      };
+      integrationReasons.forEach(function (r) { if (reasonLabels[r]) reasons.push(reasonLabels[r]); });
       if (hasVideo) reasons.push("動画編集も選んでいるので、Apple SiliconのハードウェアエンコードはPremiere Pro・DaVinci Resolveでも強力に効きます。統合メモリでVRAM不足にも悩みにくい構成です。");
-      if (hasIllustration) reasons.push("iPadとの連携で、イラスト制作の素材受け渡しもスムーズになります。");
-      if (hasOffice && !hasVideo && !hasIllustration) reasons.push("オフィス・AIチャット中心の使い方なら、組み立ての手間がない分MacBook Airで十分快適です。");
       if (software === "mac_ok") reasons.push("使う予定のソフトもMac対応で完結するとのことなので、無理にWindowsを選ぶ理由もありません。");
       paragraphs = reasons;
       notes.push("Apple公式サイトまたはAmazonで最新のMacBook Air/Pro構成を確認してみてください。");
@@ -361,7 +399,7 @@ function renderDiagnosis(diag, productsMap) {
       var gpuAsin = gpuTier === 2 ? CATALOG.gpuHigh : gpuTier === 1 ? CATALOG.gpuMid : null;
       var platformLabel = windowsPlatform === "intel" ? "Intel" : "AMD";
 
-      title = platformLabel + "構成で組む、" + usecaseText + "PC";
+      title = platformLabel + "構成" + (effort === "prebuilt" ? "が近い、" : effort === "bto" ? "でBTO注文する、" : "で組む、") + usecaseText + "PC";
       paragraphs.push("選んだ用途(" + usecaseText + ")をもとに、CPUのコア数・GPUの有無・メモリ容量を決めています。");
       if (gpuTier === 0) paragraphs.push("グラフィックボードなしのAPU/内蔵GPU構成で十分なので、最もコストを抑えたパターンにしました。");
       else if (gpuTier === 1) paragraphs.push("フルHD高設定・60fps以上を狙えるミドルクラスのGPUを組み合わせています。");
@@ -383,6 +421,7 @@ function renderDiagnosis(diag, productsMap) {
       } else {
         var storageAsin = answers.storage === "2tb" ? CATALOG.storage2tb : CATALOG.storage;
         var caseAsin = answers.noise === "quiet" ? CATALOG.caseQuiet : CATALOG.case;
+        if (effort === "bto") notes.unshift("組み立ては任せたいとのことなので、この構成をそのままBTOショップの注文フォームで指定するとスムーズです。ショップ独自のパーツに置き換わる場合もあるので、型番は目安として伝えてください。");
         if (hasVideo && storageAsin === CATALOG.storage) notes.push("動画編集は素材量が多くなりがちです。1TB SSDで不足する場合は2TBモデルへの入れ替え、または外付けSSDの追加も検討してください。");
 
         asins.push(cpuAsin);
@@ -453,9 +492,11 @@ function renderDiagnosis(diag, productsMap) {
     return html;
   }
 
-  function partHtml(asin) {
+  function partHtml(asin, index) {
     var swap = findSwap(asin);
-    return '<div class="quiz-part" data-asin="' + asin + '">' + (CARDS[asin] || "") + (swap ? swapButtonsHtml(swap, asin) : "") + "</div>";
+    var num = String(index + 1).padStart(2, "0");
+    var label = '<p class="quiz-part-index">( ' + num + ' ) ' + escapeText(CATEGORY_LABELS[asin] || "") + '</p>';
+    return '<div class="quiz-part" data-asin="' + asin + '" data-index="' + index + '">' + label + (CARDS[asin] || "") + (swap ? swapButtonsHtml(swap, asin) : "") + "</div>";
   }
 
   function showResult() {
@@ -468,7 +509,7 @@ function renderDiagnosis(diag, productsMap) {
     r.paragraphs.forEach(function (p) { html += '<p class="quiz-result-body">' + escapeText(p) + "</p>"; });
     if (r.asins.length) {
       html += '<div class="card-grid" data-parts>';
-      r.asins.forEach(function (a) { html += partHtml(a); });
+      r.asins.forEach(function (a, i) { html += partHtml(a, i); });
       html += "</div>";
     }
     if (r.budgetInfo) html += '<p class="quiz-result-note" data-budget-note>' + escapeText(budgetNoteText(r.budgetInfo.total, r.budgetInfo.ceil, r.budgetInfo.label)) + "</p>";
@@ -492,7 +533,7 @@ function renderDiagnosis(diag, productsMap) {
     if (!newAsin || newAsin === oldAsin) return;
     var idx = resultState.asins.indexOf(oldAsin);
     if (idx !== -1) resultState.asins[idx] = newAsin;
-    partEl.outerHTML = partHtml(newAsin);
+    partEl.outerHTML = partHtml(newAsin, Number(partEl.dataset.index));
     if (typeof window.aidesklaboSyncFavorites === "function") window.aidesklaboSyncFavorites();
     if (resultState.budgetInfo) {
       resultState.budgetInfo.total += (PRICES[newAsin] || 0) - (PRICES[oldAsin] || 0);
@@ -661,7 +702,7 @@ function renderFavoritesPage(products) {
   for (const p of products) cardsByAsin[p.asin] = renderProductCard(p);
 
   const bodyHtml = section(
-    `<p class="eyebrow">Favorites</p><h2>気になるリスト</h2>
+    `${eyebrowHtml("保存済み", "Favorites")}<h2>気になるリスト</h2>
     <p class="lede-small">ハートマークで保存した商品がここに並びます。保存はこの端末のブラウザだけに残り、どこにも送信されません。</p>
     <div id="favoritesEmpty" class="favorites-empty" hidden>
       <p>まだ何も保存されていません。気になる商品のハートマークをタップすると、ここに一覧できます。</p>
@@ -736,7 +777,7 @@ function renderChangelogPage(content, products) {
     .join("\n");
 
   return section(
-    `<p class="eyebrow">Updates</p><h2>更新履歴</h2>
+    `${eyebrowHtml("更新の記録", "Updates")}<h2>更新履歴</h2>
     <p class="lede-small">記事の追加・改稿や、掲載商品の価格・仕様の確認履歴を新しい順に並べています。「価格の変動まで追跡」を裏付ける記録です。</p>
     <div class="changelog-timeline">${timelineHtml}</div>`
   );
@@ -767,7 +808,7 @@ function renderSearchPage(content, products) {
   }
 
   const bodyHtml = section(
-    `<p class="eyebrow">Search</p><h2>サイト内検索</h2>
+    `${eyebrowHtml("商品・記事を探す", "Search")}<h2>サイト内検索</h2>
     <p class="lede-small">商品名・記事タイトルで、掲載中のレビュー・比較・ガイド・商品を横断して検索できます。</p>
     <div class="search-box">${icon("search")}<input type="search" id="searchInput" placeholder="例: キーボード、モニターアーム、ゲーミング" autocomplete="off"></div>
     <p class="search-count" id="searchCount"></p>
