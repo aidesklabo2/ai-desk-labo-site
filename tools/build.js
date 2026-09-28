@@ -26,12 +26,12 @@ const TYPE_INDEX_INTRO = {
   guide: "何から揃えるべきか迷う人向けに、優先順位付きで選び方を解説しています。",
   diagnosis: "質問に答えるだけで、あなたの用途・予算に合ったPC構成や買い方を診断します。",
 };
-const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange", cpu: "blue", gpu: "orange", cable: "green", tablet: "blue", reader: "green", case: "blue", macropad: "orange", motherboard: "green", psu: "orange", thermalpaste: "green", ram: "blue", storage: "orange", cooler: "blue", wifi: "green", mac_desktop: "blue", mac_laptop: "blue", prebuilt_pc: "orange", hub: "green" };
+const CATEGORY_COLOR = { keyboard: "orange", mouse: "blue", charger: "green", monitor: "orange", stand: "green", mic: "blue", light: "orange", footrest: "green", wristrest: "blue", monitorarm: "orange", cpu: "blue", gpu: "orange", cable: "green", tablet: "blue", reader: "green", case: "blue", macropad: "orange", motherboard: "green", psu: "orange", thermalpaste: "green", ram: "blue", storage: "orange", cooler: "blue", wifi: "green", mac_desktop: "blue", mac_laptop: "blue", prebuilt_pc: "orange", prebuilt_laptop: "orange", hub: "green" };
 // Product-card badges show this label, not the raw `category` key — the key
 // is an internal English slug (also used to look up CATEGORY_COLOR/ICONS)
 // and was previously printed as-is, which read as stray English jargon on
 // an otherwise all-Japanese page.
-const CATEGORY_LABEL_JA = { keyboard: "キーボード", mouse: "マウス", charger: "充電器", monitor: "モニター", stand: "スタンド", mic: "マイク", light: "ライト", footrest: "フットレスト", wristrest: "リストレスト", monitorarm: "モニターアーム", cpu: "CPU", gpu: "GPU", cable: "ケーブル", tablet: "タブレット", reader: "カードリーダー", case: "ケース", macropad: "マクロパッド", motherboard: "マザーボード", psu: "電源ユニット", thermalpaste: "グリス", ram: "メモリ", storage: "SSD", cooler: "CPUクーラー", wifi: "Wi-Fi子機", mac_desktop: "Mac(デスクトップ)", mac_laptop: "Mac(ノート)", prebuilt_pc: "完成品PC", hub: "ハブ・スタンド" };
+const CATEGORY_LABEL_JA = { keyboard: "キーボード", mouse: "マウス", charger: "充電器", monitor: "モニター", stand: "スタンド", mic: "マイク", light: "ライト", footrest: "フットレスト", wristrest: "リストレスト", monitorarm: "モニターアーム", cpu: "CPU", gpu: "GPU", cable: "ケーブル", tablet: "タブレット", reader: "カードリーダー", case: "ケース", macropad: "マクロパッド", motherboard: "マザーボード", psu: "電源ユニット", thermalpaste: "グリス", ram: "メモリ", storage: "SSD", cooler: "CPUクーラー", wifi: "Wi-Fi子機", mac_desktop: "Mac(デスクトップ)", mac_laptop: "Mac(ノート)", prebuilt_pc: "完成品PC", prebuilt_laptop: "完成品ノートPC", hub: "ハブ・スタンド" };
 
 // Small hand-authored line-icon set (24x24, stroke-based, no external icon font/CDN).
 const ICONS = {
@@ -77,6 +77,7 @@ const ICONS = {
   mac_desktop: `<rect x="5" y="8" width="14" height="5" rx="2"/><line x1="9" y1="18" x2="15" y2="18"/><line x1="12" y1="13" x2="12" y2="18"/>`,
   mac_laptop: `<rect x="4" y="5" width="16" height="10" rx="1.5"/><path d="M2 19h20l-1.5-3H3.5z"/>`,
   prebuilt_pc: `<rect x="5" y="3" width="10" height="17" rx="1.5"/><line x1="10" y1="19.5" x2="10" y2="20.5"/><circle cx="10" cy="6" r="0.8"/>`,
+  prebuilt_laptop: `<rect x="4" y="5" width="16" height="10" rx="1.5"/><path d="M2 19h20l-1.5-3H3.5z"/>`,
   hub: `<rect x="3" y="9" width="18" height="6" rx="1.5"/><line x1="7" y1="9" x2="7" y2="4"/><line x1="12" y1="9" x2="12" y2="4"/><line x1="17" y1="9" x2="17" y2="4"/>`,
 };
 
@@ -290,8 +291,17 @@ const MAC_CATALOG = {
   macMiniHub: "B0DV6WJ88D", // Satechi Mac mini用ハブ&スタンド — suggested alongside either Mac mini pick
 };
 const PREBUILT_CATALOG = {
-  gamingMid: "B0G25S1199", // GALLERIA XGR7M-R56-WL — Ryzen 7 5700X / RTX 5060 / 16GB / 500GB, ドスパラ公式
+  // Desktop tier, low to high
   officeBudget: "B0F4R72GYM", // Dell Slim ECS1250 — Core Ultra 5 225 / 16GB / 512GB, 内蔵GPUのみ
+  gamingMid: "B0G25S1199", // GALLERIA XGR7M-R56-WL — Ryzen 7 5700X / RTX 5060 / 16GB / 500GB, ドスパラ公式
+  vramPriority: "B0FRFP94FG", // GALLERIA XPR7A-R56T16G-GD — Ryzen 7 7700 / RTX 5060 Ti 16GB / 16GB / 1TB, ドスパラ公式
+  gamingHigh: "B0FRFSY497", // GALLERIA XDR7A-R57-GD — Ryzen 7 9800X3D / RTX 5070 / 32GB / 1TB, ドスパラ公式
+  // Laptop tier — same brackets, offered alongside the desktop pick so the
+  // diagnosis never implies "desktop only" for people who want to build/buy
+  // Windows the way the Mac branch already offers laptop vs. desktop.
+  officeLaptop: "B0GZ6GN6WJ", // ASUS Vivobook S14 — Core Ultra 5 226V / 16GB / 512GB
+  gamingMidLaptop: "B0GYDVG4FP", // Lenovo LOQ Essential 15IRX11 — i7-13650HX / RTX 5060 / 16GB / 1TB
+  gamingHighLaptop: "B0GSV7DJHQ", // ASUS TUF Gaming A16 — Ryzen 7 260 / RTX 5070 / 16GB / 512GB
 };
 
 // Rules-based PC diagnosis engine. Unlike a simple answer-combination lookup
@@ -723,20 +733,32 @@ function renderDiagnosis(diag, productsMap) {
       var guideSlug = hasVideo ? "pc-build-video-editing" : (hasGaming || hasStreaming) ? "pc-build-gaming" : "pc-build-office";
       guideLink = { href: GUIDE_ROOT + guideSlug + "/", label: "\\u8a73\\u3057\\u3044\\u89e3\\u8aac\\u3092\\u30ac\\u30a4\\u30c9\\u8a18\\u4e8b\\u3067\\u8aad\\u3080" };
 
-      // A real prebuilt Windows desktop, offered only when its actual spec
-      // (fixed — we don't control it) is genuinely close to what this
-      // diagnosis just picked. Skipped entirely rather than shown as a loose
+      // Real prebuilt Windows products (desktop AND laptop, one bracket per
+      // GPU/CPU tier), offered only when their actual spec (fixed — we
+      // don't control it) is genuinely close to what this diagnosis just
+      // picked. A tier is skipped entirely rather than shown as a loose
       // "kind of similar" match, since a mismatched RAM/GPU tier here would
       // undermine the diagnosis's own recommendation. Deliberately checked
       // against gpuTierBeforeIntelForce (the visitor's actual GPU need), not
       // built.gpuAsin — the Intel path can force a gpuMid pick onto a
       // pure-office build purely because the 225F has no iGPU, and that
       // forced pick must never be mistaken for a real gaming-tier match.
-      if (gpuTierBeforeIntelForce === 1 && ramGB <= 16 && !wantsHighCore && !wantsX3D && !competitive && !needsCuda) {
-        productPicks.push({ asin: PREBUILT_CATALOG.gamingMid, note: "自分で組まず、近い構成の完成品を買うなら" });
+      // Desktop and laptop are offered as a pair (like the Mac branch) since
+      // this diagnosis never asks form factor for Windows either.
+      if ((gpuTierBeforeIntelForce === 3 || wantsX3D) && !wantsHighCore && !needsCuda) {
+        productPicks.push({ asin: PREBUILT_CATALOG.gamingHigh, note: "自分で組まず、近い構成の完成品を買うなら(据え置き)" });
+        productPicks.push({ asin: PREBUILT_CATALOG.gamingHighLaptop, note: "持ち歩く機会があるなら(ノート)" });
+        notes.push("上記の完成品はこの診断のパーツ構成と完全に同一ではありませんが、CPU・GPU・メモリ容量が近い実売品です。");
+      } else if (gpuTierBeforeIntelForce === 2 && ramGB <= 16 && !wantsHighCore && !needsCuda) {
+        productPicks.push({ asin: PREBUILT_CATALOG.vramPriority, note: "自分で組まず、近い構成の完成品を買うなら" });
+        notes.push("上記の完成品はこの診断のパーツ構成と完全に同一ではありませんが、CPU・GPU・メモリ容量が近い実売品です。");
+      } else if (gpuTierBeforeIntelForce === 1 && ramGB <= 16 && !wantsHighCore && !wantsX3D && !competitive && !needsCuda) {
+        productPicks.push({ asin: PREBUILT_CATALOG.gamingMid, note: "自分で組まず、近い構成の完成品を買うなら(据え置き)" });
+        productPicks.push({ asin: PREBUILT_CATALOG.gamingMidLaptop, note: "持ち歩く機会があるなら(ノート)" });
         notes.push("上記の完成品はこの診断のパーツ構成と完全に同一ではありませんが、CPU・GPU・メモリ容量が近い実売品です。");
       } else if (gpuTierBeforeIntelForce === 0 && ramGB <= 16) {
-        productPicks.push({ asin: PREBUILT_CATALOG.officeBudget, note: "自分で組まず、近い構成の完成品を買うなら" });
+        productPicks.push({ asin: PREBUILT_CATALOG.officeBudget, note: "自分で組まず、近い構成の完成品を買うなら(据え置き)" });
+        productPicks.push({ asin: PREBUILT_CATALOG.officeLaptop, note: "持ち歩く機会があるなら(ノート)" });
         notes.push("上記の完成品はこの診断のパーツ構成と完全に同一ではありませんが、CPU・メモリ容量が近い実売品です。");
       }
 

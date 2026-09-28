@@ -1249,5 +1249,110 @@
     ],
     "summary": "自作PC診断のオフィス構成(Core Ultra 5・内蔵GPU)に近い、組み立て不要の完成品デスクトップPC。",
     "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0FRFSY497",
+    "name": "GALLERIA XDR7A-R57-GD (Ryzen 7 9800X3D・RTX 5070・32GB・1TB)",
+    "category": "prebuilt_pc",
+    "price": 452480,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon・ドスパラ公式ストア調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0FRFSY497",
+    "roomUrl": null,
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "自作PC診断の競技系FPS・重量級タイトル向け上位構成(X3D・RTX5070)に近いスペックを完成品として調達できる",
+      "ドスパラの実績あるBTOブランドで、サポート・保証面の安心感がある"
+    ],
+    "cons": [
+      "同スペックを自作するより割高になりやすい",
+      "ケースやパーツを自分好みに選べない",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断の上位ゲーミング構成(Ryzen 7 9800X3D・RTX 5070)に近い、組み立て不要の完成品ゲーミングPC。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0FRFP94FG",
+    "name": "GALLERIA XPR7A-R56T16G-GD (Ryzen 7 7700・RTX 5060 Ti 16GB・16GB・1TB)",
+    "category": "prebuilt_pc",
+    "price": 316180,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon・ドスパラ公式ストア調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0FRFP94FG",
+    "roomUrl": null,
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "自作PC診断のVRAM優先構成(RTX 5060 Ti 16GB)に近いスペックを完成品として調達できる",
+      "ドスパラの実績あるBTOブランドで、サポート・保証面の安心感がある"
+    ],
+    "cons": [
+      "同スペックを自作するより割高になりやすい",
+      "ケースやパーツを自分好みに選べない",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断のVRAM優先構成(RTX 5060 Ti 16GB)に近い、組み立て不要の完成品ゲーミングPC。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0GZ6GN6WJ",
+    "name": "ASUS Vivobook S14 S5406SAL (Core Ultra 5 226V・16GB・512GB)",
+    "category": "prebuilt_laptop",
+    "price": 149800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0GZ6GN6WJ",
+    "roomUrl": null,
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "自作PC診断のオフィス構成に近いスペックを、持ち歩けるノート型で調達できる",
+      "重量1.3kg・バッテリー駆動21.5時間で持ち歩きに強い"
+    ],
+    "cons": [
+      "ゲーム・動画編集など重い用途には非力",
+      "拡張性・カスタマイズ性は自作PCより低い",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断のオフィス構成に近い、持ち歩けるノート型の完成品Windows PC。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0GYDVG4FP",
+    "name": "Lenovo LOQ Essential 15IRX11 (Core i7-13650HX・RTX 5060・16GB・1TB)",
+    "category": "prebuilt_laptop",
+    "price": 309800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0GYDVG4FP",
+    "roomUrl": null,
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "自作PC診断のミドルGPU構成(RTX 5060)に近いスペックを、持ち歩けるノート型で調達できる",
+      "Lenovoブランドでサポート・保証面の安心感がある"
+    ],
+    "cons": [
+      "同スペックのデスクトップ完成品より高くなりやすい",
+      "拡張性・カスタマイズ性は自作PCより低い",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断のミドルゲーミング構成(RTX 5060)に近い、持ち歩けるノート型の完成品ゲーミングPC。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0GSV7DJHQ",
+    "name": "ASUS TUF Gaming A16 FA608UP (Ryzen 7 260・RTX 5070・16GB・512GB)",
+    "category": "prebuilt_laptop",
+    "price": 264800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0GSV7DJHQ",
+    "roomUrl": null,
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "自作PC診断の上位ゲーミング構成(RTX 5070)に近いスペックを、持ち歩けるノート型で調達できる",
+      "リフレッシュレート165Hzでゲーム・動画編集の両方に余裕がある"
+    ],
+    "cons": [
+      "同スペックのデスクトップ完成品より高くなりやすい",
+      "拡張性・カスタマイズ性は自作PCより低い",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断の上位ゲーミング構成(RTX 5070)に近い、持ち歩けるノート型の完成品ゲーミングPC。",
+    "lastChecked": "2026-09-28"
   }
 ]
