@@ -6,8 +6,16 @@
     "price": 32538,
     "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、kakaku.com調べ)",
     "url": "https://www.amazon.co.jp/dp/B0DH88QC5B",
-    "pros": ["静電容量無接点方式で打鍵感が滑らか", "APC機能で各キーの反応位置を0.8〜3.0mmの範囲で調整可能(専用アプリREALFORCE CONNECT使用)", "テンキーレスで省スペース"],
-    "cons": ["価格が高め", "タイピング音は完全な無音ではない"],
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394422416260",
+    "pros": [
+      "静電容量無接点方式で打鍵感が滑らか",
+      "APC機能で各キーの反応位置を0.8〜3.0mmの範囲で調整可能(専用アプリREALFORCE CONNECT使用)",
+      "テンキーレスで省スペース"
+    ],
+    "cons": [
+      "価格が高め",
+      "タイピング音は完全な無音ではない"
+    ],
     "summary": "長時間タイピングする人向けの高級キーボード。Note本編レビュー記事のダイジェスト版。",
     "lastChecked": "2026-09-25"
   },
@@ -18,8 +26,16 @@
     "price": 16500,
     "priceNote": "実勢価格帯の目安・変動あり(2026年8月時点、kakaku.com調べ)",
     "url": "https://www.amazon.co.jp/dp/B0B1Q6VB16",
-    "pros": ["静音クリックで在宅ワーク向き", "8000dpiの高精度センサー", "Logi Bolt / Bluetooth対応でPC切り替えがしやすい"],
-    "cons": ["手が小さいと持ちづらい", "細かい設定にLogi Options+が必要"],
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394654792375",
+    "pros": [
+      "静音クリックで在宅ワーク向き",
+      "8000dpiの高精度センサー",
+      "Logi Bolt / Bluetooth対応でPC切り替えがしやすい"
+    ],
+    "cons": [
+      "手が小さいと持ちづらい",
+      "細かい設定にLogi Options+が必要"
+    ],
     "summary": "AI作業用サブPCとメインPCを行き来する人に相性が良い高機能マウス。",
     "lastChecked": "2026-08-05"
   },
@@ -30,8 +46,14 @@
     "price": 12990,
     "priceNote": "Anker公式ストア価格・変動あり(2026年8月時点)",
     "url": "https://www.amazon.co.jp/dp/B0BYYMGW4V",
-    "pros": ["USB-C×2ポートで最大200W出力、MacBook Pro 2台を同時に急速充電可能", "残量・充電時間をデジタル表示で確認できる", "外出先での長時間AI作業に便利"],
-    "cons": ["大容量な分、重量があり携帯性はやや下がる"],
+    "pros": [
+      "USB-C×2ポートで最大200W出力、MacBook Pro 2台を同時に急速充電可能",
+      "残量・充電時間をデジタル表示で確認できる",
+      "外出先での長時間AI作業に便利"
+    ],
+    "cons": [
+      "大容量な分、重量があり携帯性はやや下がる"
+    ],
     "summary": "ノートPC＋スマホを同時に持ち歩く外出先AI作業のお供。",
     "lastChecked": "2026-08-05"
   },
@@ -42,8 +64,14 @@
     "price": 41980,
     "priceNote": "実勢価格帯の目安・変動あり(2026年8月時点、報道価格参照)",
     "url": "https://www.amazon.co.jp/dp/B0F23FWBJL",
-    "pros": ["USB-C 65W給電でノートPCとケーブル1本で接続可能", "120Hz/FreeSync Premium対応で表示がなめらか", "Amazon.co.jp限定モデルで無輝点5年保証付き"],
-    "cons": ["USB-Cハブ経由のポート自体は給電非対応(65WはノートPC充電専用)"],
+    "pros": [
+      "USB-C 65W給電でノートPCとケーブル1本で接続可能",
+      "120Hz/FreeSync Premium対応で表示がなめらか",
+      "Amazon.co.jp限定モデルで無輝点5年保証付き"
+    ],
+    "cons": [
+      "USB-Cハブ経由のポート自体は給電非対応(65WはノートPC充電専用)"
+    ],
     "summary": "AIチャット・資料・コードを並べて表示したい人向けの4Kモニター。",
     "lastChecked": "2026-08-05"
   },
@@ -54,22 +82,37 @@
     "price": 2079,
     "priceNote": "実勢価格帯の目安・変動あり(2026年8月時点、kakaku.com調べ)",
     "url": "https://www.amazon.co.jp/dp/B0C2YK1CS6",
-    "pros": ["クリック音を従来比90%軽減した静音設計", "Bluetooth/Logi Bolt対応でPC切り替えがしやすい", "電池寿命が約18ヶ月と長い"],
-    "cons": ["MX Master 3Sのような多ボタン・高精度センサーはない、あくまでシンプル機能"],
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394646756222",
+    "pros": [
+      "クリック音を従来比90%軽減した静音設計",
+      "Bluetooth/Logi Bolt対応でPC切り替えがしやすい",
+      "電池寿命が約18ヶ月と長い"
+    ],
+    "cons": [
+      "MX Master 3Sのような多ボタン・高精度センサーはない、あくまでシンプル機能"
+    ],
     "summary": "とりあえず静かで安いワイヤレスマウスが欲しい人向けのお手頃モデル。",
     "lastChecked": "2026-08-05"
   },
   {
     "asin": "B0B15B32NV",
-    "name": "MOFT ノートパソコンスタンド (2段階調整・Jet Black)",
+    "name": "MOFT AirFlow ノートパソコンスタンド (2段階調整)",
     "category": "stand",
     "price": 3480,
     "priceNote": "実勢価格帯の目安・変動あり(2026年8月時点)",
     "url": "https://www.amazon.co.jp/dp/B0B15B32NV",
-    "pros": ["3mm・約89gの極薄軽量設計で持ち運びやすい", "15°/25°の2段階角度調整", "粘着式でPC背面に直接貼り付けて使える"],
-    "cons": ["対応は15.6インチまでとやや小さめのPC向け", "粘着面は汚れると粘着力が落ちることがある"],
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394647089376",
+    "pros": [
+      "厚さ約2.5mm・約65gの薄型軽量設計で持ち運びやすい",
+      "15°/25°の2段階角度調整",
+      "粘着式でPC背面に直接貼り付けて使える"
+    ],
+    "cons": [
+      "貼り付け位置によって安定感が変わり、打鍵時に揺れを感じる場合がある",
+      "粘着面は汚れると粘着力が落ちることがある"
+    ],
     "summary": "カフェや外出先でもAI作業をする人向けの、超薄型・軽量ノートPCスタンド。",
-    "lastChecked": "2026-08-05"
+    "lastChecked": "2026-09-27"
   },
   {
     "asin": "B075PJ7V3V",
@@ -78,8 +121,15 @@
     "price": 3480,
     "priceNote": "実勢価格帯の目安・変動あり(2026年8月時点、¥3,000〜6,000程度)",
     "url": "https://www.amazon.co.jp/dp/B075PJ7V3V",
-    "pros": ["単一指向性コンデンサーマイクでAIへの音声入力がクリアになる", "三脚スタンド付属ですぐ使える", "価格の割に音質評価が高い"],
-    "cons": ["内蔵マイクに比べるとやや設置スペースを取る"],
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394647351204",
+    "pros": [
+      "単一指向性コンデンサーマイクでAIへの音声入力がクリアになる",
+      "三脚スタンド付属ですぐ使える",
+      "価格の割に音質評価が高い"
+    ],
+    "cons": [
+      "内蔵マイクに比べるとやや設置スペースを取る"
+    ],
     "summary": "AIチャットに音声入力したい人向けの、入門用USBマイク。",
     "lastChecked": "2026-08-05"
   },
@@ -90,8 +140,14 @@
     "price": 18900,
     "priceNote": "実勢価格帯の目安・変動あり(2026年8月時点、上位機種Halo2は¥26,900程度)",
     "url": "https://www.amazon.co.jp/dp/B08WT889V3",
-    "pros": ["画面の上に掛けるだけで設置完了、場所を取らない", "ワイヤレスリモコンで明るさ・色温度を調整可能", "間接照明モードもあり目の疲れを軽減"],
-    "cons": ["価格は一般的なデスクライトよりかなり高め"],
+    "pros": [
+      "画面の上に掛けるだけで設置完了、場所を取らない",
+      "ワイヤレスリモコンで明るさ・色温度を調整可能",
+      "間接照明モードもあり目の疲れを軽減"
+    ],
+    "cons": [
+      "価格は一般的なデスクライトよりかなり高め"
+    ],
     "summary": "夜のAI作業・タイピングで目が疲れやすい人向けのモニター掛け式ライト。",
     "lastChecked": "2026-08-06"
   },
@@ -102,8 +158,15 @@
     "price": 9900,
     "priceNote": "実勢価格帯の目安・変動あり(2026年8月時点、色・販売店により¥6,880〜11,880)",
     "url": "https://www.amazon.co.jp/dp/B075QZYKY9",
-    "pros": ["高密度ウレタンで沈み込みすぎない適度な硬さ", "前後で角度が異なるリバーシブル仕様", "デスク下に置くだけで足のむくみ・疲れが軽減"],
-    "cons": ["デスク下の収納スペースを取る"],
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394646918279",
+    "pros": [
+      "高密度ウレタンで沈み込みすぎない適度な硬さ",
+      "前後で角度が異なるリバーシブル仕様",
+      "デスク下に置くだけで足のむくみ・疲れが軽減"
+    ],
+    "cons": [
+      "デスク下の収納スペースを取る"
+    ],
     "summary": "座りっぱなしのAI作業で足が疲れる人向けのフットレスト。",
     "lastChecked": "2026-08-06"
   },
@@ -114,8 +177,15 @@
     "price": 1480,
     "priceNote": "実勢価格帯の目安・変動あり(2026年8月時点)",
     "url": "https://www.amazon.co.jp/dp/B09QPCQ8NJ",
-    "pros": ["15°の傾斜で手首の角度が自然になり負担が少ない", "PUレザー調で手触りが良く手入れしやすい", "1,000円台からと導入しやすい価格"],
-    "cons": ["フルキーボード用サイズなのでテンキーレスには大きすぎることがある"],
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394647451793",
+    "pros": [
+      "15°の傾斜で手首の角度が自然になり負担が少ない",
+      "PUレザー調で手触りが良く手入れしやすい",
+      "1,000円台からと導入しやすい価格"
+    ],
+    "cons": [
+      "フルキーボード用サイズなのでテンキーレスには大きすぎることがある"
+    ],
     "summary": "長時間タイピングで手首が痛くなる人向けの、まず試しやすいリストレスト。",
     "lastChecked": "2026-08-06"
   },
@@ -126,9 +196,1163 @@
     "price": 3480,
     "priceNote": "実勢価格帯の目安・変動あり(2026年8月時点、¥2,800〜3,500程度)",
     "url": "https://www.amazon.co.jp/dp/B0CQXMT3QC",
-    "pros": ["3,000円台とモニターアーム入門として手が出しやすい", "ガススプリング式で高さ・角度調整がスムーズ", "デスク上のスペースを広く使える"],
-    "cons": ["対応モニター重量・サイズの上限は事前に確認が必要"],
+    "pros": [
+      "3,000円台とモニターアーム入門として手が出しやすい",
+      "ガススプリング式で高さ・角度調整がスムーズ",
+      "デスク上のスペースを広く使える"
+    ],
+    "cons": [
+      "対応モニター重量・サイズの上限は事前に確認が必要"
+    ],
     "summary": "初めてモニターアームを試す人向けの、価格と実用性のバランスが良いモデル。",
     "lastChecked": "2026-08-06"
+  },
+  {
+    "asin": "B092L9GF5N",
+    "name": "AMD Ryzen 5 5600G (Wraith Stealthクーラー付・内蔵GPU搭載)",
+    "category": "cpu",
+    "price": 19800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)",
+    "url": "https://www.amazon.co.jp/-/en/AMD-Ryzen-5-5600G/dp/B092L9GF5N",
+    "pros": [
+      "Radeon Vega内蔵GPUでグラフィックボード不要、事務・Web・動画視聴は快適",
+      "6コア12スレッドで通常のマルチタスクに余裕",
+      "本体価格が安く2026年のGPU高騰の影響を受けにくい"
+    ],
+    "cons": [
+      "AM4・DDR4世代のため最新のAM5マザーボードとは組み合わせられない",
+      "3Dゲームは軽量タイトル・低〜中設定が中心"
+    ],
+    "summary": "グラフィックボードなしで完結させたい、一般事務・軽作業PC向けのAPU。",
+    "lastChecked": "2026-09-25"
+  },
+  {
+    "asin": "B0BS8PRCYV",
+    "name": "AMD Ryzen 5 7600 (Wraith Stealthクーラー付・Amazon.co.jp限定)",
+    "category": "cpu",
+    "price": 28800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)",
+    "url": "https://www.amazon.co.jp/%E3%80%90Amazon-co-jp%E9%99%90%E5%AE%9A%E3%80%91-AMD-Stealth-100-100001015BOX-EW-1Y/dp/B0BS8PRCYV",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394654532178",
+    "pros": [
+      "AM5プラットフォームで今後のアップグレードがしやすい",
+      "1080pゲーミングでGPU性能を引き出せる十分な処理性能",
+      "Amazon.co.jp限定モデルで3年+1年の保証"
+    ],
+    "cons": [
+      "メモリはDDR5必須(DDR4非対応)でマザーボード選びに注意"
+    ],
+    "summary": "1080pゲーミング構成の土台になる、コストパフォーマンスの良いミドルCPU。",
+    "lastChecked": "2026-09-25"
+  },
+  {
+    "asin": "B0C8BPW1SP",
+    "name": "MSI GeForce RTX 4060 VENTUS 2X BLACK 8G OC",
+    "category": "gpu",
+    "price": 52800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ、GPUは価格変動が大きめ)",
+    "url": "https://www.amazon.co.jp/MSI-RTX-4060-VENTUS-BLACK/dp/B0C8BPW1SP",
+    "pros": [
+      "1080p高設定で60fps以上を狙える定番クラス",
+      "8GB VRAMでeスポーツ〜中量級タイトルに対応",
+      "消費電力が控えめで電源ユニットの要求が緩い"
+    ],
+    "cons": [
+      "WQHD以上や重量級タイトルの高設定は力不足",
+      "2026年はGPU全般が品薄・価格高騰気味で入手性は要確認"
+    ],
+    "summary": "フルHDゲーミング構成の定番グラフィックボード。",
+    "lastChecked": "2026-09-25"
+  },
+  {
+    "asin": "B0D6NN87T8",
+    "name": "AMD Ryzen 9 9900X (12コア24スレッド・クーラーなし)",
+    "category": "cpu",
+    "price": 64980,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)",
+    "url": "https://www.amazon.co.jp/100-100000662WOF-9900X-24T%E3%80%814-4GHz%E3%80%81TDP-120W%E3%80%81AM5%E3%80%81Radeon-Graphics/dp/B0D6NN87T8",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394654531408",
+    "pros": [
+      "12コア24スレッドで動画エンコード・書き出しが速い",
+      "AM5プラットフォームでDDR5・PCIe5.0に対応",
+      "内蔵GPUもあり検証用の映像出力に困らない"
+    ],
+    "cons": [
+      "クーラー別売り(サードパーティ製クーラーが必要)",
+      "高負荷時の発熱・消費電力はミドルCPUより大きい"
+    ],
+    "summary": "4K動画編集・書き出しを重視する人向けのハイエンドCPU。",
+    "lastChecked": "2026-09-25"
+  },
+  {
+    "asin": "B0CS67885B",
+    "name": "ASUS Dual GeForce RTX 4070 SUPER OC 12GB",
+    "category": "gpu",
+    "price": 89800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ、GPUは価格変動が大きめ)",
+    "url": "https://www.amazon.co.jp/ASUS-GeForce-2%E9%80%A3%E3%83%95%E3%82%A1%E3%83%B3%E6%90%AD%E8%BC%89%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E3%83%9C%E3%83%BC%E3%83%89-DUAL-RTX4070S-O12G-%E5%9B%BD%E5%86%85%E6%AD%A3%E8%A6%8F%E6%B5%81%E9%80%9A%E5%93%81/dp/B0CS67885B",
+    "pros": [
+      "12GB VRAMでDaVinci Resolve・Premiere Proのカラーグレーディングも余裕",
+      "AV1エンコード対応で書き出しが高速",
+      "WQHDゲーミングとの兼用もしやすい"
+    ],
+    "cons": [
+      "2スロット占有・補助電源が必要でケース/電源要件を事前確認",
+      "2026年はGPU全般が品薄・価格高騰気味で入手性は要確認"
+    ],
+    "summary": "動画編集のVRAM要件を満たす、4K編集向けグラフィックボード。",
+    "lastChecked": "2026-09-25"
+  },
+  {
+    "asin": "ROOM-CT009BK",
+    "name": "サンワダイレクト ケーブルトレー 200-CT009BK(クランプ式・デスク下収納)",
+    "category": "cable",
+    "price": 4230,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394418631176",
+    "pros": [
+      "幅80/100/120cmに調整でき机のサイズに合わせやすい",
+      "クランプ固定で穴あけ不要、耐荷重5kgのスチール製",
+      "床置きの電源タップ・ケーブルをまとめて隠せて掃除しやすくなる"
+    ],
+    "cons": [
+      "対応天板厚は0.5〜4.5cm、机の脚(筋交い)との干渉は事前の採寸が必要"
+    ],
+    "summary": "床置きの電源タップ・ケーブルを机下へ移して、足元をすっきりさせるケーブルトレー。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-A9129",
+    "name": "Anker Nano Charging Station (6-in-1, 67W)",
+    "category": "charger",
+    "price": 6990,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394418555233",
+    "pros": [
+      "AC2口+USB-C2口+USB-A2口でMacBook・スマホ・イヤホンの充電を1つに集約",
+      "約100×93×19mmとコンパクトで置き場所を取らない",
+      "単ポートなら最大67Wで急速充電できる"
+    ],
+    "cons": [
+      "複数ポート同時使用時は出力が分配され最大65Wになる",
+      "充電ケーブルは別売"
+    ],
+    "summary": "MacBook・スマホ・イヤホンの充電場所を1つに集約できる多口充電ステーション。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-UGREEN65W",
+    "name": "UGREEN 65W GaN充電器(USB-C×2+USB-A×1)",
+    "category": "charger",
+    "price": 5480,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点、セール時は変動)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394422636219",
+    "pros": [
+      "折りたたみ式プラグで持ち運びしやすい",
+      "USB-C×2・USB-A×1で複数端末を同時充電できる",
+      "GaN採用で本体サイズの割に高出力"
+    ],
+    "cons": [
+      "同時接続時は出力が分配される",
+      "抜き差しのタイミングで充電が一瞬途切れる場合がある"
+    ],
+    "summary": "MacBook・スマホ・イヤホンの充電器を1つにまとめたい人向けのGaN急速充電器。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-CIOFLATSPIRAL",
+    "name": "CIO Mate Flat Spiral Cable (USB-C to USB-C)",
+    "category": "cable",
+    "price": 1980,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点、長さにより変動)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394422483381",
+    "pros": [
+      "ケーブル同士が磁力でくっつき、使わない長さを薄く巻いてまとめられる",
+      "最大240W・PD3.1対応で高出力充電にも使える",
+      "束ねるバンドが不要で机上が散らかりにくい"
+    ],
+    "cons": [
+      "データ転送は最大480Mbpsに留まり映像出力には非対応"
+    ],
+    "summary": "余った長さを磁力でまとめられる、机上のケーブル整理用USB-Cケーブル。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-CIOSPIRAL",
+    "name": "CIO スパイラルシリコンケーブル(マグネットケーブル・USB-C to USB-C)",
+    "category": "cable",
+    "price": 2180,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点、長さにより変動)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394421272235",
+    "pros": [
+      "シリコン製で柔らかく断線しにくい",
+      "最大240W対応で高出力なMacBook等の充電にも使える",
+      "マグネットでくるくるまとまり、机の上で邪魔になりにくい"
+    ],
+    "cons": [
+      "映像出力には非対応(充電・データ用途中心)"
+    ],
+    "summary": "柔らかいシリコン素材でくるくるまとまる、断線しにくいUSB-Cケーブル。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-ANKER332HUB",
+    "name": "Anker 332 USB-Cハブ(5-in-1)",
+    "category": "charger",
+    "price": 2790,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点、セール時は変動)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394421350385",
+    "pros": [
+      "HDMI(4K/30Hz)・USB-C・USB-A×2・PD入力を1台に集約",
+      "MacBookの端子不足を持ち歩ける1台で補える",
+      "データ転送は最大5Gbps"
+    ],
+    "cons": [
+      "最大85Wのパススルー充電には100W対応の充電器・ケーブルが別途必要"
+    ],
+    "summary": "MacBookの端子不足を、持ち歩ける1台のUSB-Cハブで補う。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-XPPEN12",
+    "name": "XPPen Artist 12 3rd 液晶ペンタブレット",
+    "category": "tablet",
+    "price": 34980,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394422689163",
+    "pros": [
+      "X4チップ搭載ペンで筆圧検知が自然",
+      "ショートカットキー+折りたたみスタンド内蔵ですぐ描き始められる",
+      "macOS/Windows/Android対応で環境を選ばない"
+    ],
+    "cons": [
+      "USB-C一本接続には映像出力(DP Alt Mode)対応ポートが必要",
+      "12インチ級のためデスクスペースの確保が必要"
+    ],
+    "summary": "MacBookで画面へ直接描ける環境を作りたい人向けの、12インチ級液晶ペンタブレット。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-SANWASTN079",
+    "name": "サンワダイレクト iPad用木製スタンド 200-STN079",
+    "category": "stand",
+    "price": 2530,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394418491380",
+    "pros": [
+      "6段階の角度調整でイラスト・動画視聴どちらにも使える",
+      "木製で見た目に馴染みやすく、約950gと持ち運べる重さ",
+      "耐荷重5kgでiPad+ケースでも安定しやすい"
+    ],
+    "cons": [
+      "幅29×奥行22cm以内・厚さ1.3cm以下が対応目安、ケース込みの寸法確認が必要"
+    ],
+    "summary": "iPadでイラストを描くとき、狭い机でも角度をつけられる木製スタンド。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-ANKERCARDREADER",
+    "name": "Anker USB-C 2-in-1 カードリーダー",
+    "category": "reader",
+    "price": 1590,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394422587239",
+    "pros": [
+      "USB-C直挿しでSD/microSDの両方に対応",
+      "小型で持ち運びやすい",
+      "イラスト素材やカメラ写真の取り込みがワンタッチ"
+    ],
+    "cons": [
+      "USB-AやCFカードには非対応"
+    ],
+    "summary": "イラスト素材やカメラ写真をMacBookへ移したい人向けの、小型カードリーダー。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-PRIVACYFILTER",
+    "name": "MacBook Air/Pro 覗き見防止フィルター(マグネット式)",
+    "category": "case",
+    "price": 2490,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点、サイズにより変動)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394421304345",
+    "pros": [
+      "マグネット式で必要な時だけ画面へ装着、家ではすぐ外せる",
+      "反射防止面と光沢面を用途で使い分けられる",
+      "MacBook Air M5(13.6インチ)にも対応"
+    ],
+    "cons": [
+      "装着すると画面がやや暗くなる",
+      "装着したまま蓋がわずかに閉まりきらない場合がある"
+    ],
+    "summary": "カフェなど外出先での作業で、画面の覗き見を防ぐマグネット式フィルター。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-MACCASE",
+    "name": "MacBook用ハードケース(HOGOTECH・M5対応)",
+    "category": "case",
+    "price": 2199,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点、モデルにより変動)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394419972124",
+    "pros": [
+      "厚さ約1mmの薄型ハードケースで装着感を損ねにくい",
+      "底面に放熱用の開口と滑り止め付き",
+      "本体色を生かしやすい透明色も選べる"
+    ],
+    "cons": [
+      "サイズ違いを避けるため、注文前に本体底面のモデル番号確認が必要"
+    ],
+    "summary": "MacBook Air/Proを傷から守りたい人向けの薄型ハードケース。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-SANWA100LAC003",
+    "name": "サンワダイレクト モニターアーム 100-LAC003",
+    "category": "monitorarm",
+    "price": 4480,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394423044244",
+    "pros": [
+      "32インチ・1.5〜12kgまで対応するガス式シングルアーム",
+      "VESA75/100に対応し黒/白から選べる",
+      "台座をなくして机を広く使える"
+    ],
+    "cons": [
+      "モニター重量・背面のVESA穴の有無、天板へのクランプ固定可否を事前確認"
+    ],
+    "summary": "モニターの台座をなくして机を広く使いたい人向けの、ガス式モニターアーム。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-K380S",
+    "name": "Logicool K380s ワイヤレスキーボード",
+    "category": "keyboard",
+    "price": 4800,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394422530359",
+    "pros": [
+      "Easy-Switchで最大3台を切り替えられる薄型84キー",
+      "電池寿命が最長36か月と長い",
+      "PC・タブレット・スマホを1台のキーボードで運用できる"
+    ],
+    "cons": [
+      "角度調整機能はなく、Logi Boltレシーバーは別売"
+    ],
+    "summary": "PC・タブレット・スマホを1台で切り替えたい人向けの薄型キーボード。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-M575SP",
+    "name": "Logicool ERGO M575SP トラックボール",
+    "category": "mouse",
+    "price": 7310,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点、セール時は変動)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394419882387",
+    "pros": [
+      "本体を動かさず操作でき、狭い机でもマウス動作スペースが不要",
+      "膝の上でも使える",
+      "静音クリックでBluetooth/Logi Bolt対応"
+    ],
+    "cons": [
+      "親指操作は向き不向きがあり、慣れが必要な場合がある"
+    ],
+    "summary": "狭い机で、マウスを動かす場所が足りない人向けのトラックボール。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-STREAMDECKNEO",
+    "name": "Elgato Stream Deck Neo",
+    "category": "macropad",
+    "price": 14980,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394422816251",
+    "pros": [
+      "8個のカスタムキー+情報バーでAIツールの起動や定型文貼り付けを1ボタン化",
+      "Mac/Windows対応の無料アプリで設定できる",
+      "よく使うフォルダやURLも登録できる"
+    ],
+    "cons": [
+      "初期設定が必要で、ケーブルは本体固定のUSB-C"
+    ],
+    "summary": "AIツールの起動や定型作業を1ボタンにまとめたい人向けのマクロパッド。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-SOLOCAST2",
+    "name": "HyperX SoloCast 2 USBマイク",
+    "category": "mic",
+    "price": 8980,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394422767128",
+    "pros": [
+      "単一指向性+内蔵ポップフィルター・ショックマウントで声がクリアになる",
+      "24bit/96kHz対応、タップミュート機能付き",
+      "AI音声入力やオンライン会議の声を整えたい人向け"
+    ],
+    "cons": [
+      "同梱ケーブルはUSB-C to Aのため、MacBook Airでは変換や別ケーブルが必要な場合がある"
+    ],
+    "summary": "AI音声入力やオンライン会議の声を、内蔵マイクより整えたい人向けのUSBマイク。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "ROOM-BENQHALO2",
+    "name": "BenQ ScreenBar Halo 2 モニターライト",
+    "category": "light",
+    "price": 28900,
+    "priceNote": "運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394422733802",
+    "pros": [
+      "前後ライト+自動調光で85×50cmを500ルクスで照らせる",
+      "無線リモコン付きで操作しやすい",
+      "机上を占有しにくい設置方式"
+    ],
+    "cons": [
+      "多機能な分、初代ScreenBar Haloより価格が高め",
+      "モニター厚0.43〜6cm・曲率1000R〜1800Rへの適合確認が必要"
+    ],
+    "summary": "初代ScreenBar Haloの上位機種。前後ライトと自動調光を備えたモニターライト。",
+    "lastChecked": "2026-09-26"
+  },
+  {
+    "asin": "B08G1Y95SZ",
+    "name": "ASRock A520M-HDV (AM4・Micro ATX)",
+    "category": "motherboard",
+    "price": 6980,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点)",
+    "url": "https://www.amazon.co.jp/dp/B08G1Y95SZ",
+    "pros": [
+      "Ryzen 5 5600G等のAM4・APU構成を最安クラスで組める",
+      "Micro ATXで対応ケースの選択肢が広い",
+      "DDR4メモリ対応でメモリ自体も比較的安い"
+    ],
+    "cons": [
+      "AM5(Ryzen 7000/9000番台)とは非対応、拡張性は最小限"
+    ],
+    "summary": "Ryzen 5 5600GでAPU構成を組むための、コスト最優先のAM4マザーボード。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0F3DG1NVW",
+    "name": "ASRock B650M Pro X3D WiFi (AM5・Micro ATX)",
+    "category": "motherboard",
+    "price": 16980,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点)",
+    "url": "https://www.amazon.co.jp/dp/B0F3DG1NVW",
+    "pros": [
+      "Ryzen 5 7600・Ryzen 9 9900Xなど幅広いAM5 CPUに対応",
+      "WiFi内蔵で無線LANカードを別途足す必要がない",
+      "Micro ATXでケースの選択肢が広い"
+    ],
+    "cons": [
+      "DDR5メモリ専用でAM4マザーボードとの流用は不可"
+    ],
+    "summary": "ゲーミング・動画編集向けAM5構成(Ryzen 7600/9900X)の土台になるMicro ATXマザーボード。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0CQ3WP67C",
+    "name": "インテル Core i5-14400 BOX (LGA1700・内蔵GPU搭載)",
+    "category": "cpu",
+    "price": 36970,
+    "priceNote": "Amazon.co.jp限定・国内正規代理店保証品、実勢価格帯の目安・変動あり(2026年9月時点)",
+    "url": "https://www.amazon.co.jp/dp/B0CQ3WP67C",
+    "pros": [
+      "10コア(6P+4E)・最大4.70GHzでオフィス〜軽いゲームまで幅広くこなせる",
+      "内蔵GPU搭載でグラフィックボードなしでも映像出力できる",
+      "国内正規代理店保証1年付き"
+    ],
+    "cons": [
+      "Ryzen 5 5600Gより価格は高め",
+      "本格的な4Kゲーミング・動画編集にはグラフィックボードの追加が必要"
+    ],
+    "summary": "AMDではなくIntelで組みたい人向けの、内蔵GPU搭載オフィス〜ライトゲーミングCPU。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0CMPZMGVT",
+    "name": "MSI PRO B760M-A DDR4 II (LGA1700・Micro ATX)",
+    "category": "motherboard",
+    "price": 15480,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点)",
+    "url": "https://www.amazon.co.jp/dp/B0CMPZMGVT",
+    "pros": [
+      "Core i5-14400などLGA1700 CPUに対応",
+      "DDR4メモリ対応でDDR5より総予算を抑えやすい",
+      "Micro ATXでケースの選択肢が広い"
+    ],
+    "cons": [
+      "第12〜14世代までの対応、将来の最新Intel CPUへの対応は要確認"
+    ],
+    "summary": "Core i5-14400でIntel構成を組む際の、DDR4対応・コスト重視のマザーボード。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0DQPMJ6MJ",
+    "name": "NZXT H3 Flow Micro-ATX ミドルタワーケース (ブラック)",
+    "category": "case",
+    "price": 8918,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点)",
+    "url": "https://www.amazon.co.jp/dp/B0DQPMJ6MJ",
+    "pros": [
+      "メッシュフロントで通気性が高く、フルサイズGPUも搭載可能",
+      "Micro ATXながら組みやすい内部レイアウト",
+      "背面配線対応マザーボードにも対応"
+    ],
+    "cons": [
+      "ミドルタワーのため設置スペースはそれなりに必要"
+    ],
+    "summary": "自作PC初心者でも組みやすい、通気性重視のMicro-ATXケース。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0DKT9JRF1",
+    "name": "Thermaltake TOUGHPOWER GT 750W (80PLUS GOLD)",
+    "category": "psu",
+    "price": 10586,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点)",
+    "url": "https://www.amazon.co.jp/dp/B0DKT9JRF1",
+    "pros": [
+      "80PLUS GOLD認証で変換効率が高い",
+      "750WあればRTX 5070クラスまで余裕を持って対応",
+      "ATX3.1/PCIe5.1対応で最新GPUの電源コネクタにも対応"
+    ],
+    "cons": [
+      "550Wクラスの電源より価格は高め(GPUなし・軽い構成なら過剰な出力)"
+    ],
+    "summary": "RTX 5060 Ti以上のGPUを積む、性能重視の構成向けの750W電源。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0795DP124",
+    "name": "ARCTIC MX-4 (4g・スパチュラ付属) CPU/GPU用サーマルグリス",
+    "category": "thermalpaste",
+    "price": 880,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点)",
+    "url": "https://www.amazon.co.jp/dp/B0795DP124",
+    "pros": [
+      "定番の高性能サーマルグリスで冷却性能・耐久性の実績が豊富",
+      "スパチュラ付属で塗布量の調整がしやすい",
+      "1本でCPU・GPU数回分に使える"
+    ],
+    "cons": [
+      "リテールクーラー同梱グリスからの塗り直しは手間がかかる"
+    ],
+    "summary": "CPUクーラー交換・自作PC組み立て時に必要な、定番の高性能サーマルグリス。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B08C53LL9J",
+    "name": "Crucial デスクトップ用メモリ 16GB(8GB×2枚) DDR4-3200",
+    "category": "ram",
+    "price": 24500,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、メモリ相場により大きく変動)",
+    "url": "https://www.amazon.co.jp/dp/B08C53LL9J",
+    "pros": [
+      "AM4/LGA1700など幅広いDDR4プラットフォームで使える",
+      "2枚組でデュアルチャネル動作",
+      "オフィス用途なら16GBで十分な容量"
+    ],
+    "cons": [
+      "2026年はDDR4メモリ自体の相場も上昇傾向、購入直前の価格確認が必須"
+    ],
+    "summary": "AM4/Intel DDR4構成のオフィスPC向け、16GB(8GB×2枚)の定番メモリキット。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0C2B7W1W4",
+    "name": "Crucial PRO デスクトップ用メモリ 32GB(16GB×2枚) DDR5-5600",
+    "category": "ram",
+    "price": 84980,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、DDR5高騰の影響で大きく変動)",
+    "url": "https://www.amazon.co.jp/dp/B0C2B7W1W4",
+    "pros": [
+      "AM5/LGA1700のDDR5プラットフォーム向け",
+      "32GBでゲーミング・動画編集どちらにも対応できる容量",
+      "マイクロン製チップで安定性の評価が高い"
+    ],
+    "cons": [
+      "2026年のDDR5価格高騰により、この価格帯だけでビルド予算の大部分を占める場合がある"
+    ],
+    "summary": "ゲーミング・動画編集構成向けの32GB DDR5メモリ。価格変動が大きいため購入直前の確認が必須。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0DGKMQPYC",
+    "name": "Crucial P310 1TB NVMe PCIe Gen4 M.2 SSD",
+    "category": "storage",
+    "price": 27800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点)",
+    "url": "https://www.amazon.co.jp/dp/B0DGKMQPYC",
+    "pros": [
+      "最大7,100MB/秒のGen4 SSDで動画素材の読み込みも高速",
+      "M.2スロットに挿すだけで配線不要",
+      "1TBあれば動画編集の作業用ストレージとして扱いやすい"
+    ],
+    "cons": [
+      "マザーボード側のM.2スロットがGen4対応か事前確認が必要"
+    ],
+    "summary": "OS・アプリ・動画編集素材を高速に読み書きできる、1TBのNVMe Gen4 SSD。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B09NZB9Z9Z",
+    "name": "Thermalright Peerless Assassin 120 SE CPUクーラー",
+    "category": "cooler",
+    "price": 5079,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点)",
+    "url": "https://www.amazon.co.jp/dp/B09NZB9Z9Z",
+    "pros": [
+      "AMD AM4/AM5・Intel LGA1700など主要ソケットに幅広く対応",
+      "デュアルタワー・6本ヒートパイプで空冷としては高い冷却性能",
+      "この価格帯としては簡易水冷に迫る冷却力とコスパの評価が高い"
+    ],
+    "cons": [
+      "デュアルタワー構造のためケース内のクリアランス(メモリ・ケースサイズ)を要確認"
+    ],
+    "summary": "クーラー非同梱のRyzen 9 9900Xなどに必要な、コスパに優れた空冷CPUクーラー。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0B55YL7TP",
+    "name": "Fractal Design Pop Silent Black Solid ミドルタワーケース",
+    "category": "case",
+    "price": 13270,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点)",
+    "url": "https://www.amazon.co.jp/dp/B0B55YL7TP",
+    "pros": [
+      "密閉式フロント/トップと吸音フォーム貼付サイドパネルで動作音を抑えやすい",
+      "120mmファン3基標準付属",
+      "ATX/Micro-ATX/Mini-ITXいずれにも対応"
+    ],
+    "cons": [
+      "密閉構造のぶん、同価格帯のメッシュケースよりエアフローは控えめ(高発熱構成では要注意)"
+    ],
+    "summary": "性能より静かさを優先したい人向けの、吸音パネル付きミドルタワーケース。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0DGKTMN6L",
+    "name": "Crucial P310 2TB NVMe PCIe Gen4 M.2 SSD",
+    "category": "storage",
+    "price": 59980,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点)",
+    "url": "https://www.amazon.co.jp/dp/B0DGKTMN6L",
+    "pros": [
+      "最大7,100MB/秒のGen4 SSDで大容量でも読み込みが速い",
+      "動画編集の素材や大量のイラストデータを1台にまとめやすい",
+      "M.2スロットに挿すだけで配線不要"
+    ],
+    "cons": [
+      "1TBモデルよりGB単価は割高"
+    ],
+    "summary": "素材データが多い動画編集・イラスト制作向けの、2TB大容量NVMe SSD。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0DKFMSMYK",
+    "name": "AMD Ryzen 7 9800X3D (8コア16スレッド・クーラーなし)",
+    "category": "cpu",
+    "price": 57630,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0DKFMSMYK",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394772904244",
+    "pros": [
+      "3D V-Cacheで競技系FPS(VALORANT・Apex等)のfpsが頭一つ抜ける",
+      "ゲーム配信を同時にしても余裕のあるコア数",
+      "AM5マザーボードをそのまま使える(次世代Zen 6もAM5継続見込み)"
+    ],
+    "cons": [
+      "クーラー別売り",
+      "事務用途には明らかにオーバースペック"
+    ],
+    "summary": "競技系のfpsを最優先したい人向けのゲーミング最上位CPU。PC診断で「240fps以上を狙う競技FPS」を選んだ人に提案。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0DT2WX4X8",
+    "name": "インテル Core Ultra 5 225F (Amazon.co.jp限定・国内正規代理店保証1年付)",
+    "category": "cpu",
+    "price": 32250,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0DT2WX4X8",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394772887355",
+    "pros": [
+      "Core i5-14400より安価で性能も上",
+      "L2キャッシュ増量・DDR5-6400対応など地力が向上",
+      "13/14世代のような不安定化問題が報告されていない新設計"
+    ],
+    "cons": [
+      "F付きのため内蔵GPUなし(モニター出力にグラボが必須)",
+      "LGA1851用の新しいマザーボードが必要(旧LGA1700マザーとは非互換)"
+    ],
+    "summary": "2026年時点のIntelコスパ枠。旧世代のCore i5-14400の後継として診断に採用。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B09VCHR1VH",
+    "name": "AMD Ryzen 5 5600 (Wraith Stealthクーラー付・AM4)",
+    "category": "cpu",
+    "price": 22980,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B09VCHR1VH",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394772897120",
+    "pros": [
+      "DDR4対応のAM4プラットフォームなのでメモリ高騰の影響を受けにくい",
+      "6コア12スレッドでフルHDゲーミングなら十分な性能",
+      "クーラー付属"
+    ],
+    "cons": [
+      "内蔵GPUなし(グラボが必須)",
+      "AM4は今後の世代アップグレードがない旧プラットフォーム"
+    ],
+    "summary": "2026年のDDR5高騰を避けたい人向けのAM4构成用CPU。ディスクリートGPUと組み合わせて使う。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0972BP9YR",
+    "name": "MSI GeForce RTX 5060 8G VENTUS 2X OC",
+    "category": "gpu",
+    "price": 65455,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0972BP9YR",
+    "roomUrl": null,
+    "pros": [
+      "Blackwell世代・DLSS 4対応でフルHD〜WQHD高fpsが狙える",
+      "旧世代RTX 4060より低消費電力",
+      "価格と性能のバランスが良い定番モデル"
+    ],
+    "cons": [
+      "VRAM 8GBは最新の重量級タイトルでは条件付き(設定を上げすぎると不足気味)",
+      "4K・AI画像生成にはVRAM不足"
+    ],
+    "summary": "現行世代のミドルクラスGPU。フルHD〜WQHDゲーミングの標準構成として診断で採用。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0F4XC69KL",
+    "name": "Palit GeForce RTX 5060 Ti Infinity 3 16GB",
+    "category": "gpu",
+    "price": 129800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0F4XC69KL",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394772931253",
+    "pros": [
+      "VRAM 16GBでAI画像生成(SDXL快適ライン)や重量級ゲームに余裕",
+      "NVIDIA製なのでローカルAI・CUDA系ツールとの相性が良い",
+      "4K動画編集のプレビューも安定"
+    ],
+    "cons": [
+      "8GB版より3万円以上高い",
+      "VRAM以外の演算性能は同クラスのRTX 5070よりは劣る"
+    ],
+    "summary": "VRAM容量を最優先したい人向け。AI画像生成やゲーム配信同時進行など、VRAMを食う用途で診断が提案。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0FY2G9YGH",
+    "name": "XFX Swift AMD Radeon RX 9060 XT OC 16GB Gaming Edition",
+    "category": "gpu",
+    "price": 78800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0FY2G9YGH",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394772942205",
+    "pros": [
+      "VRAM 16GBをRTX 5060 Ti 16GBより5万円ほど安く確保できる",
+      "レイトレを使わない通常描画ならRTX 5060 Tiに迫る性能"
+    ],
+    "cons": [
+      "CUDA非対応のため、AI画像生成・ローカルLLM用途には推奨できない",
+      "DLSSに相当するFSRの画質はタイトルによって差がある"
+    ],
+    "summary": "AI用途を使わず、ゲームのVRAM容量だけをコスパ良く確保したい人向けのAMD GPU。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0DX7JJ87N",
+    "name": "MSI GeForce RTX 5070 12G VENTUS 2X OC",
+    "category": "gpu",
+    "price": 152679,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0DX7JJ87N",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394772947187",
+    "pros": [
+      "WQHD高fps・4Kゲーミングの現行世代の標準ライン",
+      "4K動画編集のカラーグレーディングでも余裕のあるVRAM",
+      "旧世代RTX 4070 SUPERより高効率"
+    ],
+    "cons": [
+      "ミドルクラスGPUの倍以上の価格",
+      "競技FPSだけが目的ならオーバースペック(ボトルネックはCPU側)"
+    ],
+    "summary": "WQHD以上・4K編集など、性能を妥協したくない人向けの上位GPU。旧カタログのRTX 4070 SUPERから世代更新。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0DRTV8HQY",
+    "name": "ASRock B860 Pro RS WiFi (LGA1851・DDR5・ATX)",
+    "category": "motherboard",
+    "price": 18780,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0DRTV8HQY",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394772893417",
+    "pros": [
+      "Core Ultra 200S(LGA1851)シリーズに対応",
+      "Wi-Fi 6E内蔵で子機が不要",
+      "ATXサイズで拡張性も十分"
+    ],
+    "cons": [
+      "旧世代のLGA1700マザーボードとは互換性なし",
+      "DDR4版は存在しないためメモリはDDR5必須"
+    ],
+    "summary": "Core Ultra 5 225F用のマザーボード。Wi-Fi内蔵で無線接続の悩みも解消。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0BD4SRW3H",
+    "name": "CORSAIR VENGEANCE DDR5 64GB(32GB×2) 5600MHz",
+    "category": "ram",
+    "price": 135992,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ・2026年のDRAM高騰により高値)",
+    "url": "https://www.amazon.co.jp/dp/B0BD4SRW3H",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394772956136",
+    "pros": [
+      "4K動画編集やAI用途で推奨される64GBを2枚組(4枚挿しなしで安定動作)",
+      "AMD・Intel両対応"
+    ],
+    "cons": [
+      "2026年のメモリ高騰で通常より大幅に高い価格",
+      "32GBキットの1.5倍以上の価格差"
+    ],
+    "summary": "本格的な4K動画編集・大規模AIモデル用途向けの64GBメモリキット。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0D1K9NX2T",
+    "name": "TP-Link WiFi 6 USB無線LAN子機 AX1800",
+    "category": "wifi",
+    "price": 2560,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0D1K9NX2T",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394772911206",
+    "pros": [
+      "Wi-Fi非搭載のマザーボードでも後から無線化できる",
+      "USB接続で取り付けが簡単",
+      "価格が手頃"
+    ],
+    "cons": [
+      "内蔵Wi-Fiより電波感度がやや劣る場合がある"
+    ],
+    "summary": "有線LANが引けない部屋で、Wi-Fi非搭載マザーボードと組み合わせる時の追加パーツ。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0F1FW31Y8",
+    "name": "ADATA DDR5 16GB(8GB×2) 5600MHz U-DIMM デスクトップ用",
+    "category": "ram",
+    "price": 37500,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ・2026年のDRAM高騰により高値)",
+    "url": "https://www.amazon.co.jp/dp/B0F1FW31Y8",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394772924211",
+    "pros": [
+      "DDR5対応マザーボードで、32GBまでは不要な軽い用途向け",
+      "2枚挿しでデュアルチャネル動作"
+    ],
+    "cons": [
+      "2026年のメモリ高騰で16GBでも高価格",
+      "32GBキットとの価格差が小さいため、余裕があれば32GBを推奨"
+    ],
+    "summary": "DDR5専用マザーボード(Intel Core Ultra 200Sなど)で、事務用途など軽い用途向けの最小構成メモリ。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B098XP1Y38",
+    "name": "Noctua NH-U12A chromax.black CPUクーラー",
+    "category": "cooler",
+    "price": 15980,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B098XP1Y38",
+    "roomUrl": null,
+    "pros": [
+      "NF-A12x25 PWMファン搭載で、性能の割に動作音が静か",
+      "AM5・LGA1851など主要ソケットにSecuFirm2マウントで対応",
+      "6年保証と実績のあるブランド"
+    ],
+    "cons": [
+      "Thermalright Peerless Assassinより価格が高め",
+      "存在感のあるサイズでケースのクリアランス確認が必要"
+    ],
+    "summary": "静音性を重視する人向けの高性能空冷CPUクーラー。9800X3D・9900Xクラスの発熱でも静かに冷やしたい場合に。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0CLL6896M",
+    "name": "CORSAIR CX550 550W電源ユニット (80PLUS Bronze・モジュラー式)",
+    "category": "psu",
+    "price": 6464,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0CLL6896M",
+    "roomUrl": null,
+    "pros": [
+      "内蔵GPUのみ・ミドルクラスGPUまでの構成には十分な550W",
+      "必要なケーブルだけ挿すモジュラー式で配線がすっきりする",
+      "750Wモデルより安く、無駄な出力を持たずに済む"
+    ],
+    "cons": [
+      "上位クラスのGPU(RTX 5060 Ti以上)を後から追加する場合は容量不足になりうる"
+    ],
+    "summary": "内蔵GPU構成やミドルクラスGPUまでの自作PC向けの、無駄のない550W電源。",
+    "lastChecked": "2026-09-27"
+  },
+  {
+    "asin": "B0HGGGHGRP",
+    "name": "Apple Mac mini (M6・12コアCPU/12コアGPU・16GB・512GB)",
+    "category": "mac_desktop",
+    "price": 185800,
+    "priceNote": "Apple公式価格・2026年9月時点(Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0HGGGHGRP",
+    "roomUrl": null,
+    "pros": [
+      "書類作成・Web閲覧・AIチャット中心なら十分すぎる性能",
+      "自作PCより静音・省スペースで、組み立ての手間もない",
+      "iPhone・iPadとの連係(AirDrop・Handoff等)が違和感なく使える"
+    ],
+    "cons": [
+      "モニター・キーボード・マウスは別売り",
+      "Windows専用ソフトは動かない",
+      "メモリ・ストレージは購入後に増設できない"
+    ],
+    "summary": "自作PC診断でApple連携ニーズがあり、かつ据え置き・軽い用途と判定された人向けのMac mini基本構成。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0HGGMDZ63",
+    "name": "Apple Mac mini (M5 Pro・15コアCPU/16コアGPU・24GB・512GB)",
+    "category": "mac_desktop",
+    "price": 299800,
+    "priceNote": "Apple公式価格・2026年9月時点(Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0HGGMDZ63",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394831210630",
+    "pros": [
+      "Premiere Pro・DaVinci Resolveでも快適に動くApple Siliconの上位モデル",
+      "統合メモリ24GBでVRAM不足に悩みにくい",
+      "複数用途(編集+AI処理など)を同時にこなしたい人向けの余裕"
+    ],
+    "cons": [
+      "自作PC診断のミドル〜上位Windows構成より価格が高くなりやすい",
+      "モニター・キーボード・マウスは別売り",
+      "Windows専用ソフト・NVIDIA GPU前提のツールは使えない"
+    ],
+    "summary": "自作PC診断でApple連携ニーズがあり、動画編集など重い用途と判定された人向けのMac mini上位構成。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0GR1T11D6",
+    "name": "Apple MacBook Air 13インチ (M5・16GB・512GB)",
+    "category": "mac_laptop",
+    "price": 224800,
+    "priceNote": "Apple公式価格・2026年9月時点(Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0GR1T11D6",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394831218267",
+    "pros": [
+      "ファンレスで静音・薄型軽量、持ち歩きに強い",
+      "iPhone・iPadとの連係(AirDrop・Handoff等)をそのまま使える",
+      "バッテリー持ちが良く、電源を気にせず作業できる"
+    ],
+    "cons": [
+      "拡張性がなく、あとからメモリ・ストレージを増やせない",
+      "Windows専用ソフトは動かない",
+      "重いゲーム・動画編集には非力"
+    ],
+    "summary": "自作PC診断でApple連携ニーズがあり、持ち歩く機会が多いと判定された人向けのMacBook Air基本構成。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0FWF4M2HP",
+    "name": "Apple MacBook Pro 14インチ (M5・16GB・1TB)",
+    "category": "mac_laptop",
+    "price": 339800,
+    "priceNote": "Apple公式価格・2026年9月時点(Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0FWF4M2HP",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394831227206",
+    "pros": [
+      "Liquid Retina XDRディスプレイと本体だけで、外出先でも4K編集が完結する",
+      "Apple Siliconのハードウェアエンコードでエンコード・書き出しが速い",
+      "1TB SSDで動画素材もある程度余裕を持って持ち歩ける"
+    ],
+    "cons": [
+      "自作PC診断のミドル〜上位Windows構成より価格が高くなりやすい",
+      "Windows専用ソフト・NVIDIA GPU前提のツールは使えない",
+      "重量・サイズはMacBook Airより増える"
+    ],
+    "summary": "自作PC診断でApple連携ニーズがあり、持ち歩きながら動画編集などの重い用途もこなしたい人向けのMacBook Pro構成。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0DV6WJ88D",
+    "name": "Satechi Mac mini用 ハブ&スタンド (M6/M5 Pro/M4対応・NVMe SSDケース搭載)",
+    "category": "hub",
+    "price": 16450,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0DV6WJ88D",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394831232244",
+    "pros": [
+      "Mac miniを持ち上げて設置でき、底面の吸排気を妨げない",
+      "USBポート・SDカードスロットなどを増設でき、背面の抜き挿しが減る",
+      "NVMe SSDケースを内蔵でき、外部ストレージを目立たず増設できる"
+    ],
+    "cons": [
+      "Mac mini本体より重量・サイズが増える",
+      "Mac mini以外の用途では使えない"
+    ],
+    "summary": "Mac miniを自作PC診断のおすすめとして選んだ人向けの、ポート不足を解消するハブ&スタンド。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0G25S1199",
+    "name": "GALLERIA XGR7M-R56-WL (Ryzen 7 5700X・RTX 5060・16GB・500GB)",
+    "category": "prebuilt_pc",
+    "price": 239880,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon・ドスパラ公式ストア調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0G25S1199",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394831250647",
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "この診断のミドルGPU構成に近いスペックを完成品として調達できる",
+      "ドスパラの実績あるBTOブランドで、サポート・保証面の安心感がある"
+    ],
+    "cons": [
+      "同スペックを自作するより割高になりやすい",
+      "ケースやパーツを自分好みに選べない",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断のミドルGPU構成(Ryzen 7 5700X・RTX 5060)に近い、組み立て不要の完成品ゲーミングPC。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0F4R72GYM",
+    "name": "Dell Slim ECS1250 (Core Ultra 5 225・16GB・512GB)",
+    "category": "prebuilt_pc",
+    "price": 199800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0F4R72GYM",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394831254252",
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "内蔵GPUのみでこの診断のオフィス構成に近いスペックを調達できる",
+      "Dellブランドでサポート・保証面の安心感がある"
+    ],
+    "cons": [
+      "ゲーム・動画編集など重い用途には非力",
+      "拡張性・カスタマイズ性は自作PCより低い",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断のオフィス構成(Core Ultra 5・内蔵GPU)に近い、組み立て不要の完成品デスクトップPC。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0FRFSY497",
+    "name": "GALLERIA XDR7A-R57-GD (Ryzen 7 9800X3D・RTX 5070・32GB・1TB)",
+    "category": "prebuilt_pc",
+    "price": 452480,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon・ドスパラ公式ストア調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0FRFSY497",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394833600268",
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "自作PC診断の競技系FPS・重量級タイトル向け上位構成(X3D・RTX5070)に近いスペックを完成品として調達できる",
+      "ドスパラの実績あるBTOブランドで、サポート・保証面の安心感がある"
+    ],
+    "cons": [
+      "同スペックを自作するより割高になりやすい",
+      "ケースやパーツを自分好みに選べない",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断の上位ゲーミング構成(Ryzen 7 9800X3D・RTX 5070)に近い、組み立て不要の完成品ゲーミングPC。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0FRFP94FG",
+    "name": "GALLERIA XPR7A-R56T16G-GD (Ryzen 7 7700・RTX 5060 Ti 16GB・16GB・1TB)",
+    "category": "prebuilt_pc",
+    "price": 316180,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon・ドスパラ公式ストア調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0FRFP94FG",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394833604792",
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "自作PC診断のVRAM優先構成(RTX 5060 Ti 16GB)に近いスペックを完成品として調達できる",
+      "ドスパラの実績あるBTOブランドで、サポート・保証面の安心感がある"
+    ],
+    "cons": [
+      "同スペックを自作するより割高になりやすい",
+      "ケースやパーツを自分好みに選べない",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断のVRAM優先構成(RTX 5060 Ti 16GB)に近い、組み立て不要の完成品ゲーミングPC。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0GZ6GN6WJ",
+    "name": "ASUS Vivobook S14 S5406SAL (Core Ultra 5 226V・16GB・512GB)",
+    "category": "prebuilt_laptop",
+    "price": 149800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0GZ6GN6WJ",
+    "roomUrl": "https://room.rakuten.co.jp/aidesklabo/1700394833611331",
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "自作PC診断のオフィス構成に近いスペックを、持ち歩けるノート型で調達できる",
+      "重量1.3kg・バッテリー駆動21.5時間で持ち歩きに強い"
+    ],
+    "cons": [
+      "ゲーム・動画編集など重い用途には非力",
+      "拡張性・カスタマイズ性は自作PCより低い",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断のオフィス構成に近い、持ち歩けるノート型の完成品Windows PC。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0GYDVG4FP",
+    "name": "Lenovo LOQ Essential 15IRX11 (Core i7-13650HX・RTX 5060・16GB・1TB)",
+    "category": "prebuilt_laptop",
+    "price": 309800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0GYDVG4FP",
+    "roomUrl": null,
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "自作PC診断のミドルGPU構成(RTX 5060)に近いスペックを、持ち歩けるノート型で調達できる",
+      "Lenovoブランドでサポート・保証面の安心感がある"
+    ],
+    "cons": [
+      "同スペックのデスクトップ完成品より高くなりやすい",
+      "拡張性・カスタマイズ性は自作PCより低い",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断のミドルゲーミング構成(RTX 5060)に近い、持ち歩けるノート型の完成品ゲーミングPC。",
+    "lastChecked": "2026-09-28"
+  },
+  {
+    "asin": "B0GSV7DJHQ",
+    "name": "ASUS TUF Gaming A16 FA608UP (Ryzen 7 260・RTX 5070・16GB・512GB)",
+    "category": "prebuilt_laptop",
+    "price": 264800,
+    "priceNote": "実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)",
+    "url": "https://www.amazon.co.jp/dp/B0GSV7DJHQ",
+    "roomUrl": null,
+    "pros": [
+      "自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える",
+      "自作PC診断の上位ゲーミング構成(RTX 5070)に近いスペックを、持ち歩けるノート型で調達できる",
+      "リフレッシュレート165Hzでゲーム・動画編集の両方に余裕がある"
+    ],
+    "cons": [
+      "同スペックのデスクトップ完成品より高くなりやすい",
+      "拡張性・カスタマイズ性は自作PCより低い",
+      "在庫・価格は変動しやすい"
+    ],
+    "summary": "自作PC診断の上位ゲーミング構成(RTX 5070)に近い、持ち歩けるノート型の完成品ゲーミングPC。",
+    "lastChecked": "2026-09-28"
   }
 ]

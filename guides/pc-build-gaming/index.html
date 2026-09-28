@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自作PC構成ガイド ゲーミング編(2026年9月版) | AI Desk Labo</title>
+<meta name="description" content="フルHD高fpsを狙うゲーミングPCを、何から決めるべきかという優先順位で解説。マザーボードからケース・電源までのフルパーツと、Intel派の選択肢も紹介します。">
+<link rel="canonical" href="https://aidesklabo.com/guides/pc-build-gaming/">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../../assets/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Desk Labo">
+<meta property="og:title" content="自作PC構成ガイド ゲーミング編(2026年9月版) | AI Desk Labo">
+<meta property="og:description" content="フルHD高fpsを狙うゲーミングPCを、何から決めるべきかという優先順位で解説。マザーボードからケース・電源までのフルパーツと、Intel派の選択肢も紹介します。">
+<meta property="og:url" content="https://aidesklabo.com/guides/pc-build-gaming/">
+<meta property="og:image" content="https://aidesklabo.com/assets/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="自作PC構成ガイド ゲーミング編(2026年9月版) | AI Desk Labo">
+<meta name="twitter:description" content="フルHD高fpsを狙うゲーミングPCを、何から決めるべきかという優先順位で解説。マザーボードからケース・電源までのフルパーツと、Intel派の選択肢も紹介します。">
+<meta name="twitter:site" content="@yu_aidesklabo">
+<meta name="twitter:image" content="https://aidesklabo.com/assets/og-image.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;800;900&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M4L5M94YCB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M4L5M94YCB');
+</script>
+</head>
+<body>
+<div class="loader" aria-hidden="true"><span class="loader-mark">AI DESK LABO</span></div>
+<div class="progress-bar" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">
+      <span class="logo-badge">AI</span>
+      <span>AI DESK LABO</span>
+    </a>
+    <nav class="site-nav">
+      <a href="../../rankings/">ランキング</a>
+      <a href="../../reviews/">レビュー</a>
+      <a href="../../compare/">比較</a>
+      <a href="../../guides/">ガイド</a>
+      <a href="../../diagnosis/">診断</a>
+      <a href="../../search/">検索</a>
+      <a href="../../favorites/" class="nav-fav">気になる<span class="nav-fav-count" data-fav-count hidden></span></a>
+      <a href="../../about.html">About</a>
+    </nav>
+    <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+<main>
+<section class="section" data-reveal=""><div class="wrap"><div class="title-row"><p class="eyebrow">ガイド<span class="eyebrow-en">Guide</span></p><a class="pr-badge" href="../../disclosure.html" title="広告・アフィリエイトリンクを含みます">PR</a></div><h1>自作PC構成ガイド ゲーミング編(2026年9月版)</h1><p class="updated">最終更新日: 2026-09-27</p><nav class="toc"><p class="toc-title">この記事の目次</p><ol><li><a href="#h-1">STEP1: GPUを決める(フレームレートの土台)</a></li><li><a href="#h-2">STEP2: CPUを決める(GPUの足を引っ張らない程度でOK)</a></li><li><a href="#h-3">AMD構成のフルパーツ一覧</a></li><li><a href="#h-4">Intelで組む場合</a></li><li><a href="#h-5">予算に余裕があれば(WQHD以上を狙う場合)</a></li><li><a href="#h-6">正直に言うと、ゲーミングにMacは向きません</a></li></ol></nav><article><p>ゲーミングPCの自作は「まずGPUを決めて、それに見合うCPUを合わせる」のが基本です。2026年はGPU自体の品薄・価格高騰が続いているため、欲しい解像度・fpsから逆算して予算内で買えるGPUを先に確定させることが、以前よりさらに重要になっています。</p>
+<h2 id="h-1">STEP1: GPUを決める(フレームレートの土台)</h2>
+<p>フルHD(1080p)で高設定・60fps以上を安定して狙うなら、RTX 5060クラスが今の定番です。eスポーツタイトル(Valorant、CS2など)なら144fps以上も現実的です。</p>
+<div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="8" cy="12" r="2.1"/><circle cx="14" cy="12" r="2.1"/><line x1="19" y1="7" x2="19" y2="4"/><line x1="4.5" y1="17" x2="4.5" y2="20"/></svg></span><span class="badge orange">GPU</span><button type="button" class="fav-btn" data-fav-asin="B0972BP9YR" aria-label="気になるリストに追加"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg></button></div>
+  <h3>MSI GeForce RTX 5060 8G VENTUS 2X OC</h3>
+  <p class="price"><span class="num-mono">¥65,455</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>
+  <p>現行世代のミドルクラスGPU。フルHD〜WQHDゲーミングの標準構成として診断で採用。</p>
+  <ul><li>◎ Blackwell世代・DLSS 4対応でフルHD〜WQHD高fpsが狙える</li><li>◎ 旧世代RTX 4060より低消費電力</li><li>◎ 価格と性能のバランスが良い定番モデル</li><li>△ VRAM 8GBは最新の重量級タイトルでは条件付き(設定を上げすぎると不足気味)</li><li>△ 4K・AI画像生成にはVRAM不足</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0972BP9YR?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+<h2 id="h-2">STEP2: CPUを決める(GPUの足を引っ張らない程度でOK)</h2>
+<p>GPUより高いCPUを積んでも1080pゲーミングでは効果が薄いため、「GPUの性能を引き出せる」程度のミドルクラスで十分です。Ryzen 5 7600はAM5プラットフォームなので、今後CPUだけをアップグレードする余地も残せます。</p>
+<div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.5"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></svg></span><span class="badge blue">CPU</span><button type="button" class="fav-btn" data-fav-asin="B0BS8PRCYV" aria-label="気になるリストに追加"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg></button></div>
+  <h3>AMD Ryzen 5 7600 (Wraith Stealthクーラー付・Amazon.co.jp限定)</h3>
+  <p class="price"><span class="num-mono">¥28,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)</p>
+  <p>1080pゲーミング構成の土台になる、コストパフォーマンスの良いミドルCPU。</p>
+  <ul><li>◎ AM5プラットフォームで今後のアップグレードがしやすい</li><li>◎ 1080pゲーミングでGPU性能を引き出せる十分な処理性能</li><li>◎ Amazon.co.jp限定モデルで3年+1年の保証</li><li>△ メモリはDDR5必須(DDR4非対応)でマザーボード選びに注意</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/%E3%80%90Amazon-co-jp%E9%99%90%E5%AE%9A%E3%80%91-AMD-Stealth-100-100001015BOX-EW-1Y/dp/B0BS8PRCYV?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a><a class="btn-room" href="https://room.rakuten.co.jp/aidesklabo/1700394654532178" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>楽天ROOMで見る</a></div>
+</div></div>
+<h2 id="h-3">AMD構成のフルパーツ一覧</h2>
+<p>Ryzen 5 7600はAM5ソケット・DDR5メモリ専用です。B650系のマザーボード+DDR5メモリ32GB(16GB×2)を組み合わせるのが定番構成。DDR5メモリは2026年に大きく値上がりしているため、購入直前に価格を必ず確認してください。CPUクーラーはRyzen 5 7600に付属するWraith Stealthで足りるため、別途購入は不要です。</p>
+<div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="3" width="18" height="18" rx="1.5"/><rect x="7" y="7" width="6" height="6" rx="0.5"/><line x1="3" y1="9.5" x2="1" y2="9.5"/><line x1="3" y1="13.5" x2="1" y2="13.5"/><line x1="21" y1="9.5" x2="23" y2="9.5"/><line x1="21" y1="13.5" x2="23" y2="13.5"/><line x1="16" y1="16" x2="19" y2="16"/><line x1="16" y1="18.5" x2="19" y2="18.5"/></svg></span><span class="badge green">マザーボード</span><button type="button" class="fav-btn" data-fav-asin="B0F3DG1NVW" aria-label="気になるリストに追加"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg></button></div>
+  <h3>ASRock B650M Pro X3D WiFi (AM5・Micro ATX)</h3>
+  <p class="price"><span class="num-mono">¥16,980</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>ゲーミング・動画編集向けAM5構成(Ryzen 7600/9900X)の土台になるMicro ATXマザーボード。</p>
+  <ul><li>◎ Ryzen 5 7600・Ryzen 9 9900Xなど幅広いAM5 CPUに対応</li><li>◎ WiFi内蔵で無線LANカードを別途足す必要がない</li><li>◎ Micro ATXでケースの選択肢が広い</li><li>△ DDR5メモリ専用でAM4マザーボードとの流用は不可</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0F3DG1NVW?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="2" width="12" height="20" rx="1"/><line x1="9" y1="5" x2="9" y2="8.5"/><line x1="12" y1="5" x2="12" y2="8.5"/><line x1="15" y1="5" x2="15" y2="8.5"/><line x1="9" y1="12" x2="9" y2="15.5"/><line x1="12" y1="12" x2="12" y2="15.5"/><line x1="15" y1="12" x2="15" y2="15.5"/></svg></span><span class="badge blue">メモリ</span><button type="button" class="fav-btn" data-fav-asin="B0C2B7W1W4" aria-label="気になるリストに追加"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg></button></div>
+  <h3>Crucial PRO デスクトップ用メモリ 32GB(16GB×2枚) DDR5-5600</h3>
+  <p class="price"><span class="num-mono">¥84,980</span>実勢価格帯の目安・変動あり(2026年9月時点、DDR5高騰の影響で大きく変動)</p>
+  <p>ゲーミング・動画編集構成向けの32GB DDR5メモリ。価格変動が大きいため購入直前の確認が必須。</p>
+  <ul><li>◎ AM5/LGA1700のDDR5プラットフォーム向け</li><li>◎ 32GBでゲーミング・動画編集どちらにも対応できる容量</li><li>◎ マイクロン製チップで安定性の評価が高い</li><li>△ 2026年のDDR5価格高騰により、この価格帯だけでビルド予算の大部分を占める場合がある</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0C2B7W1W4?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8" cy="12" r="2"/><line x1="14" y1="10" x2="18" y2="10"/><line x1="14" y1="14" x2="18" y2="14"/></svg></span><span class="badge orange">SSD</span><button type="button" class="fav-btn" data-fav-asin="B0DGKMQPYC" aria-label="気になるリストに追加"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg></button></div>
+  <h3>Crucial P310 1TB NVMe PCIe Gen4 M.2 SSD</h3>
+  <p class="price"><span class="num-mono">¥27,800</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>OS・アプリ・動画編集素材を高速に読み書きできる、1TBのNVMe Gen4 SSD。</p>
+  <ul><li>◎ 最大7,100MB/秒のGen4 SSDで動画素材の読み込みも高速</li><li>◎ M.2スロットに挿すだけで配線不要</li><li>◎ 1TBあれば動画編集の作業用ストレージとして扱いやすい</li><li>△ マザーボード側のM.2スロットがGen4対応か事前確認が必要</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0DGKMQPYC?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/></svg></span><span class="badge blue">ケース</span><button type="button" class="fav-btn" data-fav-asin="B0DQPMJ6MJ" aria-label="気になるリストに追加"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg></button></div>
+  <h3>NZXT H3 Flow Micro-ATX ミドルタワーケース (ブラック)</h3>
+  <p class="price"><span class="num-mono">¥8,918</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>自作PC初心者でも組みやすい、通気性重視のMicro-ATXケース。</p>
+  <ul><li>◎ メッシュフロントで通気性が高く、フルサイズGPUも搭載可能</li><li>◎ Micro ATXながら組みやすい内部レイアウト</li><li>◎ 背面配線対応マザーボードにも対応</li><li>△ ミドルタワーのため設置スペースはそれなりに必要</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0DQPMJ6MJ?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="2" y="6" width="20" height="12" rx="1.5"/><circle cx="9" cy="12" r="3.2"/><line x1="15.5" y1="9" x2="18.5" y2="9"/><line x1="15.5" y1="15" x2="18.5" y2="15"/></svg></span><span class="badge orange">電源ユニット</span><button type="button" class="fav-btn" data-fav-asin="B0DKT9JRF1" aria-label="気になるリストに追加"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg></button></div>
+  <h3>Thermaltake TOUGHPOWER GT 750W (80PLUS GOLD)</h3>
+  <p class="price"><span class="num-mono">¥10,586</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>RTX 5060 Ti以上のGPUを積む、性能重視の構成向けの750W電源。</p>
+  <ul><li>◎ 80PLUS GOLD認証で変換効率が高い</li><li>◎ 750WあればRTX 5070クラスまで余裕を持って対応</li><li>◎ ATX3.1/PCIe5.1対応で最新GPUの電源コネクタにも対応</li><li>△ 550Wクラスの電源より価格は高め(GPUなし・軽い構成なら過剰な出力)</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0DKT9JRF1?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="10" y="2" width="4" height="8" rx="1"/><path d="M9 10h6l-0.8 9.2a2 2 0 0 1-4.4 0z"/></svg></span><span class="badge green">グリス</span><button type="button" class="fav-btn" data-fav-asin="B0795DP124" aria-label="気になるリストに追加"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg></button></div>
+  <h3>ARCTIC MX-4 (4g・スパチュラ付属) CPU/GPU用サーマルグリス</h3>
+  <p class="price"><span class="num-mono">¥880</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>
+  <p>CPUクーラー交換・自作PC組み立て時に必要な、定番の高性能サーマルグリス。</p>
+  <ul><li>◎ 定番の高性能サーマルグリスで冷却性能・耐久性の実績が豊富</li><li>◎ スパチュラ付属で塗布量の調整がしやすい</li><li>◎ 1本でCPU・GPU数回分に使える</li><li>△ リテールクーラー同梱グリスからの塗り直しは手間がかかる</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0795DP124?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+<h2 id="h-4">Intelで組む場合</h2>
+<p>GPU主導という考え方はIntelでも同じです。2026年時点のIntelコスパ枠はCore Ultra 5 225Fで、旧世代のCore i5-14400より安価かつ高性能なうえ、13/14世代のような不安定化問題の報告もありません。ただしLGA1851ソケット用の新しいマザーボード(DDR5専用)が必要で、旧世代のLGA1700マザーやDDR4メモリとは組み合わせられない点に注意してください。</p>
+<div class="card-grid"><div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="6" width="12" height="12" rx="1.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="0.5"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></svg></span><span class="badge blue">CPU</span><button type="button" class="fav-btn" data-fav-asin="B0DT2WX4X8" aria-label="気になるリストに追加"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg></button></div>
+  <h3>インテル Core Ultra 5 225F (Amazon.co.jp限定・国内正規代理店保証1年付)</h3>
+  <p class="price"><span class="num-mono">¥32,250</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>
+  <p>2026年時点のIntelコスパ枠。旧世代のCore i5-14400の後継として診断に採用。</p>
+  <ul><li>◎ Core i5-14400より安価で性能も上</li><li>◎ L2キャッシュ増量・DDR5-6400対応など地力が向上</li><li>◎ 13/14世代のような不安定化問題が報告されていない新設計</li><li>△ F付きのため内蔵GPUなし(モニター出力にグラボが必須)</li><li>△ LGA1851用の新しいマザーボードが必要(旧LGA1700マザーとは非互換)</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0DT2WX4X8?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a><a class="btn-room" href="https://room.rakuten.co.jp/aidesklabo/1700394772887355" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>楽天ROOMで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="3" width="18" height="18" rx="1.5"/><rect x="7" y="7" width="6" height="6" rx="0.5"/><line x1="3" y1="9.5" x2="1" y2="9.5"/><line x1="3" y1="13.5" x2="1" y2="13.5"/><line x1="21" y1="9.5" x2="23" y2="9.5"/><line x1="21" y1="13.5" x2="23" y2="13.5"/><line x1="16" y1="16" x2="19" y2="16"/><line x1="16" y1="18.5" x2="19" y2="18.5"/></svg></span><span class="badge green">マザーボード</span><button type="button" class="fav-btn" data-fav-asin="B0DRTV8HQY" aria-label="気になるリストに追加"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg></button></div>
+  <h3>ASRock B860 Pro RS WiFi (LGA1851・DDR5・ATX)</h3>
+  <p class="price"><span class="num-mono">¥18,780</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>
+  <p>Core Ultra 5 225F用のマザーボード。Wi-Fi内蔵で無線接続の悩みも解消。</p>
+  <ul><li>◎ Core Ultra 200S(LGA1851)シリーズに対応</li><li>◎ Wi-Fi 6E内蔵で子機が不要</li><li>◎ ATXサイズで拡張性も十分</li><li>△ 旧世代のLGA1700マザーボードとは互換性なし</li><li>△ DDR4版は存在しないためメモリはDDR5必須</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0DRTV8HQY?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a><a class="btn-room" href="https://room.rakuten.co.jp/aidesklabo/1700394772893417" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>楽天ROOMで見る</a></div>
+</div>
+<div class="card">
+  <div class="card-top"><span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="6" y="2" width="12" height="20" rx="1"/><line x1="9" y1="5" x2="9" y2="8.5"/><line x1="12" y1="5" x2="12" y2="8.5"/><line x1="15" y1="5" x2="15" y2="8.5"/><line x1="9" y1="12" x2="9" y2="15.5"/><line x1="12" y1="12" x2="12" y2="15.5"/><line x1="15" y1="12" x2="15" y2="15.5"/></svg></span><span class="badge blue">メモリ</span><button type="button" class="fav-btn" data-fav-asin="B0C2B7W1W4" aria-label="気になるリストに追加"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg></button></div>
+  <h3>Crucial PRO デスクトップ用メモリ 32GB(16GB×2枚) DDR5-5600</h3>
+  <p class="price"><span class="num-mono">¥84,980</span>実勢価格帯の目安・変動あり(2026年9月時点、DDR5高騰の影響で大きく変動)</p>
+  <p>ゲーミング・動画編集構成向けの32GB DDR5メモリ。価格変動が大きいため購入直前の確認が必須。</p>
+  <ul><li>◎ AM5/LGA1700のDDR5プラットフォーム向け</li><li>◎ 32GBでゲーミング・動画編集どちらにも対応できる容量</li><li>◎ マイクロン製チップで安定性の評価が高い</li><li>△ 2026年のDDR5価格高騰により、この価格帯だけでビルド予算の大部分を占める場合がある</li></ul>
+  <div class="cta-row"><a class="btn-amazon" href="https://www.amazon.co.jp/dp/B0C2B7W1W4?tag=aidesklabo-22" rel="nofollow sponsored noopener" target="_blank"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Amazonで見る</a></div>
+</div></div>
+<h2 id="h-5">予算に余裕があれば(WQHD以上を狙う場合)</h2>
+<p>1440p(WQHD)でも快適に遊びたい場合は、Ryzen 7 9800X3D + RTX 5070クラスへ上げるのが2026年時点の定番の上位構成です。ただし価格は本構成よりかなり上がるため、まずは1080p構成で予算感を掴んでから検討するのがおすすめです。</p>
+<h2 id="h-6">正直に言うと、ゲーミングにMacは向きません</h2>
+<p>「自作は面倒だからMacで」という選択肢は、オフィス用途なら十分ありですが、ゲーミングに関しては率直におすすめできません。理由は単純で、AAAタイトルの多くがWindows/DirectX前提で開発されており、Mac(Apple Silicon)ではプレイできない・パフォーマンスが出ないケースが多いためです。</p>
+<ul><li>どうしても持ち運びたい・省スペースにしたい場合 → クラウドゲーミング(GeForce NOWなど)をMacやiPadで使う手もある</li><li>本格的に遊びたい場合 → 素直にAMDかIntelで自作、またはゲーミングPCを完成品で購入</li><li>eスポーツ系の軽いタイトルだけなら → Mac miniでも動く場合があるが動作保証はタイトルごとに要確認</li></ul>
+<p>つまり「ゲーミング目的でMacを買う」は基本的に遠回りです。この記事のAMD/Intel構成のどちらかで組むことをおすすめします。</p></article><div class="disclosure-note">本ページはAmazonアソシエイト・プログラム、楽天アフィリエイトの参加者として、適格販売により収入を得ています。<a href="../../disclosure.html">詳細</a></div></div></section>
+</main>
+<footer class="site-footer">
+  <div class="footer-bg-word" aria-hidden="true">AI</div>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-badge">AI</span>
+        <span>AI DESK LABO</span>
+      </div>
+      <div class="links">
+        <a href="../../about.html">運営者情報</a>
+        <a href="../../disclosure.html">アフィリエイト表記</a>
+        <a href="../../privacy.html">プライバシーポリシー</a>
+        <a href="../../contact.html">お問い合わせ</a>
+        <a href="../../updates/">更新履歴</a>
+      </div>
+      <div class="links">
+        <a href="https://x.com/yu_aidesklabo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4L4 20"/></svg>X (Twitter)</a>
+        <a href="https://note.com/yu_aidesklabo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>Note</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="y"></span> AI Desk Labo</div>
+  </div>
+</footer>
+<button class="back-to-top" aria-label="ページ上部へ戻る">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js" defer></script>
+<script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

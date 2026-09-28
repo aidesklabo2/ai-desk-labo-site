@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>自作PC診断 — 質問に答えてあなたのPC構成と買い方を診断 | AI Desk Labo</title>
+<meta name="description" content="用途・解像度・予算・使うソフト・Apple製品との連携・静音性・ネット環境まで、複数の質問からAMD・Intel・Mac・完成品のどれが向いているかとフルパーツ構成を診断します。パーツは結果から個別に入れ替えも可能。">
+<link rel="canonical" href="https://aidesklabo.com/diagnosis/pc-builder/">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../../assets/favicon.svg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI Desk Labo">
+<meta property="og:title" content="自作PC診断 — 質問に答えてあなたのPC構成と買い方を診断 | AI Desk Labo">
+<meta property="og:description" content="用途・解像度・予算・使うソフト・Apple製品との連携・静音性・ネット環境まで、複数の質問からAMD・Intel・Mac・完成品のどれが向いているかとフルパーツ構成を診断します。パーツは結果から個別に入れ替えも可能。">
+<meta property="og:url" content="https://aidesklabo.com/diagnosis/pc-builder/">
+<meta property="og:image" content="https://aidesklabo.com/assets/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="自作PC診断 — 質問に答えてあなたのPC構成と買い方を診断 | AI Desk Labo">
+<meta name="twitter:description" content="用途・解像度・予算・使うソフト・Apple製品との連携・静音性・ネット環境まで、複数の質問からAMD・Intel・Mac・完成品のどれが向いているかとフルパーツ構成を診断します。パーツは結果から個別に入れ替えも可能。">
+<meta name="twitter:site" content="@yu_aidesklabo">
+<meta name="twitter:image" content="https://aidesklabo.com/assets/og-image.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@700;800;900&family=Shippori+Mincho:wght@800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/style.css">
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M4L5M94YCB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-M4L5M94YCB');
+</script>
+</head>
+<body>
+<div class="loader" aria-hidden="true"><span class="loader-mark">AI DESK LABO</span></div>
+<div class="progress-bar" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../../index.html">
+      <span class="logo-badge">AI</span>
+      <span>AI DESK LABO</span>
+    </a>
+    <nav class="site-nav">
+      <a href="../../rankings/">ランキング</a>
+      <a href="../../reviews/">レビュー</a>
+      <a href="../../compare/">比較</a>
+      <a href="../../guides/">ガイド</a>
+      <a href="../../diagnosis/">診断</a>
+      <a href="../../search/">検索</a>
+      <a href="../../favorites/" class="nav-fav">気になる<span class="nav-fav-count" data-fav-count hidden></span></a>
+      <a href="../../about.html">About</a>
+    </nav>
+    <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+<main>
+<section class="section" data-reveal=""><div class="wrap"><div class="title-row"><p class="eyebrow">診断<span class="eyebrow-en">Diagnosis</span></p><a class="pr-badge" href="../../disclosure.html" title="広告・アフィリエイトリンクを含みます">PR</a></div><h1>自作PC診断 — 質問に答えてあなたのPC構成と買い方を診断</h1><p class="updated">最終更新日: 2026-09-27</p><article><p>「結局何を選べばいいの？」「そもそも自作すべき？Macでよくない？」——この診断は、用途を1つに絞らせません。ゲームをしながら配信もする、AI画像生成やローカルLLMを使う、といった重なりも考慮したうえで、解像度・予算感・使うソフト・Apple製品との連携度合い・静音性・ネット環境まで含めた質問から、CPUからケース・電源・グリスまでのフルパーツ構成と、自作・組み立て代行・完成品・Macのどれが得かを診断します。診断後はパーツを個別に入れ替えることもできます。</p>
+<div class="quiz" id="pc-diagnosis" data-quiz>
+  <div class="quiz-progress"><span class="quiz-dot" data-dot-index="0"></span><span class="quiz-dot" data-dot-index="1"></span><span class="quiz-dot" data-dot-index="2"></span><span class="quiz-dot" data-dot-index="3"></span><span class="quiz-dot" data-dot-index="4"></span><span class="quiz-dot" data-dot-index="5"></span><span class="quiz-dot" data-dot-index="6"></span><span class="quiz-dot" data-dot-index="7"></span><span class="quiz-dot" data-dot-index="8"></span><span class="quiz-dot" data-dot-index="9"></span><span class="quiz-dot" data-dot-index="10"></span><span class="quiz-dot" data-dot-index="11"></span><span class="quiz-dot" data-dot-index="12"></span></div>
+  <div class="quiz-steps"><div class="quiz-step" data-step-index="0" data-key="usecases" data-type="multi">
+      <p class="quiz-step-count">STEP 1 / 13</p>
+      <h3 class="quiz-question">PCで何をしますか？(いくつでも選べます)</h3>
+      <div class="quiz-options" data-multi="true"><button type="button" class="quiz-option has-icon" data-value="office">
+        <span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="2" y1="12.5" x2="22" y2="12.5"/></svg></span>
+        <span class="quiz-option-text"><span class="quiz-option-label">オフィス・AIチャット</span>
+        <span class="quiz-option-desc">文章作成、Web閲覧、AIチャット</span></span>
+      </button>
+<button type="button" class="quiz-option has-icon" data-value="programming">
+        <span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><polyline points="8.5 7 3 12 8.5 17"/><polyline points="15.5 7 21 12 15.5 17"/><line x1="13.5" y1="4" x2="10.5" y2="20"/></svg></span>
+        <span class="quiz-option-text"><span class="quiz-option-label">プログラミング・開発</span>
+        <span class="quiz-option-desc">コーディング、仮想環境、ビルド作業</span></span>
+      </button>
+<button type="button" class="quiz-option has-icon" data-value="illustration">
+        <span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="3" width="18" height="15" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><path d="M14 9l3 3-5 5-3 1 1-3z"/></svg></span>
+        <span class="quiz-option-text"><span class="quiz-option-label">イラスト・デザイン</span>
+        <span class="quiz-option-desc">板タブ・液タブでの手描き制作</span></span>
+      </button>
+<button type="button" class="quiz-option has-icon" data-value="ai_image">
+        <span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6z"/><path d="M19 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg></span>
+        <span class="quiz-option-text"><span class="quiz-option-label">AI画像・動画生成</span>
+        <span class="quiz-option-desc">Stable Diffusion・FLUXなどをローカルで動かす</span></span>
+      </button>
+<button type="button" class="quiz-option has-icon" data-value="local_llm">
+        <span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6z"/><path d="M19 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg></span>
+        <span class="quiz-option-text"><span class="quiz-option-label">ローカルLLM</span>
+        <span class="quiz-option-desc">自分のPCでAIモデルを動かす</span></span>
+      </button>
+<button type="button" class="quiz-option has-icon" data-value="gaming">
+        <span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="7" width="18" height="11" rx="5.5"/><line x1="7" y1="11" x2="7" y2="14.5"/><line x1="5.25" y1="12.75" x2="8.75" y2="12.75"/><circle cx="16" cy="10.5" r="1"/><circle cx="18" cy="13" r="1"/></svg></span>
+        <span class="quiz-option-text"><span class="quiz-option-label">ゲーミング</span>
+        <span class="quiz-option-desc">フルHD〜4Kで快適に遊びたい</span></span>
+      </button>
+<button type="button" class="quiz-option has-icon" data-value="streaming">
+        <span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><circle cx="12" cy="12" r="2.5"/><path d="M7.5 8.5a6.5 6.5 0 0 0 0 7"/><path d="M16.5 8.5a6.5 6.5 0 0 1 0 7"/><path d="M4.5 5.5a10.5 10.5 0 0 0 0 13"/><path d="M19.5 5.5a10.5 10.5 0 0 1 0 13"/></svg></span>
+        <span class="quiz-option-text"><span class="quiz-option-label">ゲーム配信・実況</span>
+        <span class="quiz-option-desc">プレイと同時に配信・録画もする</span></span>
+      </button>
+<button type="button" class="quiz-option has-icon" data-value="video">
+        <span class="icon-badge orange"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3.5v11L16 14z"/></svg></span>
+        <span class="quiz-option-text"><span class="quiz-option-label">動画編集</span>
+        <span class="quiz-option-desc">4K編集、配信アーカイブの編集も含む</span></span>
+      </button></div>
+      <button type="button" class="quiz-next" disabled>次へ →</button>
+    </div>
+<div class="quiz-step" data-step-index="1" data-key="gameGenre" data-type="single" hidden>
+      <p class="quiz-step-count">STEP 2 / 13</p>
+      <h3 class="quiz-question">よく遊ぶ(配信する)ゲームのタイプは？</h3>
+      <div class="quiz-options" data-multi="false"><button type="button" class="quiz-option" data-value="competitive">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">競技系FPS(VALORANT・Apex・Fortniteなど)</span>
+        <span class="quiz-option-desc">高fps・低遅延を最優先したい</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="heavy_aaa">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">重量級タイトル(モンハンワイルズなど)</span>
+        <span class="quiz-option-desc">グラフィック設定・VRAMを重視したい</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="casual">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">軽めのゲーム・マイクラなど</span>
+        <span class="quiz-option-desc">そこまで高スペックは求めていない</span></span>
+      </button></div>
+      
+    </div>
+<div class="quiz-step" data-step-index="2" data-key="resolution" data-type="single" hidden>
+      <p class="quiz-step-count">STEP 3 / 13</p>
+      <h3 class="quiz-question">ゲームで目指す解像度・フレームレートは？</h3>
+      <div class="quiz-options" data-multi="false"><button type="button" class="quiz-option" data-value="fhd60">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">フルHD・60fps前後</span>
+        <span class="quiz-option-desc">標準的な設定で十分</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="fhd144">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">フルHD・144fps以上</span>
+        <span class="quiz-option-desc">競技系タイトルで有利になりたい</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="wqhd_uhd">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">WQHD以上 / 4K</span>
+        <span class="quiz-option-desc">高解像度で高画質を狙いたい</span></span>
+      </button></div>
+      
+    </div>
+<div class="quiz-step" data-step-index="3" data-key="videoIntensity" data-type="single" hidden>
+      <p class="quiz-step-count">STEP 4 / 13</p>
+      <h3 class="quiz-question">動画編集の内容に近いものは？</h3>
+      <div class="quiz-options" data-multi="false"><button type="button" class="quiz-option" data-value="light">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">フルHD中心のカット編集</span>
+        <span class="quiz-option-desc">簡単な切り貼り・テロップ・書き出し程度</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="heavy">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">4K編集・カラーグレーディング・マルチカム</span>
+        <span class="quiz-option-desc">本格的な編集で書き出しも重い</span></span>
+      </button></div>
+      
+    </div>
+<div class="quiz-step" data-step-index="4" data-key="aiScale" data-type="single" hidden>
+      <p class="quiz-step-count">STEP 5 / 13</p>
+      <h3 class="quiz-question">AI画像生成・ローカルLLMは、どのくらい本格的にやりますか？</h3>
+      <div class="quiz-options" data-multi="false"><button type="button" class="quiz-option" data-value="light">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">まずは試したい</span>
+        <span class="quiz-option-desc">SDXLや7〜8B程度の軽量モデルから</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="heavy">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">本格的に使いたい</span>
+        <span class="quiz-option-desc">FLUXや14B以上のモデルを実用レベルで動かす</span></span>
+      </button></div>
+      
+    </div>
+<div class="quiz-step" data-step-index="5" data-key="budget" data-type="single" hidden>
+      <p class="quiz-step-count">STEP 6 / 13</p>
+      <h3 class="quiz-question">パーツ代の予算感は？(OS代・組み立て代行費用は含みません)</h3>
+      <div class="quiz-options" data-multi="false"><button type="button" class="quiz-option" data-value="10">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">〜10万円</span>
+        <span class="quiz-option-desc">できるだけ安く</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="15">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">10万〜15万円</span>
+        <span class="quiz-option-desc">標準的な予算感</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="20">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">15万〜20万円</span>
+        <span class="quiz-option-desc">性能もそれなりに欲しい</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="30">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">20万〜30万円</span>
+        <span class="quiz-option-desc">妥協したくない</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="40">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">30万〜40万円</span>
+        <span class="quiz-option-desc">ハイエンドを狙いたい</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="99">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">40万円以上</span>
+        <span class="quiz-option-desc">予算より性能を優先したい</span></span>
+      </button></div>
+      
+    </div>
+<div class="quiz-step" data-step-index="6" data-key="software" data-type="single" hidden>
+      <p class="quiz-step-count">STEP 7 / 13</p>
+      <h3 class="quiz-question">使う予定のソフトは？</h3>
+      <div class="quiz-options" data-multi="false"><button type="button" class="quiz-option" data-value="windows_only">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">Windows専用ソフトが必須</span>
+        <span class="quiz-option-desc">特定のゲーム・業務ソフトなど</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="mac_ok">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">Adobe・Final Cutなど、Mac対応ソフトで完結する</span>
+        <span class="quiz-option-desc">クリエイティブ系ソフト中心</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="either">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">特にこだわりはない・わからない</span>
+        <span class="quiz-option-desc">どちらでも困らない</span></span>
+      </button></div>
+      
+    </div>
+<div class="quiz-step" data-step-index="7" data-key="appleWorkflow" data-type="multi" hidden>
+      <p class="quiz-step-count">STEP 8 / 13</p>
+      <h3 class="quiz-question">Apple製品との関わり方に近いものは？(いくつでも選べます。iPhoneを持っているだけでは選ばなくてOKです)</h3>
+      <div class="quiz-options" data-multi="true"><button type="button" class="quiz-option" data-value="photo_transfer">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">iPhoneで撮った写真・動画をすぐ作業に使いたい</span>
+        <span class="quiz-option-desc">AirDropで送って編集・資料作成に使う</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="ipad_handoff">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">iPadで描いた・書いたものをそのまま取り込みたい</span>
+        <span class="quiz-option-desc">イラストや手書きメモの受け渡し</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="continuity">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">通知・コピペ・電話をPCでも使いたい</span>
+        <span class="quiz-option-desc">Handoff・iMessage・着信をPC側に連携</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="jp_software">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">年賀状・会計ソフトなど、Windows専用の日本語ソフトを使う予定がある</span>
+        <span class="quiz-option-desc">多くはMac非対応</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="own_no_need">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">iPhoneなどは持っているが、PC作業との連携は特に必要ない</span>
+        <span class="quiz-option-desc">Googleフォトなどのクラウド経由で十分な人もこちら。普段使いと作業用PCは別で構わない</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="none">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">Apple製品は使っていない</span>
+        <span class="quiz-option-desc">Windows/Androidが中心</span></span>
+      </button></div>
+      <button type="button" class="quiz-next" disabled>次へ →</button>
+    </div>
+<div class="quiz-step" data-step-index="8" data-key="effort" data-type="single" hidden>
+      <p class="quiz-step-count">STEP 9 / 13</p>
+      <h3 class="quiz-question">組み立てへの興味は？</h3>
+      <div class="quiz-options" data-multi="false"><button type="button" class="quiz-option" data-value="diy">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">自作を楽しみたい</span>
+        <span class="quiz-option-desc">パーツ選び・組み立て自体が好き</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="assembly_service">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">パーツは自分で選びたいが、組み立ては任せたい</span>
+        <span class="quiz-option-desc">パーツを購入し、組み立て代行サービスに依頼する</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="compare_all">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">自作・完成品・Macを比べてから決めたい</span>
+        <span class="quiz-option-desc">一番コスパの良い買い方が知りたい</span></span>
+      </button></div>
+      
+    </div>
+<div class="quiz-step" data-step-index="9" data-key="platform" data-type="single" hidden>
+      <p class="quiz-step-count">STEP 10 / 13</p>
+      <h3 class="quiz-question">AMD・Intelへのこだわりは？(自作する場合)</h3>
+      <div class="quiz-options" data-multi="false"><button type="button" class="quiz-option" data-value="amd">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">AMD(Ryzen)がいい</span>
+        <span class="quiz-option-desc">コスパと将来のアップグレード性重視</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="intel">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">Intel(Core)がいい</span>
+        <span class="quiz-option-desc">定番・安定志向</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="auto">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">おまかせ</span>
+        <span class="quiz-option-desc">用途に合わせて自動で選んでほしい</span></span>
+      </button></div>
+      
+    </div>
+<div class="quiz-step" data-step-index="10" data-key="network" data-type="single" hidden>
+      <p class="quiz-step-count">STEP 11 / 13</p>
+      <h3 class="quiz-question">設置場所のネット環境は？(自作する場合)</h3>
+      <div class="quiz-options" data-multi="false"><button type="button" class="quiz-option" data-value="ethernet">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">有線LANを引ける</span>
+        <span class="quiz-option-desc">壁や机の近くにLANポートがある</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="wifi_only">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">Wi-Fiのみ</span>
+        <span class="quiz-option-desc">無線LANでの接続が前提</span></span>
+      </button></div>
+      
+    </div>
+<div class="quiz-step" data-step-index="11" data-key="noise" data-type="single" hidden>
+      <p class="quiz-step-count">STEP 12 / 13</p>
+      <h3 class="quiz-question">設置場所や動作音は気になりますか？(自作する場合)</h3>
+      <div class="quiz-options" data-multi="false"><button type="button" class="quiz-option has-icon" data-value="airflow">
+        <span class="icon-badge blue"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><circle cx="12" cy="12" r="9.5"/><path d="M12 12 15.8 6.6"/><path d="M12 12 6.3 9.3"/><path d="M12 12 13.1 18.8"/><circle cx="12" cy="12" r="1.6"/></svg></span>
+        <span class="quiz-option-text"><span class="quiz-option-label">静かさより冷却・性能重視</span>
+        <span class="quiz-option-desc">ファン音は気にしない</span></span>
+      </button>
+<button type="button" class="quiz-option has-icon" data-value="quiet">
+        <span class="icon-badge green"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z"/></svg></span>
+        <span class="quiz-option-text"><span class="quiz-option-label">できれば静かがいい</span>
+        <span class="quiz-option-desc">寝室・リビングなど音が気になる環境</span></span>
+      </button></div>
+      
+    </div>
+<div class="quiz-step" data-step-index="12" data-key="storage" data-type="single" hidden>
+      <p class="quiz-step-count">STEP 13 / 13</p>
+      <h3 class="quiz-question">保存するデータ量の目安は？(自作する場合)</h3>
+      <div class="quiz-options" data-multi="false"><button type="button" class="quiz-option" data-value="1tb">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">1TBで十分</span>
+        <span class="quiz-option-desc">一般的な使い方</span></span>
+      </button>
+<button type="button" class="quiz-option" data-value="2tb">
+        
+        <span class="quiz-option-text"><span class="quiz-option-label">素材・データが多い・2TB欲しい</span>
+        <span class="quiz-option-desc">動画素材やイラスト、AI生成物が多い</span></span>
+      </button></div>
+      
+    </div></div>
+  <div class="quiz-results"></div>
+</div>
+<script>
+(function () {
+  var root = document.getElementById("pc-diagnosis");
+  if (!root) return;
+  var CATALOG = {"cpuApuAmd":"B092L9GF5N","cpuAm4Amd":"B09VCHR1VH","cpuMidAmd":"B0BS8PRCYV","cpuHighAmd":"B0D6NN87T8","cpuX3D":"B0DKFMSMYK","cpuIntel":"B0DT2WX4X8","moboAm4":"B08G1Y95SZ","moboAm5":"B0F3DG1NVW","moboIntel":"B0DRTV8HQY","gpuMid":"B0972BP9YR","gpuVram":"B0F4XC69KL","gpuVramAmd":"B0FY2G9YGH","gpuHigh":"B0DX7JJ87N","ramDdr4":"B08C53LL9J","ramDdr5_16":"B0F1FW31Y8","ramDdr5":"B0C2B7W1W4","ramDdr5_64":"B0BD4SRW3H","storage":"B0DGKMQPYC","storage2tb":"B0DGKTMN6L","case":"B0DQPMJ6MJ","caseQuiet":"B0B55YL7TP","psu":"B0DKT9JRF1","psuLow":"B0CLL6896M","paste":"B0795DP124","cooler":"B09NZB9Z9Z","coolerQuiet":"B098XP1Y38","wifiAdapter":"B0D1K9NX2T"};
+  var CARDS = {"B092L9GF5N":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"1.5\"/><rect x=\"9.5\" y=\"9.5\" width=\"5\" height=\"5\" rx=\"0.5\"/><line x1=\"9\" y1=\"2\" x2=\"9\" y2=\"6\"/><line x1=\"15\" y1=\"2\" x2=\"15\" y2=\"6\"/><line x1=\"9\" y1=\"18\" x2=\"9\" y2=\"22\"/><line x1=\"15\" y1=\"18\" x2=\"15\" y2=\"22\"/><line x1=\"2\" y1=\"9\" x2=\"6\" y2=\"9\"/><line x1=\"2\" y1=\"15\" x2=\"6\" y2=\"15\"/><line x1=\"18\" y1=\"9\" x2=\"22\" y2=\"9\"/><line x1=\"18\" y1=\"15\" x2=\"22\" y2=\"15\"/></svg></span><span class=\"badge blue\">CPU</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B092L9GF5N\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>AMD Ryzen 5 5600G (Wraith Stealthクーラー付・内蔵GPU搭載)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥19,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)</p>\n  <p>グラフィックボードなしで完結させたい、一般事務・軽作業PC向けのAPU。</p>\n  <ul><li>◎ Radeon Vega内蔵GPUでグラフィックボード不要、事務・Web・動画視聴は快適</li><li>◎ 6コア12スレッドで通常のマルチタスクに余裕</li><li>◎ 本体価格が安く2026年のGPU高騰の影響を受けにくい</li><li>△ AM4・DDR4世代のため最新のAM5マザーボードとは組み合わせられない</li><li>△ 3Dゲームは軽量タイトル・低〜中設定が中心</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/-/en/AMD-Ryzen-5-5600G/dp/B092L9GF5N?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B09VCHR1VH":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"1.5\"/><rect x=\"9.5\" y=\"9.5\" width=\"5\" height=\"5\" rx=\"0.5\"/><line x1=\"9\" y1=\"2\" x2=\"9\" y2=\"6\"/><line x1=\"15\" y1=\"2\" x2=\"15\" y2=\"6\"/><line x1=\"9\" y1=\"18\" x2=\"9\" y2=\"22\"/><line x1=\"15\" y1=\"18\" x2=\"15\" y2=\"22\"/><line x1=\"2\" y1=\"9\" x2=\"6\" y2=\"9\"/><line x1=\"2\" y1=\"15\" x2=\"6\" y2=\"15\"/><line x1=\"18\" y1=\"9\" x2=\"22\" y2=\"9\"/><line x1=\"18\" y1=\"15\" x2=\"22\" y2=\"15\"/></svg></span><span class=\"badge blue\">CPU</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B09VCHR1VH\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>AMD Ryzen 5 5600 (Wraith Stealthクーラー付・AM4)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥22,980</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>2026年のDDR5高騰を避けたい人向けのAM4构成用CPU。ディスクリートGPUと組み合わせて使う。</p>\n  <ul><li>◎ DDR4対応のAM4プラットフォームなのでメモリ高騰の影響を受けにくい</li><li>◎ 6コア12スレッドでフルHDゲーミングなら十分な性能</li><li>◎ クーラー付属</li><li>△ 内蔵GPUなし(グラボが必須)</li><li>△ AM4は今後の世代アップグレードがない旧プラットフォーム</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B09VCHR1VH?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394772897120\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0BS8PRCYV":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"1.5\"/><rect x=\"9.5\" y=\"9.5\" width=\"5\" height=\"5\" rx=\"0.5\"/><line x1=\"9\" y1=\"2\" x2=\"9\" y2=\"6\"/><line x1=\"15\" y1=\"2\" x2=\"15\" y2=\"6\"/><line x1=\"9\" y1=\"18\" x2=\"9\" y2=\"22\"/><line x1=\"15\" y1=\"18\" x2=\"15\" y2=\"22\"/><line x1=\"2\" y1=\"9\" x2=\"6\" y2=\"9\"/><line x1=\"2\" y1=\"15\" x2=\"6\" y2=\"15\"/><line x1=\"18\" y1=\"9\" x2=\"22\" y2=\"9\"/><line x1=\"18\" y1=\"15\" x2=\"22\" y2=\"15\"/></svg></span><span class=\"badge blue\">CPU</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0BS8PRCYV\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>AMD Ryzen 5 7600 (Wraith Stealthクーラー付・Amazon.co.jp限定)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥28,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)</p>\n  <p>1080pゲーミング構成の土台になる、コストパフォーマンスの良いミドルCPU。</p>\n  <ul><li>◎ AM5プラットフォームで今後のアップグレードがしやすい</li><li>◎ 1080pゲーミングでGPU性能を引き出せる十分な処理性能</li><li>◎ Amazon.co.jp限定モデルで3年+1年の保証</li><li>△ メモリはDDR5必須(DDR4非対応)でマザーボード選びに注意</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/%E3%80%90Amazon-co-jp%E9%99%90%E5%AE%9A%E3%80%91-AMD-Stealth-100-100001015BOX-EW-1Y/dp/B0BS8PRCYV?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394654532178\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0D6NN87T8":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"1.5\"/><rect x=\"9.5\" y=\"9.5\" width=\"5\" height=\"5\" rx=\"0.5\"/><line x1=\"9\" y1=\"2\" x2=\"9\" y2=\"6\"/><line x1=\"15\" y1=\"2\" x2=\"15\" y2=\"6\"/><line x1=\"9\" y1=\"18\" x2=\"9\" y2=\"22\"/><line x1=\"15\" y1=\"18\" x2=\"15\" y2=\"22\"/><line x1=\"2\" y1=\"9\" x2=\"6\" y2=\"9\"/><line x1=\"2\" y1=\"15\" x2=\"6\" y2=\"15\"/><line x1=\"18\" y1=\"9\" x2=\"22\" y2=\"9\"/><line x1=\"18\" y1=\"15\" x2=\"22\" y2=\"15\"/></svg></span><span class=\"badge blue\">CPU</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0D6NN87T8\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>AMD Ryzen 9 9900X (12コア24スレッド・クーラーなし)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥64,980</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon.co.jp調べ)</p>\n  <p>4K動画編集・書き出しを重視する人向けのハイエンドCPU。</p>\n  <ul><li>◎ 12コア24スレッドで動画エンコード・書き出しが速い</li><li>◎ AM5プラットフォームでDDR5・PCIe5.0に対応</li><li>◎ 内蔵GPUもあり検証用の映像出力に困らない</li><li>△ クーラー別売り(サードパーティ製クーラーが必要)</li><li>△ 高負荷時の発熱・消費電力はミドルCPUより大きい</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/100-100000662WOF-9900X-24T%E3%80%814-4GHz%E3%80%81TDP-120W%E3%80%81AM5%E3%80%81Radeon-Graphics/dp/B0D6NN87T8?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394654531408\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0DKFMSMYK":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"1.5\"/><rect x=\"9.5\" y=\"9.5\" width=\"5\" height=\"5\" rx=\"0.5\"/><line x1=\"9\" y1=\"2\" x2=\"9\" y2=\"6\"/><line x1=\"15\" y1=\"2\" x2=\"15\" y2=\"6\"/><line x1=\"9\" y1=\"18\" x2=\"9\" y2=\"22\"/><line x1=\"15\" y1=\"18\" x2=\"15\" y2=\"22\"/><line x1=\"2\" y1=\"9\" x2=\"6\" y2=\"9\"/><line x1=\"2\" y1=\"15\" x2=\"6\" y2=\"15\"/><line x1=\"18\" y1=\"9\" x2=\"22\" y2=\"9\"/><line x1=\"18\" y1=\"15\" x2=\"22\" y2=\"15\"/></svg></span><span class=\"badge blue\">CPU</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0DKFMSMYK\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>AMD Ryzen 7 9800X3D (8コア16スレッド・クーラーなし)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥57,630</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>競技系のfpsを最優先したい人向けのゲーミング最上位CPU。PC診断で「240fps以上を狙う競技FPS」を選んだ人に提案。</p>\n  <ul><li>◎ 3D V-Cacheで競技系FPS(VALORANT・Apex等)のfpsが頭一つ抜ける</li><li>◎ ゲーム配信を同時にしても余裕のあるコア数</li><li>◎ AM5マザーボードをそのまま使える(次世代Zen 6もAM5継続見込み)</li><li>△ クーラー別売り</li><li>△ 事務用途には明らかにオーバースペック</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0DKFMSMYK?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394772904244\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0DT2WX4X8":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"6\" y=\"6\" width=\"12\" height=\"12\" rx=\"1.5\"/><rect x=\"9.5\" y=\"9.5\" width=\"5\" height=\"5\" rx=\"0.5\"/><line x1=\"9\" y1=\"2\" x2=\"9\" y2=\"6\"/><line x1=\"15\" y1=\"2\" x2=\"15\" y2=\"6\"/><line x1=\"9\" y1=\"18\" x2=\"9\" y2=\"22\"/><line x1=\"15\" y1=\"18\" x2=\"15\" y2=\"22\"/><line x1=\"2\" y1=\"9\" x2=\"6\" y2=\"9\"/><line x1=\"2\" y1=\"15\" x2=\"6\" y2=\"15\"/><line x1=\"18\" y1=\"9\" x2=\"22\" y2=\"9\"/><line x1=\"18\" y1=\"15\" x2=\"22\" y2=\"15\"/></svg></span><span class=\"badge blue\">CPU</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0DT2WX4X8\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>インテル Core Ultra 5 225F (Amazon.co.jp限定・国内正規代理店保証1年付)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥32,250</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>2026年時点のIntelコスパ枠。旧世代のCore i5-14400の後継として診断に採用。</p>\n  <ul><li>◎ Core i5-14400より安価で性能も上</li><li>◎ L2キャッシュ増量・DDR5-6400対応など地力が向上</li><li>◎ 13/14世代のような不安定化問題が報告されていない新設計</li><li>△ F付きのため内蔵GPUなし(モニター出力にグラボが必須)</li><li>△ LGA1851用の新しいマザーボードが必要(旧LGA1700マザーとは非互換)</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0DT2WX4X8?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394772887355\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B08G1Y95SZ":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge green\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"1.5\"/><rect x=\"7\" y=\"7\" width=\"6\" height=\"6\" rx=\"0.5\"/><line x1=\"3\" y1=\"9.5\" x2=\"1\" y2=\"9.5\"/><line x1=\"3\" y1=\"13.5\" x2=\"1\" y2=\"13.5\"/><line x1=\"21\" y1=\"9.5\" x2=\"23\" y2=\"9.5\"/><line x1=\"21\" y1=\"13.5\" x2=\"23\" y2=\"13.5\"/><line x1=\"16\" y1=\"16\" x2=\"19\" y2=\"16\"/><line x1=\"16\" y1=\"18.5\" x2=\"19\" y2=\"18.5\"/></svg></span><span class=\"badge green\">マザーボード</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B08G1Y95SZ\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>ASRock A520M-HDV (AM4・Micro ATX)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥6,980</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>\n  <p>Ryzen 5 5600GでAPU構成を組むための、コスト最優先のAM4マザーボード。</p>\n  <ul><li>◎ Ryzen 5 5600G等のAM4・APU構成を最安クラスで組める</li><li>◎ Micro ATXで対応ケースの選択肢が広い</li><li>◎ DDR4メモリ対応でメモリ自体も比較的安い</li><li>△ AM5(Ryzen 7000/9000番台)とは非対応、拡張性は最小限</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B08G1Y95SZ?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0F3DG1NVW":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge green\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"1.5\"/><rect x=\"7\" y=\"7\" width=\"6\" height=\"6\" rx=\"0.5\"/><line x1=\"3\" y1=\"9.5\" x2=\"1\" y2=\"9.5\"/><line x1=\"3\" y1=\"13.5\" x2=\"1\" y2=\"13.5\"/><line x1=\"21\" y1=\"9.5\" x2=\"23\" y2=\"9.5\"/><line x1=\"21\" y1=\"13.5\" x2=\"23\" y2=\"13.5\"/><line x1=\"16\" y1=\"16\" x2=\"19\" y2=\"16\"/><line x1=\"16\" y1=\"18.5\" x2=\"19\" y2=\"18.5\"/></svg></span><span class=\"badge green\">マザーボード</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0F3DG1NVW\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>ASRock B650M Pro X3D WiFi (AM5・Micro ATX)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥16,980</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>\n  <p>ゲーミング・動画編集向けAM5構成(Ryzen 7600/9900X)の土台になるMicro ATXマザーボード。</p>\n  <ul><li>◎ Ryzen 5 7600・Ryzen 9 9900Xなど幅広いAM5 CPUに対応</li><li>◎ WiFi内蔵で無線LANカードを別途足す必要がない</li><li>◎ Micro ATXでケースの選択肢が広い</li><li>△ DDR5メモリ専用でAM4マザーボードとの流用は不可</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0F3DG1NVW?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0DRTV8HQY":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge green\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"1.5\"/><rect x=\"7\" y=\"7\" width=\"6\" height=\"6\" rx=\"0.5\"/><line x1=\"3\" y1=\"9.5\" x2=\"1\" y2=\"9.5\"/><line x1=\"3\" y1=\"13.5\" x2=\"1\" y2=\"13.5\"/><line x1=\"21\" y1=\"9.5\" x2=\"23\" y2=\"9.5\"/><line x1=\"21\" y1=\"13.5\" x2=\"23\" y2=\"13.5\"/><line x1=\"16\" y1=\"16\" x2=\"19\" y2=\"16\"/><line x1=\"16\" y1=\"18.5\" x2=\"19\" y2=\"18.5\"/></svg></span><span class=\"badge green\">マザーボード</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0DRTV8HQY\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>ASRock B860 Pro RS WiFi (LGA1851・DDR5・ATX)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥18,780</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>Core Ultra 5 225F用のマザーボード。Wi-Fi内蔵で無線接続の悩みも解消。</p>\n  <ul><li>◎ Core Ultra 200S(LGA1851)シリーズに対応</li><li>◎ Wi-Fi 6E内蔵で子機が不要</li><li>◎ ATXサイズで拡張性も十分</li><li>△ 旧世代のLGA1700マザーボードとは互換性なし</li><li>△ DDR4版は存在しないためメモリはDDR5必須</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0DRTV8HQY?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394772893417\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0972BP9YR":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"2\" y=\"7\" width=\"20\" height=\"10\" rx=\"2\"/><circle cx=\"8\" cy=\"12\" r=\"2.1\"/><circle cx=\"14\" cy=\"12\" r=\"2.1\"/><line x1=\"19\" y1=\"7\" x2=\"19\" y2=\"4\"/><line x1=\"4.5\" y1=\"17\" x2=\"4.5\" y2=\"20\"/></svg></span><span class=\"badge orange\">GPU</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0972BP9YR\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>MSI GeForce RTX 5060 8G VENTUS 2X OC</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥65,455</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>現行世代のミドルクラスGPU。フルHD〜WQHDゲーミングの標準構成として診断で採用。</p>\n  <ul><li>◎ Blackwell世代・DLSS 4対応でフルHD〜WQHD高fpsが狙える</li><li>◎ 旧世代RTX 4060より低消費電力</li><li>◎ 価格と性能のバランスが良い定番モデル</li><li>△ VRAM 8GBは最新の重量級タイトルでは条件付き(設定を上げすぎると不足気味)</li><li>△ 4K・AI画像生成にはVRAM不足</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0972BP9YR?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0F4XC69KL":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"2\" y=\"7\" width=\"20\" height=\"10\" rx=\"2\"/><circle cx=\"8\" cy=\"12\" r=\"2.1\"/><circle cx=\"14\" cy=\"12\" r=\"2.1\"/><line x1=\"19\" y1=\"7\" x2=\"19\" y2=\"4\"/><line x1=\"4.5\" y1=\"17\" x2=\"4.5\" y2=\"20\"/></svg></span><span class=\"badge orange\">GPU</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0F4XC69KL\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Palit GeForce RTX 5060 Ti Infinity 3 16GB</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥129,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>VRAM容量を最優先したい人向け。AI画像生成やゲーム配信同時進行など、VRAMを食う用途で診断が提案。</p>\n  <ul><li>◎ VRAM 16GBでAI画像生成(SDXL快適ライン)や重量級ゲームに余裕</li><li>◎ NVIDIA製なのでローカルAI・CUDA系ツールとの相性が良い</li><li>◎ 4K動画編集のプレビューも安定</li><li>△ 8GB版より3万円以上高い</li><li>△ VRAM以外の演算性能は同クラスのRTX 5070よりは劣る</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0F4XC69KL?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394772931253\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0FY2G9YGH":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"2\" y=\"7\" width=\"20\" height=\"10\" rx=\"2\"/><circle cx=\"8\" cy=\"12\" r=\"2.1\"/><circle cx=\"14\" cy=\"12\" r=\"2.1\"/><line x1=\"19\" y1=\"7\" x2=\"19\" y2=\"4\"/><line x1=\"4.5\" y1=\"17\" x2=\"4.5\" y2=\"20\"/></svg></span><span class=\"badge orange\">GPU</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0FY2G9YGH\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>XFX Swift AMD Radeon RX 9060 XT OC 16GB Gaming Edition</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥78,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>AI用途を使わず、ゲームのVRAM容量だけをコスパ良く確保したい人向けのAMD GPU。</p>\n  <ul><li>◎ VRAM 16GBをRTX 5060 Ti 16GBより5万円ほど安く確保できる</li><li>◎ レイトレを使わない通常描画ならRTX 5060 Tiに迫る性能</li><li>△ CUDA非対応のため、AI画像生成・ローカルLLM用途には推奨できない</li><li>△ DLSSに相当するFSRの画質はタイトルによって差がある</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0FY2G9YGH?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394772942205\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0DX7JJ87N":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"2\" y=\"7\" width=\"20\" height=\"10\" rx=\"2\"/><circle cx=\"8\" cy=\"12\" r=\"2.1\"/><circle cx=\"14\" cy=\"12\" r=\"2.1\"/><line x1=\"19\" y1=\"7\" x2=\"19\" y2=\"4\"/><line x1=\"4.5\" y1=\"17\" x2=\"4.5\" y2=\"20\"/></svg></span><span class=\"badge orange\">GPU</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0DX7JJ87N\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>MSI GeForce RTX 5070 12G VENTUS 2X OC</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥152,679</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>WQHD以上・4K編集など、性能を妥協したくない人向けの上位GPU。旧カタログのRTX 4070 SUPERから世代更新。</p>\n  <ul><li>◎ WQHD高fps・4Kゲーミングの現行世代の標準ライン</li><li>◎ 4K動画編集のカラーグレーディングでも余裕のあるVRAM</li><li>◎ 旧世代RTX 4070 SUPERより高効率</li><li>△ ミドルクラスGPUの倍以上の価格</li><li>△ 競技FPSだけが目的ならオーバースペック(ボトルネックはCPU側)</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0DX7JJ87N?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394772947187\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B08C53LL9J":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"1\"/><line x1=\"9\" y1=\"5\" x2=\"9\" y2=\"8.5\"/><line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"8.5\"/><line x1=\"15\" y1=\"5\" x2=\"15\" y2=\"8.5\"/><line x1=\"9\" y1=\"12\" x2=\"9\" y2=\"15.5\"/><line x1=\"12\" y1=\"12\" x2=\"12\" y2=\"15.5\"/><line x1=\"15\" y1=\"12\" x2=\"15\" y2=\"15.5\"/></svg></span><span class=\"badge blue\">メモリ</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B08C53LL9J\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Crucial デスクトップ用メモリ 16GB(8GB×2枚) DDR4-3200</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥24,500</span>実勢価格帯の目安・変動あり(2026年9月時点、メモリ相場により大きく変動)</p>\n  <p>AM4/Intel DDR4構成のオフィスPC向け、16GB(8GB×2枚)の定番メモリキット。</p>\n  <ul><li>◎ AM4/LGA1700など幅広いDDR4プラットフォームで使える</li><li>◎ 2枚組でデュアルチャネル動作</li><li>◎ オフィス用途なら16GBで十分な容量</li><li>△ 2026年はDDR4メモリ自体の相場も上昇傾向、購入直前の価格確認が必須</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B08C53LL9J?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0F1FW31Y8":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"1\"/><line x1=\"9\" y1=\"5\" x2=\"9\" y2=\"8.5\"/><line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"8.5\"/><line x1=\"15\" y1=\"5\" x2=\"15\" y2=\"8.5\"/><line x1=\"9\" y1=\"12\" x2=\"9\" y2=\"15.5\"/><line x1=\"12\" y1=\"12\" x2=\"12\" y2=\"15.5\"/><line x1=\"15\" y1=\"12\" x2=\"15\" y2=\"15.5\"/></svg></span><span class=\"badge blue\">メモリ</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0F1FW31Y8\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>ADATA DDR5 16GB(8GB×2) 5600MHz U-DIMM デスクトップ用</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥37,500</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ・2026年のDRAM高騰により高値)</p>\n  <p>DDR5専用マザーボード(Intel Core Ultra 200Sなど)で、事務用途など軽い用途向けの最小構成メモリ。</p>\n  <ul><li>◎ DDR5対応マザーボードで、32GBまでは不要な軽い用途向け</li><li>◎ 2枚挿しでデュアルチャネル動作</li><li>△ 2026年のメモリ高騰で16GBでも高価格</li><li>△ 32GBキットとの価格差が小さいため、余裕があれば32GBを推奨</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0F1FW31Y8?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394772924211\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0C2B7W1W4":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"1\"/><line x1=\"9\" y1=\"5\" x2=\"9\" y2=\"8.5\"/><line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"8.5\"/><line x1=\"15\" y1=\"5\" x2=\"15\" y2=\"8.5\"/><line x1=\"9\" y1=\"12\" x2=\"9\" y2=\"15.5\"/><line x1=\"12\" y1=\"12\" x2=\"12\" y2=\"15.5\"/><line x1=\"15\" y1=\"12\" x2=\"15\" y2=\"15.5\"/></svg></span><span class=\"badge blue\">メモリ</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0C2B7W1W4\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Crucial PRO デスクトップ用メモリ 32GB(16GB×2枚) DDR5-5600</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥84,980</span>実勢価格帯の目安・変動あり(2026年9月時点、DDR5高騰の影響で大きく変動)</p>\n  <p>ゲーミング・動画編集構成向けの32GB DDR5メモリ。価格変動が大きいため購入直前の確認が必須。</p>\n  <ul><li>◎ AM5/LGA1700のDDR5プラットフォーム向け</li><li>◎ 32GBでゲーミング・動画編集どちらにも対応できる容量</li><li>◎ マイクロン製チップで安定性の評価が高い</li><li>△ 2026年のDDR5価格高騰により、この価格帯だけでビルド予算の大部分を占める場合がある</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0C2B7W1W4?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0BD4SRW3H":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"6\" y=\"2\" width=\"12\" height=\"20\" rx=\"1\"/><line x1=\"9\" y1=\"5\" x2=\"9\" y2=\"8.5\"/><line x1=\"12\" y1=\"5\" x2=\"12\" y2=\"8.5\"/><line x1=\"15\" y1=\"5\" x2=\"15\" y2=\"8.5\"/><line x1=\"9\" y1=\"12\" x2=\"9\" y2=\"15.5\"/><line x1=\"12\" y1=\"12\" x2=\"12\" y2=\"15.5\"/><line x1=\"15\" y1=\"12\" x2=\"15\" y2=\"15.5\"/></svg></span><span class=\"badge blue\">メモリ</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0BD4SRW3H\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>CORSAIR VENGEANCE DDR5 64GB(32GB×2) 5600MHz</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥135,992</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ・2026年のDRAM高騰により高値)</p>\n  <p>本格的な4K動画編集・大規模AIモデル用途向けの64GBメモリキット。</p>\n  <ul><li>◎ 4K動画編集やAI用途で推奨される64GBを2枚組(4枚挿しなしで安定動作)</li><li>◎ AMD・Intel両対応</li><li>△ 2026年のメモリ高騰で通常より大幅に高い価格</li><li>△ 32GBキットの1.5倍以上の価格差</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0BD4SRW3H?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394772956136\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0DGKMQPYC":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"3\" y=\"6\" width=\"18\" height=\"12\" rx=\"2\"/><circle cx=\"8\" cy=\"12\" r=\"2\"/><line x1=\"14\" y1=\"10\" x2=\"18\" y2=\"10\"/><line x1=\"14\" y1=\"14\" x2=\"18\" y2=\"14\"/></svg></span><span class=\"badge orange\">SSD</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0DGKMQPYC\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Crucial P310 1TB NVMe PCIe Gen4 M.2 SSD</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥27,800</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>\n  <p>OS・アプリ・動画編集素材を高速に読み書きできる、1TBのNVMe Gen4 SSD。</p>\n  <ul><li>◎ 最大7,100MB/秒のGen4 SSDで動画素材の読み込みも高速</li><li>◎ M.2スロットに挿すだけで配線不要</li><li>◎ 1TBあれば動画編集の作業用ストレージとして扱いやすい</li><li>△ マザーボード側のM.2スロットがGen4対応か事前確認が必要</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0DGKMQPYC?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0DGKTMN6L":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"3\" y=\"6\" width=\"18\" height=\"12\" rx=\"2\"/><circle cx=\"8\" cy=\"12\" r=\"2\"/><line x1=\"14\" y1=\"10\" x2=\"18\" y2=\"10\"/><line x1=\"14\" y1=\"14\" x2=\"18\" y2=\"14\"/></svg></span><span class=\"badge orange\">SSD</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0DGKTMN6L\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Crucial P310 2TB NVMe PCIe Gen4 M.2 SSD</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥59,980</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>\n  <p>素材データが多い動画編集・イラスト制作向けの、2TB大容量NVMe SSD。</p>\n  <ul><li>◎ 最大7,100MB/秒のGen4 SSDで大容量でも読み込みが速い</li><li>◎ 動画編集の素材や大量のイラストデータを1台にまとめやすい</li><li>◎ M.2スロットに挿すだけで配線不要</li><li>△ 1TBモデルよりGB単価は割高</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0DGKTMN6L?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0DQPMJ6MJ":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z\"/></svg></span><span class=\"badge blue\">ケース</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0DQPMJ6MJ\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>NZXT H3 Flow Micro-ATX ミドルタワーケース (ブラック)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥8,918</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>\n  <p>自作PC初心者でも組みやすい、通気性重視のMicro-ATXケース。</p>\n  <ul><li>◎ メッシュフロントで通気性が高く、フルサイズGPUも搭載可能</li><li>◎ Micro ATXながら組みやすい内部レイアウト</li><li>◎ 背面配線対応マザーボードにも対応</li><li>△ ミドルタワーのため設置スペースはそれなりに必要</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0DQPMJ6MJ?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0B55YL7TP":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5l8-3z\"/></svg></span><span class=\"badge blue\">ケース</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0B55YL7TP\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Fractal Design Pop Silent Black Solid ミドルタワーケース</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥13,270</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>\n  <p>性能より静かさを優先したい人向けの、吸音パネル付きミドルタワーケース。</p>\n  <ul><li>◎ 密閉式フロント/トップと吸音フォーム貼付サイドパネルで動作音を抑えやすい</li><li>◎ 120mmファン3基標準付属</li><li>◎ ATX/Micro-ATX/Mini-ITXいずれにも対応</li><li>△ 密閉構造のぶん、同価格帯のメッシュケースよりエアフローは控えめ(高発熱構成では要注意)</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0B55YL7TP?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0DKT9JRF1":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"2\" y=\"6\" width=\"20\" height=\"12\" rx=\"1.5\"/><circle cx=\"9\" cy=\"12\" r=\"3.2\"/><line x1=\"15.5\" y1=\"9\" x2=\"18.5\" y2=\"9\"/><line x1=\"15.5\" y1=\"15\" x2=\"18.5\" y2=\"15\"/></svg></span><span class=\"badge orange\">電源ユニット</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0DKT9JRF1\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Thermaltake TOUGHPOWER GT 750W (80PLUS GOLD)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥10,586</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>\n  <p>RTX 5060 Ti以上のGPUを積む、性能重視の構成向けの750W電源。</p>\n  <ul><li>◎ 80PLUS GOLD認証で変換効率が高い</li><li>◎ 750WあればRTX 5070クラスまで余裕を持って対応</li><li>◎ ATX3.1/PCIe5.1対応で最新GPUの電源コネクタにも対応</li><li>△ 550Wクラスの電源より価格は高め(GPUなし・軽い構成なら過剰な出力)</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0DKT9JRF1?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0CLL6896M":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"2\" y=\"6\" width=\"20\" height=\"12\" rx=\"1.5\"/><circle cx=\"9\" cy=\"12\" r=\"3.2\"/><line x1=\"15.5\" y1=\"9\" x2=\"18.5\" y2=\"9\"/><line x1=\"15.5\" y1=\"15\" x2=\"18.5\" y2=\"15\"/></svg></span><span class=\"badge orange\">電源ユニット</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0CLL6896M\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>CORSAIR CX550 550W電源ユニット (80PLUS Bronze・モジュラー式)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥6,464</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>内蔵GPU構成やミドルクラスGPUまでの自作PC向けの、無駄のない550W電源。</p>\n  <ul><li>◎ 内蔵GPUのみ・ミドルクラスGPUまでの構成には十分な550W</li><li>◎ 必要なケーブルだけ挿すモジュラー式で配線がすっきりする</li><li>◎ 750Wモデルより安く、無駄な出力を持たずに済む</li><li>△ 上位クラスのGPU(RTX 5060 Ti以上)を後から追加する場合は容量不足になりうる</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0CLL6896M?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0795DP124":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge green\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"10\" y=\"2\" width=\"4\" height=\"8\" rx=\"1\"/><path d=\"M9 10h6l-0.8 9.2a2 2 0 0 1-4.4 0z\"/></svg></span><span class=\"badge green\">グリス</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0795DP124\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>ARCTIC MX-4 (4g・スパチュラ付属) CPU/GPU用サーマルグリス</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥880</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>\n  <p>CPUクーラー交換・自作PC組み立て時に必要な、定番の高性能サーマルグリス。</p>\n  <ul><li>◎ 定番の高性能サーマルグリスで冷却性能・耐久性の実績が豊富</li><li>◎ スパチュラ付属で塗布量の調整がしやすい</li><li>◎ 1本でCPU・GPU数回分に使える</li><li>△ リテールクーラー同梱グリスからの塗り直しは手間がかかる</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0795DP124?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B09NZB9Z9Z":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><circle cx=\"12\" cy=\"12\" r=\"9.5\"/><path d=\"M12 12 15.8 6.6\"/><path d=\"M12 12 6.3 9.3\"/><path d=\"M12 12 13.1 18.8\"/><circle cx=\"12\" cy=\"12\" r=\"1.6\"/></svg></span><span class=\"badge blue\">CPUクーラー</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B09NZB9Z9Z\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Thermalright Peerless Assassin 120 SE CPUクーラー</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥5,079</span>実勢価格帯の目安・変動あり(2026年9月時点)</p>\n  <p>クーラー非同梱のRyzen 9 9900Xなどに必要な、コスパに優れた空冷CPUクーラー。</p>\n  <ul><li>◎ AMD AM4/AM5・Intel LGA1700など主要ソケットに幅広く対応</li><li>◎ デュアルタワー・6本ヒートパイプで空冷としては高い冷却性能</li><li>◎ この価格帯としては簡易水冷に迫る冷却力とコスパの評価が高い</li><li>△ デュアルタワー構造のためケース内のクリアランス(メモリ・ケースサイズ)を要確認</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B09NZB9Z9Z?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B098XP1Y38":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><circle cx=\"12\" cy=\"12\" r=\"9.5\"/><path d=\"M12 12 15.8 6.6\"/><path d=\"M12 12 6.3 9.3\"/><path d=\"M12 12 13.1 18.8\"/><circle cx=\"12\" cy=\"12\" r=\"1.6\"/></svg></span><span class=\"badge blue\">CPUクーラー</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B098XP1Y38\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Noctua NH-U12A chromax.black CPUクーラー</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥15,980</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>静音性を重視する人向けの高性能空冷CPUクーラー。9800X3D・9900Xクラスの発熱でも静かに冷やしたい場合に。</p>\n  <ul><li>◎ NF-A12x25 PWMファン搭載で、性能の割に動作音が静か</li><li>◎ AM5・LGA1851など主要ソケットにSecuFirm2マウントで対応</li><li>◎ 6年保証と実績のあるブランド</li><li>△ Thermalright Peerless Assassinより価格が高め</li><li>△ 存在感のあるサイズでケースのクリアランス確認が必要</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B098XP1Y38?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0D1K9NX2T":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge green\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M2 8.5c5.5-5.3 14.5-5.3 20 0\"/><path d=\"M5.5 12.5c3.6-3.4 9.4-3.4 13 0\"/><path d=\"M9 16.5c1.8-1.7 4.2-1.7 6 0\"/><circle cx=\"12\" cy=\"20\" r=\"1.2\"/></svg></span><span class=\"badge green\">Wi-Fi子機</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0D1K9NX2T\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>TP-Link WiFi 6 USB無線LAN子機 AX1800</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥2,560</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>有線LANが引けない部屋で、Wi-Fi非搭載マザーボードと組み合わせる時の追加パーツ。</p>\n  <ul><li>◎ Wi-Fi非搭載のマザーボードでも後から無線化できる</li><li>◎ USB接続で取り付けが簡単</li><li>◎ 価格が手頃</li><li>△ 内蔵Wi-Fiより電波感度がやや劣る場合がある</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0D1K9NX2T?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394772911206\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0DH88QC5B":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"2\" y=\"6\" width=\"20\" height=\"12\" rx=\"2\"/><line x1=\"6\" y1=\"10\" x2=\"6\" y2=\"10\"/><line x1=\"10\" y1=\"10\" x2=\"10\" y2=\"10\"/><line x1=\"14\" y1=\"10\" x2=\"14\" y2=\"10\"/><line x1=\"18\" y1=\"10\" x2=\"18\" y2=\"10\"/><line x1=\"6\" y1=\"14\" x2=\"14\" y2=\"14\"/></svg></span><span class=\"badge orange\">キーボード</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0DH88QC5B\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>REALFORCE RC1 (C1HJ13・日本語配列・30g・ブラック)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥32,538</span>実勢価格帯の目安・変動あり(2026年9月時点、kakaku.com調べ)</p>\n  <p>長時間タイピングする人向けの高級キーボード。Note本編レビュー記事のダイジェスト版。</p>\n  <ul><li>◎ 静電容量無接点方式で打鍵感が滑らか</li><li>◎ APC機能で各キーの反応位置を0.8〜3.0mmの範囲で調整可能(専用アプリREALFORCE CONNECT使用)</li><li>◎ テンキーレスで省スペース</li><li>△ 価格が高め</li><li>△ タイピング音は完全な無音ではない</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0DH88QC5B?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394422416260\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0B1Q6VB16":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"7\" y=\"2\" width=\"10\" height=\"19\" rx=\"5\"/><line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"9\"/></svg></span><span class=\"badge blue\">マウス</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0B1Q6VB16\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Logicool MX Master 3S (MX2300GR・グラファイト)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥16,500</span>実勢価格帯の目安・変動あり(2026年8月時点、kakaku.com調べ)</p>\n  <p>AI作業用サブPCとメインPCを行き来する人に相性が良い高機能マウス。</p>\n  <ul><li>◎ 静音クリックで在宅ワーク向き</li><li>◎ 8000dpiの高精度センサー</li><li>◎ Logi Bolt / Bluetooth対応でPC切り替えがしやすい</li><li>△ 手が小さいと持ちづらい</li><li>△ 細かい設定にLogi Options+が必要</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0B1Q6VB16?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394654792375\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0F23FWBJL":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"3\" y=\"4\" width=\"18\" height=\"13\" rx=\"2\"/><line x1=\"8\" y1=\"20.5\" x2=\"16\" y2=\"20.5\"/><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"20.5\"/></svg></span><span class=\"badge orange\">モニター</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0F23FWBJL\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Dell S2725QC-A 27インチ4Kモニター(Amazon.co.jp限定・無輝点5年保証)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥41,980</span>実勢価格帯の目安・変動あり(2026年8月時点、報道価格参照)</p>\n  <p>AIチャット・資料・コードを並べて表示したい人向けの4Kモニター。</p>\n  <ul><li>◎ USB-C 65W給電でノートPCとケーブル1本で接続可能</li><li>◎ 120Hz/FreeSync Premium対応で表示がなめらか</li><li>◎ Amazon.co.jp限定モデルで無輝点5年保証付き</li><li>△ USB-Cハブ経由のポート自体は給電非対応(65WはノートPC充電専用)</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0F23FWBJL?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","ROOM-SOLOCAST2":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"9\" y=\"2\" width=\"6\" height=\"11\" rx=\"3\"/><path d=\"M5 10a7 7 0 0 0 14 0\"/><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"/><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"/></svg></span><span class=\"badge blue\">マイク</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"ROOM-SOLOCAST2\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>HyperX SoloCast 2 USBマイク</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥8,980</span>運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)</p>\n  <p>AI音声入力やオンライン会議の声を、内蔵マイクより整えたい人向けのUSBマイク。</p>\n  <ul><li>◎ 単一指向性+内蔵ポップフィルター・ショックマウントで声がクリアになる</li><li>◎ 24bit/96kHz対応、タップミュート機能付き</li><li>◎ AI音声入力やオンライン会議の声を整えたい人向け</li><li>△ 同梱ケーブルはUSB-C to Aのため、MacBook Airでは変換や別ケーブルが必要な場合がある</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394422767128\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","ROOM-STREAMDECKNEO":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><rect x=\"6\" y=\"6\" width=\"4.5\" height=\"4.5\" rx=\"1\"/><rect x=\"13.5\" y=\"6\" width=\"4.5\" height=\"4.5\" rx=\"1\"/><rect x=\"6\" y=\"13.5\" width=\"4.5\" height=\"4.5\" rx=\"1\"/><rect x=\"13.5\" y=\"13.5\" width=\"4.5\" height=\"4.5\" rx=\"1\"/></svg></span><span class=\"badge orange\">マクロパッド</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"ROOM-STREAMDECKNEO\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Elgato Stream Deck Neo</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥14,980</span>運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)</p>\n  <p>AIツールの起動や定型作業を1ボタンにまとめたい人向けのマクロパッド。</p>\n  <ul><li>◎ 8個のカスタムキー+情報バーでAIツールの起動や定型文貼り付けを1ボタン化</li><li>◎ Mac/Windows対応の無料アプリで設定できる</li><li>◎ よく使うフォルダやURLも登録できる</li><li>△ 初期設定が必要で、ケーブルは本体固定のUSB-C</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394422816251\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","ROOM-XPPEN12":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"3\" y=\"3\" width=\"18\" height=\"15\" rx=\"2\"/><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"/><path d=\"M14 9l3 3-5 5-3 1 1-3z\"/></svg></span><span class=\"badge blue\">タブレット</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"ROOM-XPPEN12\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>XPPen Artist 12 3rd 液晶ペンタブレット</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥34,980</span>運営者の楽天ROOM掲載価格・変動あり(2026年9月時点)</p>\n  <p>MacBookで画面へ直接描ける環境を作りたい人向けの、12インチ級液晶ペンタブレット。</p>\n  <ul><li>◎ X4チップ搭載ペンで筆圧検知が自然</li><li>◎ ショートカットキー+折りたたみスタンド内蔵ですぐ描き始められる</li><li>◎ macOS/Windows/Android対応で環境を選ばない</li><li>△ USB-C一本接続には映像出力(DP Alt Mode)対応ポートが必要</li><li>△ 12インチ級のためデスクスペースの確保が必要</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394422689163\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0HGGGHGRP":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"5\" y=\"8\" width=\"14\" height=\"5\" rx=\"2\"/><line x1=\"9\" y1=\"18\" x2=\"15\" y2=\"18\"/><line x1=\"12\" y1=\"13\" x2=\"12\" y2=\"18\"/></svg></span><span class=\"badge blue\">Mac(デスクトップ)</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0HGGGHGRP\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Apple Mac mini (M6・12コアCPU/12コアGPU・16GB・512GB)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥185,800</span>Apple公式価格・2026年9月時点(Amazon調べ)</p>\n  <p>自作PC診断でApple連携ニーズがあり、かつ据え置き・軽い用途と判定された人向けのMac mini基本構成。</p>\n  <ul><li>◎ 書類作成・Web閲覧・AIチャット中心なら十分すぎる性能</li><li>◎ 自作PCより静音・省スペースで、組み立ての手間もない</li><li>◎ iPhone・iPadとの連係(AirDrop・Handoff等)が違和感なく使える</li><li>△ モニター・キーボード・マウスは別売り</li><li>△ Windows専用ソフトは動かない</li><li>△ メモリ・ストレージは購入後に増設できない</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0HGGGHGRP?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0HGGMDZ63":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"5\" y=\"8\" width=\"14\" height=\"5\" rx=\"2\"/><line x1=\"9\" y1=\"18\" x2=\"15\" y2=\"18\"/><line x1=\"12\" y1=\"13\" x2=\"12\" y2=\"18\"/></svg></span><span class=\"badge blue\">Mac(デスクトップ)</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0HGGMDZ63\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Apple Mac mini (M5 Pro・15コアCPU/16コアGPU・24GB・512GB)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥299,800</span>Apple公式価格・2026年9月時点(Amazon調べ)</p>\n  <p>自作PC診断でApple連携ニーズがあり、動画編集など重い用途と判定された人向けのMac mini上位構成。</p>\n  <ul><li>◎ Premiere Pro・DaVinci Resolveでも快適に動くApple Siliconの上位モデル</li><li>◎ 統合メモリ24GBでVRAM不足に悩みにくい</li><li>◎ 複数用途(編集+AI処理など)を同時にこなしたい人向けの余裕</li><li>△ 自作PC診断のミドル〜上位Windows構成より価格が高くなりやすい</li><li>△ モニター・キーボード・マウスは別売り</li><li>△ Windows専用ソフト・NVIDIA GPU前提のツールは使えない</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0HGGMDZ63?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394831210630\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0GR1T11D6":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"4\" y=\"5\" width=\"16\" height=\"10\" rx=\"1.5\"/><path d=\"M2 19h20l-1.5-3H3.5z\"/></svg></span><span class=\"badge blue\">Mac(ノート)</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0GR1T11D6\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Apple MacBook Air 13インチ (M5・16GB・512GB)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥224,800</span>Apple公式価格・2026年9月時点(Amazon調べ)</p>\n  <p>自作PC診断でApple連携ニーズがあり、持ち歩く機会が多いと判定された人向けのMacBook Air基本構成。</p>\n  <ul><li>◎ ファンレスで静音・薄型軽量、持ち歩きに強い</li><li>◎ iPhone・iPadとの連係(AirDrop・Handoff等)をそのまま使える</li><li>◎ バッテリー持ちが良く、電源を気にせず作業できる</li><li>△ 拡張性がなく、あとからメモリ・ストレージを増やせない</li><li>△ Windows専用ソフトは動かない</li><li>△ 重いゲーム・動画編集には非力</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0GR1T11D6?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394831218267\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0FWF4M2HP":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge blue\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"4\" y=\"5\" width=\"16\" height=\"10\" rx=\"1.5\"/><path d=\"M2 19h20l-1.5-3H3.5z\"/></svg></span><span class=\"badge blue\">Mac(ノート)</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0FWF4M2HP\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Apple MacBook Pro 14インチ (M5・16GB・1TB)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥339,800</span>Apple公式価格・2026年9月時点(Amazon調べ)</p>\n  <p>自作PC診断でApple連携ニーズがあり、持ち歩きながら動画編集などの重い用途もこなしたい人向けのMacBook Pro構成。</p>\n  <ul><li>◎ Liquid Retina XDRディスプレイと本体だけで、外出先でも4K編集が完結する</li><li>◎ Apple Siliconのハードウェアエンコードでエンコード・書き出しが速い</li><li>◎ 1TB SSDで動画素材もある程度余裕を持って持ち歩ける</li><li>△ 自作PC診断のミドル〜上位Windows構成より価格が高くなりやすい</li><li>△ Windows専用ソフト・NVIDIA GPU前提のツールは使えない</li><li>△ 重量・サイズはMacBook Airより増える</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0FWF4M2HP?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394831227206\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0DV6WJ88D":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge green\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"3\" y=\"9\" width=\"18\" height=\"6\" rx=\"1.5\"/><line x1=\"7\" y1=\"9\" x2=\"7\" y2=\"4\"/><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"4\"/><line x1=\"17\" y1=\"9\" x2=\"17\" y2=\"4\"/></svg></span><span class=\"badge green\">ハブ・スタンド</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0DV6WJ88D\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Satechi Mac mini用 ハブ&amp;スタンド (M6/M5 Pro/M4対応・NVMe SSDケース搭載)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥16,450</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>Mac miniを自作PC診断のおすすめとして選んだ人向けの、ポート不足を解消するハブ&amp;スタンド。</p>\n  <ul><li>◎ Mac miniを持ち上げて設置でき、底面の吸排気を妨げない</li><li>◎ USBポート・SDカードスロットなどを増設でき、背面の抜き挿しが減る</li><li>◎ NVMe SSDケースを内蔵でき、外部ストレージを目立たず増設できる</li><li>△ Mac mini本体より重量・サイズが増える</li><li>△ Mac mini以外の用途では使えない</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0DV6WJ88D?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394831232244\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0F4R72GYM":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"5\" y=\"3\" width=\"10\" height=\"17\" rx=\"1.5\"/><line x1=\"10\" y1=\"19.5\" x2=\"10\" y2=\"20.5\"/><circle cx=\"10\" cy=\"6\" r=\"0.8\"/></svg></span><span class=\"badge orange\">完成品PC</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0F4R72GYM\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Dell Slim ECS1250 (Core Ultra 5 225・16GB・512GB)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥199,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>自作PC診断のオフィス構成(Core Ultra 5・内蔵GPU)に近い、組み立て不要の完成品デスクトップPC。</p>\n  <ul><li>◎ 自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える</li><li>◎ 内蔵GPUのみでこの診断のオフィス構成に近いスペックを調達できる</li><li>◎ Dellブランドでサポート・保証面の安心感がある</li><li>△ ゲーム・動画編集など重い用途には非力</li><li>△ 拡張性・カスタマイズ性は自作PCより低い</li><li>△ 在庫・価格は変動しやすい</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0F4R72GYM?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394831254252\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0G25S1199":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"5\" y=\"3\" width=\"10\" height=\"17\" rx=\"1.5\"/><line x1=\"10\" y1=\"19.5\" x2=\"10\" y2=\"20.5\"/><circle cx=\"10\" cy=\"6\" r=\"0.8\"/></svg></span><span class=\"badge orange\">完成品PC</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0G25S1199\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>GALLERIA XGR7M-R56-WL (Ryzen 7 5700X・RTX 5060・16GB・500GB)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥239,880</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon・ドスパラ公式ストア調べ)</p>\n  <p>自作PC診断のミドルGPU構成(Ryzen 7 5700X・RTX 5060)に近い、組み立て不要の完成品ゲーミングPC。</p>\n  <ul><li>◎ 自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える</li><li>◎ この診断のミドルGPU構成に近いスペックを完成品として調達できる</li><li>◎ ドスパラの実績あるBTOブランドで、サポート・保証面の安心感がある</li><li>△ 同スペックを自作するより割高になりやすい</li><li>△ ケースやパーツを自分好みに選べない</li><li>△ 在庫・価格は変動しやすい</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0G25S1199?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394831250647\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0FRFP94FG":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"5\" y=\"3\" width=\"10\" height=\"17\" rx=\"1.5\"/><line x1=\"10\" y1=\"19.5\" x2=\"10\" y2=\"20.5\"/><circle cx=\"10\" cy=\"6\" r=\"0.8\"/></svg></span><span class=\"badge orange\">完成品PC</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0FRFP94FG\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>GALLERIA XPR7A-R56T16G-GD (Ryzen 7 7700・RTX 5060 Ti 16GB・16GB・1TB)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥316,180</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon・ドスパラ公式ストア調べ)</p>\n  <p>自作PC診断のVRAM優先構成(RTX 5060 Ti 16GB)に近い、組み立て不要の完成品ゲーミングPC。</p>\n  <ul><li>◎ 自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える</li><li>◎ 自作PC診断のVRAM優先構成(RTX 5060 Ti 16GB)に近いスペックを完成品として調達できる</li><li>◎ ドスパラの実績あるBTOブランドで、サポート・保証面の安心感がある</li><li>△ 同スペックを自作するより割高になりやすい</li><li>△ ケースやパーツを自分好みに選べない</li><li>△ 在庫・価格は変動しやすい</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0FRFP94FG?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394833604792\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0FRFSY497":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"5\" y=\"3\" width=\"10\" height=\"17\" rx=\"1.5\"/><line x1=\"10\" y1=\"19.5\" x2=\"10\" y2=\"20.5\"/><circle cx=\"10\" cy=\"6\" r=\"0.8\"/></svg></span><span class=\"badge orange\">完成品PC</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0FRFSY497\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>GALLERIA XDR7A-R57-GD (Ryzen 7 9800X3D・RTX 5070・32GB・1TB)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥452,480</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon・ドスパラ公式ストア調べ)</p>\n  <p>自作PC診断の上位ゲーミング構成(Ryzen 7 9800X3D・RTX 5070)に近い、組み立て不要の完成品ゲーミングPC。</p>\n  <ul><li>◎ 自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える</li><li>◎ 自作PC診断の競技系FPS・重量級タイトル向け上位構成(X3D・RTX5070)に近いスペックを完成品として調達できる</li><li>◎ ドスパラの実績あるBTOブランドで、サポート・保証面の安心感がある</li><li>△ 同スペックを自作するより割高になりやすい</li><li>△ ケースやパーツを自分好みに選べない</li><li>△ 在庫・価格は変動しやすい</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0FRFSY497?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394833600268\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0GZ6GN6WJ":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"4\" y=\"5\" width=\"16\" height=\"10\" rx=\"1.5\"/><path d=\"M2 19h20l-1.5-3H3.5z\"/></svg></span><span class=\"badge orange\">完成品ノートPC</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0GZ6GN6WJ\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>ASUS Vivobook S14 S5406SAL (Core Ultra 5 226V・16GB・512GB)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥149,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>自作PC診断のオフィス構成に近い、持ち歩けるノート型の完成品Windows PC。</p>\n  <ul><li>◎ 自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える</li><li>◎ 自作PC診断のオフィス構成に近いスペックを、持ち歩けるノート型で調達できる</li><li>◎ 重量1.3kg・バッテリー駆動21.5時間で持ち歩きに強い</li><li>△ ゲーム・動画編集など重い用途には非力</li><li>△ 拡張性・カスタマイズ性は自作PCより低い</li><li>△ 在庫・価格は変動しやすい</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0GZ6GN6WJ?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a><a class=\"btn-room\" href=\"https://room.rakuten.co.jp/aidesklabo/1700394833611331\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>楽天ROOMで見る</a></div>\n</div>","B0GYDVG4FP":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"4\" y=\"5\" width=\"16\" height=\"10\" rx=\"1.5\"/><path d=\"M2 19h20l-1.5-3H3.5z\"/></svg></span><span class=\"badge orange\">完成品ノートPC</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0GYDVG4FP\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>Lenovo LOQ Essential 15IRX11 (Core i7-13650HX・RTX 5060・16GB・1TB)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥309,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>自作PC診断のミドルゲーミング構成(RTX 5060)に近い、持ち歩けるノート型の完成品ゲーミングPC。</p>\n  <ul><li>◎ 自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える</li><li>◎ 自作PC診断のミドルGPU構成(RTX 5060)に近いスペックを、持ち歩けるノート型で調達できる</li><li>◎ Lenovoブランドでサポート・保証面の安心感がある</li><li>△ 同スペックのデスクトップ完成品より高くなりやすい</li><li>△ 拡張性・カスタマイズ性は自作PCより低い</li><li>△ 在庫・価格は変動しやすい</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0GYDVG4FP?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>","B0GSV7DJHQ":"<div class=\"card\">\n  <div class=\"card-top\"><span class=\"icon-badge orange\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"4\" y=\"5\" width=\"16\" height=\"10\" rx=\"1.5\"/><path d=\"M2 19h20l-1.5-3H3.5z\"/></svg></span><span class=\"badge orange\">完成品ノートPC</span><button type=\"button\" class=\"fav-btn\" data-fav-asin=\"B0GSV7DJHQ\" aria-label=\"気になるリストに追加\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M12 21s-7.5-4.6-10-9.1C.5 8.6 2 5 5.5 5c2 0 3.3 1 4.5 2.5C11.2 6 12.5 5 14.5 5 18 5 19.5 8.6 22 11.9 19.5 16.4 12 21 12 21z\"/></svg></button></div>\n  <h3>ASUS TUF Gaming A16 FA608UP (Ryzen 7 260・RTX 5070・16GB・512GB)</h3>\n  <p class=\"price\"><span class=\"num-mono\">¥264,800</span>実勢価格帯の目安・変動あり(2026年9月時点、Amazon調べ)</p>\n  <p>自作PC診断の上位ゲーミング構成(RTX 5070)に近い、持ち歩けるノート型の完成品ゲーミングPC。</p>\n  <ul><li>◎ 自分でパーツを選ばず、組み立て済みのまま届いてすぐ使える</li><li>◎ 自作PC診断の上位ゲーミング構成(RTX 5070)に近いスペックを、持ち歩けるノート型で調達できる</li><li>◎ リフレッシュレート165Hzでゲーム・動画編集の両方に余裕がある</li><li>△ 同スペックのデスクトップ完成品より高くなりやすい</li><li>△ 拡張性・カスタマイズ性は自作PCより低い</li><li>△ 在庫・価格は変動しやすい</li></ul>\n  <div class=\"cta-row\"><a class=\"btn-amazon\" href=\"https://www.amazon.co.jp/dp/B0GSV7DJHQ?tag=aidesklabo-22\" rel=\"nofollow sponsored noopener\" target=\"_blank\"><svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><path d=\"M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z\"/><path d=\"M3 6h18\"/><path d=\"M16 10a4 4 0 0 1-8 0\"/></svg>Amazonで見る</a></div>\n</div>"};
+  var PRICES = {"B092L9GF5N":19800,"B09VCHR1VH":22980,"B0BS8PRCYV":28800,"B0D6NN87T8":64980,"B0DKFMSMYK":57630,"B0DT2WX4X8":32250,"B08G1Y95SZ":6980,"B0F3DG1NVW":16980,"B0DRTV8HQY":18780,"B0972BP9YR":65455,"B0F4XC69KL":129800,"B0FY2G9YGH":78800,"B0DX7JJ87N":152679,"B08C53LL9J":24500,"B0F1FW31Y8":37500,"B0C2B7W1W4":84980,"B0BD4SRW3H":135992,"B0DGKMQPYC":27800,"B0DGKTMN6L":59980,"B0DQPMJ6MJ":8918,"B0B55YL7TP":13270,"B0DKT9JRF1":10586,"B0CLL6896M":6464,"B0795DP124":880,"B09NZB9Z9Z":5079,"B098XP1Y38":15980,"B0D1K9NX2T":2560,"B0DH88QC5B":32538,"B0B1Q6VB16":16500,"B0F23FWBJL":41980,"ROOM-SOLOCAST2":8980,"ROOM-STREAMDECKNEO":14980,"ROOM-XPPEN12":34980,"B0HGGGHGRP":185800,"B0HGGMDZ63":299800,"B0GR1T11D6":224800,"B0FWF4M2HP":339800,"B0DV6WJ88D":16450,"B0F4R72GYM":199800,"B0G25S1199":239880,"B0FRFP94FG":316180,"B0FRFSY497":452480,"B0GZ6GN6WJ":149800,"B0GYDVG4FP":309800,"B0GSV7DJHQ":264800};
+  var CATEGORY_LABELS = {"B092L9GF5N":"CPU","B09VCHR1VH":"CPU","B0BS8PRCYV":"CPU","B0D6NN87T8":"CPU","B0DKFMSMYK":"CPU","B0DT2WX4X8":"CPU","B08G1Y95SZ":"マザーボード","B0F3DG1NVW":"マザーボード","B0DRTV8HQY":"マザーボード","B0972BP9YR":"GPU","B0F4XC69KL":"GPU","B0FY2G9YGH":"GPU","B0DX7JJ87N":"GPU","B08C53LL9J":"メモリ","B0F1FW31Y8":"メモリ","B0C2B7W1W4":"メモリ","B0BD4SRW3H":"メモリ","B0DGKMQPYC":"SSD","B0DGKTMN6L":"SSD","B0DQPMJ6MJ":"ケース","B0B55YL7TP":"ケース","B0DKT9JRF1":"電源ユニット","B0CLL6896M":"電源ユニット","B0795DP124":"グリス","B09NZB9Z9Z":"CPUクーラー","B098XP1Y38":"CPUクーラー","B0D1K9NX2T":"Wi-Fi子機","B0DH88QC5B":"キーボード","B0B1Q6VB16":"マウス","B0F23FWBJL":"モニター","ROOM-SOLOCAST2":"マイク","ROOM-STREAMDECKNEO":"マクロパッド","ROOM-XPPEN12":"タブレット","B0HGGGHGRP":"Mac(デスクトップ)","B0HGGMDZ63":"Mac(デスクトップ)","B0GR1T11D6":"Mac(ノート)","B0FWF4M2HP":"Mac(ノート)","B0DV6WJ88D":"ハブ・スタンド","B0F4R72GYM":"完成品PC","B0G25S1199":"完成品PC","B0FRFP94FG":"完成品PC","B0FRFSY497":"完成品PC","B0GZ6GN6WJ":"完成品ノートPC","B0GYDVG4FP":"完成品ノートPC","B0GSV7DJHQ":"完成品ノートPC"};
+  var NAMES = {"B092L9GF5N":"AMD Ryzen 5 5600G (Wraith Stealthクーラー付・内蔵GPU搭載)","B09VCHR1VH":"AMD Ryzen 5 5600 (Wraith Stealthクーラー付・AM4)","B0BS8PRCYV":"AMD Ryzen 5 7600 (Wraith Stealthクーラー付・Amazon.co.jp限定)","B0D6NN87T8":"AMD Ryzen 9 9900X (12コア24スレッド・クーラーなし)","B0DKFMSMYK":"AMD Ryzen 7 9800X3D (8コア16スレッド・クーラーなし)","B0DT2WX4X8":"インテル Core Ultra 5 225F (Amazon.co.jp限定・国内正規代理店保証1年付)","B08G1Y95SZ":"ASRock A520M-HDV (AM4・Micro ATX)","B0F3DG1NVW":"ASRock B650M Pro X3D WiFi (AM5・Micro ATX)","B0DRTV8HQY":"ASRock B860 Pro RS WiFi (LGA1851・DDR5・ATX)","B0972BP9YR":"MSI GeForce RTX 5060 8G VENTUS 2X OC","B0F4XC69KL":"Palit GeForce RTX 5060 Ti Infinity 3 16GB","B0FY2G9YGH":"XFX Swift AMD Radeon RX 9060 XT OC 16GB Gaming Edition","B0DX7JJ87N":"MSI GeForce RTX 5070 12G VENTUS 2X OC","B08C53LL9J":"Crucial デスクトップ用メモリ 16GB(8GB×2枚) DDR4-3200","B0F1FW31Y8":"ADATA DDR5 16GB(8GB×2) 5600MHz U-DIMM デスクトップ用","B0C2B7W1W4":"Crucial PRO デスクトップ用メモリ 32GB(16GB×2枚) DDR5-5600","B0BD4SRW3H":"CORSAIR VENGEANCE DDR5 64GB(32GB×2) 5600MHz","B0DGKMQPYC":"Crucial P310 1TB NVMe PCIe Gen4 M.2 SSD","B0DGKTMN6L":"Crucial P310 2TB NVMe PCIe Gen4 M.2 SSD","B0DQPMJ6MJ":"NZXT H3 Flow Micro-ATX ミドルタワーケース (ブラック)","B0B55YL7TP":"Fractal Design Pop Silent Black Solid ミドルタワーケース","B0DKT9JRF1":"Thermaltake TOUGHPOWER GT 750W (80PLUS GOLD)","B0CLL6896M":"CORSAIR CX550 550W電源ユニット (80PLUS Bronze・モジュラー式)","B0795DP124":"ARCTIC MX-4 (4g・スパチュラ付属) CPU/GPU用サーマルグリス","B09NZB9Z9Z":"Thermalright Peerless Assassin 120 SE CPUクーラー","B098XP1Y38":"Noctua NH-U12A chromax.black CPUクーラー","B0D1K9NX2T":"TP-Link WiFi 6 USB無線LAN子機 AX1800","B0DH88QC5B":"REALFORCE RC1 (C1HJ13・日本語配列・30g・ブラック)","B0B1Q6VB16":"Logicool MX Master 3S (MX2300GR・グラファイト)","B0F23FWBJL":"Dell S2725QC-A 27インチ4Kモニター(Amazon.co.jp限定・無輝点5年保証)","ROOM-SOLOCAST2":"HyperX SoloCast 2 USBマイク","ROOM-STREAMDECKNEO":"Elgato Stream Deck Neo","ROOM-XPPEN12":"XPPen Artist 12 3rd 液晶ペンタブレット","B0HGGGHGRP":"Apple Mac mini (M6・12コアCPU/12コアGPU・16GB・512GB)","B0HGGMDZ63":"Apple Mac mini (M5 Pro・15コアCPU/16コアGPU・24GB・512GB)","B0GR1T11D6":"Apple MacBook Air 13インチ (M5・16GB・512GB)","B0FWF4M2HP":"Apple MacBook Pro 14インチ (M5・16GB・1TB)","B0DV6WJ88D":"Satechi Mac mini用 ハブ&スタンド (M6/M5 Pro/M4対応・NVMe SSDケース搭載)","B0F4R72GYM":"Dell Slim ECS1250 (Core Ultra 5 225・16GB・512GB)","B0G25S1199":"GALLERIA XGR7M-R56-WL (Ryzen 7 5700X・RTX 5060・16GB・500GB)","B0FRFP94FG":"GALLERIA XPR7A-R56T16G-GD (Ryzen 7 7700・RTX 5060 Ti 16GB・16GB・1TB)","B0FRFSY497":"GALLERIA XDR7A-R57-GD (Ryzen 7 9800X3D・RTX 5070・32GB・1TB)","B0GZ6GN6WJ":"ASUS Vivobook S14 S5406SAL (Core Ultra 5 226V・16GB・512GB)","B0GYDVG4FP":"Lenovo LOQ Essential 15IRX11 (Core i7-13650HX・RTX 5060・16GB・1TB)","B0GSV7DJHQ":"ASUS TUF Gaming A16 FA608UP (Ryzen 7 260・RTX 5070・16GB・512GB)"};
+  var SWAPS = [{"category":"case","options":["case","caseQuiet"],"labels":{"case":"通気重視","caseQuiet":"静音重視"}},{"category":"storage","options":["storage","storage2tb"],"labels":{"storage":"1TB","storage2tb":"2TB"}},{"category":"cooler","options":["cooler","coolerQuiet"],"labels":{"cooler":"冷却重視","coolerQuiet":"静音重視"}}];
+  var GUIDE_ROOT = "../../guides/";
+  var OS_LICENSE_COST = 16500;
+  var ASSEMBLY_SERVICE_FEE = 25000;
+  var ASSEMBLY_SERVICE_FEE_RANGE = "1.1万円〜3.3万円(店舗・プランにより変動)";
+  var ACCESSORIES = {"keyboard":"B0DH88QC5B","mouse":"B0B1Q6VB16","monitor":"B0F23FWBJL","mic":"ROOM-SOLOCAST2","macropad":"ROOM-STREAMDECKNEO","tablet":"ROOM-XPPEN12"};
+  var MAC_CATALOG = {"macMiniBase":"B0HGGGHGRP","macMiniPro":"B0HGGMDZ63","macbookAir13":"B0GR1T11D6","macbookPro14":"B0FWF4M2HP","macMiniHub":"B0DV6WJ88D"};
+  var PREBUILT_CATALOG = {"officeBudget":"B0F4R72GYM","gamingMid":"B0G25S1199","vramPriority":"B0FRFP94FG","gamingHigh":"B0FRFSY497","officeLaptop":"B0GZ6GN6WJ","gamingMidLaptop":"B0GYDVG4FP","gamingHighLaptop":"B0GSV7DJHQ"};
+  var stepKeys = ["usecases","gameGenre","resolution","videoIntensity","aiScale","budget","software","appleWorkflow","effort","platform","network","noise","storage"];
+  var stepTypes = ["multi","single","single","single","single","single","single","multi","single","single","single","single","single"];
+  var stepDependsOn = [null,{"key":"usecases","anyOf":["gaming","streaming"]},{"key":"usecases","anyOf":["gaming","streaming"]},{"key":"usecases","anyOf":["video"]},{"key":"usecases","anyOf":["ai_image","local_llm"]},null,null,null,null,{"key":"effort","anyOf":["diy","assembly_service","compare_all"]},{"key":"effort","anyOf":["diy","assembly_service","compare_all"]},{"key":"effort","anyOf":["diy","assembly_service","compare_all"]},{"key":"effort","anyOf":["diy","assembly_service","compare_all"]}];
+  var answers = {};
+  var resultState = null; // set by showResult(); mutated by swap clicks
+  var stepEls = root.querySelectorAll(".quiz-step");
+  var dotEls = root.querySelectorAll(".quiz-dot");
+  var resultsBox = root.querySelector(".quiz-results");
+
+  function yen(n) { return "\u00a5" + n.toLocaleString("ja-JP"); }
+
+  // Encodes the current answers into the URL's query string (one param per
+  // question, multi-select joined by commas) so a shared link reproduces
+  // the exact same result instead of dropping the visitor back at step 1 —
+  // the whole point of the "Xでシェア" button. Uses replaceState, not
+  // pushState, so retrying doesn't pollute browser history with every step.
+  function syncAnswersToUrl() {
+    if (typeof URLSearchParams === "undefined" || !window.history || !window.history.replaceState) return;
+    var params = new URLSearchParams();
+    stepKeys.forEach(function (k) {
+      var v = answers[k];
+      if (v === undefined || v === null) return;
+      var s = Array.isArray(v) ? v.join(",") : String(v);
+      if (s) params.set(k, s);
+    });
+    var q = params.toString();
+    var next = q ? "?" + q : window.location.pathname;
+    window.history.replaceState(null, "", next);
+  }
+
+  // Reverse of syncAnswersToUrl(), run once on load. Returns true if any
+  // answers were restored, so the caller can jump straight to the result
+  // instead of showing step 1.
+  function restoreAnswersFromUrl() {
+    if (typeof URLSearchParams === "undefined" || !window.location.search) return false;
+    var params = new URLSearchParams(window.location.search);
+    var restored = {};
+    var found = false;
+    stepKeys.forEach(function (k, i) {
+      if (!params.has(k)) return;
+      var raw = params.get(k);
+      restored[k] = stepTypes[i] === "multi" ? raw.split(",").filter(Boolean) : raw;
+      found = true;
+    });
+    if (!found) return false;
+    answers = restored;
+    return true;
+  }
+
+  function shouldSkip(index) {
+    var dep = stepDependsOn[index];
+    if (!dep) return false;
+    var given = answers[dep.key];
+    if (given === undefined) return true;
+    var givenArr = Array.isArray(given) ? given : [given];
+    return !dep.anyOf.some(function (v) { return givenArr.indexOf(v) !== -1; });
+  }
+
+  function showStep(index) {
+    stepEls.forEach(function (el) { el.hidden = Number(el.dataset.stepIndex) !== index; });
+    dotEls.forEach(function (el, i) { el.classList.toggle("is-active", i === index); });
+    resultsBox.hidden = true;
+    root.querySelector(".quiz-steps").hidden = false;
+  }
+
+  // --- scoring: turn the answers into a concrete parts list + copy ---
+  var BUDGET_MAP = { "10": 100000, "15": 150000, "20": 200000, "30": 300000, "40": 400000, "99": Infinity };
+  var BUDGET_LABEL_MAP = { "10": "\uff5e10\u4e07\u5186", "15": "10\u4e07\uff5e15\u4e07\u5186", "20": "15\u4e07\uff5e20\u4e07\u5186", "30": "20\u4e07\uff5e30\u4e07\u5186", "40": "30\u4e07\uff5e40\u4e07\u5186", "99": "40\u4e07\u5186\u4ee5\u4e0a" };
+  var USECASE_LABELS = { office: "\u30aa\u30d5\u30a3\u30b9\u30fb AI\u30c1\u30e3\u30c3\u30c8", programming: "\u30d7\u30ed\u30b0\u30e9\u30df\u30f3\u30b0", illustration: "\u30a4\u30e9\u30b9\u30c8", ai_image: "AI\u753b\u50cf\u751f\u6210", local_llm: "\u30ed\u30fc\u30ab\u30ebLLM", gaming: "\u30b2\u30fc\u30df\u30f3\u30b0", streaming: "\u30b2\u30fc\u30e0\u914d\u4fe1", video: "\u52d5\u753b\u7de8\u96c6" };
+
+  // Builds the concrete parts list (CPU/mobo/RAM/GPU + accessories) for a
+  // given set of requirement tiers on the Windows side. Kept separate from
+  // compute() so the same logic can run twice: once for the initial pick,
+  // once more if that pick needs a budget-driven GPU step-down. Returns
+  // both the ASIN list and enough metadata (per-part reasoning) to build
+  // the result text without recomputing anything.
+  function buildWindowsParts(req) {
+    var windowsPlatform = req.platformPref === "intel" ? "intel" : "amd";
+    var cpuAsin, moboAsin, ramAsin, needsCooler = false, cpuNote = null;
+    if (windowsPlatform === "intel") {
+      cpuAsin = CATALOG.cpuIntel;
+      moboAsin = CATALOG.moboIntel;
+      ramAsin = req.ramGB >= 64 ? CATALOG.ramDdr5_64 : req.ramGB <= 16 ? CATALOG.ramDdr5_16 : CATALOG.ramDdr5;
+      // Core Ultra 5 225F has no iGPU (F suffix) — a monitor needs *some*
+      // GPU, so a pure-office Intel pick can't be GPU-less the way the AMD
+      // APU path can.
+      if (req.gpuTier === 0) { req.gpuTier = 1; cpuNote = "Core Ultra 5 225F\u306f\u5185\u8535GPU\u975e\u642d\u8f09(F\u4ed8\u304d)\u306e\u305f\u3081\u3001\u30e2\u30cb\u30bf\u30fc\u51fa\u529b\u7528\u306b\u6700\u4f4e\u9650\u306e\u30b0\u30e9\u30dc\u3092\u4ed8\u3051\u3066\u3044\u307e\u3059\u3002"; }
+    } else if (req.wantsHighCore) {
+      cpuAsin = CATALOG.cpuHighAmd; moboAsin = CATALOG.moboAm5; needsCooler = true;
+      ramAsin = req.ramGB >= 64 ? CATALOG.ramDdr5_64 : CATALOG.ramDdr5;
+    } else if (req.wantsX3D) {
+      cpuAsin = CATALOG.cpuX3D; moboAsin = CATALOG.moboAm5; needsCooler = true;
+      ramAsin = req.ramGB >= 64 ? CATALOG.ramDdr5_64 : CATALOG.ramDdr5;
+    } else if (req.wantsMidCore || req.gpuTier >= 1) {
+      // 2026's DDR5 price surge makes the AM4/DDR4 platform a genuine
+      // budget move at this performance tier, not just an old leftover —
+      // so low-budget mid-tier builds default to it instead of AM5/DDR5.
+      if ((req.budgetNum <= 15) && req.gpuTier <= 1) {
+        cpuAsin = CATALOG.cpuAm4Amd; moboAsin = CATALOG.moboAm4; ramAsin = CATALOG.ramDdr4;
+      } else {
+        cpuAsin = CATALOG.cpuMidAmd; moboAsin = CATALOG.moboAm5;
+        ramAsin = req.ramGB >= 64 ? CATALOG.ramDdr5_64 : CATALOG.ramDdr5;
+      }
+    } else {
+      cpuAsin = CATALOG.cpuApuAmd; moboAsin = CATALOG.moboAm4; ramAsin = CATALOG.ramDdr4;
+    }
+    var gpuAsin = req.gpuTier >= 3 ? CATALOG.gpuHigh : req.gpuTier === 2 ? CATALOG.gpuVram : req.gpuTier === 1 ? CATALOG.gpuMid : null;
+    var storageAsin = req.storage === "2tb" ? CATALOG.storage2tb : CATALOG.storage;
+    var caseAsin = req.noise === "quiet" ? CATALOG.caseQuiet : CATALOG.case;
+
+    var asins = [cpuAsin];
+    if (gpuAsin) asins.push(gpuAsin);
+    var psuAsin = req.gpuTier >= 2 ? CATALOG.psu : CATALOG.psuLow;
+    asins.push(moboAsin, ramAsin, storageAsin, caseAsin, psuAsin, CATALOG.paste);
+    if (needsCooler) asins.push(req.noise === "quiet" ? CATALOG.coolerQuiet : CATALOG.cooler);
+    var needsWifiAdapter = req.network === "wifi_only" && moboAsin === CATALOG.moboAm4;
+    if (needsWifiAdapter) asins.push(CATALOG.wifiAdapter);
+
+    var partsTotal = asins.reduce(function (sum, a) { return sum + (PRICES[a] || 0); }, 0);
+    return { windowsPlatform: windowsPlatform, cpuAsin: cpuAsin, moboAsin: moboAsin, ramAsin: ramAsin, gpuAsin: gpuAsin, storageAsin: storageAsin, caseAsin: caseAsin, needsCooler: needsCooler, needsWifiAdapter: needsWifiAdapter, cpuNote: cpuNote, asins: asins, partsTotal: partsTotal };
+  }
+
+  // Suggests up to 3 existing site products (keyboard/mouse/monitor/mic/
+  // macropad/tablet) that pair naturally with the selected use cases — a
+  // new-PC diagnosis is exactly when someone also shops for these, and
+  // otherwise the site's existing desk-gadget content is invisible from
+  // this flow. Never affects the budget math; purely a suggestion shelf.
+  function pickAccessories(usecases, wantsMonitor) {
+    var has = function (v) { return usecases.indexOf(v) !== -1; };
+    var keys = [];
+    if (has("streaming")) { keys.push("mic"); keys.push("macropad"); }
+    if (has("illustration")) keys.push("tablet");
+    if (wantsMonitor) keys.push("monitor");
+    if (has("office") || has("programming") || has("gaming")) { keys.push("keyboard"); keys.push("mouse"); }
+    var seen = {}, out = [];
+    keys.forEach(function (k) {
+      var asin = ACCESSORIES[k];
+      if (asin && !seen[asin]) { seen[asin] = true; out.push(asin); }
+    });
+    return out.slice(0, 3);
+  }
+
+  function compute() {
+    var usecases = answers.usecases || [];
+    if (!usecases.length) usecases = ["office"];
+    var has = function (v) { return usecases.indexOf(v) !== -1; };
+    var hasProgramming = has("programming"), hasIllustration = has("illustration"),
+      hasAiImage = has("ai_image"), hasLocalLlm = has("local_llm"),
+      hasGaming = has("gaming"), hasStreaming = has("streaming"), hasVideo = has("video");
+    var heavyCount = [hasGaming, hasStreaming, hasVideo, hasAiImage, hasLocalLlm].filter(Boolean).length;
+
+    var videoHeavy = hasVideo && answers.videoIntensity === "heavy";
+    var aiHeavy = (hasAiImage || hasLocalLlm) && answers.aiScale === "heavy";
+    var competitive = (hasGaming || hasStreaming) && answers.gameGenre === "competitive";
+    var heavyAaa = (hasGaming || hasStreaming) && answers.gameGenre === "heavy_aaa";
+
+    var gpuTier = 0; // 0 none, 1 entry(RTX5060 8GB), 2 vram(RTX5060 Ti 16GB), 3 high(RTX5070 12GB)
+    var ramGB = 16;
+    var wantsX3D = false, wantsHighCore = false, wantsMidCore = false;
+    var needsCuda = hasAiImage || hasLocalLlm;
+
+    if (hasProgramming) { ramGB = Math.max(ramGB, 32); wantsMidCore = true; }
+    if (hasIllustration) gpuTier = Math.max(gpuTier, 1);
+    if (hasAiImage || hasLocalLlm) {
+      gpuTier = Math.max(gpuTier, aiHeavy ? 3 : 2);
+      ramGB = Math.max(ramGB, 32);
+    }
+    if (hasGaming) gpuTier = Math.max(gpuTier, 1);
+    if (hasStreaming) { wantsMidCore = true; ramGB = Math.max(ramGB, 32); gpuTier = Math.max(gpuTier, 1); }
+    if (hasVideo) {
+      ramGB = Math.max(ramGB, 32);
+      if (videoHeavy) { gpuTier = Math.max(gpuTier, 3); wantsHighCore = true; ramGB = Math.max(ramGB, 64); }
+      else gpuTier = Math.max(gpuTier, 1);
+    }
+    if ((hasGaming || hasStreaming) && answers.resolution === "wqhd_uhd") gpuTier = Math.max(gpuTier, 3);
+    if ((hasGaming || hasStreaming) && answers.resolution === "fhd144" && !competitive) gpuTier = Math.max(gpuTier, 2);
+    if (heavyAaa) gpuTier = Math.max(gpuTier, 2);
+    if (competitive) wantsX3D = true;
+    if (heavyCount >= 2) { ramGB = Math.max(ramGB, 32); wantsMidCore = true; }
+    if (heavyCount >= 3) { ramGB = Math.max(ramGB, 64); wantsHighCore = true; }
+
+    var usecaseText = usecases.map(function (u) { return USECASE_LABELS[u] || u; }).join("\u30fb");
+
+    var software = answers.software;
+    var appleWorkflow = answers.appleWorkflow || [];
+    var effort = answers.effort;
+    var platformPref = answers.platform;
+    var budgetNum = Number(answers.budget) || 99;
+
+    // Owning an iPhone is not a reason to recommend a Mac — most of Japan
+    // owns one. Only concrete workflow needs (moving photos in for editing,
+    // Handoff/Continuity, iPad file handoff) count as real signal; "own it
+    // but PC work doesn't need it" and "don't use Apple stuff" are both
+    // explicitly non-signals so the diagnosis can't default to Mac just
+    // because someone picked *something* in that question.
+    var integrationReasons = appleWorkflow.filter(function (v) { return ["photo_transfer", "ipad_handoff", "continuity"].indexOf(v) !== -1; });
+    var hasAppleIntegrationNeed = integrationReasons.length > 0;
+    var needsJpWindowsSoftware = appleWorkflow.indexOf("jp_software") !== -1;
+    // A competitive-FPS diet or a local-AI/CUDA workflow both rule Mac out
+    // on their own, independent of Apple integration signals.
+    var windowsRequired = software === "windows_only" || needsJpWindowsSoftware || competitive || needsCuda;
+
+    var macEligible = !windowsRequired && hasAppleIntegrationNeed && !hasGaming;
+    var platform = macEligible ? "mac" : "windows";
+    var hybridNote = null;
+    if (!macEligible && !windowsRequired && hasAppleIntegrationNeed && hasGaming) {
+      hybridNote = "Apple\u88fd\u54c1\u3068\u306e\u9023\u643a\u304c\u5fc5\u8981\u3068\u306e\u3053\u3068\u306a\u306e\u3067\u3001\u30b2\u30fc\u30e0\u4ee5\u5916\u306e\u4f5c\u696d\u306f\u666e\u6bb5\u306eMac\u306b\u4efb\u305b\u3066\u3001\u30b2\u30fc\u30e0\u5c02\u7528\u6a5f\u3068\u3057\u3066\u3053\u306eWindows\u69cb\u6210\u3092\u5225\u306b\u7d44\u3080\u300c2\u53f0\u6301\u3061\u300d\u3082\u73fe\u5b9f\u7684\u306a\u843d\u3068\u3057\u3069\u3053\u308d\u3067\u3059\u3002";
+    }
+
+    var title, paragraphs = [], asins = [], notes = [], guideLink = null, shareText, budgetInfo = null, buyCompare = null;
+    var wantsMonitorAccessory = (hasVideo || hasGaming || hasStreaming) && (answers.resolution === "wqhd_uhd" || videoHeavy);
+    var accessories = pickAccessories(usecases, wantsMonitorAccessory);
+    // Real, buyable products (Mac SKUs, or a close-match prebuilt Windows
+    // desktop) shown as an alternative to the swappable self-build parts
+    // list — never mixed into asins, since these aren't a la carte parts.
+    var productPicks = [];
+
+    if (platform === "mac") {
+      title = "\u81ea\u4f5cPC\u3088\u308a\u3001Mac\u3068\u3044\u3046\u9078\u629e\u80a2";
+      var reasons = [];
+      var reasonLabels = {
+        photo_transfer: "iPhone\u3067\u64ae\u3063\u305f\u5199\u771f\u30fb\u52d5\u753b\u3092\u3059\u3050\u4f5c\u696d\u306b\u4f7f\u3044\u305f\u3044\u3068\u306e\u3053\u3068\u306a\u306e\u3067\u3001AirDrop\u3067\u306e\u53d7\u3051\u6e21\u3057\u304c\u540c\u3058OS\u540c\u58eb\u3067\u30b9\u30e0\u30fc\u30ba\u306aMac\u304c\u5408\u7406\u7684\u3067\u3059\u3002",
+        ipad_handoff: "iPad\u3067\u63cf\u3044\u305f\u30fb\u66f8\u3044\u305f\u3082\u306e\u3092\u305d\u306e\u307e\u307e\u53d6\u308a\u8fbc\u307f\u305f\u3044\u3068\u306e\u3053\u3068\u306a\u306e\u3067\u3001Mac\u306a\u3089\u30d5\u30a1\u30a4\u30eb\u5f62\u5f0f\u3084\u540c\u671f\u3092\u6c17\u306b\u305b\u305a\u4f5c\u696d\u3067\u304d\u307e\u3059\u3002",
+        continuity: "\u901a\u77e5\u30fb\u30b3\u30d4\u30da\u30fb\u96fb\u8a71\u3092PC\u3067\u3082\u4f7f\u3044\u305f\u3044\u3068\u306e\u3053\u3068\u306a\u306e\u3067\u3001Handoff\u30fbiMessage\u304c\u4f7f\u3048\u308bMac\u306e\u65b9\u304c\u4f53\u9a13\u3068\u3057\u3066\u4e00\u6bb5\u4e0a\u3067\u3059\u3002",
+      };
+      integrationReasons.forEach(function (r) { if (reasonLabels[r]) reasons.push(reasonLabels[r]); });
+      if (videoHeavy) reasons.push("4K\u7de8\u96c6\u30fb\u30ab\u30e9\u30fc\u30b0\u30ec\u30fc\u30c7\u30a3\u30f3\u30b0\u3082\u9078\u3093\u3067\u3044\u308b\u306e\u3067\u3001Apple Silicon\u306e\u30cf\u30fc\u30c9\u30a6\u30a7\u30a2\u30a8\u30f3\u30b3\u30fc\u30c9\u306fPremiere Pro\u30fbDaVinci Resolve\u3067\u3082\u5f37\u529b\u306b\u52b9\u304d\u307e\u3059\u3002\u7d71\u5408\u30e1\u30e2\u30ea\u3067VRAM\u4e0d\u8db3\u306b\u3082\u60a9\u307f\u306b\u304f\u3044\u69cb\u6210\u3067\u3059\u3002");
+      else if (hasVideo) reasons.push("\u52d5\u753b\u7de8\u96c6\u3082\u9078\u3093\u3067\u3044\u308b\u306e\u3067\u3001Apple Silicon\u306e\u30cf\u30fc\u30c9\u30a6\u30a7\u30a2\u30a8\u30f3\u30b3\u30fc\u30c9\u306f\u30d5\u30eb HD\u4e2d\u5fc3\u306e\u7de8\u96c6\u3067\u3082\u5feb\u9069\u3067\u3059\u3002");
+      if (software === "mac_ok") reasons.push("\u4f7f\u3046\u4e88\u5b9a\u306e\u30bd\u30d5\u30c8\u3082Mac\u5bfe\u5fdc\u3067\u5b8c\u7d50\u3059\u308b\u3068\u306e\u3053\u3068\u306a\u306e\u3067\u3001\u7121\u7406\u306bWindows\u3092\u9078\u3076\u7406\u7531\u3082\u3042\u308a\u307e\u305b\u3093\u3002");
+      paragraphs = reasons;
+      // Concrete, buyable Mac SKUs — a self-build parts list can't apply to
+      // Mac, so without this the Mac branch had nothing to link to Amazon/
+      // ROOM from. Offered as a desktop pick + a portable pick rather than
+      // one single answer, since the diagnosis never asks laptop-vs-desktop.
+      if (videoHeavy) {
+        productPicks.push({ asin: MAC_CATALOG.macbookPro14, note: "持ち歩いて4K編集までこなすなら" });
+        productPicks.push({ asin: MAC_CATALOG.macMiniPro, note: "据え置きで同等以上の性能を確保するなら" });
+        accessories = accessories.concat([MAC_CATALOG.macMiniHub]);
+      } else if (wantsHighCore || wantsMidCore) {
+        productPicks.push({ asin: MAC_CATALOG.macMiniPro, note: "複数用途を同時にこなす想定なら" });
+        productPicks.push({ asin: MAC_CATALOG.macbookAir13, note: "持ち歩く機会が多いなら" });
+        accessories = accessories.concat([MAC_CATALOG.macMiniHub]);
+      } else {
+        productPicks.push({ asin: MAC_CATALOG.macMiniBase, note: "据え置きでコストを抑えるなら" });
+        productPicks.push({ asin: MAC_CATALOG.macbookAir13, note: "持ち歩く機会があるなら" });
+        accessories = accessories.concat([MAC_CATALOG.macMiniHub]);
+      }
+      notes.push("上記は2026年9月時点の実売品からの一例です。Appleは年に何度か構成を更新するため、購入直前にApple公式サイトでも最新構成・価格を確認してください。");
+      shareText = "\u3010AI Desk Labo\u8a3a\u65ad\u3011\u79c1\u306b\u5411\u3044\u3066\u308b\u306e\u306f\u300cMac\u300d\u3067\u3057\u305f\ud83c\udf4e #AIDeskLabo\u8a3a\u65ad #Mac";
+    } else {
+      var gpuTierBeforeIntelForce = gpuTier;
+      var req = { platformPref: platformPref, gpuTier: gpuTier, ramGB: ramGB, wantsX3D: wantsX3D, wantsHighCore: wantsHighCore, wantsMidCore: wantsMidCore, budgetNum: budgetNum, storage: answers.storage, noise: answers.noise, network: answers.network };
+      var built = buildWindowsParts(req);
+      var platformLabel = built.windowsPlatform === "intel" ? "Intel" : "AMD";
+      if (built.windowsPlatform === "intel" && gpuTierBeforeIntelForce === 0) {
+        notes.push("\u30b0\u30e9\u30dc\u4e0d\u8981\u306a\u7528\u9014\u306a\u306e\u3067\u3001\u5185\u8535GPU\u4ed8\u304dAMD Ryzen 5 5600G(APU)\u306b\u3059\u308c\u3070\u30b0\u30e9\u30dc\u4ee3\u5206\u3060\u3051\u5b89\u304f\u7d44\u3081\u307e\u3059\u3002");
+      }
+
+      // Budget-aware step-down: if the initial pick blows the budget by
+      // more than 15%, drop the GPU one tier and recompute once. This never
+      // silently removes something the visitor explicitly asked for
+      // (a competitive-FPS CPU pick, a 4K-editing RAM floor) — only the GPU
+      // tier, which is the least identity-defining lever — and the result
+      // always says in plain text whether that happened.
+      var ceilCheck = BUDGET_MAP[answers.budget];
+      var gpuSteppedDown = false;
+      if (ceilCheck !== undefined && ceilCheck !== Infinity) {
+        // The budget question asks about parts spend specifically (OS
+        // license / assembly fee are shown as separate line items below,
+        // since not everyone needs a fresh Windows license) — so the
+        // step-down trigger and the budget-vs-actual comparison both use
+        // partsTotal alone, not partsTotal+extras.
+        if (built.partsTotal > ceilCheck * 1.15 && req.gpuTier > 1) {
+          req.gpuTier = req.gpuTier - 1;
+          built = buildWindowsParts(req);
+          gpuSteppedDown = true;
+        }
+      }
+
+      title = platformLabel + "\u69cb\u6210\u3067\u7d44\u3080\u3001" + usecaseText + "PC";
+      paragraphs.push("\u9078\u3093\u3060\u7528\u9014(" + usecaseText + ")\u3092\u3082\u3068\u306b\u3001CPU\u306e\u30b3\u30a2\u6570\u30fbGPU\u306e\u6709\u7121\u30fbVRAM\u30fb\u30e1\u30e2\u30ea\u5bb9\u91cf\u3092\u6c7a\u3081\u3066\u3044\u307e\u3059\u3002");
+      if (gpuTier === 0) paragraphs.push("\u30b0\u30e9\u30d5\u30a3\u30c3\u30af\u30dc\u30fc\u30c9\u306a\u3057\u306eAPU/\u5185\u8535GPU\u69cb\u6210\u3067\u5341\u5206\u306a\u306e\u3067\u3001\u6700\u3082\u30b3\u30b9\u30c8\u3092\u62bc\u3055\u3048\u305f\u30d1\u30bf\u30fc\u30f3\u306b\u3057\u307e\u3057\u305f\u3002");
+      else if (needsCuda) {
+        paragraphs.push(aiHeavy
+          ? "FLUX\u3084\u5927\u898f\u6a21\u306a\u30ed\u30fc\u30ab\u30ebLLM\u3092\u672c\u683c\u7684\u306b\u4f7f\u3046\u60f3\u5b9a\u306a\u306e\u3067\u3001VRAM\u3092\u512a\u5148\u3057\u305fGPU\u3092\u9078\u3093\u3067\u3044\u307e\u3059\u3002AI\u7528\u9014\u306fCUDA\u5bfe\u5fdc\u304c\u4e8b\u5b9f\u4e0a\u5fc5\u9808\u306a\u306e\u3067NVIDIA\u88fd\u3092\u9078\u3093\u3067\u3044\u307e\u3059\u3002"
+          : "SDXL\u3084\u8efd\u3081\u306e\u30ed\u30fc\u30ab\u30ebLLM\u304b\u3089\u8a66\u3057\u305f\u3044\u60f3\u5b9a\u306a\u306e\u3067\u3001VRAM\u3092\u4e00\u5b9a\u78ba\u4fdd\u3057\u305fNVIDIA\u88fd GPU\u3092\u9078\u3093\u3067\u3044\u307e\u3059\u3002CUDA\u975e\u5bfe\u5fdc\u306eAMD GPU\u3067\u306f\u3053\u308c\u3089\u306e\u30c4\u30fc\u30eb\u306f\u52d5\u304d\u307e\u305b\u3093\u3002");
+        if (built.gpuAsin === CATALOG.gpuMid) notes.push("VRAM\u3092\u3082\u3046\u5c11\u3057\u78ba\u4fdd\u3057\u305f\u3044\u5834\u5408\u306f\u3001VRAM 16GB\u306eRTX 5060 Ti\u30b7\u30ea\u30fc\u30ba\u3078\u306e\u30b0\u30ec\u30fc\u30c9\u30a2\u30c3\u30d7\u3082\u691c\u8a0e\u3057\u3066\u304f\u3060\u3055\u3044\u3002");
+      }
+      else if (gpuTier === 1) {
+        if (hasVideo && !hasGaming && !hasStreaming) paragraphs.push("\u30d5\u30eb HD\u4e2d\u5fc3\u306e\u30ab\u30c3\u30c8\u7de8\u96c6\u306a\u3089\u3001\u30df\u30c9\u30eb\u30af\u30e9\u30b9\u306eGPU\u3067\u3082\u66f8\u304d\u51fa\u3057\u306f\u5feb\u9069\u3067\u3059\u3002");
+        else if (competitive) paragraphs.push("\u7af6\u6280\u7cfb\u30bf\u30a4\u30c8\u30eb\u306fCPU\u5074\u304c\u30dc\u30c8\u30eb\u30cd\u30c3\u30af\u306b\u306a\u308a\u3084\u3059\u3044\u305f\u3081\u3001GPU\u306f\u30df\u30c9\u30eb\u30af\u30e9\u30b9\u3067\u5341\u5206\u3067\u3059\u3002");
+        else paragraphs.push("\u30d5\u30eb HD\u9ad8\u8a2d\u5b9a\u30fb60fps\u4ee5\u4e0a\u3092\u72d9\u3048\u308b\u30df\u30c9\u30eb\u30af\u30e9\u30b9\u306eGPU\u3092\u7d44\u307f\u5408\u308f\u305b\u3066\u3044\u307e\u3059\u3002");
+      } else if (gpuTier === 2) {
+        paragraphs.push(heavyAaa
+          ? "\u30e2\u30f3\u30cf\u30f3\u30ef\u30a4\u30eb\u30ba\u306a\u3069\u306e\u91cd\u91cf\u7d1a\u30bf\u30a4\u30c8\u30eb\u306fVRAM\u3092\u591a\u304f\u4f7f\u3046\u305f\u3081\u3001VRAM 16GB\u30af\u30e9\u30b9\u306eGPU\u306b\u3057\u3066\u3044\u307e\u3059\u3002"
+          : "144fps\u4ee5\u4e0a / WQHD\u4ee5\u4e0a\u3092\u72d9\u3046\u8a2d\u5b9a\u306a\u306e\u3067\u3001\u4f59\u88d5\u3092\u6301\u305f\u305b\u305fGPU\u306b\u3057\u3066\u3044\u307e\u3059\u3002");
+      } else {
+        if (videoHeavy) paragraphs.push("4K\u7de8\u96c6\u30fb\u30ab\u30e9\u30fc\u30b0\u30ec\u30fc\u30c7\u30a3\u30f3\u30b0\u3082\u898b\u636e\u3048\u3066\u3001VRAM 12GB\u4ee5\u4e0a\u306eGPU\u3092\u9078\u5b9a\u3057\u307e\u3057\u305f\u3002");
+        else paragraphs.push("WQHD\u4ee5\u4e0a / 4K\u3092\u72d9\u3046\u8a2d\u5b9a\u306a\u306e\u3067\u3001\u4e0a\u4f4d\u30af\u30e9\u30b9\u306eGPU\u306b\u3057\u3066\u3044\u307e\u3059\u3002");
+      }
+      // Worded in the past tense on purpose: by the time this note is shown,
+      // the step-down has already happened and the totals below already
+      // reflect it — saying "予算を超えるため下げています" (present tense,
+      // as if still over) reads as contradicting the "予算内に収まってい
+      // ます" message that can follow right after once the cheaper GPU
+      // brings the total back in range.
+      if (gpuSteppedDown) notes.push("最初の候補は予算を大きく超えていたため、GPUを一段階下げて調整しました。下の金額は調整後の構成です。性能を優先する場合は、予算を上げるかGPUを元のクラスに戻すことを検討してください。");
+
+      if (built.windowsPlatform === "amd" && platformPref === "auto") {
+        notes.push("\u300c\u304a\u307e\u304b\u305b\u300d\u306e\u5834\u5408\u306f\u3001\u30a2\u30c3\u30d7\u30b0\u30ec\u30fc\u30c9\u4f59\u5730\u3068\u30b3\u30b9\u30d1\u3092\u91cd\u8996\u3057\u3066AMD\u3092\u57fa\u672c\u306b\u3057\u3066\u3044\u307e\u3059\u3002HEVC/10bit\u7d20\u6750\u306e\u52d5\u753b\u7de8\u96c6\u3092\u983b\u7e41\u306b\u3059\u308b\u306a\u3089Intel(Core Ultra 5 225F)\u306eQuick Sync\u3082\u6709\u529b\u3067\u3059\u3002");
+      }
+      if (wantsX3D) paragraphs.push("\u7af6\u6280\u7cfb\u30bf\u30a4\u30c8\u30eb\u3092\u9078\u3093\u3067\u3044\u308b\u306e\u3067\u3001fps\u306e\u4f38\u3073\u306b\u76f4\u7d50\u3059\u308b3D V-Cache\u642d\u8f09CPU(X3D)\u306b\u3057\u3066\u3044\u307e\u3059\u3002");
+      else if (wantsHighCore) {
+        if (heavyCount >= 2) paragraphs.push("\u8907\u6570\u306e\u7528\u9014\u3092\u540c\u6642\u306b\u3053\u306a\u3059\u60f3\u5b9a\u306a\u306e\u3067\u3001\u30b3\u30a2\u6570\u306e\u591a\u3044CPU\u3068\u30e1\u30e2\u30ea" + ramGB + "GB\u3092\u78ba\u4fdd\u3057\u3066\u3044\u307e\u3059\u3002");
+        else paragraphs.push("4K\u7de8\u96c6\u306e\u30a8\u30f3\u30b3\u30fc\u30c9\u30fb\u66f8\u304d\u51fa\u3057\u3092\u8003\u616e\u3057\u3066\u3001\u30b3\u30a2\u6570\u306e\u591a\u3044CPU\u306b\u3057\u3066\u3044\u307e\u3059\u3002");
+      } else if (wantsMidCore && hasStreaming) paragraphs.push("\u914d\u4fe1\u3057\u306a\u304c\u3089\u306e\u30d7\u30ec\u30a4\u3067\u3082CPU\u306b\u4f59\u88d5\u3092\u6301\u305f\u305b\u308b\u305f\u3081\u3001\u30df\u30c9\u30eb\u30af\u30e9\u30b9\u4ee5\u4e0a\u306eCPU\u306b\u3057\u3066\u3044\u307e\u3059\u3002");
+
+      if (built.cpuAsin === CATALOG.cpuAm4Amd) notes.push("2026\u5e74\u306fDDR5\u30e1\u30e2\u30ea\u304c\u5927\u5e45\u9ad8\u9a30\u3057\u3066\u3044\u308b\u305f\u3081\u3001\u4e88\u7b97\u3092\u62bc\u3055\u3048\u308b\u76ee\u7684\u3067DDR4\u5bfe\u5fdc\u306eAM4\u30d7\u30e9\u30c3\u30c8\u30d5\u30a9\u30fc\u30e0\u3092\u63d0\u6848\u3057\u3066\u3044\u307e\u3059\u3002\u5c06\u6765\u306eCPU\u4e16\u4ee3\u30a2\u30c3\u30d7\u30b0\u30ec\u30fc\u30c9\u306f\u3067\u304d\u307e\u305b\u3093\u3002");
+      if (built.cpuNote) notes.push(built.cpuNote);
+      if (built.needsWifiAdapter) notes.push("\u9078\u3093\u3060\u30de\u30b6\u30fc\u30dc\u30fc\u30c9\u306fWi-Fi\u975e\u642d\u8f09\u306e\u305f\u3081\u3001USB\u7121\u7dda LAN\u5b50\u6a5f\u3092\u8ffd\u52a0\u3057\u3066\u3044\u307e\u3059\u3002");
+      if (hybridNote) notes.push(hybridNote);
+      if (videoHeavy && built.storageAsin === CATALOG.storage) notes.push("\u52d5\u753b\u7de8\u96c6\u306f\u7d20\u6750\u91cf\u304c\u591a\u304f\u306a\u308a\u304c\u3061\u3067\u3059\u30021TB SSD\u3067\u4e0d\u8db3\u3059\u308b\u5834\u5408\u306f2TB\u30e2\u30c7\u30eb\u3078\u306e\u5165\u308c\u66ff\u3048\u3001\u307e\u305f\u306f\u5916\u4ed8\u3051SSD\u306e\u8ffd\u52a0\u3082\u691c\u8a0e\u3057\u3066\u304f\u3060\u3055\u3044\u3002");
+      if (effort === "assembly_service") notes.unshift("\u7d44\u307f\u7acb\u3066\u306f\u4efb\u305b\u305f\u3044\u3068\u306e\u3053\u3068\u306a\u306e\u3067\u3001\u4e0b\u8a18\u306e\u30d1\u30fc\u30c4\u3092\u3054\u81ea\u8eab\u3067\u8cfc\u5165\u3057\u305f\u3046\u3048\u3001PC\u30b7\u30e7\u30c3\u30d7\u306e\u7d44\u307f\u7acb\u3066\u4ee3\u884c\u30b5\u30fc\u30d3\u30b9(\u6301\u3061\u8fbc\u307f\u30d1\u30fc\u30c4\u306e\u7d44\u307f\u7acb\u3066\u306e\u307f\u3092" + ASSEMBLY_SERVICE_FEE_RANGE + "\u3067\u8acb\u3051\u8ca0\u3046\u30b5\u30fc\u30d3\u30b9)\u306b\u4f9d\u983c\u3059\u308b\u3068\u30b9\u30e0\u30fc\u30ba\u3067\u3059\u3002");
+
+      asins = built.asins;
+      var total = built.partsTotal;
+      var extrasNote = "\u4e0a\u8a18\u306f\u30d1\u30fc\u30c4\u4ee3(\u8a08" + yen(built.partsTotal) + ")\u306e\u307f\u3067\u3059\u3002Windows\u672a\u6240\u6301\u306a\u3089\u30e9\u30a4\u30bb\u30f3\u30b9\u4ee3\u7d04" + yen(OS_LICENSE_COST) + "\u304c\u5225\u9014\u5fc5\u8981\u3067\u3059\u3002";
+      if (effort === "assembly_service") extrasNote += "\u7d44\u307f\u7acb\u3066\u4ee3\u884c\u6599(\u76ee\u5b89" + yen(ASSEMBLY_SERVICE_FEE) + "\u3001" + ASSEMBLY_SERVICE_FEE_RANGE + ")\u3082\u5225\u9014\u304b\u304b\u308a\u307e\u3059\u3002";
+      notes.push(extrasNote);
+
+      var ceil = BUDGET_MAP[answers.budget];
+      var budgetLabel = BUDGET_LABEL_MAP[answers.budget];
+      if (ceil !== undefined) budgetInfo = { total: total, ceil: ceil, label: budgetLabel };
+      if (ceil !== undefined && ceil !== Infinity && total > ceil * 1.3 && effort !== "compare_all") {
+        notes.push("\u4e88\u7b97\u3068\u306e\u5dee\u304c\u5927\u304d\u3044\u306e\u3067\u3001\u81ea\u4f5c\u4ee5\u5916\u306e\u9078\u629e\u80a2(\u5b8c\u6210\u54c1\u30fbMac\u306a\u3069)\u3082\u6bd4\u3079\u3066\u307f\u308b\u4fa1\u5024\u304c\u3042\u308a\u307e\u3059\u3002\u300c\u7d44\u307f\u7acb\u3066\u306e\u8208\u5473\u300d\u306e\u8cea\u554f\u3067\u300c\u81ea\u4f5c\u30fb\u5b8c\u6210\u54c1\u30fbMac\u3092\u6bd4\u3079\u3066\u304b\u3089\u6c7a\u3081\u305f\u3044\u300d\u3092\u9078\u3093\u3067\u3082\u3046\u4e00\u5ea6\u8a3a\u65ad\u3059\u308b\u3068\u3001\u8cb7\u3044\u65b9\u306e\u6bd4\u8f03\u304c\u898b\u3089\u308c\u307e\u3059\u3002");
+      }
+      var guideSlug = hasVideo ? "pc-build-video-editing" : (hasGaming || hasStreaming) ? "pc-build-gaming" : "pc-build-office";
+      guideLink = { href: GUIDE_ROOT + guideSlug + "/", label: "\u8a73\u3057\u3044\u89e3\u8aac\u3092\u30ac\u30a4\u30c9\u8a18\u4e8b\u3067\u8aad\u3080" };
+
+      // Real prebuilt Windows products (desktop AND laptop, one bracket per
+      // GPU/CPU tier), offered only when their actual spec (fixed — we
+      // don't control it) is genuinely close to what this diagnosis just
+      // picked. A tier is skipped entirely rather than shown as a loose
+      // "kind of similar" match, since a mismatched RAM/GPU tier here would
+      // undermine the diagnosis's own recommendation. Deliberately checked
+      // against gpuTierBeforeIntelForce (the visitor's actual GPU need), not
+      // built.gpuAsin — the Intel path can force a gpuMid pick onto a
+      // pure-office build purely because the 225F has no iGPU, and that
+      // forced pick must never be mistaken for a real gaming-tier match.
+      // Desktop and laptop are offered as a pair (like the Mac branch) since
+      // this diagnosis never asks form factor for Windows either.
+      if ((gpuTierBeforeIntelForce === 3 || wantsX3D) && !wantsHighCore && !needsCuda) {
+        productPicks.push({ asin: PREBUILT_CATALOG.gamingHigh, note: "自分で組まず、近い構成の完成品を買うなら(据え置き)" });
+        productPicks.push({ asin: PREBUILT_CATALOG.gamingHighLaptop, note: "持ち歩く機会があるなら(ノート)" });
+        notes.push("上記の完成品はこの診断のパーツ構成と完全に同一ではありませんが、CPU・GPU・メモリ容量が近い実売品です。");
+      } else if (gpuTierBeforeIntelForce === 2 && ramGB <= 16 && !wantsHighCore && !needsCuda) {
+        productPicks.push({ asin: PREBUILT_CATALOG.vramPriority, note: "自分で組まず、近い構成の完成品を買うなら" });
+        notes.push("上記の完成品はこの診断のパーツ構成と完全に同一ではありませんが、CPU・GPU・メモリ容量が近い実売品です。");
+      } else if (gpuTierBeforeIntelForce === 1 && ramGB <= 16 && !wantsHighCore && !wantsX3D && !competitive && !needsCuda) {
+        productPicks.push({ asin: PREBUILT_CATALOG.gamingMid, note: "自分で組まず、近い構成の完成品を買うなら(据え置き)" });
+        productPicks.push({ asin: PREBUILT_CATALOG.gamingMidLaptop, note: "持ち歩く機会があるなら(ノート)" });
+        notes.push("上記の完成品はこの診断のパーツ構成と完全に同一ではありませんが、CPU・GPU・メモリ容量が近い実売品です。");
+      } else if (gpuTierBeforeIntelForce === 0 && ramGB <= 16) {
+        productPicks.push({ asin: PREBUILT_CATALOG.officeBudget, note: "自分で組まず、近い構成の完成品を買うなら(据え置き)" });
+        productPicks.push({ asin: PREBUILT_CATALOG.officeLaptop, note: "持ち歩く機会があるなら(ノート)" });
+        notes.push("上記の完成品はこの診断のパーツ構成と完全に同一ではありませんが、CPU・メモリ容量が近い実売品です。");
+      }
+
+      if (effort === "compare_all") {
+        var diyTotal = built.partsTotal + OS_LICENSE_COST;
+        var assemblyTotal = built.partsTotal + OS_LICENSE_COST + ASSEMBLY_SERVICE_FEE;
+        buyCompare = [
+          "\u81ea\u4f5c(\u81ea\u5206\u3067\u7d44\u3080): \u7d04" + yen(diyTotal) + "\u3002\u4e00\u756a\u5b89\u304f\u3067\u304d\u307e\u3059\u304c\u3001\u7d44\u307f\u7acb\u3066\u306e\u624b\u9593\u3068\u77e5\u8b58\u304c\u5fc5\u8981\u3067\u3059\u3002",
+          "\u7d44\u307f\u7acb\u3066\u4ee3\u884c: \u7d04" + yen(assemblyTotal) + "(\u4ee3\u884c\u6599" + ASSEMBLY_SERVICE_FEE_RANGE + ")\u3002\u30d1\u30fc\u30c4\u306f\u3053\u306e\u30da\u30fc\u30b8\u306e\u30ea\u30f3\u30af\u304b\u3089\u8cfc\u5165\u3057\u3001\u7d44\u307f\u7acb\u3066\u306e\u307f\u3092\u4f9d\u983c\u3067\u304d\u307e\u3059\u3002",
+          "BTO\u5b8c\u6210\u54c1(\u30c9\u30b9\u30d1\u30e9\u30fb\u30de\u30a6\u30b9\u30b3\u30f3\u30d4\u30e5\u30fc\u30bf\u30fc\u306a\u3069): \u3053\u306e\u69cb\u6210\u3068\u540c\u7b49\u30b9\u30da\u30c3\u30af\u3060\u3068\u3001\u76f8\u5834\u306f\u81ea\u4f5c\u3068\u540c\u7b49\u304b\u3084\u3084\u5b89\u3044\u3053\u3068\u304c\u3042\u308a\u307e\u3059(2026\u5e74\u306fDDR5\u9ad8\u9a30\u306e\u5f71\u97ff\u3067BTO\u306e\u5927\u91cf\u4ed5\u5165\u308c\u304c\u6709\u5229\u306b\u306a\u308a\u3084\u3059\u3044\u305f\u3081)\u3002\u697d\u5929\u5e02\u5834\u5185\u306e\u5404\u30b7\u30e7\u30c3\u30d7\u516c\u5f0f\u5e97\u3067\u8fd1\u3044\u69cb\u6210\u3092\u63a2\u3059\u306e\u3082\u624b\u3067\u3059\u3002",
+          macEligible === false && hasAppleIntegrationNeed ? "Mac: Apple\u9023\u643a\u306e\u5fc5\u8981\u306f\u3042\u308a\u307e\u3059\u304c\u3001" + (windowsRequired ? "Windows\u5fc5\u9808\u306e\u30bd\u30d5\u30c8/\u30b2\u30fc\u30e0\u304c\u3042\u308b\u305f\u3081\u5bfe\u8c61\u5916\u3067\u3059\u3002" : "\u4eca\u56de\u306f\u5bfe\u8c61\u5916\u3067\u3059\u3002") : "Mac: " + (competitive || needsCuda ? "\u7af6\u6280\u7cfb\u30b2\u30fc\u30e0/\u30ed\u30fc\u30ab\u30ebAI\u306fWindows+NVIDIA\u524d\u63d0\u306e\u3082\u306e\u304c\u591a\u304f\u3001\u5bfe\u8c61\u5916\u3067\u3059\u3002" : "Apple\u88fd\u54c1\u3068\u306e\u5177\u4f53\u7684\u306a\u9023\u643a\u30cb\u30fc\u30ba\u304c\u306a\u3044\u9650\u308a\u3001\u4eca\u56de\u306e\u7528\u9014\u3067\u306fWindows\u69cb\u6210\u306e\u65b9\u304c\u5408\u7406\u7684\u3067\u3059\u3002"),
+        ];
+      }
+      shareText = "\u3010AI Desk Labo\u8a3a\u65ad\u3011\u79c1\u306b\u5411\u3044\u3066\u308b\u306e\u306f\u300c" + platformLabel + "\u69cb\u6210\u306e" + usecaseText + "PC\u300d\u3067\u3057\u305f\ud83d\udda5\ufe0f #AIDeskLabo\u8a3a\u65ad #\u81ea\u4f5cPC";
+    }
+
+    return { title: title, paragraphs: paragraphs, notes: notes, asins: asins, guideLink: guideLink, shareText: shareText, budgetInfo: budgetInfo, buyCompare: buyCompare, accessories: accessories, productPicks: productPicks };
+  }
+
+  function budgetNoteText(total, ceil, label) {
+    if (ceil !== Infinity && total > ceil * 1.1) {
+      return "この構成のパーツ代の目安は約" + yen(total) + "。予算(" + label + ")に対して約" + yen(total - ceil) + "オーバーしています。予算を上げるか、用途の絞り込み(解像度・ゲームジャンルなど)を見直すと予算に近づきます。";
+    }
+    if (ceil !== Infinity && total < ceil * 0.7) {
+      return "この構成のパーツ代の目安は約" + yen(total) + "。予算(" + label + ")にはまだ余裕があるので、GPUやメモリを一段階上げる余地があります。";
+    }
+    return "この構成のパーツ代の目安は約" + yen(total) + "。予算(" + label + ")の範囲に収まっています。";
+  }
+
+  function escapeText(s) {
+    var div = document.createElement("div");
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  // Finds a swap definition covering the given asin, if that ASIN's category
+  // is one the result UI lets the visitor change in place (currently case
+  // and storage — the categories where a different pick never invalidates
+  // any other part). Returns null for everything else.
+  function findSwap(asin) {
+    for (var i = 0; i < SWAPS.length; i++) {
+      var s = SWAPS[i];
+      for (var j = 0; j < s.options.length; j++) {
+        if (CATALOG[s.options[j]] === asin) return s;
+      }
+    }
+    return null;
+  }
+
+  function swapButtonsHtml(swap, currentAsin) {
+    var html = '<div class="quiz-swap-row">';
+    swap.options.forEach(function (key) {
+      var asin = CATALOG[key];
+      var isCurrent = asin === currentAsin;
+      html += '<button type="button" class="quiz-swap-btn' + (isCurrent ? " is-current" : "") + '" data-swap-asin="' + asin + '"' + (isCurrent ? " disabled" : "") + ">" + escapeText(swap.labels[key]) + "</button>";
+    });
+    html += "</div>";
+    return html;
+  }
+
+  function partHtml(asin, index) {
+    var swap = findSwap(asin);
+    var num = String(index + 1).padStart(2, "0");
+    var label = '<p class="quiz-part-index">( ' + num + ' ) ' + escapeText(CATEGORY_LABELS[asin] || "") + '</p>';
+    return '<div class="quiz-part" data-asin="' + asin + '" data-index="' + index + '">' + label + (CARDS[asin] || "") + (swap ? swapButtonsHtml(swap, asin) : "") + "</div>";
+  }
+
+  function showResult() {
+    root.querySelector(".quiz-steps").hidden = true;
+    var r = compute();
+    resultState = r;
+    var html = "";
+    html += '<p class="quiz-result-kicker">\u8a3a\u65ad\u7d50\u679c</p>';
+    html += '<h3 class="quiz-result-title">' + escapeText(r.title) + "</h3>";
+    r.paragraphs.forEach(function (p) { html += '<p class="quiz-result-body">' + escapeText(p) + "</p>"; });
+    if (r.asins.length) {
+      // The engine only ever assembles CPU/mobo/RAM combinations it knows
+      // are socket- and memory-standard compatible (see buildWindowsParts)
+      // — this is a statement of that guarantee, not a live per-part check,
+      // and the case/storage swap buttons only ever swap within a
+      // form-factor-safe pair, so it stays true after a swap too.
+      html += '<p class="quiz-compat-badge">' + "<svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><rect x=\"3\" y=\"4\" width=\"7\" height=\"17\" rx=\"1.5\"/><rect x=\"14\" y=\"4\" width=\"7\" height=\"17\" rx=\"1.5\"/></svg>" + "\u30bd\u30b1\u30c3\u30c8\u30fb\u30e1\u30e2\u30ea\u898f\u683c\u306e\u4e92\u63db\u6027\u78ba\u8a8d\u6e08\u307f\u306e\u7d44\u307f\u5408\u308f\u305b\u3067\u3059</p>";
+      html += '<div class="card-grid" data-parts>';
+      r.asins.forEach(function (a, i) { html += partHtml(a, i); });
+      html += "</div>";
+    }
+    if (r.budgetInfo) html += '<p class="quiz-result-note" data-budget-note>' + escapeText(budgetNoteText(r.budgetInfo.total, r.budgetInfo.ceil, r.budgetInfo.label)) + "</p>";
+    r.notes.forEach(function (n) { html += '<p class="quiz-result-note">' + escapeText(n) + "</p>"; });
+    if (r.productPicks && r.productPicks.length) {
+      html += '<p class="quiz-accessory-title">実際に買うならこれ</p>';
+      html += '<div class="card-grid">';
+      r.productPicks.forEach(function (p) {
+        html += '<div class="quiz-part"><p class="quiz-part-index">' + escapeText(p.note) + '</p>' + (CARDS[p.asin] || "") + '</div>';
+      });
+      html += '</div>';
+    }
+    if (r.buyCompare) {
+      html += '<div class="quiz-buy-compare"><p class="quiz-buy-compare-title">\u8cb7\u3044\u65b9\u306e\u6bd4\u8f03</p><ul>';
+      r.buyCompare.forEach(function (line) { html += "<li>" + escapeText(line) + "</li>"; });
+      html += "</ul></div>";
+    }
+    if (r.accessories && r.accessories.length) {
+      html += '<p class="quiz-accessory-title">\u3042\u308f\u305b\u3066\u63c3\u3048\u305f\u3044\u5468\u8fba\u6a5f\u5668</p>';
+      html += '<div class="card-grid">';
+      r.accessories.forEach(function (a) { html += CARDS[a] || ""; });
+      html += "</div>";
+    }
+    if (r.guideLink) html += '<p class="section-link"><a href="' + r.guideLink.href + '">' + escapeText(r.guideLink.label) + " \u2192</a></p>";
+    html += '<div class="quiz-result-actions">';
+    html += '<button type="button" class="btn-share" data-share-text="' + escapeText(r.shareText) + '">' + "<svg viewBox=\"0 0 24 24\" width=\"24\" height=\"24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ><polygon points=\"12 2.5 14.7 8.8 21.5 9.4 16.3 13.9 17.9 20.6 12 17 6.1 20.6 7.7 13.9 2.5 9.4 9.3 8.8\"/></svg>" + "\u8a3a\u65ad\u7d50\u679c\u3092X\u3067\u30b7\u30a7\u30a2</button>";
+    html += '<button type="button" class="quiz-retry">\u3082\u3046\u4e00\u5ea6\u8a3a\u65ad\u3059\u308b</button>';
+    html += "</div>";
+    resultsBox.innerHTML = html;
+    resultsBox.hidden = false;
+    syncAnswersToUrl();
+    root.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (typeof window.aidesklaboSyncFavorites === "function") window.aidesklaboSyncFavorites();
+  }
+
+  function handleSwap(btn) {
+    if (!resultState) return;
+    var partEl = btn.closest(".quiz-part");
+    var oldAsin = partEl.dataset.asin;
+    var newAsin = btn.dataset.swapAsin;
+    if (!newAsin || newAsin === oldAsin) return;
+    var idx = resultState.asins.indexOf(oldAsin);
+    if (idx !== -1) resultState.asins[idx] = newAsin;
+    partEl.outerHTML = partHtml(newAsin, Number(partEl.dataset.index));
+    if (typeof window.aidesklaboSyncFavorites === "function") window.aidesklaboSyncFavorites();
+    if (resultState.budgetInfo) {
+      resultState.budgetInfo.total += (PRICES[newAsin] || 0) - (PRICES[oldAsin] || 0);
+      var note = resultsBox.querySelector("[data-budget-note]");
+      if (note) note.textContent = budgetNoteText(resultState.budgetInfo.total, resultState.budgetInfo.ceil, resultState.budgetInfo.label);
+    }
+  }
+
+  function goToStep(currentIndex) {
+    var next = currentIndex + 1;
+    while (next < stepKeys.length && shouldSkip(next)) next++;
+    if (next >= stepKeys.length) showResult();
+    else showStep(next);
+  }
+
+  root.addEventListener("click", function (e) {
+    var opt = e.target.closest(".quiz-option");
+    if (opt) {
+      var stepEl = opt.closest(".quiz-step");
+      var key = stepEl.dataset.key;
+      var type = stepEl.dataset.type;
+      var currentIndex = stepKeys.indexOf(key);
+      if (type === "multi") {
+        opt.classList.toggle("is-selected");
+        var selected = Array.prototype.slice.call(stepEl.querySelectorAll(".quiz-option.is-selected")).map(function (el) { return el.dataset.value; });
+        answers[key] = selected;
+        var nextBtn = stepEl.querySelector(".quiz-next");
+        if (nextBtn) nextBtn.disabled = selected.length === 0;
+      } else {
+        answers[key] = opt.dataset.value;
+        goToStep(currentIndex);
+      }
+      return;
+    }
+    var nextBtn2 = e.target.closest(".quiz-next");
+    if (nextBtn2) {
+      var stepEl2 = nextBtn2.closest(".quiz-step");
+      goToStep(stepKeys.indexOf(stepEl2.dataset.key));
+      return;
+    }
+    var swapBtn = e.target.closest(".quiz-swap-btn");
+    if (swapBtn) {
+      handleSwap(swapBtn);
+      return;
+    }
+    if (e.target.closest(".quiz-retry")) {
+      answers = {};
+      resultState = null;
+      root.querySelectorAll(".quiz-option.is-selected").forEach(function (el) { el.classList.remove("is-selected"); });
+      root.querySelectorAll(".quiz-next").forEach(function (el) { el.disabled = true; });
+      if (window.history && window.history.replaceState) window.history.replaceState(null, "", window.location.pathname);
+      showStep(0);
+      return;
+    }
+    var shareBtn = e.target.closest(".btn-share");
+    if (shareBtn) {
+      var text = encodeURIComponent(shareBtn.dataset.shareText || "");
+      var url = encodeURIComponent(window.location.href);
+      window.open("https://twitter.com/intent/tweet?text=" + text + "&url=" + url, "_blank", "noopener");
+    }
+  });
+
+  // A shared result link (?usecases=gaming,streaming&budget=20&...) lands
+  // here — restore it and jump straight to the result instead of making
+  // the visitor re-answer 13 questions to see what was shared with them.
+  if (restoreAnswersFromUrl()) showResult();
+})();
+</script>
+<h2 id="h-1">この診断の考え方</h2>
+<p>用途は1つに絞らず複数選択できるようにし、「ゲームをしながら配信し、その録画を動画編集する」といった重なりも考慮しています。予算に対して構成が過剰・不足していれば正直にそう伝え、マザーボード・メモリ・SSD・ケース・電源・グリスまで欠けのないパーツ一式を毎回提示します。Macをすすめる場合も、Apple製品との連携など具体的な理由がある時だけです。診断結果はあくまで出発点として、各ガイド記事で詳しい理由やパーツの選び方も確認してみてください。</p></article><div class="disclosure-note">本ページはAmazonアソシエイト・プログラム、楽天アフィリエイトの参加者として、適格販売により収入を得ています。<a href="../../disclosure.html">詳細</a></div></div></section>
+</main>
+<footer class="site-footer">
+  <div class="footer-bg-word" aria-hidden="true">AI</div>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-badge">AI</span>
+        <span>AI DESK LABO</span>
+      </div>
+      <div class="links">
+        <a href="../../about.html">運営者情報</a>
+        <a href="../../disclosure.html">アフィリエイト表記</a>
+        <a href="../../privacy.html">プライバシーポリシー</a>
+        <a href="../../contact.html">お問い合わせ</a>
+        <a href="../../updates/">更新履歴</a>
+      </div>
+      <div class="links">
+        <a href="https://x.com/yu_aidesklabo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l16 16M20 4L4 20"/></svg>X (Twitter)</a>
+        <a href="https://note.com/yu_aidesklabo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>Note</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="y"></span> AI Desk Labo</div>
+  </div>
+</footer>
+<button class="back-to-top" aria-label="ページ上部へ戻る">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js" defer></script>
+<script src="../../assets/js/site.js" defer></script>
+</body>
+</html>
