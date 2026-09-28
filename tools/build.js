@@ -1012,6 +1012,7 @@ function renderPage(template, { title, description, canonical, root, bodyHtml, i
     .replaceAll("{{DESCRIPTION}}", escapeHtml(description))
     .replaceAll("{{CANONICAL}}", canonical)
     .replaceAll("{{ROOT}}", root)
+    .replaceAll("{{SITE_ORIGIN}}", SITE_ORIGIN)
     .replace("{{INTRO}}", intro)
     .replace("{{BODY}}", bodyHtml);
 }

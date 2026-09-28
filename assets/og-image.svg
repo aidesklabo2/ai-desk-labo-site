@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="badge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b3560f"/>
+      <stop offset="1" stop-color="#2b66c2"/>
+    </linearGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="8" cy="8" r="1" fill="rgba(15,14,12,0.07)"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#f4f3f1"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+
+  <circle cx="1260" cy="60" r="180" fill="#b3560f"/>
+  <circle cx="1160" cy="330" r="135" fill="#2b66c2"/>
+  <circle cx="1420" cy="410" r="90" fill="#147a54"/>
+  <circle cx="1030" cy="135" r="68" fill="#121110"/>
+  <circle cx="900" cy="530" r="115" fill="none" stroke="#b3560f" stroke-width="2.5"/>
+  <circle cx="1332" cy="55" r="59" fill="none" stroke="rgba(15,14,12,0.26)" stroke-width="2.5"/>
+  <circle cx="866" cy="573" r="19" fill="#b3560f" opacity="0.55"/>
+  <circle cx="1370" cy="270" r="15" fill="#2b66c2"/>
+  <circle cx="805" cy="504" r="9.5" fill="#147a54"/>
+
+  <rect x="80" y="186" width="52" height="52" rx="16" fill="url(#badge)"/>
+  <text x="106" y="220" text-anchor="middle" font-family="Hiragino Sans, Yu Gothic UI, Noto Sans JP, Arial, sans-serif" font-size="21" font-weight="900" fill="#fff">AI</text>
+  <text x="146" y="223" font-family="Hiragino Sans, Yu Gothic UI, Noto Sans JP, Arial, sans-serif" font-size="24" font-weight="700" letter-spacing="0.5" fill="#121110">AI DESK LABO</text>
+
+  <text x="80" y="332" font-family="Hiragino Sans, Yu Gothic UI, Noto Sans JP, Arial, sans-serif" font-size="54" font-weight="900" fill="#121110">AIと過ごす毎日を、</text>
+  <text x="80" y="400" font-family="Hiragino Sans, Yu Gothic UI, Noto Sans JP, Arial, sans-serif" font-size="54" font-weight="900" fill="#121110">もっと快適にする</text>
+  <text x="80" y="468" font-family="Hiragino Mincho ProN, Yu Mincho, serif" font-size="54" font-weight="700" fill="#b3560f">モノ<tspan font-family="Hiragino Sans, Yu Gothic UI, Noto Sans JP, Arial, sans-serif" fill="#121110">を選ぶ。</tspan></text>
+
+  <text x="80" y="520" font-family="Hiragino Sans, Yu Gothic UI, Noto Sans JP, Arial, sans-serif" font-size="21" fill="#4c4a46">AIツールとガジェットの比較・ランキング・レビュー</text>
+</svg>
