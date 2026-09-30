@@ -1018,7 +1018,7 @@ function renderPage(template, { title, description, canonical, root, bodyHtml, i
 }
 
 const DIAGNOSIS_INDEX_DESCRIPTION =
-  "用途・予算・ゲームジャンルなど13の質問に答えるだけで、あなたに合ったPC構成と、自作・組み立て代行・完成品・Macどれが得かを診断します。完全無料・データ送信なし。";
+  "用途・予算・ゲームジャンルなど13の質問に答えるだけで、あなたに合ったPC構成と、自作・組み立て代行・完成品・Macどれが得かを診断します。完全無料・氏名やメールアドレスの入力は不要です。";
 
 // Landing-page treatment for /diagnosis/ — the nav's "診断" link drops
 // visitors here directly, so a bare 1-card list (the generic per-type
