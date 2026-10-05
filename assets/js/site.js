@@ -31,6 +31,14 @@
         placement: placement,
         page_path: pagePath
       });
+      window.gtag("event", "affiliate_click", {
+        send_to: "G-M4L5M94YCB",
+        merchant: "amazon",
+        product_id: link.getAttribute("data-item-id") || match[1],
+        product_name: link.getAttribute("data-item-name") || "",
+        placement: placement,
+        page_path: pagePath
+      });
     } catch (err) {
       // Measurement must never interrupt the original link action.
     }
@@ -119,6 +127,15 @@
       var placement = link.closest("#showcaseTrack") ? "home_ranking" : link.closest("article .card") ? "article_product" : link.closest(".card") ? "home_card" : "other";
       window.gtag("event", "room_click", {
         send_to: "G-M4L5M94YCB",
+        product_id: (url.pathname.match(/\/(\d+)(?:\/|$)/) || [])[1] || "",
+        placement: placement,
+        page_path: pagePath
+      });
+      window.gtag("event", "affiliate_click", {
+        send_to: "G-M4L5M94YCB",
+        merchant: "rakuten",
+        product_id: link.getAttribute("data-item-id") || (url.pathname.match(/\/(\d+)(?:\/|$)/) || [])[1] || "",
+        product_name: link.getAttribute("data-item-name") || "",
         placement: placement,
         page_path: pagePath
       });
@@ -192,6 +209,10 @@
 
   // Homepage stat counters: count up from 0 to the target once visible.
   var counters = document.querySelectorAll("[data-count-to]");
+  counters.forEach(function (el) {
+    var fallback = parseInt(el.getAttribute("data-count-to"), 10);
+    if (!Number.isNaN(fallback)) el.textContent = fallback.toLocaleString("ja-JP");
+  });
   if (counters.length && "IntersectionObserver" in window) {
     var animateCount = function (el) {
       var target = parseInt(el.getAttribute("data-count-to"), 10) || 0;

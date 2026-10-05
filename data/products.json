@@ -1,6 +1,7 @@
 [
   {
     "asin": "B0DH88QC5B",
+    "usage": "owned",
     "name": "REALFORCE RC1 (C1HJ13・日本語配列・30g・ブラック)",
     "category": "keyboard",
     "price": 32538,
@@ -543,6 +544,7 @@
   },
   {
     "asin": "ROOM-M575SP",
+    "usage": "owned",
     "name": "Logicool ERGO M575SP トラックボール",
     "category": "mouse",
     "price": 7310,
