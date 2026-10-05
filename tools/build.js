@@ -21,8 +21,8 @@ const TYPE_LABEL_EN = { review: "Review", ranking: "Ranking", compare: "Compare"
 const TYPE_COLOR = { review: "blue", ranking: "orange", compare: "green", guide: "blue", diagnosis: "orange" };
 const TYPE_INDEX_INTRO = {
   review: "実際に使ってみたAIツール・ガジェットの使用感を、良かった点も気になった点も正直にまとめています。",
-  ranking: "用途・予算別に、実際に使って良かったものだけを順位付けしています。",
-  compare: "似た選択肢で迷いがちなツール・ガジェットを、実体験ベースで比較しています。",
+  ranking: "用途・予算別に、実使用品と仕様を確認した候補を分けて紹介しています。",
+  compare: "似た選択肢で迷いがちなツール・ガジェットを、実体験と公開仕様を分けて比較しています。",
   guide: "何から揃えるべきか迷う人向けに、優先順位付きで選び方を解説しています。",
   diagnosis: "質問に答えるだけで、あなたの用途・予算に合ったPC構成や買い方を診断します。",
 };
@@ -150,14 +150,15 @@ function amazonLink(product) {
 // be present, but neither is hard-required so a ROOM-only product works.
 function renderCtaButtons(product) {
   const buttons = [];
+  const productMeta = ` data-merchant="amazon" data-item-id="${escapeHtml(product.asin)}" data-item-name="${escapeHtml(product.name).replace(/"/g, "&quot;")}"`;
   if (product.url) {
     buttons.push(
-      `<a class="btn-amazon" href="${amazonLink(product)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}Amazonで見る</a>`
+      `<a class="btn-amazon"${productMeta} href="${amazonLink(product)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}Amazonで今の価格を見る</a>`
     );
   }
   if (product.roomUrl) {
     buttons.push(
-      `<a class="btn-room" href="${escapeHtml(product.roomUrl)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}楽天ROOMで見る</a>`
+      `<a class="btn-room" data-merchant="rakuten" data-item-id="${escapeHtml(product.asin)}" data-item-name="${escapeHtml(product.name).replace(/"/g, "&quot;")}" href="${escapeHtml(product.roomUrl)}" rel="nofollow sponsored noopener" target="_blank">${icon("cart")}楽天ROOMで今の価格を見る</a>`
     );
   }
   return `<div class="cta-row">${buttons.join("")}</div>`;
@@ -185,10 +186,12 @@ function eyebrowHtml(jaText, enText) {
 function renderProductCard(product) {
   const badgeColor = CATEGORY_COLOR[product.category] || "blue";
   const badgeLabel = CATEGORY_LABEL_JA[product.category] || product.category;
+  const usageLabel = product.usage === "owned" ? "使用中" : "調査ベース";
+  const usageColor = product.usage === "owned" ? "green" : "blue";
   return `<div class="card">
-  <div class="card-top">${iconBadge(product.category, badgeColor)}<span class="badge ${badgeColor}">${escapeHtml(badgeLabel)}</span><button type="button" class="fav-btn" data-fav-asin="${escapeHtml(product.asin)}" aria-label="気になるリストに追加">${icon("heart")}</button></div>
+  <div class="card-top">${iconBadge(product.category, badgeColor)}<span class="badge ${badgeColor}">${escapeHtml(badgeLabel)}</span><span class="badge ${usageColor}">${usageLabel}</span><button type="button" class="fav-btn" data-fav-asin="${escapeHtml(product.asin)}" aria-label="気になるリストに追加">${icon("heart")}</button></div>
   <h3>${escapeHtml(product.name)}</h3>
-  <p class="price"><span class="num-mono">¥${product.price.toLocaleString("ja-JP")}</span>${escapeHtml(product.priceNote || "")}</p>
+  <p class="price">価格は販売ページで確認してください</p>
   <p>${escapeHtml(product.summary || "")}</p>
   <ul>${(product.pros || []).map((x) => `<li>◎ ${escapeHtml(x)}</li>`).join("")}${(product.cons || []).map((x) => `<li>△ ${escapeHtml(x)}</li>`).join("")}</ul>
   ${renderCtaButtons(product)}
@@ -399,11 +402,24 @@ function renderDiagnosis(diag, productsMap) {
   var stepDependsOn = ${JSON.stringify(diag.questions.map((q) => q.dependsOn || null))};
   var answers = {};
   var resultState = null; // set by showResult(); mutated by swap clicks
+  var diagnosisStarted = false;
   var stepEls = root.querySelectorAll(".quiz-step");
   var dotEls = root.querySelectorAll(".quiz-dot");
   var resultsBox = root.querySelector(".quiz-results");
 
   function yen(n) { return "\\u00a5" + n.toLocaleString("ja-JP"); }
+
+  function trackDiagnosis(eventName, params) {
+    if (typeof window.gtag !== "function") return;
+    try {
+      window.gtag("event", eventName, Object.assign({
+        send_to: "G-M4L5M94YCB",
+        page_path: window.location.pathname.replace(/\\/index\\.html$/, "/")
+      }, params || {}));
+    } catch (err) {
+      // Measurement must never interrupt the diagnosis.
+    }
+  }
 
   // Encodes the current answers into the URL's query string (one param per
   // question, multi-select joined by commas) so a shared link reproduces
@@ -830,6 +846,11 @@ function renderDiagnosis(diag, productsMap) {
     root.querySelector(".quiz-steps").hidden = true;
     var r = compute();
     resultState = r;
+    trackDiagnosis("diagnosis_complete", {
+      usecase: Array.isArray(answers.usecases) ? answers.usecases.join(",") : (answers.usecases || ""),
+      budget: answers.budget || "",
+      result_type: r.title
+    });
     var html = "";
     html += '<p class="quiz-result-kicker">\\u8a3a\\u65ad\\u7d50\\u679c</p>';
     html += '<h3 class="quiz-result-title">' + escapeText(r.title) + "</h3>";
@@ -841,14 +862,14 @@ function renderDiagnosis(diag, productsMap) {
       // and the case/storage swap buttons only ever swap within a
       // form-factor-safe pair, so it stays true after a swap too.
       html += '<p class="quiz-compat-badge">' + ${JSON.stringify(icon("compare"))} + "\\u30bd\\u30b1\\u30c3\\u30c8\\u30fb\\u30e1\\u30e2\\u30ea\\u898f\\u683c\\u306e\\u4e92\\u63db\\u6027\\u78ba\\u8a8d\\u6e08\\u307f\\u306e\\u7d44\\u307f\\u5408\\u308f\\u305b\\u3067\\u3059</p>";
-      html += '<div class="card-grid" data-parts>';
+      html += '<details class="quiz-parts-detail"><summary>パーツ構成の詳細を見る（' + r.asins.length + '点）</summary><div class="card-grid" data-parts>';
       r.asins.forEach(function (a, i) { html += partHtml(a, i); });
-      html += "</div>";
+      html += "</div></details>";
     }
     if (r.budgetInfo) html += '<p class="quiz-result-note" data-budget-note>' + escapeText(budgetNoteText(r.budgetInfo.total, r.budgetInfo.ceil, r.budgetInfo.label)) + "</p>";
     r.notes.forEach(function (n) { html += '<p class="quiz-result-note">' + escapeText(n) + "</p>"; });
     if (r.productPicks && r.productPicks.length) {
-      html += '<p class="quiz-accessory-title">実際に買うならこれ</p>';
+      html += '<p class="quiz-accessory-title">最初に比較する候補</p>';
       html += '<div class="card-grid">';
       r.productPicks.forEach(function (p) {
         html += '<div class="quiz-part"><p class="quiz-part-index">' + escapeText(p.note) + '</p>' + (CARDS[p.asin] || "") + '</div>';
@@ -905,6 +926,10 @@ function renderDiagnosis(diag, productsMap) {
   root.addEventListener("click", function (e) {
     var opt = e.target.closest(".quiz-option");
     if (opt) {
+      if (!diagnosisStarted) {
+        diagnosisStarted = true;
+        trackDiagnosis("diagnosis_start", { first_question: opt.closest(".quiz-step").dataset.key || "" });
+      }
       var stepEl = opt.closest(".quiz-step");
       var key = stepEl.dataset.key;
       var type = stepEl.dataset.type;
@@ -1116,7 +1141,7 @@ function renderShowcase(rankedProducts) {
     <span class="rank"><span class="rank-num">${String(i + 1).padStart(2, "0")}</span><span class="rank-suffix">位</span></span>
     ${iconBadge(product.category, badgeColor)}
     <h3>${escapeHtml(product.name)}</h3>
-    <p class="price">¥${product.price.toLocaleString("ja-JP")}</p>
+    <p class="price">価格は販売ページで確認してください</p>
     <p>${escapeHtml(product.summary || "")}</p>
     ${renderCtaButtons(product)}
   </div>`;
@@ -1407,11 +1432,11 @@ function main() {
           <span class="split-line"><span>もっと快適にする</span></span>
           <span class="split-line"><span class="grad">モノを選ぶ。</span></span>
         </h1>
-        <p class="lede">実際に使い倒したAIツールとガジェットだけを、比較・ランキング・レビュー形式でまとめています。</p>
+        <p class="lede">実際に使った製品は体験を、未使用の候補は公開仕様と選定理由を明記して、比較・ランキング・レビュー形式でまとめています。</p>
         <div class="stat-row">
-          <div class="stat"><span class="num" data-count-to="${nonStatic.length}">0</span><span class="label">掲載記事</span></div>
-          <div class="stat"><span class="num" data-count-to="${products.length}">0</span><span class="label">掲載商品</span></div>
-          <div class="stat"><span class="num" data-count-to="${categoryCount}">0</span><span class="label">カテゴリ</span></div>
+          <div class="stat"><span class="num" data-count-to="${nonStatic.length}">${nonStatic.length}</span><span class="label">掲載記事</span></div>
+          <div class="stat"><span class="num" data-count-to="${products.length}">${products.length}</span><span class="label">掲載商品</span></div>
+          <div class="stat"><span class="num" data-count-to="${categoryCount}">${categoryCount}</span><span class="label">カテゴリ</span></div>
         </div>
         <div class="chip-row">
           ${Object.entries(FOLDER_BY_TYPE).map(([type, folder]) => `<a class="chip" href="${folder}/">${icon(type)}${TYPE_LABEL_JA[type]}</a>`).join("\n")}
@@ -1434,8 +1459,8 @@ function main() {
       <div class="pillar">
         <span class="pillar-index">01</span>
         ${iconBadge("review", "orange")}
-        <h3>実機検証してから書く</h3>
-        <p>気になった製品はまず購入・使用し、実際に触ってみた上での良い点・気になる点だけを記事にしています。</p>
+        <h3>使ったものと調べたものを分ける</h3>
+        <p>使用中の製品は使用感を、未使用の製品は仕様・公式情報・選定理由をもとに紹介し、商品カードで区別しています。</p>
       </div>
       <div class="pillar">
         <span class="pillar-index">02</span>
